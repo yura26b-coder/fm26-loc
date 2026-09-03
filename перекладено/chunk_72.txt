@@ -1,0 +1,741 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-434641
+[%cash#1-roundlarge] awarded for each domestic U[%number#1] player playing in their [%number#1-nth] league match
+
+STR-435020
+[%number#1-nth] place - [%cash#1-long-roundtiny]-[%cash#2-long-roundtiny]
+
+STR-435021
+[%number#1-nth] place - [%cash#1-long]-[%cash#2-long]
+
+STR-435022
+Best loser qualifies for the [%fixture_name#1-long]
+
+STR-435023
+Best [%number#1] losers qualify for the [%fixture_name#1-long]
+
+STR-435234
+Very Good
+
+STR-435235
+Good
+
+STR-435427
+{upper}[%string#1 - scope] ban from [%date#2-short] to [%date#1-short].
+
+STR-435468
+Save Game Failed
+
+STR-435484
+The signing of [%person#1] is seen as a sensible decision, [%person#1] is seen as a solid building block towards the future.
+
+STR-435491
+A prevention specialist will sometimes be able to prevent a player from becoming injured during training by anticipating problems before they occur.\n\nTheir profiles will indicate which players might be prone to injuries and will also be able to suggest if a player requires extensive treatment or surgery.
+
+STR-435493
+Tap a position on the pitch to change how well a player can play in that position.\n\nThe position description below will reflect your changes.\n\nYou can also modify footedness ability by tapping the icons above.
+
+STR-435494
+Footedness
+
+STR-435495
+Left Foot
+
+STR-435496
+Right Foot
+
+STR-435497
+Retired
+
+STR-435498
+Player Achievements (World)
+
+STR-435499
+Player Achievements (Adverse)
+
+STR-435500
+Achievements (World)
+
+STR-435501
+Achievements (Adverse)
+
+STR-435502
+Achievements (Minor)
+
+STR-435503
+Achievements (Major)
+
+STR-435504
+Won't sell to rival
+
+STR-435505
+Irreplaceable
+
+STR-435506
+Not for sale
+
+STR-435507
+Undisclosed
+
+STR-435511
+A release clause is active and [%person#1-you] can't reject a bid of [%cash#1] or above
+
+STR-435514
+Please select preferred filter for player awards
+
+STR-435515
+[%string#1 - Person Name] welcomes [%person#1-you] to the club
+
+STR-435516
+As the only other permanent member of staff, [%string#1 - Person Name] has welcomed [%person#1-you] to the club and is excited to get started under [%person#1-your] leadership.\n\n[%person#2-He] invites [%person#1-you] to view the facilities and suggests putting job adverts out advertising the other positions as soon as possible.
+
+STR-435554
+[%string#1 - Player Name] warned
+
+STR-435718
+Exists
+
+STR-435808
+midfield orchestrator
+
+STR-435809
+confident winger
+
+STR-435908
+Cannot add extinct team [%team#1] to stage [%number#1] of [%comp#1-long]
+
+STR-435909
+The [%comp#1] won't be played this season due to [%team#1-short] winning both the [%comp#2] and [%comp#3].
+
+STR-435918
+Brexit Rules
+
+STR-435920
+[%cash#1-roundlarge] each year for maximum of [%number#1] years
+
+STR-435921
+[%cash#1-roundlarge]-[%cash#2-roundlarge] each year for maximum of [%number#1] years
+
+STR-435924
+[%nation_list#1] have left the [%agreement#1].
+
+STR-435925
+[%nation#1] have left the [%agreement#1].
+
+STR-436465
+versatile player
+
+STR-436466
+clinical forward
+
+STR-436467
+rapid forward
+
+STR-436468
+robust attacker
+
+STR-436469
+heart-and-soul midfielder
+
+STR-436470
+prolific midfielder
+
+STR-436472
+dependable midfielder
+
+STR-436473
+youngster
+
+STR-436474
+powerful centre-back
+
+STR-436476
+midfield entertainer
+
+STR-436477
+unpredictable attacking midfielder
+
+STR-436478
+committed attacking midfielder
+
+STR-436480
+dynamic winger
+
+STR-436482
+showy forward
+
+STR-436875
+[%cash#1-roundlarge] divided between the relegated teams based on number of recent seasons they have spent in this division.
+
+STR-436876
+Movement Map
+
+STR-437327
+for 10 mins after conceding a goal
+
+STR-437328
+for 10 mins after scoring a goal
+
+STR-437835
+Under-[%number#1] players must play a combined total of [%number#2]% of the time played in [%number#3] games. Currently [%number#5]%. Target is [%number#7] mins/match.
+
+STR-437836
+Under-[%number#1] players must play a combined total of [%number#2] minutes from [%number#3] games to avoid points deduction. Currently [%number#5] from [%number#4]. Target is [%number#7] mins/match.
+
+STR-437837
+Under-[%number#1] players must play a combined total of [%number#2] minutes from [%number#3] games to avoid losing foreign player place. Currently [%number#5] from [%number#4]. Target is [%number#7] mins/match.
+
+STR-437838
+Under-[%number#1] players must play a combined total of [%number#2] minutes from [%number#3] games. Currently [%number#5] from [%number#4]. Target is [%number#7] mins/match.
+
+STR-437842
+(Skipping teams already qualified)
+
+STR-437843
+Total minutes played by Under-[%number#1] players must be at least equal to [%number#2]% of the time played by the team in this stage. ([%number#3] x 90 minutes)
+
+STR-437844
+Under-[%number#1] players must play a combined total of [%number#2] minutes of the [%number#3] matches played.
+
+STR-437845
+Teams will be deducted [%number#1] points for every [%number#2] minutes they are below this threshold.
+
+STR-437877
+Short Pass
+
+STR-437878
+Medium Passes
+
+STR-437879
+Square Balls
+
+STR-438370
+Teams will lose 1 space for foreign players next season if they fail to meet this threshold.
+
+STR-438375
+[%wage#1] minimum wage for reserve players from [%number#1] to [%number#2] years old.
+
+STR-438376
+[%wage#1] minimum wage for senior players from [%number#1] to [%number#2] years old.
+
+STR-438379
+MEZ
+
+STR-438383
+VOL
+
+STR-438386
+Superstar
+
+STR-438387
+Household Name
+
+STR-438388
+Unknown
+
+STR-438392
+Needs to leave to further [%person#1-his] career
+
+STR-438393
+Angry that [%person#1-he] isn't a first team regular
+
+STR-438394
+Shocked that [%person#1-he] isn't a first team regular
+
+STR-438400
+Feel the club would do better with an experienced manager
+
+STR-438407
+Struggling to settle into the area
+
+STR-438408
+Adjusting to the team's playing style
+
+STR-438409
+N/A
+
+STR-438410
+Influential
+
+STR-438411
+Very Popular
+
+STR-438412
+Popular
+
+STR-438413
+Respected
+
+STR-438414
+Unpopular
+
+STR-438415
+Troublemaker
+
+STR-438416
+Polarising
+
+STR-438417
+Outcast
+
+STR-438418
+Ball Boy
+
+STR-438420
+To unlock this achievement you build a new stadium for your club.
+
+STR-438424
+[%person#1] wins [%award#1-short]
+
+STR-438426
+New [%stadium#1]
+
+STR-438427
+The Legacy Stadium
+
+STR-438428
+The Sports Stadium
+
+STR-438429
+The Determination Stadium
+
+STR-438430
+The Achievement Stadium
+
+STR-438431
+[%club#1] to build new stadium
+
+STR-438435
+The [%club#1] board have presented plans to the public for a new [%number#1] seater stadium.
+
+STR-438436
+[%club#1] prepare to say goodbye to [%stadium#1]
+
+STR-438438
+[%club#1] prepare for first match in new home
+
+STR-438440
+Following the team's heroic [%comp#1] victory over [%club#1] the board has made an additional [%cash#1-short-roundlarge] available in transfer funds.
+
+STR-438441
+[%cash#1-longcents] / Hour
+
+STR-438442
+Less than [%cash#1-longcents] / Hour
+
+STR-438453
+[%person#1-You] have been requested to select a squad for [%nation#1]{s} [%comp#1] match against [%nation#2] on [%date#1-medium_no_year].\n\n
+
+STR-438457
+This was the final match that [%team#1-short] will play at [%stadium#1].
+
+STR-438458
+This was the inaugural match at [%stadium#1].
+
+STR-438459
+[%team#1-short] leave supporters with winning memories of [%stadium#1]
+
+STR-438460
+[%team#1-short] play last match at [%stadium#1]
+
+STR-438461
+[%team#1-short] unable to leave [%stadium#1] on a high note
+
+STR-438462
+[%team#1-short] begin time at [%stadium#1] with a win
+
+STR-438463
+[%team#1-short] play first match at [%stadium#1]
+
+STR-438464
+[%team#1-short] start tenancy at [%stadium#1] with a loss
+
+STR-438465
+[%club#1]{s} [%string#1 Player Name (eg. Francesco Totti)] has claimed that [%string#2 Manager Name (eg Fabio Capello)] is inacapable of handling players of his calibre.\n\n[%string#3 Player Name (eg Totti)] said that he expected one of them to leave the club before too long.
+
+STR-438466
+[%club#1] have received an insurance payout of [%cash#1-short-roundlarge] following the premature retirement of [%string#1 Player Name] due to injury.
+Polish Reference:
+STR-434641
+[%cash#1-roundlarge] premii przyznawane jest za każdego krajowego zawodnika U-[%number#1], który rozegra swój [%number#1-nth] mecz w lidze
+
+STR-435020
+[%number#1]. miejsce - [%cash#1-long-roundtiny]-[%cash#2-long-roundtiny]
+
+STR-435021
+[%number#1]. miejsce - [%cash#1-long]-[%cash#2-long]
+
+STR-435022
+Najlepszy przegrany kwalifikuje się do: [%fixture_name#1-long]
+
+STR-435023
+[%number#1] najlepszych przegranych kwalifikuje się do: [%fixture_name#1-long]
+
+STR-435234
+Bardzo dobra
+
+STR-435235
+Dobra
+
+STR-435427
+Kara zawieszenia ([%string#1 - scope]) od [%date#2-short] do [%date#1-short].
+
+STR-435468
+Zapis gry nie powiódł się
+
+STR-435484
+Decyzja, by do klubu przyszedł [%male#1], stanowi rozsądne posunięcie, postrzegane jako pewny krok ku budowie przyszłościowej drużyny.
+Decyzja, by do klubu przyszła [%female#1], stanowi rozsądne posunięcie, postrzegane jako pewny krok ku budowie przyszłościowej drużyny.
+
+STR-435491
+Specjalista od zapobiegania urazom czasami będzie w stanie uchronić zawodnika przed kontuzją na treningu, potrafiąc przewidzieć potencjalne problemy.\n\nJego profil będzie zawierać informację, którzy piłkarze są podatni na kontuzje, i ewentualne sugestie, którzy z nich potrzebują intensywnej kuracji albo operacji.
+
+STR-435493
+Stuknij pozycję na boisku, by zmienić poziom umiejętności gry piłkarza na danej pozycji.\n\nOpis pozycji poniżej odzwierciedli twoje modyfikacje.\n\nMożesz też zmieni preferowaną nogę piłkarza, stukając na ikonach powyżej.
+
+STR-435494
+Preferowana noga
+
+STR-435495
+Lewa noga
+
+STR-435496
+Prawa noga
+
+STR-435497
+Emerytowany
+
+STR-435498
+Osiągnięcia piłkarzy (świat)
+
+STR-435499
+Osiągnięcia piłkarzy (negatywne)
+
+STR-435500
+Osiągnięcia (świat)
+
+STR-435501
+Osiągnięcia (negatywne)
+
+STR-435502
+Osiągnięcia (pomniejsze)
+
+STR-435503
+Osiągnięcia (najważniejsze)
+
+STR-435504
+Nie sprzeda zawodnika rywalom
+
+STR-435505
+Nie do zastąpienia
+
+STR-435506
+Nie na sprzedaż
+
+STR-435507
+Nie ujawniono
+
+STR-435511
+Klauzula odejścia została aktywowana i nie możesz odrzucić oferty przewyższającej [%cash#1].[%male#1-hidden]
+
+STR-435514
+Wybierz preferowany filtr nagród piłkarskich
+
+STR-435515
+[%string#1 - Person Name] serdecznie wita w klubie[%male#1-hidden]
+
+STR-435516
+Jako jedyny oprócz ciebie etatowy pracownik sztabu szkoleniowego, [%string#1 - Person Name] wita cię w klubie i cieszy się na pracę pod twoim przywództwem.\n\nSugeruje ci też, abyś zapoznał się z klubowymi obiektami i jak najszybciej rozpoczął poszukiwania kandydatów na nieobsadzone stanowiska.[%male#1-hidden][%male#2-hidden]
+Jako jedyna oprócz ciebie etatowa pracowniczka sztabu szkoleniowego, [%string#1 - Person Name] wita cię w klubie i cieszy się na pracę pod twoim przywództwem.\n\nSugeruje ci też, abyś zapoznał się z klubowymi obiektami i jak najszybciej rozpoczął poszukiwania kandydatów na nieobsadzone stanowiska.[%male#1-hidden][%female#2-hidden]
+Jako jedyny oprócz ciebie etatowy pracownik sztabu szkoleniowego, [%string#1 - Person Name] wita cię w klubie i cieszy się na pracę pod twoim przywództwem.\n\nSugeruje ci też, abyś zapoznała się z klubowymi obiektami i jak najszybciej rozpoczęła poszukiwania kandydatów na nieobsadzone stanowiska.[%female#1-hidden][%male#2-hidden]
+Jako jedyna oprócz ciebie etatowa pracowniczka sztabu szkoleniowego, [%string#1 - Person Name] wita cię w klubie i cieszy się na pracę pod twoim przywództwem.\n\nSugeruje ci też, abyś zapoznała się z klubowymi obiektami i jak najszybciej rozpoczęła poszukiwania kandydatów na nieobsadzone stanowiska.[%female#1-hidden][%female#2-hidden]
+
+STR-435554
+[%string#1 - Player Name] otrzymuje upomnienie
+
+STR-435718
+Istnieje
+
+STR-435808
+dyrygent środka pola
+
+STR-435809
+pewny siebie skrzydłowy
+
+STR-435908
+Nie można dodać nieaktywnego zespołu ([%team#1]) do [%number#1]. fazy rozgrywek ([%comp#1-long])
+
+STR-435909
+[%comp#1]{nie odbędzie} się w tym sezonie, jako że [%team#1-short]{został} zwycięzcą obu rozgrywek ([%comp#2] i [%comp#3]).
+
+STR-435918
+Zasady Brexitu
+
+STR-435920
+[%cash#1-roundlarge] rocznie przez nie więcej niż [%number#1] l.
+
+STR-435921
+[%cash#1-roundlarge]-[%cash#2-roundlarge] rocznie przez nie więcej niż [%number#1] l.
+
+STR-435924
+[%nation_list#1] wypowiedziały następujące traktaty międzynarodowe: [%agreement#1].
+
+STR-435925
+[%nation#1]{wypowiedział} następujące traktaty międzynarodowe: [%agreement#1].
+
+STR-436465
+wszechstronny piłkarz
+
+STR-436466
+precyzyjny napastnik
+
+STR-436467
+chyży napastnik
+
+STR-436468
+krzepki napastnik
+
+STR-436469
+zaangażowany pomocnik
+
+STR-436470
+bramkostrzelny pomocnik
+
+STR-436472
+niezawodny pomocnik
+
+STR-436473
+junior
+
+STR-436474
+potężny środkowy obrońca
+
+STR-436476
+artysta drugiej linii
+
+STR-436477
+nieprzewidywalny ofensywny pomocnik
+
+STR-436478
+zaangażowany ofensywny pomocnik
+
+STR-436480
+dynamiczny skrzydłowy
+
+STR-436482
+efektowny napastnik
+
+STR-436875
+[%cash#1-roundlarge] dzielone pomiędzy spadkowiczów na podstawie liczby sezonów spędzonych w tej lidze
+
+STR-436876
+Mapa aktywności
+
+STR-437327
+przez 10 minut po stracie bramki
+
+STR-437328
+przez 10 minut po zdobyciu bramki
+
+STR-437835
+Piłkarze U-[%number#1] muszą spędzić w sumie na boisku [%number#2]% czasu w trakcie [%number#3] spotkań. Obecny wskaźnik: [%number#5]%. Wartość docelowa: [%number#7] min./mecz.
+
+STR-437836
+Piłkarze U-[%number#1] muszą spędzić w sumie na boisku [%number#2] min. w trakcie [%number#3] spotkań, by uniknąć odjęcia punktów. Obecny wskaźnik: [%number#5]/[%number#4]. Wartość docelowa: [%number#7] min./mecz.
+
+STR-437837
+Piłkarze U-[%number#1] muszą spędzić w sumie na boisku [%number#2] min. w trakcie [%number#3] spotkań, by uniknąć odebrania miejsca dla obcokrajowca. Obecny wskaźnik: [%number#5]/[%number#4]. Wartość docelowa: [%number#7] min./mecz.
+
+STR-437838
+Piłkarze U-[%number#1] muszą spędzić w sumie na boisku [%number#2] min. w trakcie [%number#3] spotkań. Obecny wskaźnik: [%number#5]/[%number#4]. Wartość docelowa: [%number#7] min./mecz.
+
+STR-437842
+(pomijając zespoły, które już się zakwalifikowały)
+
+STR-437843
+Suma minut rozegranych ogółem przez zawodników U-[%number#1] musi wynosić co najmniej [%number#2]% czasu rozegranego przez zespół w tej fazie rozgrywek. ([%number#3] x 90 min.)
+
+STR-437844
+Piłkarze U-[%number#1] muszą spędzić na boisku w sumie [%number#2] min. w [%number#3] rozegranych meczach.
+
+STR-437845
+Zespoły stracą [%number#1] pkt. za każde [%number#2] min. poniżej tego progu.
+
+STR-437877
+Krótkie podanie
+
+STR-437878
+Średnie podanie
+
+STR-437879
+Podania w poprzek boiska
+
+STR-438370
+Kluby stracą 1 miejsce dla obcokrajowca w przyszłym sezonie, o ile nie osiągną tego progu.
+
+STR-438375
+Wynagrodzenie minimalne w wysokości [%wage#1] dla piłkarzy rezerw w wieku [%number#1]-[%number#2] lat.
+
+STR-438376
+Wynagrodzenie minimalne w wysokości [%wage#1] dla piłkarzy na kontraktach seniorskich w wieku [%number#1]-[%number#2] lat.
+
+STR-438379
+MEZ
+
+STR-438383
+VOL
+
+STR-438386
+Supergwiazda
+
+STR-438387
+Znane nazwisko
+
+STR-438388
+Nieznana
+
+STR-438392
+Musi odejść dla dobra swojej kariery[%male#1-hidden]
+
+STR-438393
+Oburzony, że nie gra regularnie w pierwszym zespole[%male#1-hidden]
+
+STR-438394
+Zszokowany, że nie gra regularnie w pierwszym zespole[%male#1-hidden]
+
+STR-438400
+Uważa, że klub wyszedłby lepiej na zatrudnieniu bardziej doświadczonego menedżera
+
+STR-438407
+Ma problemy z aklimatyzacją
+
+STR-438408
+Dostosowuje się do stylu gry zespołu
+
+STR-438409
+n/d
+
+STR-438410
+Wpływowy
+
+STR-438411
+Bardzo popularny
+
+STR-438412
+Popularny
+
+STR-438413
+Szanowany
+
+STR-438414
+Niepopularny
+
+STR-438415
+Wichrzyciel
+
+STR-438416
+Rozłamowiec
+
+STR-438417
+Wyrzutek
+
+STR-438418
+Chłopiec do podawania piłek
+
+STR-438420
+Aby odblokować to osiągnięcie, musisz zbudować swojemu klubowi nowy stadion.
+
+STR-438424
+[%award#1-short]: [%male#1] zdobywcą nagrody
+[%award#1-short]: [%female#1] zdobywczynią nagrody
+
+STR-438426
+Nowy stadion [%stadium#1]
+
+STR-438427
+Stadion Dziedzictwa
+
+STR-438428
+Stadion Sportowy
+
+STR-438429
+Stadion Determinacji
+
+STR-438430
+Stadion Osiągnięć
+
+STR-438431
+[%club#1]{zamierza} zbudować nowy stadion
+
+STR-438435
+[%club#1]{ogłosił} plany budowy nowego stadionu na [%number#1] miejsc.
+
+STR-438436
+[%club#1] przed pożegnaniem ze stadionem [%stadium#1]
+
+STR-438438
+[%club#1]{szykuje} się do pierwszego meczu w nowym domu
+
+STR-438440
+Po heroicznym zwycięstwie w meczu, w którym ich przeciwnikiem {był}[%club#1] ([%comp#1]), zarząd udostępnił dodatkowe fundusze transferowe w wysokości [%cash#1-short-roundlarge].
+
+STR-438441
+[%cash#1-longcents] / godzina
+
+STR-438442
+Mniej niż [%cash#1-longcents] / godzina
+
+STR-438453
+Poproszono cię o wybranie składu [%nation#1-nationality1]ej reprezentacji na zbliżający się mecz, w którym [%date#1-medium_no_year] przeciwnikiem {będzie}[%nation#2] ([%comp#1]).\n\n[%male#1-hidden]
+
+STR-438457
+Był to ostatni mecz, jaki [%team#1-short]{rozegrał} na stadionie [%stadium#1].
+
+STR-438458
+Był to pierwszy mecz rozegrany na stadionie [%stadium#1].
+
+STR-438459
+Kibicom klubu [%team#1-long] stadion [%stadium#1] kojarzyć się zawsze będzie ze zwycięstwami.
+
+STR-438460
+[%team#1-short]{rozgrywa} ostatni mecz na stadionie [%stadium#1]
+
+STR-438461
+[%team#1-short]: Bolesne pożegnanie ze stadionem [%stadium#1]
+
+STR-438462
+[%team#1-short]: Inauguracja nowego stadionu okraszona zwycięstwem
+
+STR-438463
+[%team#1-short]{rozgrywa} pierwszy mecz na stadionie [%stadium#1]
+
+STR-438464
+[%team#1-short]{rozpoczyna} przygodę ze stadionem [%stadium#1] od porażki
+
+STR-438465
+[%string#1 Player Name (eg. Francesco Totti)] ([%club#1]) oznajmił, że [%string#2 Manager Name (eg Fabio Capello)] nie potrafi pracować z zawodnikami jego kalibru.\n\n[%string#3 Player Name (eg Totti)] dodał, że jeden z nich powinien niebawem odejść z klubu.
+
+STR-438466
+[%club#1]{otrzymał} [%cash#1-short-roundlarge] z polisy ubezpieczeniowej po tym, jak [%string#1 Player Name] zakończył przedwcześnie karierę wskutek kontuzji.

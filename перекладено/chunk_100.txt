@@ -1,0 +1,361 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-465481
+We weren't that interested in listening to offers for the player and [%person#2-your] opening offer was completely derogatory. As such, we're not willing to take these discussions any further.
+
+STR-465482
+We thought we might be able to agree terms, however our valuations seem so far apart here that we're not willing to take these discussions any further.
+
+STR-465483
+[%person#2-Your] demands for this player's transfer are completely unrealistic. Therefore, we're not willing to take these discussions any further.
+
+STR-465484
+It seems [%person#2-your] opening offer is some way off our initial valuation of the player. We hope that [%person#2-your] next offer will be a significant improvement.
+
+STR-465485
+This is a very respectable opening offer. There are just a few small adjustments that need to be ironed out.
+
+STR-465486
+This is a fairly promising start to discussions, although there are still some issues that we need to iron out.
+
+STR-465487
+We were hoping by this stage of negotiations that we would be close to an agreement. Unfortunately this doesn't appear to be the case. This is [%person#2-your] last chance to make a significantly improved offer.
+
+STR-465488
+That last offer feels like something of a step back in negotiations. The club is running out of patience and would like this resolved with [%person#2-your] final offer.
+
+STR-465489
+We believe that we're very close to agreeing terms now, but we are running out of time. We would like to conclude these talks with these minor adjustments.
+
+STR-465490
+We're running out of time to agree terms here, there are still some issues that we need to iron out which we hope [%person#2-you] can resolve in [%person#2-your] final offer.
+
+STR-465491
+We're concerned that these talks are dragging on without any real progress being made. We hope that [%person#2-your] next offer will be a significant improvement from what has gone before.
+
+STR-465492
+That last offer feels like something of a step back. These talks are starting to drag on, and if we're not making inroads then there's little point carrying on.
+
+STR-465493
+We hope that we can wrap up these negotiations fairly soon. There are just a few loose ends to tie up before we agree the terms of this transfer.
+
+STR-465494
+We're getting closer to agreeing these transfer terms. However, there are still some loose ends to tie up before we can accept this offer.
+
+STR-465495
+We're concerned that these talks are not really progressing. We hope that [%person#2-your] next offer will be a significant improvement from what has gone before.
+
+STR-465496
+We're concerned that this offer falls short of [%person#2-your] previous offer. There won't be much point in continuing if [%person#2-you] are unwilling to negotiate upwards.
+
+STR-465497
+We believe that we can agree a deal very soon. There are just a few small adjustments we would like.
+
+STR-465498
+We're pleased that talks seem to be progressing. However, there are still issues we need to iron out.
+
+STR-465499
+At present, we are unwilling to accept any bids below the player's [%cash#1] release clause in [%person#1-his] current contract.
+
+STR-465500
+At present, we are unwilling to accept any bids below the agreed [%cash#1] buy back clause in [%person#1-his] current contract.
+
+STR-465501
+We don't believe the transfer fee offered matches our valuation of the player.
+
+STR-465502
+We would like a bigger percentage of any future sale made on the player.
+
+STR-465503
+We would like the player to return to us on loan for the season as part of the deal.
+
+STR-465504
+We would prefer to finalise any deal now so that we have the funds available to replace the player.
+
+STR-465505
+We would prefer the player to remain at the club while we look for a possible replacement.
+
+STR-465506
+We are not interested in the player offered to us in exchange.
+
+STR-465507
+We believe the buy-back fee requested is too high.
+
+STR-465508
+While we are willing to let the player leave, we would like a nominal buyout fee included.
+
+STR-465509
+We feel that the offered buy out value does not accurately represent our valuation of the player.
+
+STR-465510
+We would like [%person#2-your] club to make a bigger contribution towards paying the player's contracted wage.
+
+STR-465512
+These are very reasonable demands. There are just a few small adjustments that we would like to be ironed out.
+
+STR-465513
+We were hoping by this stage of negotiations that we would be close to an agreement. Unfortunately this doesn't appear to be the case. We will be willing to pull out of these talks if [%person#2-your] last demands are unreasonable.
+
+STR-465514
+That last offer feels like something of a step back in negotiations. The club is running out of patience and would like this resolved in the next round of talks.
+
+STR-465515
+We believe that we're very close to agreeing the terms of this transfer now, but we are running out of time. We would like to conclude these talks with these minor adjustments.
+
+STR-465516
+We're running out of time to agree transfer terms here. There are still some issues that we need to iron out which we hope [%person#2-you] can resolve in the next round of talks.
+
+STR-465517
+We're concerned that these talks are dragging on without any real progress being made. We hope that [%person#2-your] next set of demands will be more realistic than what has gone before.
+
+STR-465518
+These latest demands feel like something of a step back in negotiations. These talks are starting to drag on, and if we're not making inroads then there's little point carrying on.
+
+STR-465519
+We're concerned that these talks are not really progressing. We hope that [%person#2-your] next set of demands will be more realistic than what has gone before.
+
+STR-465520
+We're concerned that these demands falls are less reasonable than [%person#2-your] previous offer. There won't be much point in continuing if [%person#2-you] are unwilling to negotiate.
+
+STR-465521
+We don't agree with [%person#2-your] valuation of the player.
+
+STR-465522
+We feel the sell on fee percentage [%person#2-you] are requesting is too high.
+
+STR-465523
+We are not looking to loan the player back to [%person#2-your] club immediately.
+
+STR-465524
+We would prefer the player to join up with our squad right away.
+
+STR-465525
+We would prefer the player to join up with our squad at a future date.
+
+STR-465526
+We are not interested in exchanging a player in this deal.
+
+STR-465527
+We are not interested in adding a buy-back clause.
+
+STR-465528
+We believe the buy-back fee requested is too low.
+
+STR-465529
+We feel that the buyout clause is beyond what we will be willing to pay for [%person#1-surname] if we wish to make the move permanent.
+
+STR-465530
+We are unwilling to subsidise such a large amount of [%person#1-surname]{s} wages.
+
+STR-465534
+[%person#1-He] believes that [%club#1-short] will line up in a [%string#1 formation name] formation, with the aim of striking a balance between attack and defence.\n\n
+
+STR-465536
+[%person#1-surname]{s} opposition report on [%club#1-short]
+
+STR-465537
+[%person#1-surname] compiles report on [%club#1-short]
+
+STR-465538
+Rival Offers
+Polish Reference:
+STR-465481
+Nie byliśmy aż tak zainteresowani wysłuchiwaniem ofert dla tego zawodnika, a pańska pierwotna propozycja była śmiesznie niska. Dlatego też nie mamy ochoty kontynuować tych rozmów.[%male#2-hidden]
+Nie byliśmy aż tak zainteresowani wysłuchiwaniem ofert dla tego zawodnika, a pani pierwotna propozycja była śmiesznie niska. Dlatego też nie mamy ochoty kontynuować tych rozmów.[%female#2-hidden]
+
+STR-465482
+Myśleliśmy, że uda się nam osiągnąć porozumienie, ale rozbieżności finansowe są tak wielkie, że kontynuowanie tych rozmów nie ma sensu.
+
+STR-465483
+Pańskie oczekiwania wobec transferu tego piłkarza są całkowicie nierealistyczne. Dlatego też nie jesteśmy zainteresowany kontynuacją tych rozmów.[%male#2-hidden]
+Pani oczekiwania wobec transferu tego piłkarza są całkowicie nierealistyczne. Dlatego też nie jesteśmy zainteresowany kontynuacją tych rozmów.[%female#2-hidden]
+
+STR-465484
+Wygląda na to, że pańska wyjściowa oferta różni się nieco od naszej wstępnej wyceny zawodnika. Mamy nadzieję, że następna będzie znacząco lepsza.[%male#2-hidden]
+Wygląda na to, że pani wyjściowa oferta różni się nieco od naszej wstępnej wyceny zawodnika. Mamy nadzieję, że następna będzie znacząco lepsza.[%female#2-hidden]
+
+STR-465485
+To bardzo solidna wyjściowa oferta. Jest jeszcze tylko parę szczegółów do uzgodnienia.
+
+STR-465486
+To w miarę obiecujący początek tych negocjacji, choć parę kwestii wymaga jeszcze dopracowania.
+
+STR-465487
+Mieliśmy nadzieję, że na tym etapie negocjacji będziemy powoli zbliżać się do porozumienia. Niestety na to nie wygląda. Ma pan ostatnią szansę, by złożyć zdecydowanie lepszą ofertę.[%male#2-hidden]
+Mieliśmy nadzieję, że na tym etapie negocjacji będziemy powoli zbliżać się do porozumienia. Niestety na to nie wygląda. Ma pani ostatnią szansę, by złożyć zdecydowanie lepszą ofertę.[%female#2-hidden]
+
+STR-465488
+Ta ostatnia oferta sprawia wrażenie wręcz gorszej od poprzednich. Klubowi zaczyna pomału brakować cierpliwości i pańska ostateczna propozycja musi rozwiać wszystkie zastrzeżenia.[%male#2-hidden]
+Ta ostatnia oferta sprawia wrażenie wręcz gorszej od poprzednich. Klubowi zaczyna pomału brakować cierpliwości i pani ostateczna propozycja musi rozwiać wszystkie zastrzeżenia.[%female#2-hidden]
+
+STR-465489
+Uważamy, że jesteśmy już bliscy porozumienia, tyle że zaczyna nam brakować czasu. Chcielibyśmy zakończyć te negocjacje następującymi drobnymi modyfikacjami.
+
+STR-465490
+Zaczyna nam się kończyć czas na osiągnięcie porozumienia, parę kwestii wymaga jeszcze dopracowania i mamy nadzieję, że pańska ostateczna oferta będzie stanowiła na to odpowiedź.[%male#2-hidden]
+Zaczyna nam się kończyć czas na osiągnięcie porozumienia, parę kwestii wymaga jeszcze dopracowania i mamy nadzieję, że pani ostateczna oferta będzie stanowiła na to odpowiedź.[%female#2-hidden]
+
+STR-465491
+Martwimy się, że te rozmowy przeciągają się ponad miarę, a postępów w nich jakoś nie widać. Mamy nadzieję, że pańska następna oferta będzie zdecydowanie lepsza od poprzednich.[%male#2-hidden]
+Martwimy się, że te rozmowy przeciągają się ponad miarę, a postępów w nich jakoś nie widać. Mamy nadzieję, że pani następna oferta będzie zdecydowanie lepsza od poprzednich.[%female#2-hidden]
+
+STR-465492
+Ta ostatnia oferta sprawia wrażenie wręcz gorszej od poprzednich. Te negocjacje zdają się grzęznąć w miejscu i jeśli nie zrobimy jakichś postępów, nie ma sensu tego przeciągać.
+
+STR-465493
+Mamy nadzieję niebawem zakończyć te negocjacje. Pozostało jeszcze tylko kilka nierozwiązanych kwestii, by uzgodnić warunki tego transferu.
+
+STR-465494
+Jesteśmy coraz bliżsi porozumienia w sprawie warunków transferu. Niemniej jednak zanim zaakceptujemy tę propozycję, pozostaje jeszcze parę kwestii do dopracowania.
+
+STR-465495
+Martwimy się, że postępy w tych rozmowach są praktycznie niezauważalne. Mamy nadzieję, że pańska następna oferta będzie zdecydowanie lepsza od poprzednich.[%male#2-hidden]
+Martwimy się, że postępy w tych rozmowach są praktycznie niezauważalne. Mamy nadzieję, że pani następna oferta będzie zdecydowanie lepsza od poprzednich.[%female#2-hidden]
+
+STR-465496
+Martwimy się, że ta pańska oferta jest gorsza od poprzedniej. Te rozmowy nie mają sensu, jeśli nie zamierza pan dorzucić czegoś do puli.[%male#2-hidden]
+Martwimy się, że ta pani oferta jest gorsza od poprzedniej. Te rozmowy nie mają sensu, jeśli nie zamierza pani dorzucić czegoś do puli.[%female#2-hidden]
+
+STR-465497
+Wierzymy, że jesteśmy w stanie niebawem zamknąć te negocjacje porozumieniem. Oczekujemy już tylko kilku drobnych modyfikacji.
+
+STR-465498
+Cieszymy się, że rozmowy posuwają się naprzód, ale trzeba jeszcze dopiąć kilka spraw.
+
+STR-465499
+Na tę chwilę nie zamierzamy akceptować ofert niższych niż [%cash#1], na które opiewa jego klauzula odejścia.[%male#1-hidden]
+Na tę chwilę nie zamierzamy akceptować ofert niższych niż [%cash#1], na które opiewa jej klauzula odejścia.[%female#1-hidden]
+
+STR-465500
+Na tę chwilę nie zamierzamy akceptować ofert niższych niż [%cash#1], na które opiewa jego klauzula odkupu.[%male#1-hidden]
+Na tę chwilę nie zamierzamy akceptować ofert niższych niż [%cash#1], na które opiewa jej klauzula odkupu.[%female#1-hidden]
+
+STR-465501
+Naszym zdaniem zaproponowana kwota transferu nie odpowiada naszej wycenie zawodnika.
+
+STR-465502
+Oczekujemy większego udziału w kolejnym transferze tego zawodnika.
+
+STR-465503
+Chcielibyśmy, aby w ramach tej umowy zawodnik wrócił do nas na wypożyczenie do końca sezonu.
+
+STR-465504
+Wolelibyśmy przeprowadzić ten transfer już teraz, by mieć fundusze na jego następcę.
+
+STR-465505
+Wolelibyśmy, aby zawodnik został w klubie, tak byśmy mieli czas na znalezienie jego następcy.
+
+STR-465506
+Nie jesteśmy zainteresowani zawodnikiem zaproponowanym nam do wymiany.
+
+STR-465507
+Uważamy, że oczekiwana kwota odkupu jest zbyt wysoka.
+
+STR-465508
+Choć jesteśmy skłonni dać mu odejść, chcielibyśmy, by w umowie znalazła się nominalna klauzula odkupu.
+
+STR-465509
+Uważamy, że zaproponowana kwota odkupu nie odpowiada dobrze naszej wycenie tego zawodnika.
+
+STR-465510
+Chcielibyśmy, aby pański klub pokrywał większą część wynagrodzenia kontraktowego tego zawodnika.[%male#2-hidden]
+Chcielibyśmy, aby pani klub pokrywał większą część wynagrodzenia kontraktowego tego zawodnika.[%female#2-hidden]
+
+STR-465512
+To bardzo rozsądne oczekiwania. Pozostaje już tylko parę szczegółów do uzgodnienia.
+
+STR-465513
+Mieliśmy nadzieję, że na tym etapie negocjacji będziemy powoli zbliżać się do porozumienia. Niestety na to nie wygląda. Jesteśmy gotowi wycofać się z tych rozmów, jeśli pańskie oczekiwania znów okażą się wygórowane.[%male#2-hidden]
+Mieliśmy nadzieję, że na tym etapie negocjacji będziemy powoli zbliżać się do porozumienia. Niestety na to nie wygląda. Jesteśmy gotowi wycofać się z tych rozmów, jeśli pani oczekiwania znów okażą się wygórowane.[%female#2-hidden]
+
+STR-465514
+Ta ostatnia oferta sprawia wrażenie wręcz gorszej od poprzednich. Klubowi zaczyna pomału brakować cierpliwości i kolejna runda rozmów musi rozwiać wszystkie zastrzeżenia.
+
+STR-465515
+Uważamy, że jesteśmy już bliscy uzgodnienia warunków tego transferu, tyle że zaczyna nam brakować czasu. Chcielibyśmy zakończyć te negocjacje następującymi drobnymi modyfikacjami.
+
+STR-465516
+Zaczyna nam się kończyć czas na uzgodnienie warunków transferu. Parę kwestii wymaga jeszcze dopracowania i mamy nadzieję, że odniesie się pan do nich w trakcie następnej rundy rozmów.[%male#2-hidden]
+Zaczyna nam się kończyć czas na uzgodnienie warunków transferu. Parę kwestii wymaga jeszcze dopracowania i mamy nadzieję, że odniesie się pani do nich w trakcie następnej rundy rozmów.[%female#2-hidden]
+
+STR-465517
+Martwimy się, że te rozmowy przeciągają się ponad miarę, a postępów w nich jakoś nie widać. Mamy nadzieję, że pańska następna oferta będzie zdecydowanie bardziej realistyczna od poprzednich.[%male#2-hidden]
+Martwimy się, że te rozmowy przeciągają się ponad miarę, a postępów w nich jakoś nie widać. Mamy nadzieję, że pani następna oferta będzie zdecydowanie bardziej realistyczna od poprzednich.[%female#2-hidden]
+
+STR-465518
+Najnowsze żądania sprawiają wrażenie trudniejszych do spełnienia od poprzednich. Te negocjacje zdają się przeciągać i jeśli nie zrobimy jakichś postępów, nie ma sensu ich kontynuować.
+
+STR-465519
+Martwimy się, że w tych rozmowach nie widać większych postępów. Mamy nadzieję, że pańskie następne żądania będą zdecydowanie bardziej realistyczne od poprzednich.[%male#2-hidden]
+Martwimy się, że w tych rozmowach nie widać większych postępów. Mamy nadzieję, że pani następne żądania będą zdecydowanie bardziej realistyczne od poprzednich.[%female#2-hidden]
+
+STR-465520
+Martwimy się, że obecne oczekiwania z pańskiej strony są jeszcze bardziej wygórowane. Te rozmowy nie mają sensu, jeśli nie zamierza pan negocjować warunków.[%male#2-hidden]
+Martwimy się, że obecne oczekiwania z pani strony są jeszcze bardziej wygórowane. Te rozmowy nie mają sensu, jeśli nie zamierza pani negocjować warunków.[%female#2-hidden]
+
+STR-465521
+Nie zgadzamy się z pańską wyceną wartości tego zawodnika.[%male#2-hidden]
+Nie zgadzamy się z pani wyceną wartości tego zawodnika.[%female#2-hidden]
+
+STR-465522
+Uważamy, że domaga się pan zbyt wysokiej klauzuli % kwoty odsprzedaży.[%male#2-hidden]
+Uważamy, że domaga się pani zbyt wysokiej klauzuli % kwoty odsprzedaży.[%female#2-hidden]
+
+STR-465523
+Nie planujemy z miejsca wypożyczyć tego zawodnika z powrotem do pańskiego klubu.[%male#2-hidden]
+Nie planujemy z miejsca wypożyczyć tego zawodnika z powrotem do pani klubu.[%female#2-hidden]
+
+STR-465524
+Wolelibyśmy, by zawodnik od razu dołączył do naszej drużyny.
+
+STR-465525
+Wolelibyśmy, by zawodnik dołączył do naszej drużyny w późniejszym terminie.
+
+STR-465526
+Nie jesteśmy zainteresowani wymianą zawodników w ramach tej transakcji.
+
+STR-465527
+Nie jesteśmy zainteresowani dodaniem do umowy klauzuli odkupu.
+
+STR-465528
+Uważamy, że żądana kwota odkupu jest zbyt niska.
+
+STR-465529
+Uważamy, że klauzula wykupu przekracza kwotę, jaką gotowi bylibyśmy zapłacić, gdybyśmy chcieli, by [%male#1-surname] przeszedł do nas na stałe.
+Uważamy, że klauzula wykupu przekracza kwotę, jaką gotowi bylibyśmy zapłacić, gdybyśmy chcieli, by [%female#1-surname] przeszła do nas na stałe.
+
+STR-465530
+Nie jesteśmy gotowi na to, by w tak dużym stopniu subsydiować wynagrodzenie, jakie otrzymuje [%male#1-surname].
+
+STR-465534
+Uważa, że [%club#1-short]{wyjdzie} w ustawieniu [%string#1 formation name], zamierzając zachować równowagę między atakiem, a obroną.\n\n[%male#1-hidden]
+
+STR-465536
+[%club#1-short]: [%male#1-surname] składa raport o rywalach
+
+STR-465537
+[%male#1-surname] składa raport, którego tematem {jest}[%club#1-short]
+
+STR-465538
+Inne oferty

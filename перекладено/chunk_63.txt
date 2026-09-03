@@ -1,0 +1,869 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-411372
+[%club#1] crisis continues
+
+STR-411373
+[%string#1 Manager Surname] failing to inspire
+
+STR-411374
+Protests against [%string#1 Manager Surname] continue
+
+STR-411375
+[%string#1 Manager Surname] suffers setback
+
+STR-411376
+[%club#1]{s} poor recent form a cause for concern
+
+STR-411377
+[%club#1]{s} first bump on road to recovery
+
+STR-411378
+[%club#1]{s} youthful squad looking jaded?
+
+STR-411379
+Defeat for [%club#1]{s} youngsters
+
+STR-411380
+[%club#1] future in doubt
+
+STR-411381
+[%club#1] grinding out results
+
+STR-411382
+[%club#1] still struggling for form
+
+STR-411383
+[%club#1] continue to struggle
+
+STR-411384
+[%club#1] show pluck
+
+STR-411385
+[%club#1] unable to buy a win
+
+STR-411386
+Doubts about [%string#1 Manager Surname] persist
+
+STR-411387
+[%club#1] making steady progress
+
+STR-411388
+[%club#1] lacking in experience?
+
+STR-411389
+[%number#1] [%comp#1]
+
+STR-411390
+[%club#1] (home)
+
+STR-411391
+[%club#1] (away)
+
+STR-411392
+[%club#1] will start with games against [%string#1 Game 1(e.g.Hearts (home)))], [%string#2 Game 2] and [%string#3 Game 3] on [%string#4 Date 1(e.g.5th August 1998)], [%string#5 Date 2] and [%string#6 Date 3] respectively.
+
+STR-411393
+[%string#1 Season Name(e.g.1998/99 First Division)] fixture list decided
+
+STR-411394
+View Report
+
+STR-411395
+Respond
+
+STR-411396
+Offer Contract
+
+STR-411397
+Training Schedule
+
+STR-411398
+Appeal
+
+STR-411399
+Negotiate
+
+STR-411400
+View Offer
+
+STR-411401
+View Confidence
+
+STR-411402
+View Report
+
+STR-411403
+Bid
+
+STR-411405
+Confirm
+
+STR-411406
+Bid
+
+STR-411407
+Respond
+
+STR-411408
+Results
+
+STR-411409
+Confirm Squad
+
+STR-411410
+Send player to physiotherapy?
+
+STR-411411
+Send player for surgery?
+
+STR-411412
+Confirm Decision
+
+STR-411413
+Sell [%string#1 Player name(e.g.Kevin James)]?
+
+STR-411414
+Confirm Transfer Offer
+
+STR-411415
+There is insufficient squad space to sign [%string#1 Player name(e.g.Kevin James)] presently
+
+STR-411416
+Cancel Transfer Offer
+
+STR-411417
+Sign [%string#1 Player name(e.g.Kevin James)]?
+
+STR-411418
+Loan out [%string#1 Player name(e.g.Kevin James)]?
+
+STR-411419
+Loan [%string#1 Player name(e.g.Kevin James)]?
+
+STR-411420
+Confirm Loan Offer
+
+STR-411421
+Accept Request?
+
+STR-411423
+Recommend that the club should accept the investment?
+
+STR-411424
+Foreign Investment
+
+STR-411425
+Accept the offer of a promotion to the club's board?
+
+STR-411426
+Promotion To Board
+
+STR-411427
+Vote to remove work permits for non-EU players?
+
+STR-411428
+Work Permits Removal
+
+STR-411429
+Vote to remove worldwide transfer windows?
+
+STR-411430
+Transfer Window Removal
+
+STR-411431
+Confirm Decision?
+
+STR-411432
+Place [%string#1 Player Name (eg. Bobby Zamora)] on the transfer list?
+
+STR-411433
+Are you sure you want to resign as manager of [%club#1]? You will not be able to undo your resignation after confirming.
+
+STR-411434
+Are you sure you want to resign as manager? You will not be able to undo your resignation after confirming.
+
+STR-411435
+Confirm resignation?
+
+STR-411494
+[%number#1]th
+
+STR-411495
+[%number#1]st
+
+STR-411496
+[%number#1]nd
+
+STR-411497
+[%number#1]rd
+
+STR-411498
+one day
+
+STR-411499
+a few days
+
+STR-411500
+about a week
+
+STR-411501
+about ten days
+
+STR-411502
+about [%number#1] weeks
+
+STR-411503
+about a month
+
+STR-411504
+about [%number#1] months
+
+STR-411505
+about a year
+
+STR-411506
+about 18 months
+
+STR-411507
+about 2 years
+
+STR-411508
+about [%number#1] years
+
+STR-411509
+1 day
+
+STR-411510
+1 week
+
+STR-411511
+1 month
+
+STR-411512
+[%number#1] months
+
+STR-411513
+Not Present
+
+STR-411592
+[%person#1-Your] appeal was successful and the transfer is now able to proceed.
+
+STR-411593
+Unfortunately budget restraints at the club have prevented [%person#1-you] lodging an appeal at this time.
+
+STR-414414
+[%number#1] [%comp#1] runners-up
+
+STR-414415
+Disciplinary Points System
+
+STR-414416
+One Point:
+
+STR-414417
+[%number#1-Text] Points:
+
+STR-414418
+If the offence results in a straight red card [%number#1] points will be added
+
+STR-414419
+If the offence results in a straight red card [%number#1] - [%number#2] points will be added
+
+STR-414420
+If the offence results in a second yellow card [%number#1] points will be added
+
+STR-414421
+If the offence results in a second yellow card [%number#1] - [%number#2] points will be added
+
+STR-414422
+Serious Offence Ban Information
+
+STR-414423
+The following bans may also be added for the specified offences: \n
+
+STR-414424
+One match:
+
+STR-414425
+[%number#1-Text] matches:
+
+STR-414426
+(Minor)
+
+STR-414427
+(Extreme)
+
+STR-414428
+The length of ban for the following offences will be decided by a disciplinary panel:
+
+STR-414429
+[%number#1-Text] matches
+
+STR-414430
+[%number#1-Text]
+
+STR-414431
+Squad numbers [%number#1] and [%number#2] are reserved for goalkeepers.
+
+STR-414432
+A registration fee will be payable for registered foreign players ([%number#1] registered players are free)
+
+STR-414433
+[%number#1-nth] player -
+
+STR-414434
+Additional fee per foreign player of [%cash#1-roundtiny] after [%number#1-nth] player.
+
+STR-414442
+(Teams which have B teams)
+
+STR-414443
+(Teams which don't have B teams)
+
+STR-414456
+[%team#1-short] have been randomly chosen as the top team of the [%number#1] teams on [%number#2] points with the same record.
+
+STR-414457
+[%team#1-short] have been randomly chosen over [%team#2-short] after both teams finished on [%number#1] points with the same record.
+
+STR-414458
+[%team#1-short] are exempt from relegation.
+
+STR-414459
+[%team#1-short] are exempt from relegation this season.
+
+STR-414460
+[%team#1-short] are exempt from relegation for [%number#1] seasons
+
+STR-414461
+Ranking In Reserve League
+
+STR-414479
+Stage in [%comp#1] uses sub competition [%comp#2] which isn't set to be another competition used by [%comp#1]
+
+STR-414480
+Number Of Teams
+
+STR-414481
+Administration Rules
+
+STR-414482
+Points Carried Forward
+
+STR-414483
+Contract Renewals
+
+STR-414484
+Work Permit Rules
+
+STR-414485
+Clubs entering administration will face a [%number#1]-point penalty deduction
+
+STR-414486
+Teams entering this stage will start with all their stats from the [%comp#1-short] [%stage_name#1], along with [%number#1]% of their points gained
+
+STR-414487
+Teams entering this stage will start with [%number#1]% of their points gained in the [%comp#1-short] [%stage_name#1]
+
+STR-414488
+Teams entering this stage will start with [%number#1]% of their points gained in the [%comp#1-short] [%stage_name#1], along with their goals scored and conceded
+
+STR-414489
+Teams entering this stage will start with all their stats, along with [%number#1]% of their points gained, against certain teams from the [%comp#1-short] [%stage_name#1]
+
+STR-414490
+Under-[%number#1] players must be offered similar terms before the first Saturday in May or seven days after their last match in the season (whichever comes later) otherwise no compensation will be due if they sign for other clubs
+
+STR-414491
+[%number#1-nth] in [%stage_name#1] v [%number#2-nth] in [%stage_name#2]
+
+STR-414492
+[%number#1-nth] v [%number#2-nth]
+
+STR-414493
+Fantasy Waiver Draft
+
+STR-414495
+[%person#1] isn't used to playing at this altitude and may struggle to see out the game.
+
+STR-414497
+A few players, including [%person#1] and [%person#2], need more minutes in order to help them blend into the team better.
+
+STR-414499
+A number of our players, including [%person#1] and [%person#2], aren't used to playing at this altitude and may struggle to see out the game.
+
+STR-414567
+[%number#1]/[%number#2-02] [%comp#1] holders
+
+STR-414635
+Appearance Fee
+
+STR-416561
+The team will be delighted that they have reached the [%stage_name#1] of the [%comp#1-short] following this result.
+
+STR-416562
+The team will be delighted that they are currently on course to reach the [%stage_name#1] of the [%comp#1-short] following this result.
+
+STR-416563
+Despite the loss, the team will be pleased that they have reached the [%stage_name#1] of the [%comp#1-short] following this result.
+
+STR-416564
+Despite the loss, the team will be delighted that they are currently on course to reach the [%stage_name#1] of the [%comp#1-short] following this result.
+
+STR-418199
+Fixture rules [%number#1] for [%nation#1] has squad registration with no registration windows
+
+STR-418202
+Only players [%number#1] and over are permitted to go out on loan deals
+
+STR-418293
+[%number#1]/[%number#2-02] runners-up
+
+STR-418825
+Stadium Sellouts
+Polish Reference:
+STR-411372
+[%club#1] nadal w kryzysie
+
+STR-411373
+[%string#1 Manager Surname] nie potrafi poderwać zespołu
+
+STR-411374
+[%string#1 Manager Surname] obiektem kolejnych protestów
+
+STR-411375
+[%string#1 Manager Surname] kontuzjowany podczas przygotowań
+
+STR-411376
+[%club#1]{martwi} kiepską formą
+
+STR-411377
+[%club#1]{zalicza} pierwsze potknięcie na drodze ku lepszemu
+
+STR-411378
+[%club#1]: Młody zespół przejawia oznaki wypalenia?
+
+STR-411379
+[%club#1]: Młodzież doznaje porażki
+
+STR-411380
+[%club#1]: Przyszłość pod znakiem zapytania
+
+STR-411381
+[%club#1]: Wyniki przychodzą w bólach
+
+STR-411382
+[%club#1] w poszukiwaniu formy
+
+STR-411383
+[%club#1] wciąż w opałach
+
+STR-411384
+[%club#1]{pokazuje} determinację
+
+STR-411385
+[%club#1]{nie potrafi} wygrać
+
+STR-411386
+[%string#1 Manager Surname] nadal budzi wątpliwości
+
+STR-411387
+[%club#1]{robi} regularne postępy
+
+STR-411388
+[%club#1] bez doświadczenia?
+
+STR-411389
+[%number#1] [%comp#1]
+
+STR-411390
+[%club#1] (dom)
+
+STR-411391
+[%club#1] (wyjazd)
+
+STR-411392
+[%club#1]{rozpocznie} następującymi meczami: [%string#1 Game 1(e.g.Hearts (home)))], [%string#2 Game 2], [%string#3 Game 3] odpowiednio [%string#4 Date 1(e.g.5th August 1998)], [%string#5 Date 2] i [%string#6 Date 3].
+
+STR-411393
+[%string#1 Season Name(e.g.1998/99 First Division)]: Ogłoszenie terminarza
+
+STR-411394
+Zobacz raport
+
+STR-411395
+Odpowiedz
+
+STR-411396
+Zaoferuj kontrakt
+
+STR-411397
+Program treningowy
+
+STR-411398
+Odwołaj się
+
+STR-411399
+Negocjuj
+
+STR-411400
+Przejrzyj ofertę
+
+STR-411401
+Zaufanie
+
+STR-411402
+Zobacz raport
+
+STR-411403
+Oferta
+
+STR-411405
+Zatwierdź
+
+STR-411406
+Oferta
+
+STR-411407
+Odpowiedz
+
+STR-411408
+Wyniki
+
+STR-411409
+Zatwierdź skład
+
+STR-411410
+Wysłać zawodnika na fizjoterapię?
+
+STR-411411
+Wysłać zawodnika na zabieg?
+
+STR-411412
+Potwierdź decyzję
+
+STR-411413
+[%string#1 Player name(e.g.Kevin James)]: Sprzedać?
+
+STR-411414
+Zatwierdź ofertę transferową
+
+STR-411415
+W zespole brakuje teraz miejsca, by [%string#1 Player name(e.g.Kevin James)] mógł do niego dołączyć
+
+STR-411416
+Anuluj ofertę transferu
+
+STR-411417
+[%string#1 Player name(e.g.Kevin James)]: Zatrudnić?
+
+STR-411418
+[%string#1 Player name(e.g.Kevin James)]: Wypożyczyć?
+
+STR-411419
+[%string#1 Player name(e.g.Kevin James)]: Wypożyczyć?
+
+STR-411420
+Zatwierdź ofertę wypożyczenia
+
+STR-411421
+Przyjąć prośbę?
+
+STR-411423
+Zarekomendować zgodę na inwestycję?
+
+STR-411424
+Inwestycja zagraniczna
+
+STR-411425
+Zaakceptować ofertę miejsca w zarządzie?
+
+STR-411426
+Awans do zarządu
+
+STR-411427
+Zagłosować za zniesieniem pozwoleń na pracę dla piłkarzy spoza UE?
+
+STR-411428
+Zniesienie pozwoleń na pracę
+
+STR-411429
+Zagłosować za globalnym zniesieniem okien transferowych?
+
+STR-411430
+Likwidacja okien transferowych
+
+STR-411431
+Potwierdzić decyzję?
+
+STR-411432
+[%string#1 Player Name (eg. Bobby Zamora)]: Umieścić na liście transferowej?
+
+STR-411433
+[%club#1-long]: na pewno chcesz zrezygnować ze stanowiska menedżerskiego? Po zatwierdzeniu dymisji nie będzie można jej wycofać.
+
+STR-411434
+Na pewno chcesz zrezygnować ze stanowiska menedżerskiego? Po zatwierdzeniu dymisji nie będzie można jej wycofać.
+
+STR-411435
+Zatwierdzić rezygnację?
+
+STR-411494
+[%number#1].
+
+STR-411495
+[%number#1].
+
+STR-411496
+[%number#1].
+
+STR-411497
+[%number#1].
+
+STR-411498
+1 dzień
+
+STR-411499
+kilka dni
+
+STR-411500
+około tygodnia
+
+STR-411501
+około 10 dni
+
+STR-411502
+około [%number#1] tyg.
+
+STR-411503
+około miesiąca
+
+STR-411504
+około [%number#1] mies.
+
+STR-411505
+około roku
+
+STR-411506
+około 18 miesięcy
+
+STR-411507
+około 2 lat
+
+STR-411508
+około [%number#1] lat
+
+STR-411509
+1 dzień
+
+STR-411510
+1 tydzień
+
+STR-411511
+1 miesiąc
+
+STR-411512
+[%number#1] mies.
+
+STR-411513
+Nieobecny
+
+STR-411592
+Twoje odwołanie się powiodło i transfer zostanie przeprowadzony.[%male#1-hidden]
+
+STR-411593
+Niestety stan klubowych finansów uniemożliwił ci złożenie odwołania od tej decyzji.[%male#1-hidden]
+
+STR-414414
+[%number#1] [%comp#1] - 2. miejsce
+
+STR-414415
+System punktów karnych
+
+STR-414416
+1 pkt:
+
+STR-414417
+[%number#1-Text] pkt:
+
+STR-414418
+Jeśli przewinienie zaowocuje bezpośrednią czerwoną kartką, dodanych zostanie [%number#1] pkt
+
+STR-414419
+Jeśli przewinienie zaowocuje bezpośrednią czerwoną kartką [%number#1]-[%number#2] pkt zostanie dodanych
+
+STR-414420
+Jeśli przewinienie zaowocuje drugą żółtą kartką, dodanych zostanie [%number#1] pkt
+
+STR-414421
+Jeśli przewinienie zaowocuje drugą żółtą kartką [%number#1]-[%number#2] pkt zostanie dodanych
+
+STR-414422
+Informacja o sankcjach za poważne przewinienie
+
+STR-414423
+Następujące kary mogą być dodane za wskazane przewinienia: \n
+
+STR-414424
+1 mecz:
+
+STR-414425
+[%number#1-Text] m:
+
+STR-414426
+(Pomniejsze)
+
+STR-414427
+(Kardynalne)
+
+STR-414428
+Długość zawieszenia za poniższe przewinienia określona zostanie przez komisję dyscyplinarną:
+
+STR-414429
+[%number#1-Text] m.
+
+STR-414430
+[%number#1-Text]
+
+STR-414431
+Koszulki z numerami [%number#1] i [%number#2] są zarezerwowane dla bramkarzy.
+
+STR-414432
+Za zagranicznych piłkarzy zgłoszonych do gry należy uiścić opłatę rejestracyjną ([%number#1] zgłoszonych piłkarzy nie podlega temu obowiązkowi)
+
+STR-414433
+[%number#1-nth] piłkarz -
+
+STR-414434
+Dodatkowa opłata od zagranicznego piłkarza w wysokości [%cash#1-roundtiny] po zgłoszeniu [%number#1-nth] piłkarza.
+
+STR-414442
+(Zespoły posiadające drużyny B)
+
+STR-414443
+(Zespoły nieposiadające drużyn B)
+
+STR-414456
+[%team#1-short]{został wylosowany} jako najlepszy zespół spośród [%number#1] drużyn z [%number#2] punktami i tym samym bilansem.
+
+STR-414457
+[%team#1-short]{został wylosowany} jako zespół lepszy niż [%team#2-short] po tym, jak obie drużyny zakończyły rozgrywki z [%number#1] punktami i tym samym bilansem.
+
+STR-414458
+W myśl przepisów [%team#1-short]{nie może} spaść z ligi.
+
+STR-414459
+W myśl przepisów [%team#1-short]{nie może} spaść z ligi w tym sezonie.
+
+STR-414460
+W myśl przepisów [%team#1-short]{nie może} spaść z ligi w ciągu najbliższych [%number#1] sezonów.
+
+STR-414461
+Ranking w lidze rezerw
+
+STR-414479
+[%comp#1]: Faza rozgrywek wykorzystuje rozgrywki podrzędne ([%comp#2]), które nie są ustawione jako wykorzystywane przez te rozgrywki
+
+STR-414480
+Liczba zespołów
+
+STR-414481
+Zasady zarządu komisarycznego
+
+STR-414482
+Przeniesione punkty
+
+STR-414483
+Przedłużanie kontraktów
+
+STR-414484
+Reguły dot. pozwoleń na pracę
+
+STR-414485
+Kluby przechodzące pod zarząd komisaryczny ukarane zostaną odjęciem [%number#1] punktów
+
+STR-414486
+Zespoły rozpoczynające grę w tej fazie zachowają wcześniejsze statystyki ([%stage_name#1], [%comp#1-short]) jak również [%number#1]% zdobytych punktów.
+
+STR-414487
+Zespoły rozpoczynające grę w tej fazie zachowają [%number#1]% punktów zdobytych w rozgrywkach ([%stage_name#1], [%comp#1-short]).
+
+STR-414488
+Zespoły rozpoczynające grę w tej fazie zachowają [%number#1]% punktów zdobytych w rozgrywkach ([%stage_name#1], [%comp#1-short]), a także zdobyte i stracone bramki.
+
+STR-414489
+Zespoły rozpoczynające grę w tej fazie zachowają [%number#1]% punktów zdobytych przeciwko określonym drużynom w rozgrywkach ([%stage_name#1], [%comp#1-short]).
+
+STR-414490
+Piłkarze w wieku poniżej [%number#1] lat muszą otrzymać propozycję podobnego kontraktu do pierwszej soboty maja (lub tydzień po zakończeniu sezonu, o ile skończy się później), w przeciwnym razie będą mogli związać się z innym klubem bez konieczności wypłacenia rekompensaty
+
+STR-414491
+[%number#1-nth] ([%stage_name#1]) vs [%number#2-nth] ([%stage_name#2])
+
+STR-414492
+[%number#1-nth] vs [%number#2-nth]
+
+STR-414493
+Draft wyrównujący Turnieju Gwiazd
+
+STR-414495
+[%male#1] nie jest przyzwyczajony do gry na takiej wysokości i może mieć problemy kondycyjne.
+[%female#1] nie jest przyzwyczajona do gry na takiej wysokości i może mieć problemy kondycyjne.
+
+STR-414497
+Kilku naszych zawodników, w tym [%male#1] i [%male#2], potrzebuje więcej czasu, by lepiej wpasować się w zespół.
+
+STR-414499
+Część naszych zawodników, w tym [%male#1] i [%male#2], nie jest przyzwyczajona do gry na takiej wysokości i może mieć problemy kondycyjne.
+
+STR-414567
+[%number#1]/[%number#2-02] [%comp#1] - zdobywcy tytułu
+
+STR-414635
+Premia za występ
+
+STR-416561
+Po tym wyniku zespół będzie zachwycony dotarciem do tej fazy rozgrywek ([%stage_name#1], [%comp#1-short]).
+
+STR-416562
+Po tym wyniku zespół będzie zachwycony, że znalazł się na najlepszej drodze do zaliczenia udanego występu w rozgrywkach ([%stage_name#1], [%comp#1-short]).
+
+STR-416563
+Mimo porażki zespół będzie zadowolony z dotarcia do tej fazy rozgrywek ([%stage_name#1], [%comp#1-short]).
+
+STR-416564
+Mimo porażki zespół będzie zachwycony, że znalazł się na najlepszej drodze do zaliczenia udanego występu w rozgrywkach ([%stage_name#1], [%comp#1-short]).
+
+STR-418199
+{upper}[%nation#1-nationality1]e przepisy gry numer [%number#1] wymagają zgłoszenia składów bez terminów ich zgłaszania
+
+STR-418202
+Tylko piłkarze w wieku [%number#1] lat i powyżej mogą być wypożyczani z klubu
+
+STR-418293
+[%number#1]/[%number#2-02] - 2. miejsce
+
+STR-418825
+Komplety widowni na stadionie

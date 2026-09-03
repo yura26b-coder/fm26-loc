@@ -1,0 +1,484 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-465232
+They struggle greatly with set pieces in central areas of the pitch, scoring just once from [%number#2] attempts.
+
+STR-465233
+They struggle somewhat with set pieces in central areas of the pitch, scoring [%number#1] times in [%number#2] attempts.
+
+STR-465234
+They struggle greatly with set pieces on the right side of the pitch, failing to score from [%number#2] attempts.
+
+STR-465235
+They struggle greatly with set pieces on the right side of the pitch, scoring just once from [%number#2] attempts.
+
+STR-465236
+They struggle somewhat with set pieces on the right side of the pitch, scoring [%number#1] times in [%number#2] attempts.
+
+STR-465237
+They are particularly vulnerable to set pieces from the left, conceding [%number#1] goals from [%number#2] attempts.
+
+STR-465238
+They are particularly vulnerable to set pieces from the middle, conceding [%number#1] goals from [%number#2] attempts.
+
+STR-465239
+They are particularly vulnerable to set pieces from the right, conceding [%number#1] goals from [%number#2] attempts.
+
+STR-465240
+They do a very good job defending set pieces from the left and haven't conceded a goal yet from [%number#2] attempts.
+
+STR-465241
+They do a very good job defending set pieces from the left and have conceded just one goal from [%number#2] attempts.
+
+STR-465242
+They do a good job defending set pieces from the left and have conceded only [%number#1] goals from [%number#2] attempts.
+
+STR-465243
+They do a very good job defending set pieces from the middle and haven't conceded a goal yet from [%number#2] attempts.
+
+STR-465244
+They do a very good job defending set pieces from the middle and have conceded just one goal from [%number#2] attempts.
+
+STR-465245
+They do a good job defending set pieces from the middle have conceded only [%number#1] goals from [%number#2] attempts.
+
+STR-465246
+They do a very good job defending set pieces from the right and haven't conceded a goal yet from [%number#2] attempts.
+
+STR-465247
+They do a very good job defending set pieces from the right and have conceded just one goal from [%number#2] attempts.
+
+STR-465248
+They do a good job defending set pieces from the right have conceded only [%number#1] goals from [%number#2] attempts.
+
+STR-465249
+They like to take shots from their free-kick opportunities, attempting [%number#1] from [%number#2] potential situations.
+
+STR-465250
+They almost never shoot from their free-kick opportunities, failing to register even one attempt from [%number#2] potential situations.
+
+STR-465251
+They almost never shoot from their free-kick opportunities, registering just one attempt from [%number#2] potential situations.
+
+STR-465252
+They rarely shoot from their free-kick opportunities, registering [%number#1] attempts from [%number#2] potential situations.
+
+STR-465253
+They often favour short corners, taking [%number#1] of [%number#2] opportunities in such a manner.
+
+STR-465254
+They almost never take short corners, failing to do so even once from [%number#2] potential situations.
+
+STR-465255
+They almost never take short corners, doing so just once from [%number#2] potential situations.
+
+STR-465256
+They rarely take short corners, doing so [%number#1] times from [%number#2] potential situations.
+
+STR-465257
+[%number#1] out of [%number#2] corners from the left have been delivered to the near post.
+
+STR-465258
+[%number#1] out of [%number#2] corners from the right have been delivered to the near post.
+
+STR-465259
+Not a single one of their [%number#2] corners from the left has been delivered to the near post.
+
+STR-465260
+Just 1 of their [%number#2] corners from the left has been delivered to the near post.
+
+STR-465261
+Just [%number#1] of their [%number#2] corners from the left have been delivered to the near post.
+
+STR-465262
+Not a single one of their [%number#2] corners from the right has been delivered to the near post.
+
+STR-465263
+Just 1 of their [%number#2] corners from the right has been delivered to the near post.
+
+STR-465264
+Just [%number#1] of their [%number#2] corners from the right have been delivered to the near post.
+
+STR-465265
+[%number#1] out of [%number#2] corners from the left have been delivered to the middle of the penalty area.
+
+STR-465266
+[%number#1] out of [%number#2] corners from the right have been delivered to the middle of the penalty area.
+
+STR-465267
+Not a single one of their [%number#2] corners from the left has been delivered to the middle of the penalty area.
+
+STR-465268
+Just 1 of their [%number#2] corners from the left have been delivered to the middle of the penalty area.
+
+STR-465269
+Just [%number#1] of their [%number#2] corners from the left have been delivered to the middle of the penalty area.
+
+STR-465270
+Not a single one of their [%number#2] corners from the right has been delivered to the middle of the penalty area.
+
+STR-465271
+Just 1 of their [%number#2] corners from the right have been delivered to the middle of the penalty area.
+
+STR-465272
+Just [%number#1] of their [%number#2] corners from the right have been delivered to the middle of the penalty area.
+
+STR-465273
+[%number#1] out of [%number#2] corners from the left have been delivered to the far post.
+
+STR-465274
+[%number#1] out of [%number#2] corners from the right have been delivered to far post.
+
+STR-465275
+Not a single one of their [%number#2] corners from the left has been delivered to the far post.
+
+STR-465276
+Just 1 of their [%number#2] corners from the left have been delivered to the far post.
+
+STR-465277
+Just [%number#1] of their [%number#2] corners from the left have been delivered to the far post.
+
+STR-465278
+Not a single one of their [%number#2] corners from the right has been delivered to the far post.
+
+STR-465279
+Just 1 of their [%number#2] corners from the right have been delivered to the far post.
+
+STR-465280
+Just [%number#1] of their [%number#2] corners from the right have been delivered to the far post.
+
+STR-465281
+[%number#1] out of [%number#2] free kicks from the left have been delivered to the near post.
+
+STR-465282
+[%number#1] out of [%number#2] free kicks from the right have been delivered to the near post.
+
+STR-465283
+Not a single one of their [%number#2] free kicks from the left has been delivered to the near post.
+
+STR-465284
+Just 1 of their [%number#2] free kicks from the left have been delivered to the near post.
+
+STR-465285
+Just [%number#1] of their [%number#2] free kicks from the left have been delivered to the near post.
+
+STR-465286
+Not a single one of their [%number#2] free kicks from the right has been delivered to the near post.
+
+STR-465287
+Just 1 of their [%number#2] free kicks from the right have been delivered to the near post.
+
+STR-465288
+Just [%number#1] of their [%number#2] free kicks from the right have been delivered to the near post.
+
+STR-465289
+[%number#1] out of [%number#2] free kicks from the left have been delivered to the middle of the penalty area.
+
+STR-465290
+[%number#1] out of [%number#2] free kicks from the right have been delivered to the middle of the penalty area.
+
+STR-465291
+Not a single one of their [%number#2] free kicks from the left has been delivered to the middle of the penalty area.
+
+STR-465292
+Just 1 of their [%number#2] free kicks from the left have been delivered to the middle of the penalty area.
+
+STR-465293
+Just [%number#1] of their [%number#2] free kicks from the left have been delivered to the middle of the penalty area.
+
+STR-465294
+Not a single one of their [%number#2] free kicks from the right has been delivered to the middle of the penalty area.
+
+STR-465295
+Just 1 of their [%number#2] free kicks from the right have been delivered to the middle of the penalty area.
+
+STR-465296
+Just [%number#1] of their [%number#2] free kicks from the right have been delivered to the middle of the penalty area.
+
+STR-465297
+[%number#1] out of [%number#2] free kicks from the left have been delivered to the far post.
+
+STR-465298
+[%number#1] out of [%number#2] free kicks from the right have been delivered to the far post.
+
+STR-465299
+Not a single one of their [%number#2] free kicks from the left has been delivered to the far post.
+
+STR-465300
+Just 1 of their [%number#2] free kicks from the left have been delivered to the far post.
+
+STR-465301
+Just [%number#1] of their [%number#2] free kicks from the left have been delivered to the far post.
+
+STR-465302
+Not a single one of their [%number#2] free kicks from the right has been delivered to the far post.
+
+STR-465303
+Just 1 of their [%number#2] free kicks from the right have been delivered to the far post.
+
+STR-465304
+Just [%number#1] of their [%number#2] free kicks from the right have been delivered to the far post.
+
+STR-465310
+Add Separator
+
+STR-465311
+Filtered*
+
+STR-465312
+Are you sure that you want to change this setting?
+
+STR-465315
+NCB
+Polish Reference:
+STR-465232
+Zdobyli zaledwie jedną bramkę po [%number#2] rzutach wolnych ze środkowej strefy boiska, co pokazuje ich słabość w takich sytuacjach.
+
+STR-465233
+Zdobyli ogólną liczbę [%number#1] bramek po [%number#2] rzutach wolnych ze środkowej strefy boiska, co pokazuje ich słabość w takich sytuacjach.
+
+STR-465234
+Nie zdobyli żadnej bramki po [%number#2] rzutach wolnych z prawej strony, co pokazuje ich słabość w takich sytuacjach.
+
+STR-465235
+Zdobyli zaledwie jedną bramkę po [%number#2] rzutach wolnych z prawej strony, co pokazuje ich słabość w takich sytuacjach.
+
+STR-465236
+Zdobyli ogólną liczbę [%number#1] bramek po [%number#2] rzutach wolnych z prawej strony, co pokazuje ich słabość w takich sytuacjach.
+
+STR-465237
+Stracili ogólną liczbę [%number#1] bramek po [%number#2] rzutach wolnych z lewej strony, co pokazuje ich słabość w takich sytuacjach.
+
+STR-465238
+Stracili ogólną liczbę [%number#1] bramek po [%number#2] rzutach wolnych ze środkowej strefy boiska, co pokazuje ich słabość w takich sytuacjach.
+
+STR-465239
+Stracili ogólną liczbę [%number#1] bramek po [%number#2] rzutach wolnych z prawej strony, co pokazuje ich słabość w takich sytuacjach.
+
+STR-465240
+Nie stracili dotąd żadnej bramki po [%number#2] rzutach wolnych z lewej strony, co pokazuje, że bardzo dobrze potrafią się przed nimi bronić.
+
+STR-465241
+Stracili tylko 1 bramkę po [%number#2] rzutach wolnych z lewej strony, co pokazuje, że bardzo dobrze potrafią się przed nimi bronić.
+
+STR-465242
+Stracili ogólną liczbę zaledwie [%number#1] bramek po [%number#2] rzutach wolnych z lewej strony, co pokazuje, że dobrze potrafią się przed nimi bronić.
+
+STR-465243
+Nie stracili dotąd żadnej bramki po [%number#2] rzutach wolnych ze środkowej strefy boiska, co pokazuje, że bardzo dobrze potrafią się przed nimi bronić.
+
+STR-465244
+Stracili tylko 1 bramkę po [%number#2] rzutach wolnych ze środkowej strefy boiska, co pokazuje, że bardzo dobrze potrafią się przed nimi bronić.
+
+STR-465245
+Stracili ogólną liczbę zaledwie [%number#1] bramek po [%number#2] rzutach wolnych ze środkowej strefy boiska, co pokazuje, że dobrze potrafią się przed nimi bronić.
+
+STR-465246
+Nie stracili dotąd żadnej bramki po [%number#2] rzutach wolnych z prawej strony, co pokazuje, że bardzo dobrze potrafią się przed nimi bronić.
+
+STR-465247
+Stracili tylko 1 bramkę po [%number#2] rzutach wolnych z prawej strony, co pokazuje, że bardzo dobrze potrafią się przed nimi bronić.
+
+STR-465248
+Stracili ogólną liczbę zaledwie [%number#1] bramek po [%number#2] rzutach wolnych z prawej strony, co pokazuje, że dobrze potrafią się przed nimi bronić.
+
+STR-465249
+Z ogólnej liczby [%number#2] rzutów wolnych aż [%number#1] razy strzelali bezpośrednio.
+
+STR-465250
+Z ogólnej liczby [%number#2] rzutów wolnych ani razu nie strzelali bezpośrednio.
+
+STR-465251
+Z ogólnej liczby [%number#2] rzutów wolnych tylko raz strzelali bezpośrednio.
+
+STR-465252
+Z ogólnej liczby [%number#2] rzutów wolnych tylko [%number#1] razy strzelali bezpośrednio.
+
+STR-465253
+Z ogólnej liczby [%number#2] rzutów rożnych aż [%number#1] rozgrywali krótko.
+
+STR-465254
+Z ogólnej liczby [%number#2] rzutów rożnych ani razu nie rozgrywali ich krótko.
+
+STR-465255
+Z ogólnej liczby [%number#2] rzutów rożnych tylko 1 rozgrywali krótko.
+
+STR-465256
+Z ogólnej liczby [%number#2] rzutów rożnych tylko [%number#1] rozgrywali krótko.
+
+STR-465257
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony [%number#1] zagrywali na krótki słupek.
+
+STR-465258
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony [%number#1] zagrywali na krótki słupek.
+
+STR-465259
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony żadnego nie zagrywali na krótki słupek.
+
+STR-465260
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony tylko 1 zagrywali na krótki słupek.
+
+STR-465261
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony tylko [%number#1] zagrywali na krótki słupek.
+
+STR-465262
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony żadnego nie zagrywali na krótki słupek.
+
+STR-465263
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony tylko 1 zagrywali na krótki słupek.
+
+STR-465264
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony tylko [%number#1] zagrywali na krótki słupek.
+
+STR-465265
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony [%number#1] zagrywali na środek pola karnego.
+
+STR-465266
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony [%number#1] zagrywali na środek pola karnego.
+
+STR-465267
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony żadnego nie zagrywali na środek pola karnego.
+
+STR-465268
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony tylko 1 zagrywali na środek pola karnego.
+
+STR-465269
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony tylko [%number#1] zagrywali na środek pola karnego.
+
+STR-465270
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony żadnego nie zagrywali na środek pola karnego.
+
+STR-465271
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony tylko 1 zagrywali na środek pola karnego.
+
+STR-465272
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony tylko [%number#1] zagrywali na środek pola karnego.
+
+STR-465273
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony [%number#1] zagrywali na krótki słupek.
+
+STR-465274
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony [%number#1] zagrywali na krótki słupek.
+
+STR-465275
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony żadnego nie zagrywali na długi słupek.
+
+STR-465276
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony tylko 1 zagrywali na długi słupek.
+
+STR-465277
+Z ogólnej liczby [%number#2] rzutów rożnych z lewej strony tylko [%number#1] zagrywali na długi słupek.
+
+STR-465278
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony żadnego nie zagrywali na długi słupek.
+
+STR-465279
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony tylko 1 zagrywali na długi słupek.
+
+STR-465280
+Z ogólnej liczby [%number#2] rzutów rożnych z prawej strony tylko [%number#1] zagrywali na długi słupek.
+
+STR-465281
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony [%number#1] zagrywali na krótki słupek.
+
+STR-465282
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony [%number#1] zagrywali na krótki słupek.
+
+STR-465283
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony żadnego nie zagrywali na krótki słupek.
+
+STR-465284
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony tylko 1 zagrywali na krótki słupek.
+
+STR-465285
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony tylko [%number#1] zagrywali na krótki słupek.
+
+STR-465286
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony żadnego nie zagrywali na krótki słupek.
+
+STR-465287
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony tylko 1 zagrywali na krótki słupek.
+
+STR-465288
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony tylko [%number#1] zagrywali na krótki słupek.
+
+STR-465289
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony [%number#1] zagrywali na środek pola karnego.
+
+STR-465290
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony [%number#1] zagrywali na środek pola karnego.
+
+STR-465291
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony żadnego nie zagrywali na środek pola karnego.
+
+STR-465292
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony tylko 1 zagrywali na środek pola karnego.
+
+STR-465293
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony tylko [%number#1] zagrywali na środek pola karnego.
+
+STR-465294
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony żadnego nie zagrywali na środek pola karnego.
+
+STR-465295
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony tylko 1 zagrywali na środek pola karnego.
+
+STR-465296
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony tylko [%number#1] zagrywali na środek pola karnego.
+
+STR-465297
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony [%number#1] zagrywali na długi słupek.
+
+STR-465298
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony [%number#1] zagrywali na długi słupek.
+
+STR-465299
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony żadnego nie zagrywali na długi słupek.
+
+STR-465300
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony tylko 1 zagrywali na długi słupek.
+
+STR-465301
+Z ogólnej liczby [%number#2] rzutów wolnych z lewej strony tylko [%number#1] zagrywali na długi słupek.
+
+STR-465302
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony żadnego nie zagrywali na długi słupek.
+
+STR-465303
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony tylko 1 zagrywali na długi słupek.
+
+STR-465304
+Z ogólnej liczby [%number#2] rzutów wolnych z prawej strony tylko [%number#1] zagrywali na długi słupek.
+
+STR-465310
+Dodaj separator
+
+STR-465311
+Filtr*
+
+STR-465312
+Na pewno chcesz zmienić te ustawienia?
+
+STR-465315
+TŚO

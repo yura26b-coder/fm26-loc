@@ -1,0 +1,967 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-442835
+Maximum of 1 under-[%number#2] goalkeeper allowed on loan who can play for both clubs during the loan spell
+
+STR-442836
+Maximum of [%number#1] under-[%number#2] goalkeepers allowed on loan who can play for both clubs during the loan spell
+
+STR-442837
+Tell [%person#1]: [%string#1]
+
+STR-442839
+Look For Underlap
+
+STR-442846
+Choose how far to zoom the game interface in or out.
+
+STR-442909
+This is the Scouting Agency page. Swipe to view players highly-ranked for ability and form by a team of well-respected scouts, and use the button in the action bar to switch between world and national views.
+
+STR-442912
+L
+
+STR-442913
+DFB
+
+STR-442914
+IWB
+
+STR-442915
+SS
+
+STR-442916
+A
+
+STR-442917
+DM
+
+STR-442918
+AM
+
+STR-442935
+The Shadow Striker aggressively pushes forward into goalscoring positions as the ball moves into the final third, and looks to close down opposition defenders when out of possession.
+
+STR-442939
+[%person#1-He] is eligible to leave the club under the Bosman ruling.
+
+STR-442941
+\n\nYou have previously shown an interest in signing the player.
+
+STR-442942
+wants to remain in a management position
+
+STR-442943
+Tactical Shape
+
+STR-442944
+Defensive Instructions
+
+STR-442945
+Attacking Instructions
+
+STR-442946
+Shape
+
+STR-442947
+Defence
+
+STR-442948
+Attack
+
+STR-442951
+Value
+
+STR-442953
+Defensive Line
+
+STR-442954
+Deep
+
+STR-442955
+Balanced
+
+STR-442956
+High
+
+STR-442957
+Closing Down
+
+STR-442958
+Sit Back
+
+STR-442959
+Own Half
+
+STR-442960
+All Over
+
+STR-442961
+Offside Trap
+
+STR-442962
+Time Wasting
+
+STR-442963
+Final Third
+
+STR-442964
+Early Crosses
+
+STR-442965
+Look For Overlap
+
+STR-442966
+Shoot On Sight
+
+STR-442967
+Work Into Box
+
+STR-442968
+Run At Defence
+
+STR-442969
+Through Balls
+
+STR-442970
+Contain
+
+STR-442971
+Counter
+
+STR-442972
+Control
+
+STR-442973
+Overload
+
+STR-442974
+Width
+
+STR-442975
+Narrow
+
+STR-442976
+Balanced
+
+STR-442977
+Wide
+
+STR-442979
+Slow
+
+STR-442980
+Normal
+
+STR-442981
+Fast
+
+STR-442982
+Creative Freedom
+
+STR-442983
+Disciplined
+
+STR-442984
+Balanced
+
+STR-442985
+Expressive
+
+STR-442986
+We have a highly determined group of players
+
+STR-442988
+Highly ambitious squad
+
+STR-442989
+There is a perceived lack of ambition amongst the squad
+
+STR-442990
+We have a very loyal group of players
+
+STR-442991
+We have a disloyal group of players
+
+STR-442992
+Squad has a lot of natural leaders
+
+STR-442993
+Squad is lacking in leadership
+
+STR-442994
+We have a group of players willing to work hard for each other
+
+STR-442995
+The current squad seems to lack the desire to work hard for each other
+
+STR-442996
+Our team's workrate isn't up to the level of other teams in this division
+
+STR-442997
+We have a very professional group of players
+
+STR-442998
+Current group of players are lacking in discipline
+
+STR-442999
+Our current squad is lacking in professionalism
+
+STR-443000
+The current squad tends to thrive in big matches
+
+STR-443001
+The current squad tends to fear playing in big matches
+
+STR-443002
+We have a calm and amicable group of players
+
+STR-443003
+We have quite a volatile group of players
+
+STR-443004
+Morale is good amongst the players
+
+STR-443005
+Squad morale is low at present
+
+STR-443006
+We have a very young group of players
+
+STR-443007
+We have one of the youngest sides in the division
+
+STR-443008
+This current group of players has a high average age
+
+STR-443009
+We are one of the oldest teams in the division
+
+STR-443010
+We possess a number of physically strong players
+
+STR-443011
+Team is lacking in physicality
+
+STR-443012
+Team possesses good pace
+
+STR-443013
+Team could do with an injection of pace
+
+STR-443014
+We have a highly energetic group of players
+
+STR-443015
+We are not as fit as some of the other teams in this division
+
+STR-443016
+We have a team highly capable of passing the ball
+
+STR-443017
+The current squad is not suited to a passing style of football
+
+STR-443018
+Our passing ability is not as good as other teams in this division
+
+STR-443019
+We possess a number of technically gifted players
+
+STR-443020
+The current squad is lacking in technically gifted players
+
+STR-443021
+Not as comfortable on the ball as other teams in this division
+
+STR-443022
+There is a great deal of creativity in the squad
+
+STR-443023
+Team lacks the ability to spot incisive passes
+
+STR-443024
+Squad tends to make right decisions at key moments
+
+STR-443025
+Squad tends to make wrong decisions at key moments
+
+STR-443026
+We have excess transfer funds available to improve the squad
+
+STR-443027
+We have no transfer funds with which to improve the squad
+
+STR-443028
+We only have limited transfer funds to improve the squad
+
+STR-443029
+We are currently operating well below our total wage bill
+
+STR-443030
+We are currently operating over our total wage bill
+
+STR-443031
+We have some of the best training facilities in the division
+
+STR-443032
+Our training facilities are below the required standard
+
+STR-443033
+We have some of the best youth facilities in the division
+
+STR-443034
+Our youth facilities are below the required standard
+
+STR-443035
+We have a world-class backroom team
+
+STR-443036
+We have one of the best backroom teams in the division
+
+STR-443037
+We need to improve the standard of our backroom team
+
+STR-443038
+The current squad is a vastly experienced international side
+
+STR-443039
+The current squad is an inexperienced international side
+
+STR-443040
+The current squad has a number of proven international goalscorers
+
+STR-443041
+The current squad is lacking in proven international goalscorers
+
+STR-443042
+We have the best recent form of any team in the division
+
+STR-443043
+We are currently one of the form teams in the division
+
+STR-443044
+We have the worst recent form of any team in the division
+
+STR-443045
+We are currently one of the most out of form teams in the division
+
+STR-443046
+Fantastic home record
+
+STR-443047
+Home form has been very disappointing
+
+STR-443048
+Fantastic away record
+
+STR-443049
+Struggled away from home this season
+
+STR-443050
+We are the most prolific scoring team in the division
+
+STR-443051
+We are one of the highest scoring teams in the division
+
+STR-443052
+We have failed to score a league goal this season
+
+STR-443053
+We have only managed one league goal this season
+
+STR-443054
+We are the lowest scoring team in the division
+
+STR-443055
+We are one of a few teams yet to score a league goal this season
+
+STR-443056
+We are one of the most goal-shy teams in the division, having only managed one league goal
+
+STR-443057
+We are one of the lowest scoring teams in the division
+
+STR-443058
+Our defense has been inpenetrable so far
+
+STR-443059
+We have the best defensive record in the division
+
+STR-443060
+We have one of the best defensive records in the division
+
+STR-443061
+We have the worst defensive record in the division
+
+STR-443062
+We have one of the worst defensive records in the division
+
+STR-443063
+We have the best disciplinary record in the division
+
+STR-443064
+We have one of the best disciplinary records in the division
+
+STR-443065
+We have the worst disciplinary record in the division
+
+STR-443066
+We have one of the worst disciplinary records in the division
+
+STR-443067
+[%person#1-surname] is the division's top scorer, with [%number#1] league goals
+
+STR-443068
+[%person#1-surname] is our top scorer, with [%number#1] league goals this season
+
+STR-443069
+[%person#1-surname] is our top scorer, with only one league goal
+
+STR-443070
+[%person#1-surname] is our top scorer, with only [%number#1] league goals
+
+STR-443071
+[%person#1-surname] has the most league assists this season
+
+STR-443073
+[%person#1-surname] has only provided one league assist this season
+
+STR-443074
+[%person#1-surname] is our top creator, with only [%number#1] league assists
+
+STR-443075
+We have fantastic depth in almost every key position
+
+STR-443076
+We have fantastic depth in many key positions
+
+STR-443077
+We have fantastic depth in defense
+
+STR-443078
+We have great quality in the full back positions
+
+STR-443079
+We have fantastic depth in midfield
+
+STR-443080
+We have fantastic options in central midfield areas
+
+STR-443081
+Great depth in the winger positions
+
+STR-443082
+Great depth in the left wing position
+
+STR-443083
+Great depth in the right wing position
+
+STR-443084
+We have fantastic depth in attacking positions
+
+STR-443085
+Great depth in the [%position#1-lowercase] position
+
+STR-443086
+Our squad is lacking depth in almost every key position
+
+STR-443087
+Our squad is lacking in depth in a number of key areas
+Polish Reference:
+STR-442835
+Nie więcej niż 1 bramkarz U-[%number#2] na wypożyczeniu, mogący w trakcie wypożyczenia grać dla obu klubów
+
+STR-442836
+Nie więcej niż [%number#1] bramkarzy U-[%number#2] na wypożyczeniu, mogących w trakcie wypożyczenia grać dla obu klubów
+
+STR-442837
+[%male#1]: [%string#1]
+Powiedz [%female#1]: [%string#1]
+
+STR-442839
+Na obieg od środka
+
+STR-442846
+Wybierz stopień zbliżenia/oddalenia interfejsu.
+
+STR-442909
+Masz przed sobą stronę agencji scoutingowej. Przesuń, by obejrzeć listę zawodników prezentujących najwyższe umiejętności i formę przygotowaną przez zespół doświadczonych scoutów. Użyj przycisku na pasku akcji, by przełączać pomiędzy widokami globalnym i krajowymi.
+
+STR-442912
+LB
+
+STR-442913
+DBO
+
+STR-442914
+OCS
+
+STR-442915
+FN
+
+STR-442916
+RD
+
+STR-442917
+DP
+
+STR-442918
+OP
+
+STR-442935
+Fałszywy napastnik wychodzi agresywnie na pozycję, gdy tylko piłka zbliży się do pola karnego, zaś w obronie stosuje pressing na obrońcach przeciwnika.
+
+STR-442939
+Będzie mógł teraz opuścić klub na prawie Bosmana.[%male#1-hidden]
+Będzie mogła teraz opuścić klub na prawie Bosmana.[%female#1-hidden]
+
+STR-442941
+\n\nWcześniej przejawiałeś już zainteresowanie zatrudnieniem tego zawodnika.
+
+STR-442942
+pragnie zostać częścią sztabu szkoleniowego
+
+STR-442943
+Ustawienie taktyczne
+
+STR-442944
+Polecenia defensywne
+
+STR-442945
+Polecenia ofensywne
+
+STR-442946
+Kształt
+
+STR-442947
+Obrona
+
+STR-442948
+Atak
+
+STR-442951
+Wartość
+
+STR-442953
+Linia defensywy
+
+STR-442954
+Głęboka
+
+STR-442955
+Zrównoważona
+
+STR-442956
+Wysoka
+
+STR-442957
+Pressing
+
+STR-442958
+Własna tercja
+
+STR-442959
+Własna połowa
+
+STR-442960
+Całe boisko
+
+STR-442961
+Pułapka ofsajdowa
+
+STR-442962
+Gra na czas
+
+STR-442963
+Tercja przeciwnika
+
+STR-442964
+Szybkie centry
+
+STR-442965
+Zagrania na obieg
+
+STR-442966
+Strzały z każdej pozycji
+
+STR-442967
+W pole karne
+
+STR-442968
+Rajdy między obrońcami
+
+STR-442969
+Prostopadłe zagrania
+
+STR-442970
+Powstrzymywanie
+
+STR-442971
+Kontratak
+
+STR-442972
+Kontrola
+
+STR-442973
+Szarża
+
+STR-442974
+Szerokość
+
+STR-442975
+Wąsko
+
+STR-442976
+Zrównoważenie
+
+STR-442977
+Szeroko
+
+STR-442979
+Wolne
+
+STR-442980
+Normalne
+
+STR-442981
+Szybkie
+
+STR-442982
+Swoboda taktyczna
+
+STR-442983
+Zdyscyplinowanie
+
+STR-442984
+Zrównoważenie
+
+STR-442985
+Swobodnie
+
+STR-442986
+Mamy w zespole grupę bardzo zdeterminowanych piłkarzy
+
+STR-442988
+Bardzo ambitny zespół
+
+STR-442989
+Zespołowi zauważalnie brakuje ambicji
+
+STR-442990
+Mamy w zespole grupę bardzo lojalnych piłkarzy
+
+STR-442991
+Mamy w zespole grupę nielojalnych piłkarzy
+
+STR-442992
+Mamy w zespole wielu urodzonych przywódców
+
+STR-442993
+Zespołowi brakuje przywództwa
+
+STR-442994
+Mamy w zespole grupę piłkarzy gotowych walczyć jeden za drugiego
+
+STR-442995
+Obecny zespół nie jest zainteresowany walką jeden za drugiego
+
+STR-442996
+Nasz zespół odstaje na niekorzyść od reszty ligi pod względem pracowitości
+
+STR-442997
+Mamy w zespole grupę bardzo pracowitych piłkarzy
+
+STR-442998
+Zespół ma problemy z dyscypliną
+
+STR-442999
+Zespołowi brakuje profesjonalizmu
+
+STR-443000
+Zespół nie zawodzi w ważnych meczach
+
+STR-443001
+Zespół obawia się ważnych meczów
+
+STR-443002
+Mamy w zespole grupę spokojnych i przyjaznych piłkarzy
+
+STR-443003
+Mamy w zespole grupę porywczych piłkarzy
+
+STR-443004
+W zespole panuje wysokie morale
+
+STR-443005
+Morale zespołu jest obecnie na niskim poziomie
+
+STR-443006
+Mamy w zespole grupę bardzo młodych piłkarzy
+
+STR-443007
+Mamy jeden z najmłodszych zespołów w lidze
+
+STR-443008
+Średnia wieku w zespole jest dosyć wysoka
+
+STR-443009
+Jesteśmy jednym z najstarszych zespołów w lidze
+
+STR-443010
+Mamy w zespole grupę mocnych fizycznie piłkarzy
+
+STR-443011
+Zespołowi brakuje atletyzmu
+
+STR-443012
+Zespół charakteryzuje się dobrą szybkością
+
+STR-443013
+Zespołowi przydałoby się trochę więcej szybkości
+
+STR-443014
+Mamy w zespole grupę bardzo energicznych piłkarzy
+
+STR-443015
+Mamy większe problemy ze sprawnością fizyczną od innych zespołów
+
+STR-443016
+Nasz zespół umie dobrze podawać piłkę
+
+STR-443017
+Zespół nie nadaje się do gry podaniami
+
+STR-443018
+Nasz zespół odstaje od innych pod względem celności podań
+
+STR-443019
+Mamy w zespole grupę utalentowanych technicznie piłkarzy
+
+STR-443020
+Zespołowi brakuje utalentowanych technicznie piłkarzy
+
+STR-443021
+Nasz zespół czuje się przy piłce mniej pewnie od innych w lidze
+
+STR-443022
+Zespół cechuje wysoka kreatywność
+
+STR-443023
+Zespół nie dostrzega wielu okazji do zaskakujących zagrań
+
+STR-443024
+Zespół zwykle podejmuje właściwe decyzje w istotnych momentach
+
+STR-443025
+Zespół zwykle podejmuje błędne decyzje w istotnych momentach
+
+STR-443026
+Dysponujemy dodatkowymi funduszami transferowymi na wzmocnienia
+
+STR-443027
+Nie dysponujemy funduszami transferowymi na wzmocnienia
+
+STR-443028
+Dysponujemy jedynie ograniczonymi funduszami transferowymi na wzmocnienia
+
+STR-443029
+Mieścimy się obecnie zdecydowanie poniżej limitu płac
+
+STR-443030
+Mieścimy się obecnie powyżej limitu płac
+
+STR-443031
+Dysponujemy jednymi z najlepszych obiektów treningowych ligi
+
+STR-443032
+Nasze obiekty treningowe nie spełniają wymogów
+
+STR-443033
+Dysponujemy jednymi z najlepszych obiektów młodzieżowych ligi
+
+STR-443034
+Nasze obiekty młodzieżowe nie spełniają wymogów
+
+STR-443035
+Dysponujemy sztabem szkoleniowym światowej klasy
+
+STR-443036
+Nasz sztab szkoleniowy jest jednym z najlepszych w lidze
+
+STR-443037
+Musimy podnieść jakość sztabu szkoleniowego
+
+STR-443038
+Mamy w zespole bardzo doświadczonych, ogranych na poziomie reprezentacyjnym piłkarzy
+
+STR-443039
+Nasi zawodnicy nie mają dużego doświadczenia na poziomie reprezentacyjnym
+
+STR-443040
+Zespół ma w składzie napastników sprawdzonych na arenie międzynarodowej
+
+STR-443041
+Zespołowi brakuje napastników sprawdzonych na arenie międzynarodowej
+
+STR-443042
+Nasza forma jest najlepsza w lidze
+
+STR-443043
+Jesteśmy obecnie jednym z najlepszych zespołów w lidze pod względem formy
+
+STR-443044
+Nasza forma jest najgorsza w lidze
+
+STR-443045
+Jesteśmy obecnie jednym z najgorszych zespołów w lidze pod względem formy
+
+STR-443046
+Fantastyczne wyniki u siebie
+
+STR-443047
+Forma na własnym stadionie jest ostatnio bardzo rozczarowująca
+
+STR-443048
+Fantastyczne wyniki na wyjeździe
+
+STR-443049
+Mieliśmy w tym sezonie problemy na wyjazdach
+
+STR-443050
+Jesteśmy najskuteczniejszym zespołem w lidze
+
+STR-443051
+Jesteśmy jednym z najskuteczniejszych zespołów w lidze
+
+STR-443052
+Nie zdobyliśmy jeszcze w tym sezonie gola w lidze
+
+STR-443053
+Zdobyliśmy w tym sezonie zaledwie 1 gola w lidze
+
+STR-443054
+Jesteśmy najmniej skutecznym zespołem w lidze
+
+STR-443055
+Jesteśmy jednym z kilku zespołów, jakie nie zdobyły jeszcze w tym sezonie gola w lidze
+
+STR-443056
+Jesteśmy jednym z najmniej skutecznych zespołów w lidze, zdobyliśmy tylko 1
+
+STR-443057
+Jesteśmy jednym z najmniej skutecznych zespołów w lidze
+
+STR-443058
+Nasza defensywa jest póki co nie do przejścia
+
+STR-443059
+Mamy najskuteczniejszą defensywę w lidze
+
+STR-443060
+Mamy jedną z najskuteczniejszych defensyw w lidze
+
+STR-443061
+Mamy najgorszą defensywę w lidze
+
+STR-443062
+Mamy jedną z najgorszych defensyw w lidze
+
+STR-443063
+Jesteśmy najczyściej grającym zespołem w lidze
+
+STR-443064
+Jesteśmy jednym z najczyściej grających zespołów w lidze
+
+STR-443065
+Jesteśmy najmniej czysto grającym zespołem w lidze
+
+STR-443066
+Jesteśmy jednym z najmniej czysto grających zespołów w lidze
+
+STR-443067
+[%male#1-surname] jest najlepszym strzelcem ligi z [%number#1] trafieniami na koncie
+[%female#1-surname] jest najlepszą strzelczynią ligi z [%number#1] trafieniami na koncie
+
+STR-443068
+[%male#1-surname] jest naszym najlepszym strzelcem z [%number#1] ligowymi trafieniami na koncie
+[%female#1-surname] jest naszą najlepszą strzelczynią z [%number#1] ligowymi trafieniami na koncie
+
+STR-443069
+[%male#1-surname] jest naszym najlepszym strzelcem z raptem 1 ligowym trafieniem na koncie
+[%female#1-surname] jest naszą najlepszą strzelczynią z raptem 1 ligowym trafieniem na koncie
+
+STR-443070
+[%male#1-surname] jest naszym najlepszym strzelcem z zaledwie [%number#1] ligowymi trafieniami na koncie
+[%female#1-surname] jest naszą najlepszą strzelczynią z zaledwie [%number#1] ligowymi trafieniami na koncie
+
+STR-443071
+[%male#1-surname] zaliczył najwięcej ligowych asyst w tym sezonie
+[%female#1-surname] zaliczyła najwięcej ligowych asyst w tym sezonie
+
+STR-443073
+[%male#1-surname] zaliczył w tym sezonie raptem 1 ligową asystę
+[%female#1-surname] zaliczyła w tym sezonie raptem 1 ligową asystę
+
+STR-443074
+[%male#1-surname] jest naszym najlepszym kreatorem z zaledwie [%number#1] ligowymi asystami na koncie
+[%female#1-surname] jest naszą najlepszą kreatorką z zaledwie [%number#1] ligowymi asystami na koncie
+
+STR-443075
+Dysponujemy fantastyczną głębią składu na praktycznie wszystkich kluczowych pozycjach
+
+STR-443076
+Dysponujemy fantastyczną głębią składu na wielu kluczowych pozycjach
+
+STR-443077
+Dysponujemy fantastyczną głębią składu w defensywie
+
+STR-443078
+Mamy świetnie obsadzone boki defensywy
+
+STR-443079
+Dysponujemy fantastyczną głębią składu w drugiej linii
+
+STR-443080
+Mamy świetnie obsadzony środek drugiej linii
+
+STR-443081
+Fantastyczna głębia składu na skrzydłach
+
+STR-443082
+Fantastyczna głębia składu na lewym skrzydle
+
+STR-443083
+Fantastyczna głębia składu na prawym skrzydle
+
+STR-443084
+Dysponujemy fantastyczną głębią składu w ofensywie
+
+STR-443085
+{upper}[%position#1-lowercase] to pozycja, którą mamy fantastycznie obsadzoną
+
+STR-443086
+Niewystarczająca głębia składu na praktycznie wszystkich kluczowych pozycjach
+
+STR-443087
+Niewystarczająca głębia składu na wielu kluczowych pozycjach

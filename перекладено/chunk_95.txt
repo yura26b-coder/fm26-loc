@@ -1,0 +1,338 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-463423
+Several clubs are interested in signing [%person#1]. However it appears they are intending to wait until [%person#1-his] contract expires to do so.
+
+STR-463424
+Next Opponent Scout Report
+
+STR-463425
+Please select a section of the report to view
+
+STR-463426
+Referee
+
+STR-463427
+Rem. Wage Budget
+
+STR-463428
+[%club#1] give [%person#1 Staff Name] [%person#1-his] first break in management
+
+STR-463429
+[%club#1] ambition shown in [%person#1 Staff Name] appointment
+
+STR-463430
+[%club#1] appoint [%person#1 Staff Name] as manager
+
+STR-463431
+[%club#1] have appointed veteran player [%person#1 Staff Name] as their new manager.
+
+STR-463432
+[%club#1] have appointed veteran [%club#2] player [%person#1 Staff Name] as their new manager.
+
+STR-463433
+[%club#1] have appointed their veteran player [%person#1 Staff Name] as their new manager.
+
+STR-463434
+[%club#1] have promoted [%person#1 Staff Name] to the position of manager.
+
+STR-463435
+[%club#1] have appointed [%club#2] veteran player [%person#1 Staff Name] as their new manager.
+
+STR-463436
+[%club#1] have appointed [%club#2] coach [%person#1 Staff Name] as their new manager.
+
+STR-463437
+[%club#1] have appointed [%club#2] assistant manager [%person#1 Staff Name] as their new manager.
+
+STR-463438
+[%club#1] have poached manager [%person#1 Staff Name] from [%club#2].\n\n[%club#3] are said to be demanding a substantial sum in compensation for the loss of their manager.
+
+STR-463439
+[%club#1] have appointed [%club#2] manager [%person#1 Staff Name] as their new manager.\n\n[%club#3] will be looking for a new manager.
+
+STR-463441
+[%club#1] have appointed [%person#1 Staff Name] as their new manager.\n\n[%club#2] will now begin the task of finding [%person#1-his] replacement.
+
+STR-463442
+[%club#1] have appointed [%person#1 Staff Name] as manager.
+
+STR-463443
+Newly founded [%club#1] have appointed [%person#1 Staff Name] as their first ever manager.\n\nIt is no surprise that they have had trouble attracting a more reputed manager to take the helm.
+
+STR-463444
+Newly founded [%club#1] have appointed [%person#1 Staff Name] as their first ever manager.\n\nThe appointment of such a well thought-of manager has made the club an instant household name around the nation.
+
+STR-463445
+Newly founded [%club#1] have appointed [%person#1 Staff Name] as their first ever manager.\n\nThe appointment of a well known manager shows the club's ambition.
+
+STR-463446
+Newly founded [%club#1] have appointed [%person#1 Staff Name] as their first ever manager.
+
+STR-463447
+[%club#1] have appointed [%person#1 Staff Name] as manager.\n\nLittle is known about their new manager and [%person#1-his] appointment is said to have been met with skepticism by some of the nation's more experienced players.
+
+STR-463448
+[%club#1] have appointed [%person#1 Staff Name] as manager.\n\nLittle is known about their new manager and [%person#1-his] appointment is said to have been met with skepticism by some players at the club.
+
+STR-463449
+[%club#1] have appointed [%person#1 Staff Name] as manager.\n\nThis is [%person#1-his] first professional managerial position and it waits to be seen whether [%person#1-he] has the nous required to cut it at this level.
+
+STR-463450
+[%club#1] have appointed [%person#1 Staff Name] as manager.\n\nThe manager's reputation precedes [%person#1-him] and it is expected that [%person#1-his] appointment will bring success in its wake.
+
+STR-463451
+[%club#1] have appointed [%person#1 Staff Name] as manager.\n\nThe manager's reputation precedes [%person#1-him] and it is expected that [%person#1-he] will be making several marquee signings in the near future.
+
+STR-463452
+[%club#1] have appointed [%person#1 Staff Name] as manager.\n\nThe manager's reputation precedes [%person#1-him] and while it may be a surprise that [%person#1-he] has taken the job, the club will be expecting an upturn in fortunes as a result.
+
+STR-463453
+[%club#1] have appointed [%person#1 Staff Name] as manager.\n\n[%person#1-He] is well respected within the game and should be able to handle the pressure that the job comes with.
+
+STR-463455
+[%club#1] have appointed [%person#1 Staff Name] as manager.\n\nThe manager's reputation precedes [%person#1-him] and it is hoped that [%person#1-his] appointment will bring success in its wake.
+
+STR-463456
+In what may be seen as a surprise appointment, [%club#1] have named [%person#1 Staff Name] as manager.
+
+STR-463457
+[%club#1] have today confirmed the appointment of [%person#1 Staff Name] as manager at the club.
+
+STR-463458
+The [%club#1] board have today confirmed that [%person#1 Staff Name] will be the new name on the manager's door.
+
+STR-463459
+[%club#1-short] board insulted by your failure to attend meeting
+
+STR-463460
+[%club#1-short] board call emergency meeting
+
+STR-463461
+The [%club#1-short] board have tersely requested your presence at a board meeting where they want to discuss the future of the club and whether that will continue to involve you.
+
+STR-463462
+The [%club#1-short] board had tersely requested your presence at a board meeting where they wanted to discuss the future of the club and whether that would continue to involve you.
+
+STR-463463
+You failed to attend the meeting, which left the board less than pleased.
+
+STR-463464
+You failed to attend the meeting and the board felt they had no alternative but to sack you with immediate effect.
+
+STR-463465
+You decided to resign from your position as manager at the club with immediate effect.
+
+STR-463466
+Unfortunately the board were unconvinced by your vision for the club and chose to terminate your contract with immediate effect.
+
+STR-463468
+You managed to convince the board to give you more time to fulfil your vision for the club.
+
+STR-463471
+The Board of Directors have indicated they are aware that [%person#1-you] are looking at management opportunities elsewhere.\n\nWhile they can understand the allure of managing at [%club#2] they remind that you enjoy their support and hope you will remain at [%club#1].
+
+STR-463473
+The Board of Directors have indicated they are aware that [%person#1-you] are looking at management opportunities elsewhere.\n\nThey stress that if these rumours were substantiated then they would be forced to look for a manager who was more committed to [%club#1].
+
+STR-463475
+The Board of Directors have indicated that they are disappointed that [%person#1-you] have shown an interest in managing another club.\n\nThey warn that if [%person#1-you] are not committed to the club they will be forced to search for [%person#1-your] replacement.
+
+STR-463476
+[%club#1-short] dismiss [%person#1-surname] interest
+
+STR-463477
+[%club#1-short] to give [%person#1-surname] more time
+Polish Reference:
+STR-463423
+Kilka klubów jest zainteresowanych tym, by dołączył do nich [%male#1]. Wygląda wszakże na to, że ze złożeniem oferty poczekają do wygaśnięcia jego kontraktu.
+Kilka klubów jest zainteresowanych tym, by dołączyła do nich [%female#1]. Wygląda wszakże na to, że ze złożeniem oferty poczekają do wygaśnięcia jej kontraktu.
+
+STR-463424
+Raport scouta o najbliższym przeciwniku
+
+STR-463425
+Wybierz sekcję raportu
+
+STR-463426
+Sędzia
+
+STR-463427
+Poz. budżet płac
+
+STR-463428
+[%club#1]: [%male#1 Staff Name] dostaje szansę sprawdzenia się na stanowisku menedżera
+[%club#1]: [%female#1 Staff Name] dostaje szansę sprawdzenia się na stanowisku menedżerki
+
+STR-463429
+[%male#1 Staff Name]: [%club#1]{demonstruje} sporą ambicję decyzją o zatrudnieniu
+
+STR-463430
+[%club#1]: [%male#1 Staff Name] przejmuje ster
+
+STR-463431
+[%club#1]{ogłosił}, że doświadczony zawodnik [%male#1 Staff Name] zostanie ich nowym menedżerem.
+[%club#1]{ogłosił}, że doświadczona zawodniczka [%female#1 Staff Name] zostanie ich nową menedżerką.
+
+STR-463432
+[%club#1]{ogłosił}, że doświadczony zawodnik [%male#1 Staff Name] ([%club#2]) zostanie ich nowym menedżerem.
+[%club#1]{ogłosił}, że doświadczona zawodniczka [%female#1 Staff Name] ([%club#2]) zostanie ich nową menedżerką.
+
+STR-463433
+[%club#1]{ogłosił}, że ich doświadczony zawodnik [%male#1 Staff Name] zostanie ich nowym menedżerem.
+[%club#1]{ogłosił}, że ich doświadczona zawodniczka [%female#1 Staff Name] zostanie ich nową menedżerką.
+
+STR-463434
+[%male#1 Staff Name] ([%club#1]) został przesunięty na stanowisko menedżera klubu.
+[%female#1 Staff Name] ([%club#1]) została przesunięta na stanowisko menedżerki klubu.
+
+STR-463435
+[%club#1]{ogłosił}, że doświadczony zawodnik [%male#1 Staff Name] ([%club#2]) zostanie ich nowym menedżerem.
+[%club#1]{ogłosił}, że doświadczona zawodniczka [%female#1 Staff Name] ([%club#2]) zostanie ich nową menedżerką.
+
+STR-463436
+[%club#1]{ogłosił}, że trener [%male#1 Staff Name] ([%club#2]) zostanie ich nowym menedżerem.
+[%club#1]{ogłosił}, że trenerka [%female#1 Staff Name] ([%club#2]) zostanie ich nową menedżerką.
+
+STR-463437
+[%club#1]{ogłosił}, że asystent menedżera [%male#1 Staff Name] ([%club#2]) zostanie ich nowym menedżerem.
+[%club#1]{ogłosił}, że asystentka menedżera [%female#1 Staff Name] ([%club#2]) zostanie ich nową menedżerką.
+
+STR-463438
+[%club#1]{ogłosił}, że po tajnych negocjacjach ich nowym menedżerem zostanie menedżer [%male#1 Staff Name] ([%club#2]).\n\n[%club#3]{ma} się podobno domagać potężnego odszkodowania.
+[%club#1]{ogłosił}, że po tajnych negocjacjach ich nową menedżerką zostanie menedżerka [%female#1 Staff Name] ([%club#2]).\n\n[%club#3]{ma} się podobno domagać potężnego odszkodowania.
+
+STR-463439
+[%club#1]{ogłosił}, że menedżer [%male#1 Staff Name] ([%club#2]) zostanie ich nowym menedżerem.\n\n[%club#3]{będzie} teraz szukać nowego menedżera.
+[%club#1]{ogłosił}, że menedżerka [%female#1 Staff Name] ([%club#2]) zostanie ich nową menedżerką.\n\n[%club#3]{będzie} teraz szukać nowego menedżera.
+
+STR-463441
+[%club#1]{ogłosił}, że [%male#1 Staff Name] zostanie ich nowym menedżerem.\n\n[%club#2]{będzie} teraz szukać kogoś na jego miejsce.
+[%club#1]{ogłosił}, że [%female#1 Staff Name] zostanie ich nową menedżerką.\n\n[%club#2]{będzie} teraz szukać kogoś na jej miejsce.
+
+STR-463442
+[%club#1]{ogłosił}, że [%male#1 Staff Name] zostanie ich menedżerem.
+[%club#1]{ogłosił}, że [%female#1 Staff Name] zostanie ich menedżerką.
+
+STR-463443
+Nowo utworzony klub [%club#1-long] ogłosił, że [%male#1 Staff Name] zostanie ich pierwszym menedżerem.\n\nDla nikogo nie jest zaskoczeniem, że nie udało im się zainteresować tą posadą kogoś bardziej renomowanego.
+Nowo utworzony klub [%club#1-long] ogłosił, że [%female#1 Staff Name] zostanie ich pierwszą menedżerką.\n\nDla nikogo nie jest zaskoczeniem, że nie udało im się zainteresować tą posadą kogoś bardziej renomowanego.
+
+STR-463444
+Nowo utworzony klub [%club#1-long] ogłosił, że [%male#1 Staff Name] zostanie ich pierwszym menedżerem.\n\nZatrudnienie tak cenionego fachowca sprawiło, że klub z miejsca stał się znany w całym kraju.
+Nowo utworzony klub [%club#1-long] ogłosił, że [%female#1 Staff Name] zostanie ich pierwszą menedżerką.\n\nZatrudnienie tak cenionej fachowczyni sprawiło, że klub z miejsca stał się znany w całym kraju.
+
+STR-463445
+Nowo utworzony klub [%club#1-long] ogłosił, że [%male#1 Staff Name] zostanie ich pierwszym menedżerem.\n\nZatrudnienie tak znanego menedżera pokazuje, że zarząd żywi spore ambicje.
+Nowo utworzony klub [%club#1-long] ogłosił, że [%female#1 Staff Name] zostanie ich pierwszą menedżerką.\n\nZatrudnienie tak znanej menedżerki pokazuje, że zarząd żywi spore ambicje.
+
+STR-463446
+Nowo utworzony klub [%club#1-long] ogłosił, że [%male#1 Staff Name] zostanie ich pierwszym menedżerem.
+Nowo utworzony klub [%club#1-long] ogłosił, że [%female#1 Staff Name] zostanie ich pierwszą menedżerką.
+
+STR-463447
+[%club#1]{ogłosił}, że nowym selekcjonerem zostanie [%male#1 Staff Name].\n\nNa tę chwilę niewiele wiadomo na jego temat, niepotwierdzone plotki głoszą jednak, że co bardziej doświadczeni zawodnicy przyjęli sceptycznie tę nominację.
+[%club#1]{ogłosił}, że nową selekcjonerką zostanie [%female#1 Staff Name].\n\nNa tę chwilę niewiele wiadomo na jej temat, niepotwierdzone plotki głoszą jednak, że co bardziej doświadczeni zawodnicy przyjęli sceptycznie tę nominację.
+
+STR-463448
+[%club#1]{ogłosił}, że nowym menedżerem zespołu zostanie [%male#1 Staff Name].\n\nNa tę chwilę niewiele wiadomo na jego temat, niepotwierdzone plotki głoszą jednak, że część zawodników przyjęła sceptycznie tę nominację.
+[%club#1]{ogłosił}, że nową menedżerką zespołu zostanie [%female#1 Staff Name].\n\nNa tę chwilę niewiele wiadomo na jej temat, niepotwierdzone plotki głoszą jednak, że część zawodników przyjęła sceptycznie tę nominację.
+
+STR-463449
+[%club#1]{ogłosił}, że menedżerem zespołu zostanie [%male#1 Staff Name].\n\nJest to jego pierwsze doświadczenie na takim stanowisku i kibicom przyjdzie się przekonać, czy ma dosyć wiedzy, by poradzić sobie na tym poziomie.
+[%club#1]{ogłosił}, że menedżerką zespołu zostanie [%female#1 Staff Name].\n\nJest to jej pierwsze doświadczenie na takim stanowisku i kibicom przyjdzie się przekonać, czy ma dosyć wiedzy, by poradzić sobie na tym poziomie.
+
+STR-463450
+[%male#1 Staff Name] został zatrudniony jako menedżer klubu [%club#1-long].\n\nJego reputacja jest powszechnie znana i oczekuje się, że zapewni zespołowi liczne sukcesy.
+[%female#1 Staff Name] została zatrudniona jako menedżerka klubu [%club#1-long].\n\nJej reputacja jest powszechnie znana i oczekuje się, że zapewni zespołowi liczne sukcesy.
+
+STR-463451
+[%male#1 Staff Name] został zatrudniony jako menedżer klubu [%club#1-long].\n\nJego reputacja jest powszechnie znana i oczekuje się, że w najbliższej przyszłości dokona kilku głośnych wzmocnień.
+[%female#1 Staff Name] została zatrudniona jako menedżerka klubu [%club#1-long].\n\nJej reputacja jest powszechnie znana i oczekuje się, że w najbliższej przyszłości dokona kilku głośnych wzmocnień.
+
+STR-463452
+[%male#1 Staff Name] został zatrudniony jako menedżer klubu [%club#1-long].\n\nJego reputacja jest powszechnie znana i choć jego decyzja o przyjęciu tej oferty budzi pewne zdziwienie, klub na pewno będzie się spodziewać odmiany losów na lepsze
+[%female#1 Staff Name] została zatrudniona jako menedżerka klubu [%club#1-long].\n\nJej reputacja jest powszechnie znana i choć jej decyzja o przyjęciu tej oferty budzi pewne zdziwienie, klub na pewno będzie się spodziewać odmiany losów na lepsze
+
+STR-463453
+[%club#1]{ogłosił}, że [%male#1 Staff Name] zostanie ich menedżerem.\n\nCieszy się on dużym szacunkiem w branży i powinien poradzić sobie z presją, jaka wiąże się z tym stanowiskiem.
+[%club#1]{ogłosił}, że [%female#1 Staff Name] zostanie ich menedżerką.\n\nCieszy się ona dużym szacunkiem w branży i powinna poradzić sobie z presją, jaka wiąże się z tym stanowiskiem.
+
+STR-463455
+[%male#1 Staff Name] został zatrudniony jako menedżer klubu [%club#1-long].\n\nJego reputacja jest powszechnie znana i zarząd spodziewa się, że zapewni on zespołowi liczne sukcesy.
+[%female#1 Staff Name] została zatrudniona jako menedżerka klubu [%club#1-long].\n\nJej reputacja jest powszechnie znana i zarząd spodziewa się, że zapewni ona zespołowi liczne sukcesy.
+
+STR-463456
+Ku zaskoczeniu ekspertów [%club#1]{zdecydował}, że ich nowym menedżerem zostanie [%male#1 Staff Name].
+Ku zaskoczeniu ekspertów [%club#1]{zdecydował}, że ich nową menedżerką zostanie [%female#1 Staff Name].
+
+STR-463457
+[%club#1]{potwierdził} dzisiaj, że [%male#1 Staff Name] został zatrudniony na stanowisku menedżera klubu.
+[%club#1]{potwierdził} dzisiaj, że [%female#1 Staff Name] została zatrudniona na stanowisku menedżerki klubu.
+
+STR-463458
+Zarząd klubu [%club#1-long] potwierdził dzisiaj, że na tabliczce na drzwiach gabinetu menedżera wygrawerowane zostanie nazwisko „[%male#1 Staff Name]”.
+
+STR-463459
+Zarząd klubu [%club#1-long] urażony twoją nieobecnością na spotkaniu
+
+STR-463460
+Zarząd klubu [%club#1-long] zwołuje nadzwyczajne posiedzenie
+
+STR-463461
+Zarząd klubu [%club#1-long] w żołnierskich słowach zażyczył sobie twojej obecności na spotkaniu zarządu, by przedyskutować przyszłość klubu i twoje w niej miejsce.
+
+STR-463462
+Zarząd klubu [%club#1-long] w żołnierskich słowach zażyczył sobie twojej obecności na spotkaniu zarządu, by przedyskutować przyszłość klubu i twoje w niej miejsce.
+
+STR-463463
+Nie pojawiłeś się na spotkaniu, co, mówiąc oględnie, nie zachwyciło działaczy.
+
+STR-463464
+Nie pojawiłeś się na spotkaniu i zarząd uznał, że nie pozostało mu nic innego, jak tylko zwolnić cię w trybie natychmiastowym.
+
+STR-463465
+Postanowiłeś ustąpić ze stanowiska menedżera ze skutkiem natychmiastowym.
+
+STR-463466
+Niestety twój pomysł na klub nie przekonał zarządu, który postanowił zwolnić cię w trybie natychmiastowym.
+
+STR-463468
+Zdołałeś przekonać zarząd, by dał ci więcej czasu na realizację twojego pomysłu na klub.
+
+STR-463471
+Zarząd dał do zrozumienia, że jest świadom tego, iż rozglądasz się za wolnymi posadami w innych zespołach.\n\nDziałacze rozumieją, że [%club#2] to atrakcyjny kierunek dla każdego menedżera, chcą ci wszakże przypomnieć, że cieszysz się ich poparciem, i mają nadzieję, że pozostaniesz w klubie [%club#1-long].[%male#1-hidden]
+
+STR-463473
+Zarząd klubu [%club#1-long] dał do zrozumienia, że jest świadom tego, iż podobno przyglądasz się możliwości zatrudnienia w innym klubie.\n\nDziałacze stawiają jasno sprawę, że jeśli te pogłoski się potwierdzą, będą zmuszeni poszukać kogoś bardziej lojalnego na twoje miejsce.[%male#1-hidden]
+
+STR-463475
+Zarząd klubu [%club#1-long] nie jest zachwycony doniesieniami, że interesujesz się możliwością zatrudnienia w innym klubie.\n\nDziałacze ostrzegają cię, że jeśli nie zademonstrujesz lojalności wobec klubu, będą musieli znaleźć kogoś na twoje miejsce.[%male#1-hidden]
+
+STR-463476
+[%club#1-short]: [%male#1-surname] zignorowany
+[%club#1-short]: [%female#1-surname] zignorowana
+
+STR-463477
+[%club#1-short]: [%male#1-surname] dostanie więcej czasu

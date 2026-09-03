@@ -1,0 +1,384 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-410834
+The board are very pleased that the team have achieved promotion from the [%comp#1].\n\nThey hope [%person#1-you] will continue to build upon this success next season.
+
+STR-410835
+The board are pleased that the team have achieved promotion from the [%comp#1].
+
+STR-410836
+The board are satisfied with the team's performance this season.
+
+STR-410837
+The board are extremely pleased that the team reached the [%comp#1] playoffs this season.\n\nThis achievement far exceeded their expectations at the beginning of the season.
+
+STR-410838
+The board are very pleased that the team reached the [%comp#1] playoffs this season.\n\nThey hope [%person#1-you] will continue to build upon this success next season.
+
+STR-410839
+The board are very pleased that the team reached the [%comp#1] playoffs this season.
+
+STR-410840
+The board are delighted that the team has won a European trophy this season.
+
+STR-410841
+The board are delighted that the team won a trophy this season.
+
+STR-410842
+The board expressed their great satisfaction with the team's performance this season.\n\nThe team's comfortable finishing position far exceeded their expectations at the beginning of the season.
+
+STR-410843
+The board are pleased by the team's comfortable finishing position this season.
+
+STR-410844
+The board expressed their great satisfaction with the team's performance this season.\n\nThey are proud that the team will be once again competing in the [%comp#1] next season.
+
+STR-410845
+The board are satisfied with the approach [%person#1-you] have taken to improving the team squad this season.
+
+STR-410846
+The board have admitted their frustration as the team failed to win the [%comp#1] this season.
+
+STR-410847
+The board are disappointed that the team have failed to finish in a high enough position to qualify for next season's [%comp#1-short].
+
+STR-410848
+The board are disappointed that the team have missed out on securing continental football for next season.
+
+STR-410849
+The board are disappointed that the team failed to win the [%comp#1] this season.\n\nThe club's promotion from the division is a consolation however.
+
+STR-410850
+The board have expressed their bitter disappointment at the team's relegation from the [%comp#1].\n\nThis abysmal display is an insult to the club and its supporters.
+
+STR-410851
+The board admit that they have been left frustrated that the team failed to win automatic promotion out of the [%comp#1].
+
+STR-410852
+The board are pleased that the team won a European trophy this season.
+
+STR-410853
+The board are pleased that the team won a trophy this season.
+
+STR-410854
+The board have privately expressed their disgust at the team's performance this season.\n\nThe team's mediocre league position cannot be tolerated.
+
+STR-410855
+The board have been disappointed with the team's performance this season.\n\nThey expect the team's league performance to improve next season.
+
+STR-410856
+The board are pleased the team have finished in a high enough position to qualify for next season's [%comp#1-short].
+
+STR-410857
+The board are pleased the team have finished in a high enough position to qualify for continental competition next season.
+
+STR-410858
+The board are pleased the team have finished in a high enough position to qualify for European competition next season.
+
+STR-410859
+The board are delighted that the team have achieved promotion from the [%comp#1].
+
+STR-410860
+The board are pleased that the team reached the [%comp#1] playoffs this season.
+
+STR-410861
+The board have stated that they are reasonably satisfied with the team's overall performance this season. They will, however, expect better next season.
+
+STR-410862
+The board are satisfied with the team's comfortable finishing position this season.
+
+STR-410863
+The board are satisfied with the team's performance this season.\n\nThey are proud that the team will still be playing in [%comp#1] next season.
+
+STR-410864
+The board are very pleased with the team's performance this season.\n\nThey are proud that the team will still be playing in [%comp#1] next season.
+
+STR-410865
+[%nation#1-nationality] FA Confidence Update
+
+STR-410866
+Board Confidence Update
+
+STR-410867
+[%club#1-short] supporter protest
+
+STR-410868
+[%club#1] supporters took to social media to criticise [%string#1 - Manager Name]{s} management, demanding that they either resign or be sacked by the board.
+
+STR-410869
+[%club#1] supporters besieged radio phone-ins to criticise [%string#1 - Manager Name]{s} management, demanding that they resign as manager.
+
+STR-410870
+[%club#1] supporters gathered outside the training ground today to protest against [%string#1 - Manager Name]{s} poor handling of club affairs.
+
+STR-410871
+[%club#1] supporters have set up an online petition demanding for [%string#1 - Manager Name] to be sacked.
+
+STR-410872
+Some [%club#1] supporters were seen displaying signs and banners in their last match, demanding that [%string#1 - Manager Name] leave the club.
+
+STR-410873
+[%club#1] supporters are planning to gather outside the stadium before their next home game to protest against [%string#1 - Manager Name]{s} poor management of the club.
+
+STR-410875
+Assistant compiles team report
+
+STR-410876
+[%string#1 - Staff Name] has welcomed [%person#1-you] to the club by compiling a report of the first team squad at [%club#1].\n\nIn addition to an overall team report, they have also compiled comprehensive reports on each member of the squad.
+
+STR-410877
+[%person#1-Your] assistant manager has welcomed [%person#1-you] to the club by compiling a report of the first team squad at [%club#1].\n\nIn addition to an overall team report, they have also compiled comprehensive reports on each member of the squad.
+
+STR-410892
+[%person#1-hidden]has been appointed as manager of [%club#1-short]
+
+STR-410893
+[%club#1-short] board consider [%string#1 - Staff Name]{s} position
+
+STR-410894
+[%club#1-short] manager [%string#1 - Staff Name] told to stop the rot
+
+STR-410895
+[%club#1-short] board give [%string#1 - Staff Name] vote of confidence
+
+STR-410896
+The [%club#1] board have held a meeting with [%string#1 - Staff Name] during which the club's aspirations and ambitions were discussed.\n\nMedia commentators have interpreted this as an ultimatum that the under-pressure manager must start performing or [%person#1-he] will be removed from [%person#1-his] position as manager.
+
+STR-410897
+The [%club#1] board has made it clear that it expects boss [%string#1 - Staff Name] to start producing some positive results sooner rather than later, else [%person#1-he] could well pay with [%person#1-his] job.
+
+STR-410898
+The [%club#1] board has reportedly given manager [%string#1 - Staff Name] an ultimatum that wins must start arriving in consistent fashion or else [%person#1-his] job will be in peril.
+
+STR-410899
+[%string#1 - Staff Name]{s} future as [%club#1] manager could be in serious doubt if results do not pick up in the near future, according to some media outlets today.
+
+STR-410900
+It is rumoured that [%club#1] are shortlisting managers as possible replacements for [%string#1 - Staff Name].
+
+STR-410901
+The [%club#1] board have announced that despite rumours that [%person#1-he] has lost the dressing room, [%string#1 - Staff Name]{s} job as manager is safe.
+
+STR-410902
+The [%club#1] board have announced that despite rumours of disharmony among the backroom staff, [%string#1 - Staff Name]{s} job as manager is safe.
+
+STR-410903
+The [%club#1] board have announced that despite rumours of players disillusioned with the team's progress, [%string#1 - Staff Name]{s} job as manager is safe.
+
+STR-410904
+The [%club#1] board have announced that despite increasing supporter unrest, [%string#1 - Staff Name] will be given more time to prove [%person#1-he] is the right person for the job.
+
+STR-410905
+The [%club#1] board have announced that [%string#1 - Staff Name]{s} job as manager is safe for now. However, they are looking for evidence in the coming weeks that [%person#1-he] is capable of turning the club's fortunes around.
+
+STR-410906
+The [%club#1] board have announced that [%string#1 - Staff Name]{s} job as manager is safe.
+
+STR-410913
+[%string#1 - Staff Name] has retired from [%person#1-his] position as [%club#1] manager
+Polish Reference:
+STR-410834
+Zarząd jest bardzo zadowolony z awansu zespołu z: [%comp#1].\n\nDziałacze mają nadzieję, że w przyszłym sezonie spiszesz się jeszcze lepiej.[%male#1-hidden]
+
+STR-410835
+Zarząd jest zadowolony z awansu zespołu z: [%comp#1].
+
+STR-410836
+Zarząd jest usatysfakcjonowany postawą zespołu w tym sezonie.
+
+STR-410837
+Zarząd jest bardzo zadowolony tym, że zespół dotarł w tym sezonie do baraży w: [%comp#1].\n\nTen sukces znacznie przewyższa ich pierwotne oczekiwania na ten sezon.
+
+STR-410838
+Zarząd jest bardzo zadowolony tym, że zespół dotarł w tym sezonie do baraży w: [%comp#1].\n\nDziałacze mają nadzieję, że w przyszłym sezonie spiszesz się jeszcze lepiej.[%male#1-hidden]
+
+STR-410839
+Zarząd jest bardzo zadowolony tym, że zespół dotarł w tym sezonie do baraży w: [%comp#1].
+
+STR-410840
+Zarząd jest zachwycony tym, że zespół zwyciężył w tym sezonie w europejskich rozgrywkach pucharowych.
+
+STR-410841
+Zarząd jest zachwycony tym, że zespół zdobył w tym sezonie trofeum.
+
+STR-410842
+Zarząd wyraził wielką satysfakcję z postawy zespołu w tym sezonie.\n\nZajęcie solidnej pozycji w lidze znacznie przewyższa ich pierwotne oczekiwania na ten sezon.
+
+STR-410843
+Zarząd jest zadowolony z tego, że zespół zajął w tym sezonie solidną pozycję w lidze.
+
+STR-410844
+Zarząd wyraził wielką satysfakcję z postawy zespołu w tym sezonie.\n\nDziałacze są dumni, że klub za rok znów będzie rywalizować w: [%comp#1].
+
+STR-410845
+Zarząd jest usatysfakcjonowany stylem, w jakim wzmacniałeś w tym sezonie zespół.[%male#1-hidden]
+Zarząd jest usatysfakcjonowany stylem, w jakim wzmacniałaś w tym sezonie zespół.[%female#1-hidden]
+
+STR-410846
+Zarząd dał upust swojej frustracji tym, że zespół nie zdołał zwyciężyć w tegorocznych rozgrywkach ([%comp#1]).
+
+STR-410847
+Zarząd jest rozczarowany tym, że zespół nie zajął odpowiednio wysokiej pozycji, by zakwalifikować się do przyszłorocznych rozgrywek ([%comp#1-short]).
+
+STR-410848
+Zarząd jest rozczarowany tym, że zespół nie zdołał się zakwalifikować do rozgrywek kontynentalnych.
+
+STR-410849
+Zarząd jest rozczarowany tym, że zespół nie zdołał zwyciężyć w tym sezonie w: [%comp#1].\n\nAwans do wyższej ligi jest wszakże pewnym pocieszeniem.
+
+STR-410850
+Zarząd wyraził swe głębokie rozczarowanie spadkiem zespołu z: [%comp#1].\n\nKatastrofalna postawa drużyny jest jak policzek wymierzony klubowi i kibicom.
+
+STR-410851
+Zarząd dał wyraz swojej frustracji tym, że zespół nie zdołał wywalczyć bezpośredniego awansu do: [%comp#1].
+
+STR-410852
+Zarząd jest zadowolony z tego, że zespół zwyciężył w tegorocznych rozgrywkach kontynentalnych.
+
+STR-410853
+Zarząd jest zadowolony z tego, że zespół zdobył w tym sezonie trofeum.
+
+STR-410854
+W trakcie rozmowy za zamkniętymi drzwiami zarząd wyraził zniesmaczenie postawą zespołu w tym sezonie.\n\nŻałośnie niska pozycja zespołu w lidze nie będzie dłużej tolerowana.
+
+STR-410855
+Zarząd jest rozczarowany postawą zespołu w tym sezonie.\n\nDziałacze oczekują istotnej poprawy w kolejnych rozgrywkach.
+
+STR-410856
+Zarząd jest zadowolony, że dzięki zajęciu odpowiednio wysokiej pozycji zespół zakwalifikował się do przyszłorocznych rozgrywek ([%comp#1-short]).
+
+STR-410857
+Zarząd jest zadowolony, że dzięki zajęciu odpowiednio wysokiej pozycji zespół zakwalifikował się do przyszłorocznych rozgrywek kontynentalnych.
+
+STR-410858
+Zarząd jest zadowolony, że dzięki zajęciu odpowiednio wysokiej pozycji zespół zakwalifikował się do przyszłorocznych rozgrywek europejskich.
+
+STR-410859
+Zarząd jest zachwycony awansem zespołu z: [%comp#1].
+
+STR-410860
+Zarząd jest zadowolony z tego, że zespół dotarł w tym sezonie do baraży w: [%comp#1].
+
+STR-410861
+Zarząd oświadczył, że jest w miarę usatysfakcjonowany postawą zespołu w tym sezonie. Za rok oczekiwać wszakże będą zauważalnej poprawy.
+
+STR-410862
+Zarząd jest usatysfakcjonowany tym, że zespół zajął w tym sezonie solidną pozycję w lidze.
+
+STR-410863
+Zarząd wyraził satysfakcję z postawy zespołu w tym sezonie.\n\nDziałacze są dumni, że klub za rok nadal będzie rywalizować w: [%comp#1].
+
+STR-410864
+Zarząd jest bardzo zadowolony postawą zespołu w tym sezonie.\n\nDziałacze są dumni, że klub za rok nadal będzie rywalizować w: [%comp#1].
+
+STR-410865
+Najnowsza opinia [%nation#1-nationality1]ego ZPNu
+
+STR-410866
+Najnowsza opinia zarządu
+
+STR-410867
+[%club#1-short]: Protest kibiców
+
+STR-410868
+Kibice zdominowali media społecznościowe, domagając się, by menedżer [%string#1 - Manager Name] ([%club#1]) odszedł z klubu albo też został z niego zwolniony.
+
+STR-410869
+Kibice nie posiadali się z oburzenia w trakcie wieczornej audycji radiowej z udziałem publiczności, domagając się, by menedżer [%string#1 - Manager Name] ([%club#1]) złożył rezygnację.
+
+STR-410870
+Kibice zgromadzili się dzisiaj przed budynkiem klubowym. by wyrazić swoją dezaprobatę wobec tego, jak [%string#1 - Manager Name] ([%club#1]) prowadzi zespół.
+
+STR-410871
+Kibice uruchomili petycję internetową, domagając się, by [%string#1 - Manager Name] ([%club#1]) stracił pracę.
+
+STR-410872
+Podczas ostatniego meczu zespołu na trybunach pojawiły się transparenty z żądaniem, by [%string#1 - Manager Name] ([%club#1]) podał się do dymisji.
+
+STR-410873
+Kibice umawiają się na demonstrację pod stadionem przed najbliższym meczem, by zaprotestować wobec stylu, w jakim [%string#1 - Manager Name] ([%club#1]) prowadzi zespół.
+
+STR-410875
+Asystent opracowuje raport o zespole
+
+STR-410876
+[%string#1 - Staff Name] ([%club#1]) powitał cię w klubie, wręczając ci raport na temat pierwszego zespołu.\n\nPoza ogólnym podsumowaniem zawiera on szczegółowe profile wszystkich zawodników.[%male#1-hidden]
+[%string#1 - Staff Name] ([%club#1]) powitała cię w klubie, wręczając ci raport na temat pierwszego zespołu.\n\nPoza ogólnym podsumowaniem zawiera on szczegółowe profile wszystkich zawodników.[%female#1-hidden]
+
+STR-410877
+Twój asystent powitał cię w klubie [%club#1-long], wręczając ci raport na temat pierwszego zespołu.\n\nPoza ogólnym podsumowaniem zawiera on szczegółowe profile wszystkich zawodników.[%male#1-hidden]
+
+STR-410892
+[%male#1-hidden]został zatrudniony jako menedżer ([%club#1-short]).
+[%female#1-hidden]została zatrudniona jako menedżerka ([%club#1-short]).
+
+STR-410893
+[%string#1 - Staff Name] ([%club#1-short]) stąpa po grząskim gruncie
+
+STR-410894
+Menedżer [%string#1 - Staff Name] ([%club#1-short]) musi odbudować zespół
+
+STR-410895
+[%string#1 - Staff Name] ([%club#1-short]) otrzymuje wotum zaufania od zarządu
+
+STR-410896
+Zarząd klubu i [%string#1 - Staff Name] ([%club#1]) odbyli spotkanie poświęcone aspiracjom i ambicjom klubu.\n\nMedia sugerują, że będący pod sporą presją menedżer otrzymał od działaczy ultimatum - albo zespół zacznie mieć wyniki, albo czeka go bezrobocie.[%male#1-hidden]
+Zarząd klubu i [%string#1 - Staff Name] ([%club#1]) odbyli spotkanie poświęcone aspiracjom i ambicjom klubu.\n\nMedia sugerują, że będąca pod sporą presją menedżerka otrzymała od działaczy ultimatum - albo zespół zacznie mieć wyniki, albo czeka ją bezrobocie.[%female#1-hidden]
+
+STR-410897
+Zarząd klubu dał jasno do zrozumienia, że menedżer [%string#1 - Staff Name] ([%club#1]) musi w najbliższej przyszłości odmienić oblicze zespołu, w przeciwnym razie zapłaci za to głową.[%male#1-hidden]
+
+STR-410898
+Media donoszą, że menedżer [%string#1 - Staff Name] ([%club#1]) otrzymał ultimatum od zarządu i jeśli zespół nie zacznie regularnie wygrywać, jego kariera w klubie stanie pod znakiem zapytania.[%male#1-hidden]
+Media donoszą, że menedżerka [%string#1 - Staff Name] ([%club#1]) otrzymała ultimatum od zarządu i jeśli zespół nie zacznie regularnie wygrywać, jej kariera w klubie stanie pod znakiem zapytania.[%female#1-hidden]
+
+STR-410899
+[%string#1 - Staff Name] ([%club#1]) może już długo nie być menedżerem klubu, o ile wyniki jego zespołu nie ulegną zdecydowanej poprawie; tak przynajmniej twierdzą dzisiejsze gazety.
+
+STR-410900
+Według niepotwierdzonych doniesień [%club#1]{przygotowuje} już listę potencjalnych kandydatów na wypadek, gdyby [%string#1 - Staff Name] został zwolniony.
+
+STR-410901
+Zarząd ogłosił, że mimo plotek, jakoby [%string#1 - Staff Name] ([%club#1]) skonfliktował się z szatnią, nie musi się obawiać o swoją posadę.[%male#1-hidden]
+Zarząd ogłosił, że mimo plotek, jakoby [%string#1 - Staff Name] ([%club#1]) skonfliktowała się z szatnią, nie musi się obawiać o swoją posadę.[%female#1-hidden]
+
+STR-410902
+Zarząd ogłosił, że mimo plotek, jakoby [%string#1 - Staff Name] ([%club#1]) skonfliktował się ze współpracownikami, nie musi się obawiać o swoją posadę.
+
+STR-410903
+Zarząd ogłosił, że mimo plotek, jakoby [%string#1 - Staff Name] ([%club#1]) skonfliktowała się ze współpracownikami, nie musi się obawiać o swoją posadę.
+
+STR-410904
+Zarząd ogłosił, że choć [%string#1 - Staff Name] ([%club#1]) pozostaje w coraz większym konflikcie z kibicami, dostanie więcej czasu na to, by przekonać działaczy do siebie.[%male#1-hidden]
+
+STR-410905
+Zarząd ogłosił, że póki co menedżer [%string#1 - Staff Name] ([%club#1]) nie musi się obawiać o swoją posadę. Działacze oczekują wszakże, że w najbliższych tygodniach otrzymają argumenty na poparcie tezy, że zdoła on wyprowadzić klub z kryzysu.[%male#1-hidden]
+Zarząd ogłosił, że póki co menedżerka [%string#1 - Staff Name] ([%club#1]) nie musi się obawiać o swoją posadę. Działacze oczekują wszakże, że w najbliższych tygodniach otrzymają argumenty na poparcie tezy, że zdoła ona wyprowadzić klub z kryzysu.[%female#1-hidden]
+
+STR-410906
+Zarząd ogłosił, że [%string#1 - Staff Name] ([%club#1]) nie musi się obawiać o swoją posadę.
+
+STR-410913
+[%string#1 - Staff Name] ([%club#1]) zakończył karierę menedżerską[%male#1-hidden]
+[%string#1 - Staff Name] ([%club#1]) zakończyła karierę menedżerską[%female#1-hidden]

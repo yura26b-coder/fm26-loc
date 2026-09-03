@@ -1,0 +1,250 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-411197
+[%club#1]{s} [%string#1 score] win against [%club#2] secured them vital points.\n\nThe recent poor form has encouraged renewed supporter protests against its leadership.
+
+STR-411198
+[%club#1]{s} [%string#1 score] win against [%club#2] secured them vital points.\n\nThe supporters got behind their team and for once chanting against the club's leadership was rarely heard during the match.
+
+STR-411199
+[%club#1] lost [%string#1 score] against [%club#2] and appear to be losing their nerve.\n\nThe puppet manager in charge of the club continues to endure the ire of the club's supporters as the club they love is dismantled.
+
+STR-411201
+[%club#1] continue to battle to pick up points and avoid relegation.\n\nThe point gained from their [%string#1 score (eg 40)] draw against [%club#2] eases them closer to safety.
+
+STR-411202
+[%club#1] are fighting to avoid relegation.\n\nThe point gained from their [%string#1 score (eg 40)] draw with [%club#2] will have helped but they will need to pick up points more consistently if they are to avoid relegation this season.
+
+STR-411204
+[%club#1] managed to scrape a [%string#1 score] draw from their match against [%club#2].\n\nThe supporters got behind their team and for once chanting against the club's leadership was only heard sporadically during the match.
+
+STR-411205
+[%club#1]{s} [%string#1 score] draw against [%club#2] secured them another useful point.\n\nHowever, their general poor form has recently encouraged renewed supporter protests against the club's leadership.
+
+STR-411206
+[%club#1]{s} [%string#1 score (eg 40)] win against [%club#2] secured them vital points.\n\nHowever, the club are still in very real danger of relegation and need to continue to pick up points if they are going to have any chance of survival.
+
+STR-411207
+[%club#1] secured a competent [%string#1 score] win against [%club#2].\n\nDespite their lofty league position supporters continue to protest against the current regime.
+
+STR-411209
+[%club#1] supporters must be hoping that their [%string#1 score] loss against [%club#2] was just a blip in form.\n\nThe club are in very real danger of relegation and need to up their game if they are going to avoid the drop.
+
+STR-411211
+[%club#1]{s} [%string#1 score] loss against [%club#2] may cost them dearly come the end of the season.\n\nThe club are in very real danger of relegation and need to up their game if they are going to avoid the drop.
+
+STR-411213
+[%club#1] lost [%string#1 score] against [%club#2] and are struggling to find consistent form amidst the current unrest.\n\nSupporters are appealing for a white knight to come forward and take over the stewardship of the club.
+
+STR-411214
+Despite [%club#1]{s} [%string#1 score] loss against [%club#2], their high league position continues to surprise pundits.\n\nHowever, supporters are still appealing for a white knight to come forward and take over the stewardship of the club.
+
+STR-411215
+[%club#1]{s} [%string#1 score] draw with [%club#2] gained the club a valuable point.\n\nUnfortunately, the club are still in very real danger of relegation and need to up their game if they are going to avoid the drop.
+
+STR-411216
+[%club#1]{s} [%string#1 score] draw against [%club#2] gained the club another point.\n\nSupporters are hoping the club's strong league position will encourage a white knight to come forward and attempt a takeover.
+
+STR-411217
+While [%club#1]{s} [%string#1 score] draw against [%club#2] gained the club another point, supporters are appealing for a white knight to come forward and take over the stewardship of the club.
+
+STR-411218
+[%club#1]{s} [%string#1 score] win against [%club#2] was a further sign of their improving fortunes.\n\nIt is commonly felt that their run of form will lift the club out of the relegation zone before the end of the season.
+
+STR-411219
+[%club#1]{s} [%string#1 score] win against [%club#2] was a further sign of their improving fortunes.\n\nWhile they are still in the drop zone their manager must be hopeful of keeping up this run of form.
+
+STR-411220
+[%club#1]{s} [%string#1 score] win against [%club#2] was a further sign of their improving fortunes.\n\nThe club have emerged from the relegation zone and appear to be moving towards a safe position in the league.
+
+STR-411221
+[%club#1]{s} [%string#1 score] win against [%club#2] was a further sign of their improving fortunes.\n\nThe club have emerged from the relegation zone and their manager is now looking at pushing them further up the table.
+
+STR-411222
+[%club#1]{s} [%string#1 score (eg 40)] loss against [%club#2] may have hit the team hard.\n\nThe club are mired in the relegation zone and their manager needs to keep the players thinking positively if they are to avoid the drop.
+
+STR-411223
+[%club#1]{s} [%string#1 score (eg 40)] loss against [%club#2] is probably just a blip in form.\n\nThe club have played well in recent weeks and it seems unlikely that they will be dragged back into the relegation zone.
+
+STR-411224
+[%club#1]{s} [%string#1 score (eg 40)] loss against [%club#2] may have hit the team hard.\n\nThe club have played well in recent weeks and their manager needs to keep the players thinking positively if they are to avoid the drop.
+
+STR-411225
+[%club#1] grabbed another vital point with their [%string#1 score (eg 40)] draw against [%club#2].\n\nWhile they are still in the drop zone, their manager must be hopeful of keeping up this run of form.
+
+STR-411226
+[%club#1] drew [%string#1 score (eg 40)] against [%club#2].\n\nThe club have emerged from the relegation zone and appear to be easing towards a safe position in the table.
+
+STR-411227
+[%club#1] grabbed another vital point with their [%string#1 score (eg 40)] draw against [%club#2].\n\nThe club have emerged from the relegation zone and their manager is now looking at pushing them further up the table.
+
+STR-411228
+[%club#1]{s} [%string#1 score (eg 40)] win against [%club#2] secured them vital points.\n\nThe club's recent poor form must have had their manager sweating but they currently remain safely outside of the relegation zone.
+
+STR-411229
+[%club#1]{s} [%string#1 score (eg 40)] win against [%club#2] secured them vital points.\n\nThe club have emerged from the relegation zone but their recent poor form must have had their manager sweating.
+
+STR-411230
+[%club#1] don't even appear to want to put up a fight against their imminent relegation.\n\nTheir [%string#1 score (eg 40)] capitulation against [%club#2] showed why some bookies are now refusing to take bets on their relegation.
+
+STR-411231
+[%club#1] lost [%string#1 score (eg 40)] against [%club#2] and appear to be losing their nerve.\n\nThe team is still safely placed outside of the relegation zone at present, but their recent form must be a big concern for their manager.
+
+STR-411232
+Having clawed their way out of the relegation zone [%club#1] appear to be losing their nerve.\n\nTheir [%string#1 score (eg 40)] capitulation against [%club#2] showed why some pundits still believe the side will be relegated.
+
+STR-411233
+[%club#1] are fighting to avoid relegation.\n\nThe point gained from their [%string#1 score (eg 40)] draw against [%club#2] will have helped but they will need consistent good form if they are to remain safely out of the relegation zone.
+
+STR-411234
+[%club#1]{s} [%string#1 score (eg 40)] win against [%club#2] secured them vital points.\n\nWhile the club's recent form has been indifferent, they remain safely outside of the relegation zone.
+
+STR-411235
+[%club#1]{s} [%string#1 score (eg 40)] win against [%club#2] secured them vital points.\n\nThe club have emerged from the relegation zone but their recent indifferent form must have their manager sweating.
+
+STR-411236
+[%club#1] supporters must be hoping that their [%string#1 score (eg 40)] loss against [%club#2] was just a blip in form.\n\nThe club are still in very real danger of relegation and need to up their game if they are going to avoid the drop.
+
+STR-411237
+[%club#1]{s} [%string#1 score] loss against [%club#2] may cost them dearly come the end of the season.\n\nThe club are still in very real danger of relegation and need to up their game if they are going to avoid the drop.
+
+STR-411238
+[%club#1]{s} [%string#1 score] defeat against [%club#2] may have serious consequences for their season.\n\nThe club are currently sitting outside the relegation zone but their indifferent form must have their manager sweating.
+
+STR-411239
+[%club#1]{s} [%string#1 score (eg 40)] loss against [%club#2] has left fans of the club fearing the possibility of relegation.\n\nThe club have emerged from the relegation zone but their indifferent form must also have their manager sweating.
+Polish Reference:
+STR-411197
+Zwycięstwo [%string#1 score] w meczu [%club#1]-[%club#2] przyniosło zespołowi ważne punkty.\n\nSłaba dyspozycja w poprzednich spotkaniach doprowadziła bowiem do protestów na trybunach.
+
+STR-411198
+Zwycięstwo [%string#1 score] w meczu [%club#1]-[%club#2] przyniosło zespołowi ważne punkty.\n\nKibice twardo stanęli po stronie zawodników i nieoczekiwanie dopingu nie zakłócały przyśpiewki wymierzone we władze klubu.
+
+STR-411199
+Porażka [%string#1 score] w meczu [%club#1]-[%club#2] wprowadziła w zespole nerwową atmosferę.\n\nFigurant za sterami drużyny nadal jest obiektem nienawiści kibiców, wściekłych tym, co dzieje się z ich ukochanym klubem.
+
+STR-411201
+[%club#1]{walczy} nadal o punkty i uniknięcie spadku.\n\nRemis [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2], przybliżył ich o kolejny krok do bezpiecznej strefy.
+
+STR-411202
+[%club#1]{walczy} o uniknięcie spadku.\n\nPunkt, jaki zdobyli w zremisowanym [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2], na pewno w tym pomoże, ale aby się utrzymać, muszą to robić z większą regularnością.
+
+STR-411204
+[%club#1]{wymęczył} remis [%string#1 score] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nKibice twardo stanęli po stronie zawodników i nieoczekiwanie dopingu nie zakłócały przyśpiewki wymierzone we władze klubu.
+
+STR-411205
+[%club#1]{zdobył} kolejny przydatny punkt w zremisowanym [%string#1 score] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nKiepska forma w ostatnim czasie sprawiła wszakże, że kibice ponownie zaczęli swoje protesty.
+
+STR-411206
+Zwycięstwo [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] przyniosło zespołowi ważne punkty.\n\nJednakże klub wciąż jest poważnie zagrożony spadkiem i musi pilnie ciułać punkty, by nie stracić szansy na utrzymanie.
+
+STR-411207
+[%club#1]{odniósł} pewne zwycięstwo [%string#1 score] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nMimo doskonałej pozycji w tabeli kibice klubu wciąż protestują przeciwko jego obecnym władzom.
+
+STR-411209
+Kibice muszą mieć nadzieję, że porażka [%string#1 score] w meczu [%club#1]-[%club#2], była tylko wypadkiem przy pracy.\n\nKlub jest poważnie zagrożony spadkiem i jeśli wyniki się nie poprawią, może się to dla nich źle skończyć.
+
+STR-411211
+Porażka [%string#1 score] w meczu [%club#1]-[%club#2] może się im odbić czkawką na koniec sezonu.\n\nKlub jest poważnie zagrożony spadkiem i jeśli wyniki się nie poprawią, może się to dla nich źle skończyć.
+
+STR-411213
+[%club#1]{przegrał} [%string#1 score] w meczu, w którym ich przeciwnikiem {był}[%club#2], i zespół nadal ma problemy z utrzymaniem równej formy w niesprzyjających okolicznościach.\n\nKibice modlą się o zbawiciela, który przejmie klub i wybawi go z obecnych kłopotów.
+
+STR-411214
+Choć [%club#1]{przegrał} [%string#1 score] w meczu, w którym ich przeciwnikiem {był}[%club#2], zespół nadal zajmuje zaskakująco wysoką pozycję w lidze.\n\nKibice nadal modlą się o zbawiciela, który przejmie klub i wybawi go z obecnych kłopotów.
+
+STR-411215
+Remis [%string#1 score] w meczu [%club#1]-[%club#2] zapewnił drużynie cenny punkt.\n\nNiestety klub jest poważnie zagrożony spadkiem i jeśli wyniki się nie poprawią, może się to dla nich źle skończyć.
+
+STR-411216
+Remis [%string#1 score] w meczu [%club#1]-[%club#2] zapewnił drużynie kolejny punkt.\n\nKibice mają nadzieję, że dobra pozycja zespołu w lidze przywabi zbawcę na białym koniu, który spróbuje przejąć władzę w klubie.
+
+STR-411217
+Choć remis [%string#1 score] w meczu [%club#1]-[%club#2] zapewnił drużynie kolejny punkt, kibice nadal modlą się o zbawiciela, który przejmie klub i wybawi go z obecnych kłopotów.
+
+STR-411218
+Zwycięstwo [%string#1 score] w meczu [%club#1]-[%club#2] było kolejnym znakiem powolnego wychodzenia z kryzysu.\n\nPanuje powszechne przekonanie, że obecna passa pozwoli klubowi na ucieczkę ze strefy spadkowej przed zakończeniem sezonu.
+
+STR-411219
+Zwycięstwo [%string#1 score] w meczu [%club#1]-[%club#2] było kolejnym znakiem powolnego wychodzenia z kryzysu.\n\nChoć zespół nadal znajduje się w strefie spadkowej, menedżer musi mieć nadzieję na przedłużenie obecnej serii wyników.
+
+STR-411220
+Zwycięstwo [%string#1 score] w meczu [%club#1]-[%club#2] było kolejnym znakiem powolnego wychodzenia z kryzysu.\n\nZespół opuścił strefę spadkową i pewnie zmierza ku bezpiecznej pozycji w lidze.
+
+STR-411221
+Zwycięstwo [%string#1 score] w meczu [%club#1]-[%club#2] było kolejnym znakiem powolnego wychodzenia z kryzysu.\n\nZespół opuścił strefę spadkową i menedżer dołoży teraz wszelkich starań, by zająć jak najlepszą pozycję w lidze.
+
+STR-411222
+Porażka [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] była dla zespołu ciężkim ciosem.\n\nDrużyna nadal zajmuje miejsce w strefie spadkowej i menedżer musi utrzymać przyzwoite morale w zespole, jeśli chce myśleć o utrzymaniu.
+
+STR-411223
+Porażka [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] była zapewne tylko wypadkiem przy pracy.\n\nZespół dobrze się spisuje w ostatnich tygodniach i jest mało prawdopodobne, by zsunął się z powrotem do strefy spadkowej.
+
+STR-411224
+Porażka [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] była dla zespołu ciężkim ciosem.\n\nZespół dobrze się spisuje w ostatnich tygodniach, ale menedżer musi utrzymać przyzwoite morale w zespole, jeśli chce myśleć o utrzymaniu.
+
+STR-411225
+[%club#1]{zdobył} kolejny cenny punkt w zremisowanym [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nChoć zespół nadal znajduje się w strefie spadkowej, ich menedżer na pewno ma nadzieję na utrzymanie obecnej dyspozycji.
+
+STR-411226
+[%club#1]{zremisował} [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nZespół opuścił strefę spadkową i pewnie zmierza ku bezpiecznej pozycji w lidze.
+
+STR-411227
+[%club#1]{zdobył} kolejny ważny punkt w zremisowanym [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nZespół opuścił strefę spadkową i menedżer dołoży teraz wszelkich starań, by zająć jak najlepszą pozycję w lidze.
+
+STR-411228
+[%club#1]{zdobył} kolejne cenne punkty w wygranym [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nKiepska forma zespołu mogła wpędzić menedżera w depresję, lecz drużyna wciąż jest bezpieczna ponad strefą spadkową.
+
+STR-411229
+[%club#1]{zdobył} cenne punkty w wygranym [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nKlub wydostał się ze strefy spadkowej, choć kiepska forma zespołu mogła wpędzić menedżera w depresję.
+
+STR-411230
+[%club#1]{zdaje się} już nawet nie walczyć o uniknięcie spadku.\n\nIch wysoka porażka [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2], dobitnie pokazała, dlaczego bukmacherzy nie przyjmują już zakładów, czy zdołają się utrzymać.
+
+STR-411231
+[%club#1]{przegrał} [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2], i w klubie zaczyna się robić nerwowo.\n\nPóki co zespół znajduje się ponad strefą spadkową, ale jego obecna forma musi niepokoić menedżera.
+
+STR-411232
+Choć [%club#1]{zdołał} wygrzebać się ponad strefę spadkową, w klubie zaczyna się robić nerwowo.\n\nIch wysoka porażka [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2], dobitnie pokazała, dlaczego część ekspertów wciąż nie wierzy, że dadzą radę się utrzymać.
+
+STR-411233
+[%club#1]{walczy} o uniknięcie spadku.\n\nPunkt, jaki zdobyli w zremisowanym [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2], na pewno w tym pomoże, ale aby się utrzymać, muszą ustabilizować formę na wysokim poziomie.
+
+STR-411234
+[%club#1]{zdobył} kolejne cenne punkty w wygranym [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nZespół prezentuje się przeciętnie, lecz wciąż zajmuje bezpieczne miejsce ponad strefą spadkową.
+
+STR-411235
+[%club#1]{zdobył} cenne punkty w wygranym [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nKlub wydostał się ze strefy spadkowej, lecz przeciętna forma zespołu musi niepokoić menedżera.
+
+STR-411236
+Kibice muszą mieć nadzieję, że porażka [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2], była tylko wypadkiem przy pracy.\n\nKlub jest wciąż poważnie zagrożony spadkiem i jeśli wyniki się nie poprawią, może się to dla nich źle skończyć.
+
+STR-411237
+Porażka [%string#1 score] w meczu [%club#1]-[%club#2] może się im odbić czkawką na koniec sezonu.\n\nKlub jest nadal poważnie zagrożony spadkiem i jeśli wyniki się nie poprawią, może się to dla nich źle skończyć.
+
+STR-411238
+Porażka [%string#1 score] w meczu [%club#1]-[%club#2] może mieć poważne konsekwencje na koniec sezonu.\n\nKlub wydostał się ze strefy spadkowej, lecz przeciętna forma zespołu musi niepokoić menedżera.
+
+STR-411239
+[%club#1]{przegrał} [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2], i kibice na serio obawiają się o utrzymanie w lidze.\n\nKlub wydostał się ze strefy spadkowej, lecz przeciętna forma zespołu musi niepokoić również i menedżera.

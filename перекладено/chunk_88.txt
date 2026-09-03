@@ -1,0 +1,425 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-455066
+It's testament to the incredible work being done at [%team#1] that all three award winners belong to the club.
+
+STR-455954
+[%team#1-short] owe their final position to a fantastic start to the season that ultimately helped them avoid automatic relegation.
+
+STR-455955
+[%team#1-short] started the season superbly and that helped them avoid relegation.
+
+STR-455956
+Once [%team#1-short] got rolling early in the season it looked like they'd stay up.
+
+STR-455957
+Anyone else still doubt us?
+
+STR-455958
+Have to admit [%person#author-I] still fear for this team.
+
+STR-455959
+[%team#1-short] owe their final position to powering through the middle of the season that really set them on their way.
+
+STR-455960
+A hard-working season for [%team#1-short] really began to pick up speed in the middle of the campaign.
+
+STR-455961
+Once [%team#1-short] got rolling midway through the season it looked hard to stop them.
+
+STR-455962
+[%team#1-short] owe their final position to a rampant spell of form to finish the season. Nobody could keep pace.
+
+STR-455963
+Have to admit [%person#author-I] still lack confidence in this team.
+
+STR-455964
+[%team#1-short] overcame a poor start to go on and secure a league position most people doubted them capable of.
+
+STR-455965
+[%team#1-short] didn't let a bad start stop them from avoiding automatic relegation.
+
+STR-455966
+To avoid automatic relegation against the odds and after such a bad start is almost incomprehensible.
+
+STR-455967
+[%team#1-short] overcame a mid-season wobble to go on and finish well above expectations.
+
+STR-455968
+[%team#1-short] didn't let a shaky spell in the middle of the season prevent them from reaching for the stars.
+
+STR-455969
+To avoid automatic relegation against the odds and after losing form in the middle of the season is almost incomprehensible.
+
+STR-455970
+[%team#1-short] overcame a dubious run of late-season form to hold on and avoid automatic relegation.
+
+STR-455971
+To avoid automatic relegation against the odds and after losing form right at the end is impressive. Well done [%team#1-short].
+
+STR-455972
+[%team#1-short] owe their final position to a fantastic start to the season that gave them the foundation they needed.
+
+STR-455973
+A season full of hard work for [%team#1-short] started superbly and they deserve to have avoided automatic relegation.
+
+STR-455974
+[%team#1-short] owe their final position to a fantastic middle of the season that gave them the momentum to go on and avoid automatic relegation.
+
+STR-455975
+A season of hard work for [%team#1-short] really began to gain traction in the middle of the campaign.
+
+STR-455976
+A season of hard work for [%team#1-short] really began to pick up speed towards the end of the campaign.
+
+STR-455977
+Once [%team#1-short] got rolling in the latter portion of season it looked hard to stop them going on to avoid automatic relegation.
+
+STR-455978
+[%team#1-short] overcame a poor start to go on and, as many expected, avoid automatic relegation.
+
+STR-455979
+Despite a bad start [%team#1-short] ultimately managed to avoid automatic relegation.
+
+STR-455980
+To avoid automatic relegation after such a bad start is very impressive.
+
+STR-455981
+Well...we were supposed to do this.
+
+STR-455982
+[%team#1-short] overcame a mid-season wobble to go on and, as expected, avoid automatic relegation.
+
+STR-455983
+Despite a shaky spell in the middle of the season [%team#1-short] ultimately managed to avoid automatic relegation.
+
+STR-455984
+To avoid automatic relegation after losing form in the middle of the season is very impressive. Well done [%team#1-short].
+
+STR-455985
+[%team#1-short] overcame a dubious run of late-season form to hold on and, as expected, avoid automatic relegation.
+
+STR-455986
+[%team#1-short] didn't let a shaky finish prevent them from completing a generally positive season.
+
+STR-455987
+To avoid automatic relegation despite losing form right at the end takes some doing. Well done [%team#1-short].
+
+STR-456215
+Banned for one international match
+
+STR-456216
+Banned for [%number#1] international matches
+
+STR-456217
+Maximum of one domestic-based player not under-23 allowed on long-term loan in a season.
+
+STR-456218
+Maximum of [%number#1-text] domestic-based players not under-23 allowed on long-term loan in a season.
+
+STR-456226
+The primary attributes for this role are
+
+STR-456227
+,
+
+STR-456228
+and
+
+STR-456230
+The primary skill required for this role is over-sleeping.
+
+STR-456231
+Key Attributes:
+
+STR-456232
+Aerial Ability
+
+STR-456233
+Communication
+
+STR-456234
+Shooting
+
+STR-456235
+Creativity
+
+STR-456236
+Anticipation
+
+STR-456237
+Mental Arithmetic
+
+STR-456238
+[%string#1 - Player Name] has acknowledged that [%person#1-he] deserved an official warning for [%person#1-his] recent behaviour in training.
+
+STR-456239
+[%string#1 - Player Name] has acknowledged that [%person#1-he] deserved an official warning for [%person#1-his] recent behaviour in training. [%person#1-He] understands that [%person#1-he] needs to set a better example to the younger players at the club.
+
+STR-456240
+[%string#1 - Player Name] has acknowledged that [%person#1-he] deserved an official warning for [%person#1-his] recent behaviour in training. [%person#1-He] is aware of the standards required by the club and will aspire to meet them.
+
+STR-456241
+[%string#1 - Player Name] believes that the manager is trying to make an example of [%person#1-him] by warning [%person#1-him] over [%person#1-his] recent attitude in training. [%person#1-He] feels that the manager has higher expectations of [%person#1-him] than of other players due to [%person#1-his] superior ability.
+
+STR-456242
+[%string#1 - Player Name] believes that a formal warning for [%person#1-his] recent behaviour in training is unreasonable.
+
+STR-456243
+[%string#1 - Player Name] has accepted a formal warning for [%person#1-his] recent training ground behaviour without any further comment.
+
+STR-456244
+[%string#1 - Player Name] has accepted that [%person#1-he] deserved to be fined for [%person#1-his] recent behaviour in training. [%person#1-He] understands that [%person#1-he] should be setting a better example to the rest of the team.
+
+STR-456245
+[%string#1 - Player Name] has accepted that the manager had no choice but to fine [%person#1-him] for [%person#1-his] recent attitude in training. [%person#1-He] accepts that as one of the club's star players, there is a lot of expectation on [%person#1-him] to lead by example.
+
+STR-456246
+[%string#1 - Player Name] has accepted that [%person#1-he] deserved to be fined for [%person#1-his] recent behaviour in training.
+
+STR-456247
+[%string#1 - Player Name] believes that the manager has made [%person#1-him] a scapegoat by fining [%person#1-him] over [%person#1-his] recent attitude in training. [%person#1-He] feels that the manager has higher expectations of [%person#1-him] than of other players due to [%person#1-his] superior ability.
+
+STR-456248
+[%string#1 - Player Name] was upset to have been fined for [%person#1-his] recent attitude in training. [%person#1-He] feels that [%person#1-he] deserves more respect as a senior member of the squad.
+
+STR-456249
+[%string#1 - Player Name] was upset to have been fined for [%person#1-his] recent behaviour in training.
+
+STR-456250
+[%string#1 - Player Name] has accepted a fine for [%person#1-his] recent training ground behaviour without any further comment.
+
+STR-456251
+[%string#1 - Player Surname] had been showing a poor attitude in training recently.
+
+STR-456253
+[%person#1-Your] assistant has compiled a report on the only [%club#1] player involved in the recent international fixtures.
+Polish Reference:
+STR-455066
+Jest to pokłosie niesamowitej pracy, jaką {wykonuje}[%team#1], jako że wszyscy trzej wyróżnieni należą do tego klubu.
+
+STR-455954
+[%team#1-short]{zawdzięcza} swoją pozycję w tabeli doskonałemu początkowi sezonu, który ostatecznie pozwolił im na uniknięcie bezpośredniego spadku.
+
+STR-455955
+[%team#1-short]{zaczął} sezon w świetnym stylu i to pomogło im uniknąć spadku.
+
+STR-455956
+Gdy już na starcie rozgrywek [%team#1-short]{złapał} właściwy rytm, stało się jasne, że unikną spadku.
+
+STR-455957
+Ktoś jeszcze w nas wątpi?
+
+STR-455958
+Muszę przyznać, że wciąż obawiam się o tę drużynę.[%male#author-hidden]
+
+STR-455959
+[%team#1-short]{zawdzięcza} swoją pozycję w tabeli prawdziwej szarży w środkowej fazie sezonu, która ustawiła ich na właściwe tory.
+
+STR-455960
+Ciężka praca, jaką {wykonał}[%team#1-short], zaczęła przynosić efekty w środkowej fazie rozgrywek.
+
+STR-455961
+Gdy na półmetku rozgrywek [%team#1-short]{złapał} właściwy rytm, stało się jasne, że trudno będzie ich zatrzymać.
+
+STR-455962
+[%team#1-short]{zawdzięcza} swoją pozycję w tabeli szalonej formie w końcowej fazie sezonu. Nikt nie mógł dotrzymać im kroku.
+
+STR-455963
+Muszę przyznać, że wciąż brakuje mi wiary w tę drużynę.[%male#author-hidden]
+
+STR-455964
+Mimo problemów na początku sezonu [%team#1-short]{zajął} miejsce w lidze, które w opinii większości ekspertów miało być dla nich nieosiągalne.
+
+STR-455965
+[%team#1-short]{unika} bezpośredniego spadku mimo problemów w początkowej fazie sezonu.
+
+STR-455966
+Trzeba się naprawdę postarać, by uniknąć bezpośredniego spadku mimo tak słabego początku rozgrywek. Brawo, [%team#1-short].
+
+STR-455967
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w środkowej fazie sezonu, by ostatecznie przekroczyć oczekiwania.
+
+STR-455968
+[%team#1-short]{sięga} do gwiazd mimo problemów w środkowej fazie sezonu.
+
+STR-455969
+Nie da się wytłumaczyć, jak udało im się uniknąć bezpośredniego spadku mimo zadyszki na półmetku rozgrywek. Brawo, [%team#1-short].
+
+STR-455970
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w końcówce sezonu, by uniknąć bezpośredniego spadku.
+
+STR-455971
+Trzeba się naprawdę postarać, by uniknąć bezpośredniego spadku mimo zadyszki w końcówce rozgrywek. Brawo, [%team#1-short].
+
+STR-455972
+[%team#1-short]{zawdzięcza} swoją pozycję w tabeli fantastycznemu początkowi sezonu, który dał im potrzebne fundamenty pod utrzymanie.
+
+STR-455973
+Ciężka praca, jaką {wykonał}[%team#1-short] w trakcie sezonu w połączeniu z świetnym początkiem rozgrywek w ich wykonaniu sprawił, że zasłużyli, by uniknąć bezpośredniego spadku.
+
+STR-455974
+[%team#1-short]{zawdzięcza} swoją pozycję w lidze doskonałej formie ze środkowej fazy sezonu, kiedy to nabrali rozpędu, który pozwolił im uniknąć bezpośredniego spadku.
+
+STR-455975
+Dopiero w połowie sezonu ciężka praca, jaką {wykonał}[%team#1-short], zaczęła przynosić efekty.
+
+STR-455976
+Dopiero pod koniec sezonu ciężka praca, jaką {wykonał}[%team#1-short], zaczęła przynosić efekty.
+
+STR-455977
+Gdy w drugiej połowie rozgrywek [%team#1-short]{złapał} właściwy rytm, stało się jasne, że nie będą mieli większych problemów z uniknięciem bezpośredniego spadku.
+
+STR-455978
+[%team#1-short]{zdołał} pozbierać się po kiepskim początku sezonu, by zgodnie z oczekiwaniami uniknąć bezpośredniego spadku.
+
+STR-455979
+Mimo fatalnego początku sezonu [%team#1-short]{zdołał} ostatecznie uniknąć bezpośredniego spadku.
+
+STR-455980
+Trzeba się naprawdę postarać, by uniknąć bezpośredniego spadku mimo tak fatalnego wejścia w sezon. Brawo, [%team#1-short]!
+
+STR-455981
+Cóż... To właśnie mieliśmy zrobić.
+
+STR-455982
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w środkowej fazie sezonu, by zgodnie z oczekiwaniami uniknąć bezpośredniego spadku.
+
+STR-455983
+Mimo pewnych problemów w połowie sezonu [%team#1-short]{zdołał} ostatecznie uniknąć bezpośredniego spadku.
+
+STR-455984
+Trzeba się naprawdę postarać, by uniknąć bezpośredniego spadku mimo zadyszki na półmetku rozgrywek. Brawo, [%team#1-short]!
+
+STR-455985
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w końcówce sezonu, by zgodnie z oczekiwaniami uniknąć bezpośredniego spadku.
+
+STR-455986
+[%team#1-short]{zaliczył} całkiem pozytywny sezon mimo problemów w samej końcówce.
+
+STR-455987
+Trzeba być naprawdę dobrym zespołem, by uniknąć bezpośredniego spadku mimo zadyszki na finiszu. Brawo, [%team#1-short]!
+
+STR-456215
+Zawieszony na 1 m. reprezentacji
+
+STR-456216
+Zawieszony na [%number#1] m. reprezentacji
+
+STR-456217
+Nie więcej niż 1. krajowy zawodnik U-23 w sezonie na wypożyczeniu długoterminowym.
+
+STR-456218
+Nie więcej niż [%number#1] krajowych zawodników U-23 w sezonie na wypożyczeniu długoterminowym.
+
+STR-456226
+Podstawowe atrybuty dla tej roli to
+
+STR-456227
+,
+
+STR-456228
+i
+
+STR-456230
+Podstawowa umiejętność dla tej roli to ignorowanie budzika.
+
+STR-456231
+Kluczowe atrybuty:
+
+STR-456232
+Gra w powietrzu
+
+STR-456233
+Komunikacja
+
+STR-456234
+Strzelanie
+
+STR-456235
+Kreatywność
+
+STR-456236
+Przewidywanie
+
+STR-456237
+Liczenie w pamięci
+
+STR-456238
+[%string#1 - Player Name] przyznał, że zasłużył na oficjalne ostrzeżenie za swoje zachowanie na treningach.[%male#1-hidden]
+[%string#1 - Player Name] przyznała, że zasłużyła na oficjalne ostrzeżenie za swoje zachowanie na treningach.[%female#1-hidden]
+
+STR-456239
+[%string#1 - Player Name] przyznał, że zasłużył na oficjalne ostrzeżenie za swoje zachowanie na treningach. Rozumie już, że musi dawać lepszy przykład młodszym zawodnikom.[%male#1-hidden]
+[%string#1 - Player Name] przyznała, że zasłużyła na oficjalne ostrzeżenie za swoje zachowanie na treningach. Rozumie już, że musi dawać lepszy przykład młodszym zawodniczkom.[%female#1-hidden]
+
+STR-456240
+[%string#1 - Player Name] przyznał, że zasłużył na oficjalne ostrzeżenie za swoje zachowanie na treningach. Rozumie też, że od zawodników tego klubu oczekuje się czegoś więcej.[%male#1-hidden]
+[%string#1 - Player Name] przyznała, że zasłużyła na oficjalne ostrzeżenie za swoje zachowanie na treningach. Rozumie też, że od zawodniczek tego klubu oczekuje się czegoś więcej.[%female#1-hidden]
+
+STR-456241
+[%string#1 - Player Name] uważa, że menedżer ukarał go za jego zachowanie na treningach wyłącznie dla przykładu. Jego zdaniem menedżer wymaga od niego więcej niż od innych ze względu na jego wyjątkowe umiejętności.[%male#1-hidden]
+[%string#1 - Player Name] uważa, że menedżer ukarał ją za jego zachowanie na treningach wyłącznie dla przykładu. Jej zdaniem menedżer wymaga od niej więcej niż od innych ze względu na jej wyjątkowe umiejętności.[%female#1-hidden]
+
+STR-456242
+[%string#1 - Player Name] uważa, że otrzymane przez niego oficjalne ostrzeżenie za zachowanie na treningach nie było zasłużone.[%male#1-hidden]
+[%string#1 - Player Name] uważa, że otrzymane przez nią oficjalne ostrzeżenie za zachowanie na treningach nie było zasłużone.[%female#1-hidden]
+
+STR-456243
+[%string#1 - Player Name] przyjął bez komentarza otrzymane przez niego oficjalne ostrzeżenie za zachowanie na treningach.[%male#1-hidden]
+[%string#1 - Player Name] przyjęła bez komentarza otrzymane przez nią oficjalne ostrzeżenie za zachowanie na treningach.[%female#1-hidden]
+
+STR-456244
+[%string#1 - Player Name] przyznał, że zasługiwał na karę finansową za swoje zachowanie na treningach. Rozumie też, że powinien dawać lepszy przykład reszcie zespołu.[%male#1-hidden]
+[%string#1 - Player Name] przyznała, że zasługiwała na karę finansową za swoje zachowanie na treningach. Rozumie też, że powinna dawać lepszy przykład reszcie zespołu.[%female#1-hidden]
+
+STR-456245
+[%string#1 - Player Name] przyznał, że menedżer nie miał innego wyjścia, jak tylko ukarać go finansowo za jego postawę na treningach. Rozumie też, że ciąży na nim jako jednej z gwiazd zespołu szczególna odpowiedzialność.[%male#1-hidden]
+[%string#1 - Player Name] przyznała, że menedżer nie miał innego wyjścia, jak tylko ukarać ją finansowo za jej postawę na treningach. Rozumie też, że ciąży na niej jako jednej z gwiazd zespołu szczególna odpowiedzialność.[%female#1-hidden]
+
+STR-456246
+[%string#1 - Player Name] przyznał, że zasługiwał na karę finansową za swoje zachowanie na treningach.[%male#1-hidden]
+[%string#1 - Player Name] przyznała, że zasługiwała na karę finansową za swoje zachowanie na treningach.[%female#1-hidden]
+
+STR-456247
+[%string#1 - Player Name] uważa, że menedżer ukarał go za jego zachowanie na treningach wyłącznie dla przykładu. Jego zdaniem menedżer wymaga od niego więcej niż od innych ze względu na jego wyjątkowe umiejętności.[%male#1-hidden]
+[%string#1 - Player Name] uważa, że menedżer ukarał ją za jego zachowanie na treningach wyłącznie dla przykładu. Jej zdaniem menedżer wymaga od niej więcej niż od innych ze względu na jej wyjątkowe umiejętności.[%female#1-hidden]
+
+STR-456248
+[%string#1 - Player Name] z oburzeniem przyjął karę finansową za swoją postawę na treningach. Uważa, że jako jeden ze starszych zawodników zespołu zasługuje na więcej szacunku.[%male#1-hidden]
+[%string#1 - Player Name] z oburzeniem przyjęła karę finansową za swoją postawę na treningach. Uważa, że jako jedna ze starszych zawodniczek zespołu zasługuje na więcej szacunku.[%female#1-hidden]
+
+STR-456249
+[%string#1 - Player Name] z oburzeniem przyjął karę finansową za swoje zachowanie na treningach.[%male#1-hidden]
+[%string#1 - Player Name] z oburzeniem przyjęła karę finansową za swoje zachowanie na treningach.[%female#1-hidden]
+
+STR-456250
+[%string#1 - Player Name] przyjął bez komentarza otrzymaną przez niego karę finansową za zachowanie na treningach.[%male#1-hidden]
+[%string#1 - Player Name] przyjęła bez komentarza otrzymaną przez niego karę finansową za zachowanie na treningach.[%female#1-hidden]
+
+STR-456251
+[%string#1 - Player Surname] prezentuje ostatnio niewłaściwą postawę na treningach.
+
+STR-456253
+Twój asystent przygotował raporty na temat jedynego zawodnika klubu [%club#1-long], który wystąpił w niedawnych meczach swoich reprezentacji.[%male#1-hidden]

@@ -1,0 +1,119 @@
+STR-394244
+Команда [%club#1-short] переграла [%club#2-short] із впевненим рахунком [%number#1 - human goals]:[%number#2 - opposition goals], заодно забезпечивши комфортну загальну перемогу в протистоянні.
+
+STR-394245
+Команда [%club#1-short] показала дисциплінований та якісний футбол, здолавши [%club#2-short] із рахунком [%number#1 - human goals]:[%number#2 - opposition goals].
+
+STR-394246
+Команда [%club#1-short] зіграла достатньо гідно, звівши матч проти [%club#2-short] до нічиєї [%number#1 - human goals]:[%number#2 - opposition goals], а потім пані фортуна посміхнулася їм у серії пенальті.
+
+STR-394247
+Команда [%club#1-short] відіграла досить пристойно, зігравши внічию [%number#1 - human goals]:[%number#2 - opposition goals] проти [%club#2-short], проте зазнала розчарування в лотереї післяматчевих пенальті.
+
+STR-394248
+Команда [%club#1-short] виявила достатню стійкість, обмеживши поразку від [%club#2-short] рахунком [%number#1 - opposition goals]:[%number#2 - human goals], але не зуміла схилити шальки терезів на свій бік у післяматчевих пенальті.
+
+STR-394249
+Команда [%club#1-short] показала гідну гру за мінімальної поразки [%number#1 - opposition goals]:[%number#2 - human goals] від [%club#2-short], зафіксувавши підсумкову звитягу за сумою двох матчів.
+
+STR-394250
+Команда [%club#1-short] гідно трималася, зазнавши лише мінімальної поразки [%number#1 - opposition goals]:[%number#2 - human goals] від [%club#2-short], проте цього виявилося недостатньо для загального тріумфу.
+
+STR-394251
+Команда [%club#1-short] показала відверто провальний футбол, поступившись [%number#1 - opposition goals]:[%number#2 - human goals] скромному клубу [%club#2-short], а додатковим ударом став наступний виліт у серії пенальті.
+
+STR-394252
+Команда [%club#1-short] зіграла вкрай непереконливо, спромігшись лише на нічию [%number#1 - human goals]:[%number#2 - opposition goals] проти [%club#2-short], а поразка в серії пенальті стала остаточним фіаско.
+
+STR-394255
+Команда [%club#1-short] продемонструвала фантастичний футбол під час своєї перемоги [%number#1 - human goals]:[%number#2 - opposition goals] над [%club#2-short].
+
+STR-394257
+Команда [%club#1-short] видала чудовий матч, перемігши [%club#2-short] з рахунком [%number#1 - human goals]:[%number#2 - opposition goals] і створивши гучну сенсацію завдяки підсумковому тріумфу за сумою двох ігор.
+
+STR-394259
+Команда [%club#1-short] відіграла дуже надійно, звівши гру проти [%club#2-short] до нічиєї [%number#1 - human goals]:[%number#2 - opposition goals], однак наслідки першого матчу виявилися фатальними для підсумкового результату.
+
+STR-394260
+Команда [%club#1-short] зіграла дуже дисципліновано, вирвавши бойову нічию [%number#1 - human goals]:[%number#2 - opposition goals] у поєдинку проти [%club#2-short].
+
+STR-394261
+Команда [%club#1-short] показала солідний футбол, розписавши видовищну нічию [%number#1 - human goals]:[%number#2 - opposition goals] у матчі проти [%club#2-short].
+
+STR-394262
+Команда [%club#1-short] дала справжній бій клубу [%club#2-short], проте все ж поступилася [%number#1 - opposition goals]:[%number#2 - human goals] в овертаймі.
+
+STR-394263
+Команда [%club#1-short] вирвала фантастичну перемогу [%number#1 - human goals]:[%number#2 - opposition goals] всупереч перебігу зустрічі, шокувавши суперників із [%club#2-short].
+
+STR-394264
+Команда [%club#1-short] упевнено довела матч проти [%club#2-short] до перемоги [%number#1 - human goals]:[%number#2 - opposition goals], а приємним бонусом стала ще й вікторія в серії післяматчевих пенальті.
+
+STR-394265
+Команда [%club#1-short] здобула солідну перемогу [%number#1 - human goals]:[%number#2 - opposition goals] над [%club#2-short], однак це не врятувало від драми післяматчевих пенальті, де точнішими виявилися суперники.
+
+STR-394266
+Команда [%club#1-short] не здалася без бою, здобувши яскраву перемогу [%number#1 - human goals]:[%number#2 - opposition goals] над [%club#2-short], проте очікувано не змогла відіграти фору першого матчу.
+
+STR-394267
+Команда [%club#1-short] була розчарована поразкою [%number#1 - opposition goals]:[%number#2 - human goals] від [%club#2-short], однак це був досить прикрий випадок, і за іншого перебігу подій результат міг бути зовсім іншим.
+
+STR-394268
+Команда [%club#1-short] розчарувала своєю грою, видряпавши непереконливу нічию [%number#1 - human goals]:[%number#2 - opposition goals] у поєдинку з [%club#2-short].
+
+STR-394269
+Команда [%club#1-short] виглядала блідо, здобувши натужну й випадкову перемогу [%number#1 - human goals]:[%number#2 - opposition goals] над [%club#2-short].
+
+STR-394270
+Команда [%club#1-short] зіграла внічию [%number#1 - human goals]:[%number#2 - opposition goals] проти [%club#2-short] у відкритому та результативному поєдинку, де обидва суперники відкинули будь-яку обережність.
+
+STR-394272
+Команда [%club#1-short] сьогодні святкувала тріумф у серії пенальті, зумівши завдяки блискучій грі втримати перевагу першого матчу та обмежитися поразкою [%number#1 - opposition goals]:[%number#2 - human goals] від [%club#2-short].
+
+STR-394274
+Команді [%club#1-short] сьогодні казково пощастило: після невиразної гри та нічиєї [%number#1 - human goals]:[%number#2 - opposition goals] проти [%club#2-short] вона вирвала перемогу в серії пенальті.
+
+STR-394275
+Команда [%club#1-short] сьогодні зазнала певного конфузу, мінімально поступившись клубу [%club#2-short] з рахунком [%number#1 - opposition goals]:[%number#2 - human goals].
+
+STR-394276
+Перемога команди [%club#1-short] над [%club#2-short] із рахунком [%number#1 - human goals]:[%number#2 - opposition goals] стала цілком пристойним результатом, проте не вберегла від осічки в серії післяматчевих пенальті.
+
+STR-394277
+Перемога команди [%club#1-short] над [%club#2-short] з рахунком [%number#1 - human goals]:[%number#2 - opposition goals] стала достатньо впевненим результатом для оформлення підсумкового проходу далі.
+
+STR-394278
+Звитяга команди [%club#1-short] над [%club#2-short] із рахунком [%number#1 - human goals]:[%number#2 - opposition goals] виявилася солідним підсумком, проте, на жаль, її забракло для реваншу за сумою двох матчів.
+
+STR-394279
+Перемога команди [%club#1-short] над [%club#2-short] із рахунком [%number#1 - human goals]:[%number#2 - opposition goals] стала пристойним досягненням, навіть якщо задля успіху знадобився додатковий час.
+
+STR-394280
+Перемога команди [%club#1-short] над [%club#2-short] із рахунком [%number#1 - human goals]:[%number#2 - opposition goals] стала чудовим підсумком поєдинку всупереч ігровій перевазі суперника.
+
+STR-394281
+Перемога команди [%club#1-short] над [%club#2-short] із рахунком [%number#1 - human goals]:[%number#2 - opposition goals] стала якісним і монолітним командним виступом.
+
+STR-394282
+Перемога команди [%club#1-short] над [%club#2-short] із рахунком [%number#1 - human goals]:[%number#2 - opposition goals] була добротним трудовим результатом, проте підсумковий тріумф довелося виривати в серії пенальті.
+
+STR-394283
+Звитяга команди [%club#1-short] над [%club#2-short] із рахунком [%number#1 - human goals]:[%number#2 - opposition goals] за інших обставин стала б святом, однак сьогодні принесла лише розпач через фатальну поразку в серії пенальті.
+
+STR-394284
+Поразка команди [%club#1-short] від [%club#2-short] із рахунком [%number#1 - opposition goals]:[%number#2 - human goals] в овертаймі розчарувала, однак не стала повною несподіванкою.
+
+STR-394285
+Поразка команди [%club#1-short] від [%club#2-short] із рахунком [%number#1 - opposition goals]:[%number#2 - human goals] навряд чи увійде в золотий фонд, проте, відверто кажучи, фанатам було нереалістично чекати на диво.
+
+STR-394287
+Уболівальники команди [%club#1-short] провели команду свистом після прикрої поразки [%number#1 - opposition goals]:[%number#2 - human goals] від [%club#2-short].
+
+STR-394288
+Самовіддана битва команди [%club#1-short], що завершилася нічиєю [%number#1 - human goals]:[%number#2 - opposition goals] проти [%club#2-short], на жаль, не принесла плодів через прикру невдачу в серії пенальті.
+
+STR-394289
+Самовіддана гра команди [%club#1-short], яка видряпала нічию [%number#1 - human goals]:[%number#2 - opposition goals] проти [%club#2-short], зрештою була винагороджена холоднокровною перемогою в серії пенальті.
+
+STR-394291
+Мінімальна поразка команди [%club#1-short] від [%club#2-short] із рахунком [%number#1 - opposition goals]:[%number#2 - human goals] стала прийнятним результатом, адже блискучої першої гри вистачило для підсумкового тріумфу.

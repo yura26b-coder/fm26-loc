@@ -1,0 +1,599 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-418978
+[%person#1-surname] believes that [%person#2-surname] has the potential to become a dependable member of the first team squad.
+
+STR-418980
+[%person#1-surname] believes that [%person#2-surname] might develop into a useful player.
+
+STR-418982
+[%person#1-surname] does not believe [%person#2-surname] would be a worthwhile signing.
+
+STR-418984
+[%person#1-surname] does not believe [%person#2-surname] has the potential to make it at the club.
+
+STR-418986
+[%person#1-surname] believes that [%person#2-surname] would be a quality signing.
+
+STR-418988
+[%person#1-surname] believes that [%person#2-surname] would be a good signing.
+
+STR-418990
+[%person#1-surname] believes that [%person#2-surname] would be a fairly good signing.
+
+STR-418992
+[%person#1-surname] believes that [%person#2-surname] would be a useful signing.
+
+STR-418996
+[%person#1-surname] is a lot better than our next best [%position#1-lowercase] [%person#2].
+
+STR-418997
+[%person#1-surname] is better than our next strongest [%position#1-lowercase] [%person#2].
+
+STR-418998
+[%person#1-surname] is marginally better than our next strongest [%position#1-lowercase] [%person#2].
+
+STR-418999
+[%person#1-surname] has the potential to far exceed [%position#1-lowercase] [%person#2]{s} level of ability in the future.
+
+STR-419000
+[%person#1-surname] has the potential to exceed [%position#1-lowercase] [%person#2]{s} level of ability in the future.
+
+STR-419001
+[%person#1-surname] is unlikely to ever reach [%position#1-lowercase] [%person#2]{s} current level of ability.
+
+STR-419002
+[%person#1-surname] has the potential to almost reach [%position#1-lowercase] [%person#2]{s} level of ability in the future.
+
+STR-419003
+[%person#1-surname] has the potential to reach the ability of our strongest [%position#1-lowercase] [%person#2] in the future.
+
+STR-419004
+[%person#1-surname] is nowhere near the ability of our best [%position#1-lowercase] [%person#2].
+
+STR-419005
+[%person#1-surname] is not as strong as our best [%position#1-lowercase] [%person#2].
+
+STR-419006
+[%person#1-surname] is almost as strong as our best [%position#1-lowercase] [%person#2].
+
+STR-419033
+[%string#1 - Scout Name] has compiled a report on [%club#1-short]{s} [%string#2 - Player Name] as requested.
+
+STR-419034
+[%string#1 - Scout Name] has compiled a report on [%string#2 - Player Name] as requested.
+
+STR-419035
+[%person#1-Your] scout has compiled a report on [%club#1-short]{s} [%string#2 - Player Name] as requested.
+
+STR-419036
+[%person#1-Your] scout has compiled a report on [%string#2 - Player Name] as requested.
+
+STR-419037
+[%string#1 - Scout Name] has compiled a report on [%club#1-short]{s} [%string#2 - Player Name] as part of [%person#1-his] ongoing [%string#3 - region] assignment.
+
+STR-419038
+[%string#1 - Scout Name] has compiled a report on [%string#2 - Player Name] as part of [%person#1-his] ongoing [%string#3 - region] assignment.
+
+STR-419045
+[%string#1 - Scout Name] has compiled a report on [%club#1-short]{s} [%string#2 - Player Name].
+
+STR-419046
+[%string#1 - Scout Name] has compiled a report on [%string#2 - Player Name].
+
+STR-419047
+[%person#1-Your] scout has compiled a report on [%string#2 - Player Name].
+
+STR-419048
+[%string#1 - Scout Name] compiles report on [%string#2 - Player Name]
+
+STR-419049
+Scout compiles report on [%string#2 - Player Name]
+
+STR-419050
+Recommended player from [%string#1 - Scout Name]{s} [%string#3 - regional] assignment
+
+STR-419055
+Recommended player from scout
+
+STR-419058
+Unable to scout player
+
+STR-419060
+[%person#1-full] declines non-playing role
+
+STR-419063
+[%season_year#1] Season
+
+STR-419064
+Player Records - [%season_year#1] Season
+
+STR-419065
+Team Records - [%season_year#1] Season
+
+STR-419066
+([%season_year#1])
+
+STR-419067
+[%date#1]
+
+STR-419068
+[%season_year#1]
+
+STR-419070
+(Locked)
+
+STR-419071
+Inactive
+
+STR-419073
+Gender
+
+STR-419074
+Female
+
+STR-419075
+Male
+
+STR-419077
+Unknown
+
+STR-419078
+Draw to be made on [%date#1-short]
+
+STR-419079
+Draw to be made on [%date#1-short]
+
+STR-419080
+Fixtures to be arranged on [%date#1-short]
+
+STR-419081
+Team Records - [%season_year#1]
+
+STR-419082
+Player Records - [%season_year#1]
+
+STR-419083
+Most Team Conceded
+
+STR-419084
+[%team#1-short] ([%season_year#1])
+
+STR-419085
+Rules
+
+STR-419086
+Youth Facilities
+
+STR-419088
+Select Player Positions
+
+STR-419090
+Style
+
+STR-419091
+Either
+
+STR-419092
+Left Only
+
+STR-419093
+Right Only
+
+STR-419094
+Left
+
+STR-419095
+Right
+
+STR-419099
+([%number#1] report)
+
+STR-419100
+([%number#1] reports)
+
+STR-419101
+Tap here to manage [%person#1-your] scouting team
+
+STR-419103
+Season Review [%season_year#1]
+
+STR-419105
+Open
+
+STR-419106
+All transfers
+
+STR-419107
+Closed
+
+STR-419108
+All Transfers
+
+STR-419109
+Group Stage
+
+STR-419110
+League Stage
+
+STR-419111
+Knockout Stage
+
+STR-419112
+[%string#1 - Staff Name] has retired from [%person#1-his] position as [%nation#1] manager.
+
+STR-419113
+Squad Selection
+
+STR-419114
+The [%club#1] squad must have [%number#1] players.
+
+STR-419115
+The [%club#1] squad must have at least [%number#1] players.
+
+STR-419116
+The [%club#1] squad can not have more than [%number#1] players.
+
+STR-419117
+The [%club#1] squad consists of only [%number#1] players from a possible [%number#2].\n\nConfirm squad?
+
+STR-419118
+Confirm squad?
+
+STR-419252
+[%person#1-Your] scout has compiled a report on [%club#1-short]{s} [%string#2 - Player Name].
+
+STR-419261
+[%team#1-short] have qualified for the [%number#1 - year, e.g. 2006] [%comp#1-long] due to their win against [%team#2-short] in the [%fixture_name#1-short].
+
+STR-419262
+[%team#1-short] have qualified for the [%number#1 - year, e.g. 2006] [%comp#1-long] due to their performance in the [%comp#2-short].
+
+STR-419263
+[%team#1-short] have qualified for the [%number#1 - year, e.g. 2006] [%comp#1-long].
+
+STR-419264
+[%team#1-short] have qualified for the [%comp#1-long] due to their win against [%team#2-short] in the [%fixture_name#1-short].
+
+STR-419265
+[%team#1-short] have qualified for the [%comp#1-long] due to their performance in the [%comp#2-short].
+
+STR-419266
+[%team#1-short] have qualified for the [%comp#1-long].
+
+STR-419267
+[%team#1-short] qualify for [%comp#1-short]
+Polish Reference:
+STR-418978
+[%male#1-surname] uważa, że [%male#2-surname] ma potencjał, by zostać w przyszłości solidnym zawodnikiem pierwszego zespołu.
+[%male#1-surname] uważa, że [%female#2-surname] ma potencjał, by zostać w przyszłości solidną zawodniczką pierwszego zespołu.
+[%female#1-surname] uważa, że [%male#2-surname] ma potencjał, by zostać w przyszłości solidnym zawodnikiem pierwszego zespołu.
+[%female#1-surname] uważa, że [%female#2-surname] ma potencjał, by zostać w przyszłości solidną zawodniczką pierwszego zespołu.
+
+STR-418980
+[%male#1-surname] uważa, że [%male#2-surname] może zostać w przyszłości użytecznym zawodnikiem.
+[%male#1-surname] uważa, że [%female#2-surname] może zostać w przyszłości użyteczną zawodniczką.
+[%female#1-surname] uważa, że [%male#2-surname] może zostać w przyszłości użytecznym zawodnikiem.
+[%female#1-surname] uważa, że [%female#2-surname] może zostać w przyszłości użyteczną zawodniczką.
+
+STR-418982
+[%male#1-surname] uważa, że [%male#2-surname] nie zasługuje na to, by go zatrudniać.
+[%male#1-surname] uważa, że [%female#2-surname] nie zasługuje na to, by ją zatrudniać.
+[%female#1-surname] uważa, że [%male#2-surname] nie zasługuje na to, by go zatrudniać.
+[%female#1-surname] uważa, że [%female#2-surname] nie zasługuje na to, by ją zatrudniać.
+
+STR-418984
+[%male#1-surname] uważa, że [%male#2-surname] nie ma potencjału na to, by zaistnieć w klubie.
+
+STR-418986
+[%male#1-surname] uważa, że [%male#2-surname] byłby świetnym nabytkiem.
+[%male#1-surname] uważa, że [%female#2-surname] byłaby świetnym nabytkiem.
+[%female#1-surname] uważa, że [%male#2-surname] byłby świetnym nabytkiem.
+[%female#1-surname] uważa, że [%female#2-surname] byłaby świetnym nabytkiem.
+
+STR-418988
+[%male#1-surname] uważa, że [%male#2-surname] byłby dobrym nabytkiem.
+[%male#1-surname] uważa, że [%female#2-surname] byłaby dobrym nabytkiem.
+[%female#1-surname] uważa, że [%male#2-surname] byłby dobrym nabytkiem.
+[%female#1-surname] uważa, że [%female#2-surname] byłaby dobrym nabytkiem.
+
+STR-418990
+[%male#1-surname] uważa, że [%male#2-surname] byłby całkiem dobrym nabytkiem.
+[%male#1-surname] uważa, że [%female#2-surname] byłaby całkiem dobrym nabytkiem.
+[%female#1-surname] uważa, że [%male#2-surname] byłby całkiem dobrym nabytkiem.
+[%female#1-surname] uważa, że [%female#2-surname] byłaby całkiem dobrym nabytkiem.
+
+STR-418992
+[%male#1-surname] uważa, że [%male#2-surname] byłby użytecznym nabytkiem.
+[%male#1-surname] uważa, że [%female#2-surname] byłaby użytecznym nabytkiem.
+[%female#1-surname] uważa, że [%male#2-surname] byłby użytecznym nabytkiem.
+[%female#1-surname] uważa, że [%female#2-surname] byłaby użytecznym nabytkiem.
+
+STR-418996
+[%male#1-surname] jest o wiele lepszy niż nasz kolejny [%position#1-lowercase] [%male#2].
+[%male#1-surname] jest o wiele lepszy niż nasza kolejna [%position#1-lowercase] [%female#2].
+[%female#1-surname] jest o wiele lepsza niż nasz kolejny [%position#1-lowercase] [%male#2].
+[%female#1-surname] jest o wiele lepsza niż nasza kolejna [%position#1-lowercase] [%female#2].
+
+STR-418997
+[%male#1-surname] jest lepszy niż nasza kolejna [%position#1-lowercase] [%male#2].
+[%female#1-surname] jest lepsza niż nasz kolejny [%position#1-lowercase] [%male#2].
+[%female#1-surname] jest lepsza niż nasza kolejna [%position#1-lowercase] [%female#2].
+
+STR-418998
+[%male#1-surname] jest marginalnie lepszy niż nasz kolejny [%position#1-lowercase] [%male#2].
+[%male#1-surname] jest marginalnie lepszy niż nasza kolejna [%position#1-lowercase] [%female#2].
+[%female#1-surname] jest marginalnie lepsza niż nasz kolejny [%position#1-lowercase] [%male#2].
+[%female#1-surname] jest marginalnie lepsza niż nasza kolejna [%position#1-lowercase] [%female#2].
+
+STR-418999
+[%male#1-surname] ma potencjał, by zostać o wiele lepszym zawodnikiem niż [%position#1-lowercase] [%male#2].
+[%female#1-surname] ma potencjał, by zostać o wiele lepszą zawodniczką niż [%position#1-lowercase] [%male#2].
+
+STR-419000
+[%male#1-surname] ma potencjał, by zostać lepszym zawodnikiem niż [%position#1-lowercase] [%male#2].
+[%female#1-surname] ma potencjał, by zostać lepszą zawodniczką niż [%position#1-lowercase] [%male#2].
+
+STR-419001
+Jest mało prawdopodobne by [%male#1-surname] kiedykolwiek stał się równie dobrym zawodnikiem jak [%position#1-lowercase] [%male#2].
+Jest mało prawdopodobne by [%female#1-surname] kiedykolwiek stała się równie dobrą zawodniczką jak [%position#1-lowercase] [%male#2].
+
+STR-419002
+[%male#1-surname] ma potencjał, by zostać niemalże tak dobrym zawodnikiem jak [%position#1-lowercase] [%male#2].
+[%female#1-surname] ma potencjał, by zostać niemalże tak dobrą zawodniczką jak [%position#1-lowercase] [%male#2].
+
+STR-419003
+[%male#1-surname] ma potencjał, by zostać w przyszłości równie dobrym zawodnikiem jak nasz najmocniejszy [%position#1-lowercase] [%male#2].
+[%male#1-surname] ma potencjał, by zostać w przyszłości równie dobrym zawodnikiem jak nasza najmocniejsza [%position#1-lowercase] [%female#2].
+[%female#1-surname] ma potencjał, by zostać w przyszłości równie dobrą zawodniczką jak nasz najmocniejszy [%position#1-lowercase] [%male#2].
+[%female#1-surname] ma potencjał, by zostać w przyszłości równie dobrą zawodniczką jak nasza najmocniejsza [%position#1-lowercase] [%female#2].
+
+STR-419004
+[%male#1-surname] jest o wiele słabszy niż nasz najlepszy [%position#1-lowercase] [%male#2].
+[%male#1-surname] jest o wiele słabszy niż nasza najlepsza [%position#1-lowercase] [%female#2].
+[%female#1-surname] jest o wiele słabsza niż nasz najlepszy [%position#1-lowercase] [%male#2].
+[%female#1-surname] jest o wiele słabsza niż nasza najlepsza [%position#1-lowercase] [%female#2].
+
+STR-419005
+[%male#1-surname] jest słabszy niż nasz najlepszy [%position#1-lowercase] [%male#2].
+[%male#1-surname] jest słabszy niż nasza najlepsza [%position#1-lowercase] [%female#2].
+[%female#1-surname] jest słabsza niż nasz najlepszy [%position#1-lowercase] [%male#2].
+[%female#1-surname] jest słabsza niż nasza najlepsza [%position#1-lowercase] [%female#2].
+
+STR-419006
+[%male#1-surname] jest niemalże tak mocny jak nasz najlepszy [%position#1-lowercase] [%male#2].
+[%male#1-surname] jest niemalże tak mocny jak nasza najlepsza [%position#1-lowercase] [%female#2].
+[%female#1-surname] jest niemalże tak mocna jak nasz najlepszy [%position#1-lowercase] [%male#2].
+[%female#1-surname] jest niemalże tak mocna jak nasza najlepsza [%position#1-lowercase] [%female#2].
+
+STR-419033
+Zgodnie z życzeniem [%string#1 - Scout Name] sporządził raport, którego tematem jest [%string#2 - Player Name] ([%club#1-short]).
+
+STR-419034
+Zgodnie z życzeniem [%string#1 - Scout Name] sporządził raport, którego tematem jest [%string#2 - Player Name].
+
+STR-419035
+Zgodnie z życzeniem twój scout sporządził raport, którego tematem jest [%string#2 - Player Name] ([%club#1-short]).[%male#1-hidden]
+
+STR-419036
+Zgodnie z życzeniem twój scout sporządził raport, którego tematem jest [%string#2 - Player Name].[%male#1-hidden]
+
+STR-419037
+W ramach realizowanego zadania ([%string#3 - region]) [%string#1 - Scout Name] sporządził raport, którego tematem jest [%string#2 - Player Name] ([%club#1-short]).[%male#1-hidden]
+W ramach realizowanego zadania ([%string#3 - region]) [%string#1 - Scout Name] sporządziła raport, którego tematem jest [%string#2 - Player Name] ([%club#1-short]).[%female#1-hidden]
+
+STR-419038
+W ramach realizowanego zadania ([%string#3 - region]) [%string#1 - Scout Name] sporządził raport, którego tematem jest [%string#2 - Player Name].[%male#1-hidden]
+W ramach realizowanego zadania ([%string#3 - region]) [%string#1 - Scout Name] sporządziła raport, którego tematem jest [%string#2 - Player Name].[%female#1-hidden]
+
+STR-419045
+[%string#1 - Scout Name] sporządził raport, którego tematem jest [%string#2 - Player Name] ([%club#1-short]).
+
+STR-419046
+[%string#1 - Scout Name] sporządził raport, którego tematem jest [%string#2 - Player Name].
+
+STR-419047
+Twój scout sporządził raport, którego tematem jest [%string#2 - Player Name].[%male#1-hidden]
+Twoja scoutka sporządził raport, którego tematem jest [%string#2 - Player Name].[%female#1-hidden]
+
+STR-419048
+[%string#1 - Scout Name] składa raport, którego tematem jest [%string#2 - Player Name]
+
+STR-419049
+Scout składa raport, którego tematem jest [%string#2 - Player Name]
+
+STR-419050
+[%string#1 - Scout Name] rekomenduje zawodnika
+
+STR-419055
+Scout rekomenduje zawodnika
+
+STR-419058
+Nie można obserwować piłkarza
+
+STR-419060
+[%male#1-full] odrzuca stanowisko w sztabie szkoleniowym
+
+STR-419063
+Sezon [%season_year#1]
+
+STR-419064
+Rekordy piłkarzy - sezon [%season_year#1]
+
+STR-419065
+Rekordy zespołowe - Sezon [%season_year#1]
+
+STR-419066
+([%season_year#1])
+
+STR-419067
+[%date#1]
+
+STR-419068
+[%season_year#1]
+
+STR-419070
+(Zablokowane)
+
+STR-419071
+Nieaktywny
+
+STR-419073
+Płeć
+
+STR-419074
+Kobieta
+
+STR-419075
+Mężczyzna
+
+STR-419077
+Nieznany
+
+STR-419078
+Losowanie zostanie przeprowadzone [%date#1-short]
+
+STR-419079
+Losowanie zostanie przeprowadzone [%date#1-short]
+
+STR-419080
+Terminarz zostanie ustalony [%date#1-short]
+
+STR-419081
+Rekordy zespołowe - [%season_year#1]
+
+STR-419082
+Rekordy piłkarzy - [%season_year#1]
+
+STR-419083
+Najw. straconych (zespół)
+
+STR-419084
+[%team#1-short] ([%season_year#1])
+
+STR-419085
+Przepisy
+
+STR-419086
+Obiekty młodzieżowe
+
+STR-419088
+Wybierz pozycje piłkarzy
+
+STR-419090
+Styl gry
+
+STR-419091
+Obie
+
+STR-419092
+Tylko lewa
+
+STR-419093
+Tylko prawa
+
+STR-419094
+Lewa
+
+STR-419095
+Prawa
+
+STR-419099
+(Liczba raportów: [%number#1])
+
+STR-419100
+(Liczba raportów: [%number#1])
+
+STR-419101
+Stuknij tutaj, by zarządzać zespołem scoutów[%male#1-hidden]
+
+STR-419103
+Podsumowanie sezonu [%season_year#1]
+
+STR-419105
+Otwarte
+
+STR-419106
+Wszystkie transfery
+
+STR-419107
+Zamknięte
+
+STR-419108
+Wszystkie transfery
+
+STR-419109
+Faza grupowa
+
+STR-419110
+Faza ligowa
+
+STR-419111
+Faza pucharowa
+
+STR-419112
+[%string#1 - Staff Name] ([%nation#1]) zakończył karierę menedżerską.[%male#1-hidden]
+[%string#1 - Staff Name] ([%nation#1]) zakończyła karierę menedżerską.[%female#1-hidden]
+
+STR-419113
+Wybór składu
+
+STR-419114
+[%club#1]{musi} mieć w składzie [%number#1] zawodników.
+
+STR-419115
+[%club#1]{musi} mieć w składzie co najmniej [%number#1] zawodników.
+
+STR-419116
+[%club#1]{nie może} mieć w składzie więcej niż [%number#1] zawodników.
+
+STR-419117
+[%club#1]{ma} w składzie jedynie [%number#1] z [%number#2] możliwych zawodników.\n\nZatwierdzić skład?
+
+STR-419118
+Zatwierdzić skład?
+
+STR-419252
+Twój scout sporządził raport, którego tematem jest [%string#2 - Player Name] ([%club#1-short]).[%male#1-hidden]
+
+STR-419261
+[%team#1-short]{zakwalifikował} się do rozgrywek ([%comp#1-long] [%number#1 - year, e.g. 2006]) dzięki zwycięstwu w meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#1-short]).
+
+STR-419262
+[%team#1-short]{zakwalifikował} się w tym roku do rozgrywek ([%number#1 - year, e.g. 2006] [%comp#1-long]) dzięki swojej postawie w: [%comp#2-short].
+
+STR-419263
+[%team#1-short]{zakwalifikował} się do rozgrywek ([%comp#1-long] [%number#1 - year, e.g. 2006]).
+
+STR-419264
+[%team#1-short]{zakwalifikował} się do rozgrywek ([%comp#1-long]) dzięki zwycięstwu w meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#1-short]).
+
+STR-419265
+[%team#1-short]{zakwalifikował} się do rozgrywek ([%comp#1-long]) dzięki swojej postawie w: [%comp#2-short].
+
+STR-419266
+[%team#1-short]{zakwalifikował} się do rozgrywek ([%comp#1-long]).
+
+STR-419267
+[%comp#1-short]: [%team#1-short] z awansem

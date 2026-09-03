@@ -1,0 +1,418 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-456524
+[%club#1] are the only remaining team interested in purchasing [%person#1]. Their current offer of [%cash#1-short-roundlarge] is below [%person#1-your] stated valuation of [%cash#2-short-roundlarge].
+
+STR-456525
+[%club#1] are the only remaining team interested in purchasing [%person#1]. Their current offer is [%cash#1-short-roundlarge].
+
+STR-456526
+There are no remaining clubs interested in signing [%person#1] at this time.
+
+STR-456528
+You are looking to purchase [%person#1].
+
+STR-456529
+There are two clubs still interested in purchasing [%person#1]. You have both offered [%cash#1-short-roundlarge].
+
+STR-456530
+There are two clubs still interested in purchasing [%person#1]. You have have offered [%cash#1-short-roundlarge] which is below [%club#1-short]{s} stated valuation of [%cash#2-short-roundlarge].
+
+STR-456531
+There are two clubs still interested in purchasing [%person#1]. You have both have offered [%cash#1-short-roundlarge].
+
+STR-456532
+There are several clubs still competing against you for the purchase of [%person#1]. The highest offers recieved are for the sum of [%cash#1-short-roundlarge], which is below the [%club#1]{s} stated valuation of [%cash#2-short-roundlarge].
+
+STR-456533
+Yours is one of several clubs competing to purchase [%person#1].
+
+STR-456534
+There are two clubs still interested in purchasing [%person#1]. You have made the current highest offer, a sum of [%cash#1-short-roundlarge] which is below [%club#1]{s} stated valuation of [%cash#2-short-roundlarge].
+
+STR-456535
+You are facing stiff competition to purchase [%person#1]. [%club#1-short] have made the current highest offer, a sum of [%cash#1-short-roundlarge] which is below [%club#2]{s} stated valuation of [%cash#2-short-roundlarge].
+
+STR-456536
+There are two clubs still interested in purchasing [%person#1]. You are the current highest bidder at this time
+
+STR-456537
+You are facing stiff competition to purchase [%person#1]. [%club#1-short] have made the current highest offer at present.
+
+STR-456538
+You are facing stiff competition to purchase [%person#1]. [%club#1] have made the current highest offer, a sum of [%cash#1-short-roundlarge] which is below [%club#2-short]{s} stated valuation of [%cash#2-short-roundlarge].
+
+STR-456539
+You are facing stiff competition to purchase [%person#1]. Your bid of [%cash#1-short-roundlarge] is currently the highest but it is below [%club#2-short]{s} stated valuation of [%cash#2-short-roundlarge].
+
+STR-456540
+You are facing stiff competition to purchase [%person#1]. [%club#1] have made the current highest offer, a sum of [%cash#1-short-roundlarge].
+
+STR-456541
+You are facing stiff competition to purchase [%person#1]. Your bid of [%cash#1-short-roundlarge] is currently the highest.
+
+STR-456542
+There are two clubs competing for the purchase of [%person#1].
+
+STR-456543
+There are several clubs still competing to purchase [%person#1].
+
+STR-456544
+[%club#1] are the only remaining team interested in purchasing [%person#1]. However your current offer of [%cash#1-short-roundlarge] is below [%club#2-short]{s} stated valuation of [%cash#2-short-roundlarge].
+
+STR-456545
+[%club#1] are the only remaining team interested in purchasing [%person#1]. However their current offer of [%cash#1-short-roundlarge] is below [%club#2-short]{s} stated valuation of [%cash#2-short-roundlarge].
+
+STR-456546
+[%club#1] are the only remaining team interested in purchasing [%person#1]. The agreed transfer valuation is [%cash#1-short-roundlarge].
+
+STR-456547
+[%club#1] have lost patience with negotiations and are not interested in further discussions about selling [%person#1] at this time.
+
+STR-456548
+[%club#1] has been unable to reach an agreement with any club regarding the sale of [%person#1]
+
+STR-456551
+Transfer Info
+
+STR-456552
+Club Squad - Happiness
+
+STR-456553
+Club Squad - Transfer Status
+
+STR-456554
+Club Squad - Training
+
+STR-456555
+Club Squad - Training (Off-Season)
+
+STR-456556
+Club Squad - Physical Attributes
+
+STR-456557
+Club Squad - Goalkeeper Attributes
+
+STR-456558
+Club Squad - Technical Attributes
+
+STR-456559
+Club Squad - Mental Attributes
+
+STR-456560
+Nation Squad - Physical Attributes
+
+STR-456561
+Nation Squad - Goalkeeper Attributes
+
+STR-456562
+Nation Squad - Technical Attributes
+
+STR-456563
+Nation Squad - Mental Attributes
+
+STR-456564
+Deutsch
+
+STR-456583
+Finish in the [%stage_name#1]
+
+STR-456584
+The minimum expectation is for the team to finish in the [%stage_name#1].
+
+STR-456585
+The minimum expectation is for the team to finish in the [%stage_name#1] of the [%comp#1-short].
+
+STR-456586
+To make matters worse, we now only expect the team to end up finishing in the [%stage_name#1] of the [%comp#1-short].
+
+STR-456591
+The board are satisfied that the team currently find themselves in the [%stage_name#1] of the [%comp#1-short].
+
+STR-456593
+The board are disappointed that the team finished in the [%stage_name#1] of the [%comp#1-short] this season.
+
+STR-456594
+The board are extremely disappointed that the team is currently only on course to finish in the [%stage_name#1] of the [%comp#1-short] this season.
+
+STR-456595
+The board are very disappointed that the team is currently only on course to finish in the [%stage_name#1] of the [%comp#1-short] this season.
+
+STR-456596
+The board are disappointed that the team is currently only on course to finish in the [%stage_name#1] of the [%comp#1-short] this season.
+
+STR-456597
+The board are content that the team have a chance of staying clear of the [%stage_name#1] of the [%comp#1-short] this season.
+
+STR-460810
+Could not find any rules for [%number#1] [%comp#1] ([%number#2] teams)
+
+STR-460812
+Players must be [%number#1] or younger on [%date#1-short]
+
+STR-460867
+Contract Length Rules
+
+STR-460869
+All previously accumulated disciplinary points are cleared for this stage
+
+STR-460870
+Matches will use Goal-line Technology for checking valid goals
+
+STR-460871
+Matches have Video Assistant Referees (VAR)
+
+STR-460872
+Televised matches use Goal-line Technology for checking valid goals
+
+STR-460873
+Televised matches have Video Assistant Referees (VAR)
+
+STR-460874
+Players may be allowed to play for the parent club in cup matches whilst on loan
+
+STR-460875
+Under-[%number#1] players may be allowed to play for the parent club in cup matches whilst on loan
+
+STR-460876
+Teams may loan in additional players to fulfil minimum squad size requirements
+
+STR-460877
+Managers cannot work for two teams in the same division in the same season
+
+STR-460878
+Free agents may be registered at any time
+
+STR-460879
+Managers cannot work for three teams in the same division in the same season
+Polish Reference:
+STR-456524
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączył do nich [%male#1]. Złożona przez nich oferta w wysokości [%cash#1-short-roundlarge] jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączyła do nich [%female#1]. Złożona przez nich oferta w wysokości [%cash#1-short-roundlarge] jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+
+STR-456525
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączył do nich [%male#1]. Złożona przez nich oferta wynosi [%cash#1-short-roundlarge].
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączyła do nich [%female#1]. Złożona przez nich oferta wynosi [%cash#1-short-roundlarge].
+
+STR-456526
+Na tę chwilę żaden klub nie jest już zainteresowany tym, by dołączył do nich [%male#1].
+Na tę chwilę żaden klub nie jest już zainteresowany tym, by dołączyła do nich [%female#1].
+
+STR-456528
+Pragniesz, by do twojego zespołu dołączył [%male#1].
+Pragniesz, by do twojego zespołu dołączyła [%female#1].
+
+STR-456529
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%male#1]. Zaoferowaliście po [%cash#1-short-roundlarge].
+Dwa kluby nadal są zainteresowane tym, by dołączyła do nich [%female#1]. Zaoferowaliście po [%cash#1-short-roundlarge].
+
+STR-456530
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%male#1] ([%club#1-short]). Złożyłeś ofertę w wysokości [%cash#1-short-roundlarge], która jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+Dwa kluby nadal są zainteresowane tym, by dołączyła do nich [%female#1] ([%club#1-short]). Złożyłeś ofertę w wysokości [%cash#1-short-roundlarge], która jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+
+STR-456531
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%male#1]. Zaoferowaliście po [%cash#1-short-roundlarge].
+Dwa kluby nadal są zainteresowane tym, by dołączyła do nich do nich [%female#1]. Zaoferowaliście po [%cash#1-short-roundlarge].
+
+STR-456532
+Kilka klubów nadal rywalizuje z tobą o to, by dołączył do nich [%male#1] ([%club#1]). Najwyższe otrzymane oferty opiewają na kwotę [%cash#1-short-roundlarge], która jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+Kilka klubów nadal rywalizuje z tobą o to, by dołączyła do nich [%female#1] ([%club#1]). Najwyższe otrzymane oferty opiewają na kwotę [%cash#1-short-roundlarge], która jest mniejsza niż jej oficjalna wartość ([%cash#2-short-roundlarge]).
+
+STR-456533
+Twój klub jest jednym z kilku walczących o to, by ich zespół wzmocnił [%male#1].
+Twój klub jest jednym z kilku walczących o to, by ich zespół wzmocniła [%female#1].
+
+STR-456534
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%male#1] ([%club#1]). Złożyłeś najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+Dwa kluby nadal są zainteresowane tym, by dołączyła do nich [%female#1] ([%club#1]). Złożyłeś najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+
+STR-456535
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączył [%male#1] ([%club#2]). [%club#1-short]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączyła [%female#1] ([%club#2]). [%club#1-short]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+
+STR-456536
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%male#1]. Na tę chwilę twoja oferta jest najwyższa.
+Dwa kluby nadal są zainteresowane tym, by dołączyła do nich [%female#1]. Na tę chwilę twoja oferta jest najwyższa.
+
+STR-456537
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączył [%male#1]. Na tę chwilę [%club#1-short]{złożył} najwyższą ofertę.
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączyła [%female#1]. Na tę chwilę [%club#1-short]{złożył} najwyższą ofertę.
+
+STR-456538
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączył [%male#1] ([%club#2-short]). [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączyła [%female#1] ([%club#2-short]). [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+
+STR-456539
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączył [%male#1] ([%club#2-short]). Póki co złożyłeś najwyższą ofertę w wysokości [%cash#1-short-roundlarge], lecz jest ona mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączyła [%female#1] ([%club#2-short]). Póki co złożyłeś najwyższą ofertę w wysokości [%cash#1-short-roundlarge], lecz jest ona mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+
+STR-456540
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączył [%male#1]. Na tę chwilę [%club#1]{złożył} najwyższą ofertę w wysokości [%cash#1-short-roundlarge].
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączyła [%female#1]. Na tę chwilę [%club#1]{złożył} najwyższą ofertę w wysokości [%cash#1-short-roundlarge].
+
+STR-456541
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączył [%male#1]. Póki co złożyłeś najwyższą ofertę w wysokości [%cash#1-short-roundlarge].
+Czeka cię ostra rywalizacja, jeśli chcesz, by do twojego zespołu dołączyła [%female#1]. Póki co złożyłeś najwyższą ofertę w wysokości [%cash#1-short-roundlarge].
+
+STR-456542
+Dwa kluby rywalizują o to, by do ich zespołu dołączył [%male#1].
+Dwa kluby rywalizują o to, by do ich zespołu dołączyła [%female#1].
+
+STR-456543
+Nadal jest kilka klubów zainteresowanych tym, by dołączył do nich [%male#1].
+Nadal jest kilka klubów zainteresowanych tym, by dołączyła do nich [%female#1].
+
+STR-456544
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączył do nich [%male#1] ([%club#2-short]). Złożona przez ciebie oferta w wysokości [%cash#1-short-roundlarge] jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączyła do ciebie [%female#1] ([%club#2-short]). Złożona przez nich oferta w wysokości [%cash#1-short-roundlarge] jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+
+STR-456545
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączył do nich [%male#1] ([%club#2-short]). Złożona przez nich oferta w wysokości [%cash#1-short-roundlarge] jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączyła do nich [%female#1] ([%club#2-short]). Złożona przez nich oferta w wysokości [%cash#1-short-roundlarge] jest mniejsza niż jego oficjalna wartość ([%cash#2-short-roundlarge]).
+
+STR-456546
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączył do nich [%male#1]. Uzgodniona wartość transferu wynosi [%cash#1-short-roundlarge].
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączyła do nich [%female#1]. Uzgodniona wartość transferu wynosi [%cash#1-short-roundlarge].
+
+STR-456547
+[%club#1]{stracił} cierpliwość do negocjacji i działacze nie są już zainteresowani rozmowami, którzy przedmiotem miałby być [%male#1].
+[%club#1]{stracił} cierpliwość do negocjacji i działacze nie są już zainteresowani rozmowami, którzy przedmiotem miałaby być [%female#1].
+
+STR-456548
+[%club#1]{nie zdołał} osiągnąć porozumienia z żadnym klubem w kwestii transferu, którego przedmiotem miałby być [%male#1].
+[%club#1]{nie zdołał} osiągnąć porozumienia z żadnym klubem w kwestii transferu, którego przedmiotem miałaby być [%female#1].
+
+STR-456551
+Informacje transferowe
+
+STR-456552
+Zadowolenie (klub)
+
+STR-456553
+Status transferowy (klub)
+
+STR-456554
+Trening (klub)
+
+STR-456555
+Trening poza sezonem (klub)
+
+STR-456556
+Atrybuty fizyczne (klub)
+
+STR-456557
+Atrybuty bramkarskie (klub)
+
+STR-456558
+Atrybuty techniczne (klub)
+
+STR-456559
+Atrybuty psychiczne (klub)
+
+STR-456560
+Atrybuty fizyczne (reprezentacja)
+
+STR-456561
+Atrybuty bramkarskie (reprezentacja)
+
+STR-456562
+Atrybuty techniczne (reprezentacja)
+
+STR-456563
+Atrybuty psychiczne (reprezentacja)
+
+STR-456564
+Deutsch
+
+STR-456583
+Miejsce w: [%stage_name#1]
+
+STR-456584
+Nasze oczekiwania to co najmniej [%stage_name#1].
+
+STR-456585
+Nasze oczekiwania to co najmniej [%stage_name#1] ([%comp#1-short]).
+
+STR-456586
+Co gorsza, nie oczekujemy już niczego więcej niż [%stage_name#1] ([%comp#1-short]).
+
+STR-456591
+Zarząd jest usatysfakcjonowany tym, że gdyby rozgrywki skończyły się dzisiaj, zespół osiągnąłby wynik tak dobry jak [%stage_name#1] ([%comp#1-short]).
+
+STR-456593
+Zarząd jest rozczarowany tym, że w chwili obecnej zespołu nie było stać na wynik lepszy niż [%stage_name#1] ([%comp#1-short]).
+
+STR-456594
+Zarząd jest skrajnie rozczarowany tym, że w chwili obecnej zespołu nie stać na wynik lepszy niż [%stage_name#1] ([%comp#1-short]).
+
+STR-456595
+Zarząd jest bardzo rozczarowany tym, że w chwili obecnej zespołu nie stać na wynik lepszy niż [%stage_name#1] ([%comp#1-short]).
+
+STR-456596
+Zarząd jest rozczarowany tym, że w chwili obecnej zespołu nie stać na wynik lepszy niż [%stage_name#1] ([%comp#1-short]).
+
+STR-456597
+Zarząd jest usatysfakcjonowany tym, że zespół ma w tym sezonie szansę na wynik lepszy niż [%stage_name#1] ([%comp#1-short]).
+
+STR-460810
+Nie znaleziono żadnych zasad dla turnieju [%comp#1] [%number#1] (liczba zespołów: [%number#2])
+
+STR-460812
+Piłkarze nie mogą mieć powyżej [%number#1] lat [%date#1-short]
+
+STR-460867
+Zasady długości kontraktu
+
+STR-460869
+Wszystkie wcześniej zebrane punkty dyscyplinarne są kasowane przed tą fazą
+
+STR-460870
+Mecze korzystają z systemu goal-line, by weryfikować prawidłowość zdobycia bramek
+
+STR-460871
+Mecze korzystają z systemu VAR
+
+STR-460872
+Mecze transmitowane w telewizji korzystają z systemu goal-line, by weryfikować prawidłowość zdobycia bramek
+
+STR-460873
+Mecze transmitowane w telewizji korzystają z systemu VAR
+
+STR-460874
+Piłkarze mogą być dopuszczeni do gry w macierzystym klubie w meczach pucharowych w trakcie wypożyczenia
+
+STR-460875
+Piłkarze U-[%number#1] mogą być dopuszczeni do gry w macierzystym klubie w meczach pucharowych w trakcie wypożyczenia
+
+STR-460876
+Kluby mogą wypożyczać dodatkowych piłkarzy, by wypełnić wymagania minimalnej liczebności składu
+
+STR-460877
+Menedżerowie nie mogą pracować w dwóch klubach w tej samej lidze w jednym sezonie.
+
+STR-460878
+Piłkarze sprowadzeni z wolnego transferu mogą być rejestrowani bez ograniczeń czasowych
+
+STR-460879
+Menedżerowie nie mogą pracować w trzech klubach w tej samej lidze w jednym sezonie.

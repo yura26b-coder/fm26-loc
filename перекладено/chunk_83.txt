@@ -1,0 +1,517 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-443088
+We are particularly weak in defensive areas
+
+STR-443090
+We are lacking quality in the midfield
+
+STR-443091
+We have lacking quality in central midfield areas
+
+STR-443093
+We are lacking in depth on the left wing
+
+STR-443094
+We are lacking in depth on the right-wing
+
+STR-443095
+We are lacking quality in attacking areas
+
+STR-443096
+Lacking depth in the [%position#1-lowercase] position
+
+STR-443098
+Shortlist
+
+STR-443099
+They are very happy with the current crop of players and believe everything is in place to bounce back from relegation.
+
+STR-443101
+They believe that we have a strong squad with a great mentality, but are slightly concerned they may lack the technical quality to step up to {the}[%comp#1-short].
+
+STR-443102
+They are concerned that while our players are technically gifted, the squad lacks the mentality and strength in depth to be able to cope with the demands of {the}[%comp#1-short].
+
+STR-443103
+They are concerned that the squad lacks the mentality and strength in depth to be able to cope with the demands of {the}[%comp#1-short].
+
+STR-443104
+They are concerned that while our squad depth is sufficient, the current crop of players may lack both the technical ability and mentality to handle the step up to {the}[%comp#1-short].
+
+STR-443105
+They are concerned that the current crop of players may lack both the technical ability and mentality to handle the step up to {the}[%comp#1-short].
+
+STR-443106
+They are happy with the strength of the squad, but are somewhat concerned that the team may lack the technical qualities to handle the clubs promotion to the [%comp#1-short].
+
+STR-443108
+ENG
+
+STR-443109
+KOR
+
+STR-443111
+ENG
+
+STR-443114
+[%club#1] fans gathered outside of the club's ground as boss [%string#1 Manager Name (eg. George Burley)] confirmed the transfer of [%string#2 Player Name (eg. Roy Keane)].\n\nA spokesman for the supporters underlined the importance that the fans attach to big-name signings, saying they are seen as signals of the club's ambition.
+
+STR-443119
+The Defensive Midfielder's main duties are to protect the defensive line from breaking attackers by closing then down quickly and to support the creative midfielders when in possession.
+
+STR-443122
+[%person#1-surname] believes that [%person#2-surname] would be a fantastic loan signing.
+
+STR-443124
+[%person#1-surname] believes that [%person#2-surname] would be a quality loan signing.
+
+STR-443126
+[%person#1-surname] believes that [%person#2-surname] would be a good loan signing.
+
+STR-443128
+[%person#1-surname] believes that [%person#2-surname] would be a fairly good loan signing.
+
+STR-443130
+[%person#1-surname] believes that [%person#2-surname] would be a useful loan signing.
+
+STR-443131
+World Best Eleven
+
+STR-443134
+Tap tactical role to assign to this position
+
+STR-443873
+This is even more impressive when accounting for the poor run the club ended the season on.
+
+STR-443874
+However, we do hope that the poor run the team finds itself on will come to end soon before we start dropping down the table.
+
+STR-443875
+This is even more impressive when accounting for the poor run the team is currently on.
+
+STR-443876
+There is no doubt that the fine run of results at the end of the season helped us in overachieving.
+
+STR-443877
+However, if this good run of results continues, we could find ourselves in an even better position.
+
+STR-443878
+There is no doubt that the fine run of results the team has put together of late has contributed to our overachievement.
+
+STR-443879
+However, we at one stage looked to be title challengers, so we shouldn't get too carried away.
+
+STR-443880
+However, we at one stage looked like qualifying for the [%comp#1-short], so we shouldn't get too carried away.
+
+STR-443881
+However, we at one stage looked a good bet for promotion, so we shouldn't get too carried away.
+
+STR-443882
+Considering we looked like relegation strugglers earlier this season, this success is even more impressive.
+
+STR-443883
+Unfortunately the good run of results came too late in the season to prevent it being a campaign of underachievement.
+
+STR-443884
+Hopefully the current run of good results can get us back to where we should be in the table.
+
+STR-443885
+Unfortunately the current run of good results won't be enough to move us back up the table to where we should be.
+
+STR-443886
+The poor run the team ended the season on was a significant factor in our under-achievement overall.
+
+STR-443887
+We are worried that this poor run the team is currently on could see us underachieving more than we are currently.
+
+STR-443888
+The poor run the team is currently on is not helping the club's overall performance levels.
+
+STR-443889
+The under-achievement is compounded by the fact that we looked like title challengers earlier in the campaign.
+
+STR-443890
+The under-achievement is compounded by the fact that we looked like qualifying for the [%comp#1-short] earlier in the campaign.
+
+STR-443891
+The under-achievement is compounded by the fact that we looked to be on course for promotion earlier in the campaign.
+
+STR-443892
+However, considering we looked like relegation candidates earlier in the campaign, things could have been worse.
+
+STR-443893
+Thanks to the poor run of form the club finished the season on, there is a tangible sense of relief that the campaign is now over.
+
+STR-443894
+Hopefully the team's poor current run of form is arrested before we start to slide down the table.
+
+STR-443895
+Fortunately the poor run of current form being experienced by the team is unlikely to impact our league standing.
+
+STR-443896
+It is a shame the season has ended as the strong run of form shown by the team over the final few games could have taken us to even greater heights.
+
+STR-443897
+However, if this good run of form continues, we could find ourselves climbing up the table.
+
+STR-443898
+We are also pleased to see the team in good form and on course to achieve our targets for the season.
+
+STR-443899
+However, at one point we looked like serious title contenders, so that does take some of the shine off the achievement overall.
+
+STR-443900
+However, at one point we looked like qualifying for the [%comp#1-short], so that does take some of the shine off the achievement overall.
+
+STR-443901
+However, at one point we looked like serious promotion contenders, so that does take some of the shine off the achievement overall.
+
+STR-445088
+Wrong number of teams ([%number#2]) found for stage [%number#1] of [%comp#1-long] ([%number#3] required)
+
+STR-445089
+New stage [%number#1] for [%comp#1-long] can't find enough teams to be created. [%number#2] teams found, [%number#3] needed
+
+STR-445090
+Wrong number of qualified teams ([%number#1]) found for competition ([%number#2] required)
+
+STR-445093
+(Excluding B Teams)
+
+STR-445094
+Not enough dates ([%number#1]) in [%comp#1] for custom fixture plan - [%number#2] needed
+
+STR-445095
+Home Goals Scored
+
+STR-445096
+(penalties to be taken in A-B-B-A format)
+
+STR-445121
+U23
+
+STR-445122
+U21
+
+STR-445123
+U20
+
+STR-445124
+U19
+
+STR-445125
+U18
+
+STR-445126
+U17
+
+STR-445127
+B
+
+STR-445139
+Moving on up
+
+STR-445140
+To unlock this achievement you have to unlock the Superstar starting reputation by serving over 5 years at a club and gaining a World Class reputation.
+
+STR-445150
+[%club#1] best eleven announced
+
+STR-445151
+[%person#1] inducted into [%club#1] overall best eleven
+
+STR-445152
+Two players inducted into [%club#1] overall best eleven
+
+STR-445153
+Several players inducted into [%club#1] overall best eleven
+
+STR-445163
+International Awards
+
+STR-445164
+All-Time
+
+STR-445171
+On top of the world
+
+STR-445173
+[%person#1-surname] leads by example
+Polish Reference:
+STR-443088
+Jesteśmy szczególnie słabi w defensywie
+
+STR-443090
+Brakuje nam klasowych zawodników w drugiej linii
+
+STR-443091
+Brakuje nam klasowych zawodników na środku pomocy
+
+STR-443093
+Dysponujemy niewystarczającą głębią składu na lewej pomocy
+
+STR-443094
+Dysponujemy niewystarczającą głębią składu na prawej pomocy
+
+STR-443095
+Brakuje nam klasowych zawodników w ofensywie
+
+STR-443096
+{upper}[%position#1-lowercase] to pozycja, którą mamy kiepsko obsadzoną
+
+STR-443098
+Lista życzeń
+
+STR-443099
+Jest bardzo zadowolony z postawy wszystkich zawodników i uważa, że awans bezpośrednio po spadku z ligi jest jak najbardziej w ich zasięgu.
+
+STR-443101
+Uważa, że dysponujemy mocnym zespołem o świetnej mentalności, lecz może zabraknąć mu umiejętności technicznych, by poradzić sobie w: [%comp#1-short].
+
+STR-443102
+Obawia się, że choć nasi piłkarze są uzdolnieni technicznie, brakuje im odpowiedniej mentalności i głębi składu, by sprostać trudom gry w: [%comp#1-short].
+
+STR-443103
+Obawia się, że zespołowi brakuj im odpowiedniej mentalności i głębi składu, by sprostać trudom gry w: [%comp#1-short].
+
+STR-443104
+Obawia się, że choć dysponujemy odpowiednią głębią składu, naszym zawodnikom brakuje tak umiejętności technicznych, jak i właściwej mentalności, by poradzić sobie w: [%comp#1-short].
+
+STR-443105
+Obawia się, że naszym zawodnikom brakuje tak umiejętności technicznych, jak i właściwej mentalności, by poradzić sobie w: [%comp#1-short].
+
+STR-443106
+Jest zadowolony z siły zespołu, lecz jeśli chcemy poradzić sobie z awansem do: [%comp#1-short], braki techniczne w drużynie powinny budzić w nas pewne zaniepokojenie.
+
+STR-443108
+ANG
+
+STR-443109
+KOR
+
+STR-443111
+ANG
+
+STR-443114
+Kibice zgromadzili się pod siedzibą klubu, by usłyszeć na własne uszy, jak menedżer [%string#1 Manager Name (eg. George Burley)] ([%club#1]) ogłasza, że zespół wzmocni [%string#2 Player Name (eg. Roy Keane)].\n\nIch rzecznik zauważył, że kibice przywiązują wielką wagę do głośnych transferów, traktując je jako wyznacznik klubowej ambicji.
+
+STR-443119
+Defensywny pomocnik ma za zadanie przede wszystkim neutralizację ruszających do ataku napastników przeciwnika poprzez ograniczenie im swobody ruchu, a także wspieranie bardziej kreatywnych pomocników, gdy jego zespół jest przy piłce.
+
+STR-443122
+[%male#1-surname] uważa, że gdyby [%male#2-surname] przyszedł do nas na wypożyczenie, byłoby to fantastycznym ruchem z naszej strony.
+[%male#1-surname] uważa, że gdyby [%female#2-surname] przyszła do nas na wypożyczenie, byłoby to fantastycznym ruchem z naszej strony.
+[%female#1-surname] uważa, że gdyby [%male#2-surname] przyszedł do nas na wypożyczenie, byłoby to fantastycznym ruchem z naszej strony.
+[%female#1-surname] uważa, że gdyby [%female#2-surname] przyszła do nas na wypożyczenie, byłoby to fantastycznym ruchem z naszej strony.
+
+STR-443124
+[%male#1-surname] uważa, że gdyby [%male#2-surname] przyszedł do nas na wypożyczenie, byłoby to doskonałym ruchem z naszej strony.
+[%male#1-surname] uważa, że gdyby [%female#2-surname] przyszła do nas na wypożyczenie, byłoby to doskonałym ruchem z naszej strony.
+[%female#1-surname] uważa, że gdyby [%male#2-surname] przyszedł do nas na wypożyczenie, byłoby to doskonałym ruchem z naszej strony.
+[%female#1-surname] uważa, że gdyby [%female#2-surname] przyszła do nas na wypożyczenie, byłoby to doskonałym ruchem z naszej strony.
+
+STR-443126
+[%male#1-surname] uważa, że gdyby [%male#2-surname] przyszedł do nas na wypożyczenie, byłoby to dobrym ruchem z naszej strony.
+[%male#1-surname] uważa, że gdyby [%female#2-surname] przyszła do nas na wypożyczenie, byłoby to dobrym ruchem z naszej strony.
+[%female#1-surname] uważa, że gdyby [%male#2-surname] przyszedł do nas na wypożyczenie, byłoby to dobrym ruchem z naszej strony.
+[%female#1-surname] uważa, że gdyby [%female#2-surname] przyszła do nas na wypożyczenie, byłoby to dobrym ruchem z naszej strony.
+
+STR-443128
+[%male#1-surname] uważa, że gdyby [%male#2-surname] przyszedł do nas na wypożyczenie, byłoby to w miarę dobrym ruchem z naszej strony.
+[%male#1-surname] uważa, że gdyby [%female#2-surname] przyszła do nas na wypożyczenie, byłoby to w miarę dobrym ruchem z naszej strony.
+[%female#1-surname] uważa, że gdyby [%male#2-surname] przyszedł do nas na wypożyczenie, byłoby to w miarę dobrym ruchem z naszej strony.
+[%female#1-surname] uważa, że gdyby [%female#2-surname] przyszła do nas na wypożyczenie, byłoby to w miarę dobrym ruchem z naszej strony.
+
+STR-443130
+[%male#1-surname] uważa, że gdyby [%male#2-surname] przyszedł do nas na wypożyczenie, byłoby to z korzyścią dla zespołu.
+[%male#1-surname] uważa, że gdyby [%female#2-surname] przyszła do nas na wypożyczenie, byłoby to z korzyścią dla zespołu.
+[%female#1-surname] uważa, że gdyby [%male#2-surname] przyszedł do nas na wypożyczenie, byłoby to z korzyścią dla zespołu.
+[%female#1-surname] uważa, że gdyby [%female#2-surname] przyszła do nas na wypożyczenie, byłoby to z korzyścią dla zespołu.
+
+STR-443131
+Najlepsza jedenastka na świecie
+
+STR-443134
+Stuknij w rolę taktyczną, by przydzielić ją tej pozycji
+
+STR-443873
+Robi to tym większe wrażenie, gdy weźmie się pod uwagę serię niekorzystnych wyników w końcówce sezonu.
+
+STR-443874
+Mamy wszakże nadzieję, że obecna seria niekorzystnych wyników zostanie przerwana, zanim zaczniemy się obsuwać w tabeli.
+
+STR-443875
+Robi to tym większe wrażenie, gdy weźmie się pod uwagę obecną serię niekorzystnych wyników.
+
+STR-443876
+Bez cienia wątpliwości to seria korzystnych wyników w końcówce sezonu przyczyniła się do przekroczenia przez zespół przedsezonowych oczekiwań.
+
+STR-443877
+Jednakże jeśli obecna seria korzystnych wyników potrwa dłużej, możemy znaleźć się w jeszcze lepszym położeniu.
+
+STR-443878
+Bez cienia wątpliwości to seria korzystnych wyników w ostatnim czasie przyczyniła się do przekroczenia przez zespół przedsezonowych oczekiwań.
+
+STR-443879
+Jednakże we wcześniejszej fazie sezonu mieliśmy nawet szansę na mistrzostwo, więc nie dajmy się ponieść entuzjazmowi.
+
+STR-443880
+Jednakże we wcześniejszej fazie sezonu mieliśmy nawet szansę na zakwalifikowanie się do pucharów ([%comp#1-short]), więc nie dajmy się ponieść entuzjazmowi.
+
+STR-443881
+Jednakże we wcześniejszej fazie sezonu mieliśmy nawet szansę na awans, więc nie dajmy się ponieść entuzjazmowi.
+
+STR-443882
+Jako że we wcześniejszej fazie sezonu zanosiło się na walkę o utrzymanie, obecny sukces jest tym bardziej godny uznania.
+
+STR-443883
+Niestety seria dobrych wyników przyszła zbyt późno, by zespół zrealizował wyznaczone cele.
+
+STR-443884
+Miejmy nadzieję, że obecna seria dobrych wyników pomoże zespołowi w powrocie na należne mu miejsce.
+
+STR-443885
+Niestety obecna seria dobrych wyników nie wystarczy, by zespół zajął należne mu miejsce.
+
+STR-443886
+Seria niekorzystnych wyników na zakończenie sezonu walnie przyczyniła się do niepowodzenia w realizacji celów na ten sezon.
+
+STR-443887
+Martwimy się, że obecna seria niekorzystnych wyników może jeszcze bardziej oddalić nas od realizacji celów na ten sezon.
+
+STR-443888
+Obecna seria niekorzystnych wyników nie pomaga klubowi w realizacji wyznaczonych celów.
+
+STR-443889
+Rozczarowanie potęguje fakt, że we wcześniejszej fazie sezonu wyglądało na to, że będziemy walczyć o mistrzostwo.
+
+STR-443890
+Rozczarowanie potęguje fakt, że we wcześniejszej fazie sezonu wyglądało na to, że będziemy walczyć o prawo gry w pucharach ([%comp#1-short]).
+
+STR-443891
+Rozczarowanie potęguje fakt, że we wcześniejszej fazie sezonu wyglądało na to, że będziemy walczyć o awans.
+
+STR-443892
+Jednakże skoro we wcześniejszej fazie sezonu wymieniani byliśmy w gronie kandydatów do spadku, mogło być gorzej.
+
+STR-443893
+Seria niekorzystnych wyników w końcówce sezonu sprawiła, że jego koniec powitano w klubie z nieskrywaną ulgą.
+
+STR-443894
+Miejmy nadzieję, że obecna seria niekorzystnych wyników zostanie przerwana, zanim zaczniemy się obsuwać w tabeli.
+
+STR-443895
+Na szczęście obecna seria niekorzystnych wyników nie powinna zaszkodzić naszej pozycji w tabeli.
+
+STR-443896
+Wielka szkoda, że sezon się już skończył, bo nasza dobra passa w jego końcówce mogła jeszcze bardziej poprawić naszą pozycję w tabeli.
+
+STR-443897
+Jednakże jeśli obecna dobra forma się utrzyma, powinniśmy awansować w tabeli.
+
+STR-443898
+Jesteśmy zadowoleni z tego, że zespół jest w dobrej formie i realizuje wyznaczone mu cele.
+
+STR-443899
+Jednakże w pewnym momencie wyglądało na to, że będziemy na poważnie walczyć o mistrzostwo, co nieco przytłumia radość z tego osiągnięcia.
+
+STR-443900
+Jednakże w pewnym momencie wyglądało na to, że będziemy na poważnie walczyć o prawo gry w: [%comp#1-short], co nieco przytłumia radość z tego osiągnięcia.
+
+STR-443901
+Jednakże w pewnym momencie wyglądało na to, że będziemy na poważnie walczyć o awans, co nieco przytłumia radość z tego osiągnięcia.
+
+STR-445088
+[%comp#1-long]: Błędna liczba zespołów ([%number#2]) w fazie [%number#1] rozgrywek (potrzebnych [%number#3]).
+
+STR-445089
+[%comp#1-long]: Zbyt mała liczba zespołów ([%number#2]), by utworzyć fazę [%number#1] rozgrywek (potrzebnych [%number#3]).
+
+STR-445090
+Błędna liczba zakwalifikowanych zespołów (znaleziono [%number#1], potrzebnych [%number#2])
+
+STR-445093
+(bez zespołów rezerw)
+
+STR-445094
+Zbyt mała liczba terminów ([%number#1]) w rozgrywkach ([%comp#1]), by stworzyć niestandardowy terminarz - potrzebne [%number#2]
+
+STR-445095
+Bramki u siebie
+
+STR-445096
+(rzuty karne w formacie A-B-B-A)
+
+STR-445121
+U-23
+
+STR-445122
+U-21
+
+STR-445123
+U-20
+
+STR-445124
+U-19
+
+STR-445125
+U-18
+
+STR-445126
+U-17
+
+STR-445127
+B
+
+STR-445139
+Zmierza na szczyt
+
+STR-445140
+Aby odblokować to osiągnięcie, musisz odblokować początkową reputację Supergwiazdy poprzez pracę w klubie przez 5 lat i osiągnięcie światowej reputacji.
+
+STR-445150
+[%club#1]{ogłasza} jedenastkę marzeń
+
+STR-445151
+[%club#1]: [%male#1] w jedenastce wszech czasów
+
+STR-445152
+[%club#1]: Dwóch piłkarzy w jedenastce wszech czasów
+
+STR-445153
+[%club#1]: Kilku piłkarzy w jedenastce wszech czasów
+
+STR-445163
+Nagrody międzynarodowe
+
+STR-445164
+Wszech czasów
+
+STR-445171
+Na samym szczycie
+
+STR-445173
+[%male#1-surname] świeci przykładem

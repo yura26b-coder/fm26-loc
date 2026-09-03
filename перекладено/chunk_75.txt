@@ -1,0 +1,505 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-438680
+[%date#1-medium_no_year] ([%string#1 - number of days to go until this date])
+
+STR-438683
+Player Achievements (Continental)
+
+STR-438684
+Player Achievements (Domestic)
+
+STR-438685
+Achievements (Continental)
+
+STR-438686
+Achievements (Domestic)
+
+STR-438687
+[%award#1-short]
+
+STR-438688
+Continental
+
+STR-438689
+Domestic
+
+STR-438692
+Buyout ([%cash#1-short-roundlarge])
+
+STR-438693
+Buyout (Free)
+
+STR-438694
+Assistant Renews
+
+STR-438695
+Scout All
+
+STR-438696
+There are no released players of interest
+
+STR-438697
+There are no players who have expiring contracts
+
+STR-438698
+Former Club
+
+STR-438699
+Contract Renewal Shortlist
+
+STR-438701
+Released Youth Player Recommendations
+
+STR-438702
+In awe of [%person#1]
+
+STR-438703
+Starstruck around [%person#1]
+
+STR-438705
+Superstar (World Class)
+
+STR-438706
+Household Name (Continental)
+
+STR-438707
+Normal (Local)
+
+STR-438708
+Resolution
+
+STR-438709
+1080p
+
+STR-438710
+HD 720p
+
+STR-438711
+iPad
+
+STR-438712
+iPhone 4/S
+
+STR-438713
+WVGA
+
+STR-438715
+SD
+
+STR-438716
+Manager Starting Reputation
+
+STR-438718
+Basque
+
+STR-438722
+There are two clubs still interested in purchasing [%string#1 Player name]. Both have offered [%cash#1-short-roundlarge].
+
+STR-438723
+There are two clubs still interested in purchasing [%string#1 Player name]. Both have offered [%cash#1-short-roundlarge] which is below [%person#1-your] stated valuation of [%cash#2-short-roundlarge].
+
+STR-438726
+There are two clubs still interested in purchasing [%string#1 Player name]. [%club#1] have made the current highest offer, a sum of [%cash#1-short-roundlarge] which is below [%person#1-your] stated valuation of [%cash#2-short-roundlarge].
+
+STR-438727
+There are two clubs still interested in purchasing [%string#1 Player name]. [%club#1] are the highest bidders at this time with an offer of [%cash#1-short-roundlarge].
+
+STR-438728
+There are several clubs still interested in purchasing [%string#1 Player name]. [%club#1] have made the current highest offer, a sum of [%cash#1-short-roundlarge] which is below [%person#1-your] stated valuation of [%cash#2-short-roundlarge].
+
+STR-438729
+There are several clubs still interested in purchasing [%string#1 Player name]. [%club#1] are the highest bidders at this time with an offer of [%cash#1-short-roundlarge].
+
+STR-438730
+[%club#1] are the only remaining team interested in purchasing [%string#1 Player name]. Their current offer of [%cash#1-short-roundlarge] is below [%person#1-your] stated valuation of [%cash#2-short-roundlarge].
+
+STR-438731
+[%club#1] are the only remaining team interested in purchasing [%string#1 Player name]. Their current offer is [%cash#1-short-roundlarge].
+
+STR-438733
+Next Available ([%date#1-shortest])
+
+STR-438743
+HD 1280x720
+
+STR-438745
+Released Players
+
+STR-438746
+Released Youth
+
+STR-438747
+Contract Renewal
+
+STR-438749
+Please select the award to view
+
+STR-438750
+The board have faith in [%person#1-your] managerial talent, but they are concerned about whether the club's stars will respect someone of [%person#1-your] stature.
+
+STR-438751
+The board believe [%person#1-you] have the raw aptitude to succeed at the club despite [%person#1-your] lack of experience.
+
+STR-438752
+The board see [%person#1-you] as an interim manager and are expecting to sign a more experienced coach to succeed [%person#1-you] at the club next season.
+
+STR-438753
+The board are delighted that a manager of [%person#1-your] calibre has considered the club and they look forward to seeing [%person#1-you] take us onwards and upwards.
+
+STR-438754
+The board are pleased that a manager of [%person#1-your] standing has signed on and they look forward to seeing [%person#1-you] revitalise the club.
+
+STR-438755
+The board are pleased that [%person#1-you] have joined the club and are confident that the club's star players will respect [%person#1-your] standing in the football world.
+
+STR-438756
+The board are very happy to have secured a manager of [%person#1-your] calibre and they look forward to seeing [%person#1-you] in action.
+
+STR-438757
+The board are pleased that a manager of [%person#1-your] standing has signed on and they are optimistic about the club's future.
+
+STR-438758
+The board are pleased that [%person#1-you] have joined the club.
+
+STR-438761
+Due to the financial restrictions at the club it is not possible to allocate [%person#1-you] any funds for use in the transfer market at this time.
+
+STR-438762
+The club is unwilling to allow a caretaker manager to spend money upon players at this time.
+
+STR-438763
+They are willing to provide a modest transfer fund of [%cash#1-transferbudget] available to help [%person#1-you] achieve these goals during [%person#1-your] time at the club.
+
+STR-438764
+There is a transfer fund of [%cash#1-transferbudget] available to help [%person#1-you] achieve these goals.
+
+STR-438765
+They have allocated [%person#1-you] a small transfer budget to help [%person#1-you] achieve these goals.
+
+STR-438766
+Due to the financial restrictions at the club they are unable to allocate [%person#1-you] any funds for use in the transfer market at this time.
+
+STR-438779
+[%string#1 - Staff Name] has been relieved of their duties as [%club#1] manager after a disappointing run of recent results.
+
+STR-438781
+The board feel a manager of [%person#1-your] calibre would be able to revitalise the club and attract a better calibre of players to the team.
+
+STR-438782
+The board feel that someone of [%person#1-your] standing could help them fulfil the next stage of their ambitions for the club.
+
+STR-438783
+The board feel confident that the stars will respect [%person#1-your] standing in the football world.
+
+STR-438784
+The board feel that a manager of [%person#1-your] standing can only help the club's stability and they are optimistic about its future.
+
+STR-438785
+The board feel that a manager of [%person#1-your] calibre will help the club progress.
+
+STR-438787
+In order to help [%person#1-you] achieve these goals the board is willing to make [%cash#1-transferbudget] available for purchases.
+
+STR-438788
+View Shortlist
+
+STR-438789
+View List
+
+STR-438884
+[%team#1-short]{s} [%person#1] wins [%award#1-long] for [%date#1-month].
+
+STR-438885
+[%team#1-short]{s} [%person#1] wins [%award#1-long].
+
+STR-438886
+[%club#1] court date announced
+
+STR-438887
+A group of companies owed money by [%club#1] have started proceedings to wind up the club. A court date to resolve the situation is expected to be announced in the near future.\n\nJournalists are requesting a comment from you on the unfolding situation.
+
+STR-438888
+A group of companies owed money by [%club#1] have started proceedings to wind up the club. A court date to resolve the situation is expected to be announced in the near future.\n\nThe team presently has no manager and the current situation is only going to fuel speculation that the rudderless club is doomed.
+
+STR-438889
+A group of companies owed money by [%club#1] have started proceedings to wind up the club. A court date to resolve the situation is expected to be announced in the near future.\n\nManager [%person#1] appealed for calm and indicated that the players have the professionalism to concentrate on their game rather than the off field antics.
+
+STR-438892
+A group of companies owed money by [%club#1] have started proceedings to wind up the club. A court date to resolve the situation is expected to be announced in the near future.\n\nClub manager [%person#1] has not responded to press requests for a statement about the situation.
+
+STR-438894
+[%club#1] winding up petition dismissed
+
+STR-438895
+A winding-up petition against [%club#1] has been dismissed at high court.\n\nThose creditors on the petition have been paid, although it is understood other creditors remain.
+Polish Reference:
+STR-438680
+[%date#1-medium_no_year] ([%string#1 - number of days to go until this date])
+
+STR-438683
+Osiągnięcia piłkarzy (kontynentalne)
+
+STR-438684
+Osiągnięcia piłkarzy (krajowe)
+
+STR-438685
+Osiągnięcia (kontynentalne)
+
+STR-438686
+Osiągnięcia (krajowe)
+
+STR-438687
+[%award#1-short]
+
+STR-438688
+Kontynentalne
+
+STR-438689
+Krajowe
+
+STR-438692
+Wykup ([%cash#1-short-roundlarge])
+
+STR-438693
+Wykup (za darmo)
+
+STR-438694
+Asystent przedłuża
+
+STR-438695
+Obserwuj wszystkich
+
+STR-438696
+Brak rekomendacji
+
+STR-438697
+Brak zawodników z wygasającymi kontraktami
+
+STR-438698
+Były klub
+
+STR-438699
+Lista życzeń przedłużeń kontraktów
+
+STR-438701
+Rekomendacje zwolnionych juniorów
+
+STR-438702
+[%male#1] budzi jego podziw
+
+STR-438703
+[%male#1] jest obiektem jego fascynacji
+[%female#1] jest obiektem jej fascynacji
+
+STR-438705
+Supergwiazda (światowa)
+
+STR-438706
+Znane nazwisko (kontynentalna)
+
+STR-438707
+Normalna (lokalna)
+
+STR-438708
+Rozdzielczość
+
+STR-438709
+1080p
+
+STR-438710
+HD 720p
+
+STR-438711
+iPad
+
+STR-438712
+iPhone 4/S
+
+STR-438713
+WVGA
+
+STR-438715
+SD
+
+STR-438716
+Reputacja początkowa menedżera
+
+STR-438718
+baskijski
+
+STR-438722
+Dwa kluby nadal są zainteresowane pozyskaniem zaw. [%string#1 Player name]. Oba złożyły oferty w wysokości [%cash#1-short-roundlarge].
+
+STR-438723
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%string#1 Player name]. Oba złożyły oferty w wysokości [%cash#1-short-roundlarge], która jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).[%male#1-hidden]
+
+STR-438726
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%string#1 Player name]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).[%male#1-hidden]
+
+STR-438727
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%string#1 Player name]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge],
+
+STR-438728
+Nadal jest kilka klubów zainteresowanych tym, by dołączył do nich [%string#1 Player name]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).[%male#1-hidden]
+
+STR-438729
+Nadal jest kilka klubów zainteresowanych tym, by dołączył do nich [%string#1 Player name]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge].
+
+STR-438730
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączył do nich [%string#1 Player name]. Złożona przez nich oferta w wysokości [%cash#1-short-roundlarge] jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).[%male#1-hidden]
+
+STR-438731
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączył do nich [%string#1 Player name]. Złożona przez nich oferta wynosi [%cash#1-short-roundlarge].
+
+STR-438733
+Najbliższy możliwy ([%date#1-shortest])
+
+STR-438743
+HD 1280x720
+
+STR-438745
+Zwolnieni piłkarze
+
+STR-438746
+Zwolnieni juniorzy
+
+STR-438747
+Przedłużenie kontraktu
+
+STR-438749
+Wybierz nagrodę
+
+STR-438750
+Zarząd ma zaufanie do twoich umiejętności menedżerskich, ale ma obawy, czy klubowe gwiazdy będą szanować kogoś o twojej reputacji.[%male#1-hidden]
+
+STR-438751
+Zarząd uważa, że masz talent, który pozwoli ci na odniesienie sukcesu w klubie mimo braku doświadczenia.[%male#1-hidden]
+
+STR-438752
+Zarząd uważa cię za tymczasowego menedżera i w przyszłym sezonie zamierza sprowadzić na twoje miejsce kogoś bardziej doświadczonego.[%male#1-hidden]
+Zarząd uważa cię za tymczasową menedżerkę i w przyszłym sezonie zamierza sprowadzić na twoje miejsce kogoś bardziej doświadczonego.[%female#1-hidden]
+
+STR-438753
+Zarząd jest zachwycony tym, że menedżer o twojej reputacji zainteresował się pracą w klubie, i już cieszy się na sukcesy, jakie będą twoim udziałem.[%male#1-hidden]
+Zarząd jest zachwycony tym, że menedżerka o twojej reputacji zainteresowała się pracą w klubie, i już cieszy się na sukcesy, jakie będą twoim udziałem.[%female#1-hidden]
+
+STR-438754
+Zarząd jest zadowolony, że menedżer o twojej reputacji dołączył do klubu, i spodziewa się, że zapewnisz mu zastrzyk świeżej energii.[%male#1-hidden]
+Zarząd jest zadowolony, że menedżerka o twojej reputacji dołączyła do klubu, i spodziewa się, że zapewnisz mu zastrzyk świeżej energii.[%female#1-hidden]
+
+STR-438755
+Zarząd jest zadowolony, że menedżer o twojej reputacji dołączył do klubu, i wierzy, że klubowe gwiazdy będą cię darzyć należytym respektem.[%male#1-hidden]
+Zarząd jest zadowolony, że menedżerka o twojej reputacji dołączyła do klubu, i wierzy, że klubowe gwiazdy będą cię darzyć należytym respektem.[%female#1-hidden]
+
+STR-438756
+Zarząd jest bardzo zadowolony z zatrudnienia menedżera o twojej reputacji i już nie może się doczekać, co pokażesz w klubie.[%male#1-hidden]
+Zarząd jest bardzo zadowolony z zatrudnienia menedżerki o twojej reputacji i już nie może się doczekać, co pokażesz w klubie.[%female#1-hidden]
+
+STR-438757
+Zarząd jest zadowolony, że menedżer o twojej reputacji dołączył do klubu, i spogląda z optymizmem w przyszłość.[%male#1-hidden]
+Zarząd jest zadowolony, że menedżerka o twojej reputacji dołączyła do klubu, i spogląda z optymizmem w przyszłość.[%female#1-hidden]
+
+STR-438758
+Zarząd cieszy się, że dołączyłeś do klubu.[%male#1-hidden]
+Zarząd cieszy się, że dołączyłaś do klubu.[%female#1-hidden]
+
+STR-438761
+W związku z trudną sytuacją finansowa klubu udostępnienie ci jakichkolwiek funduszy transferowych nie jest obecnie możliwe.[%male#1-hidden]
+
+STR-438762
+Klub obecnie nie zamierza wyrazić zgody, by menedżer zastępczy wydawał pieniądze na nowych piłkarzy.
+
+STR-438763
+Aby zrealizować te cele, działacze są gotowi oddać do twojej dyspozycji skromny fundusz transferowy w wysokości [%cash#1-transferbudget].[%male#1-hidden]
+
+STR-438764
+Aby zrealizować te cele, dostajesz do dyspozycji fundusz transferowy w wysokości [%cash#1-transferbudget].[%male#1-hidden]
+
+STR-438765
+Działacze przydzielili ci niewielki budżet transferowy, by pomóc ci w realizacji tych celów.[%male#1-hidden]
+
+STR-438766
+W związku z trudną sytuacją finansowa klubu działacze nie są obecnie w stanie udostępnić ci jakichkolwiek funduszy transferowych.[%male#1-hidden]
+
+STR-438779
+[%string#1 - Staff Name] ([%club#1]) został zwolniony z funkcji menedżera po serii rozczarowujących wyników.
+
+STR-438781
+Zarząd uważa, że tak renomowany menedżer jak ty tchnie w klub nowego ducha i przyciągnie do zespołu lepszych zawodników.[%male#1-hidden]
+Zarząd uważa, że tak renomowana menedżerka jak ty tchnie w klub nowego ducha i przyciągnie do zespołu lepszych zawodników.[%female#1-hidden]
+
+STR-438782
+Zarząd uważa, że menedżer o twojej reputacji pomoże klubowi w realizacji jego ambicji.[%male#1-hidden]
+Zarząd uważa, że menedżerka o twojej reputacji pomoże klubowi w realizacji jego ambicji.[%female#1-hidden]
+
+STR-438783
+Zarząd jest przekonany, że klubowe gwiazdy będą cię darzyć należytym respektem.[%male#1-hidden]
+
+STR-438784
+Zarząd jest przekonany, że menedżer o twojej reputacji pozwoli ustabilizować sytuację w klubie, i spogląda z optymizmem w przyszłość.[%male#1-hidden]
+Zarząd jest przekonany, że menedżerka o twojej reputacji pozwoli ustabilizować sytuację w klubie, i spogląda z optymizmem w przyszłość.[%female#1-hidden]
+
+STR-438785
+Zarząd jest przekonany, że menedżer o twojej reputacji zrobi z klubem spore postępy.[%male#1-hidden]
+Zarząd jest przekonany, że menedżerka o twojej reputacji zrobi z klubem spore postępy.[%female#1-hidden]
+
+STR-438787
+Aby pomóc ci w realizacji tych celów, zarząd jest gotów udostępnić ci [%cash#1-transferbudget] na transfery.[%male#1-hidden]
+
+STR-438788
+Pokaż listę życzeń
+
+STR-438789
+Pokaż listę
+
+STR-438884
+[%male#1] ([%team#1-short]) zdobywa nagrodę ([%award#1-long], [%date#1-month]).
+
+STR-438885
+[%male#1] ([%team#1-short]) nagrodzony ([%award#1-long]).
+[%female#1] ([%team#1-short]) nagrodzona ([%award#1-long]).
+
+STR-438886
+[%club#1]: Ogłoszenie terminu rozprawy
+
+STR-438887
+Grupa firm, którym klub [%club#1-long] jest winien pieniądze, zainicjowała proces likwidacji klubu. Wkrótce zostanie wyznaczony termin rozprawy, na której powinny zapaść konkretne postanowienia.\n\nDziennikarze proszą cię o komentarz w tej sprawie.
+
+STR-438888
+Grupa firm, którym klub [%club#1-long] jest winien pieniądze, zainicjowała proces likwidacji klubu. Wkrótce zostanie wyznaczony termin rozprawy, na której powinny zapaść konkretne postanowienia.\n\nKlub nie ma obecnie menedżera i ta sytuacja tylko zintensyfikuje spekulacje na temat jego rychłego końca.
+
+STR-438889
+Grupa firm, którym klub [%club#1-long] jest winien pieniądze, zainicjowała proces likwidacji klubu. Wkrótce zostanie wyznaczony termin rozprawy, na której powinny zapaść konkretne postanowienia.\n\nMenedżer [%male#1] zaapelował o spokój i oświadczył, że jego piłkarze są wystarczająco profesjonalni, by zignorować tę sytuację i skupić się na grze w piłkę.
+Grupa firm, którym klub [%club#1-long] jest winien pieniądze, zainicjowała proces likwidacji klubu. Wkrótce zostanie wyznaczony termin rozprawy, na której powinny zapaść konkretne postanowienia.\n\nMenedżerka [%female#1] zaapelowała o spokój i oświadczyła, że jej piłkarze są wystarczająco profesjonalni, by zignorować tę sytuację i skupić się na grze w piłkę.
+
+STR-438892
+Grupa firm, którym klub [%club#1-long] jest winien pieniądze, zainicjowała proces likwidacji klubu. Wkrótce zostanie wyznaczony termin rozprawy, na której powinny zapaść konkretne postanowienia.\n\nMenedżer [%male#1] nie odpowiedział na prośby o komentarz ze strony mediów.
+Grupa firm, którym klub [%club#1-long] jest winien pieniądze, zainicjowała proces likwidacji klubu. Wkrótce zostanie wyznaczony termin rozprawy, na której powinny zapaść konkretne postanowienia.\n\nMenedżerka [%female#1] nie odpowiedziała na prośby o komentarz ze strony mediów.
+
+STR-438894
+[%club#1]: Odrzucenie wniosku o otwarcie postępowania likwidacyjnego
+
+STR-438895
+Sąd odrzucił wniosek o otwarcie postępowania likwidacyjnego, którego przedmiotem {był}[%club#1].\n\nWierzyciele, którzy podpisali się pod wnioskiem, zostali spłaceni, acz zakłada się, że jest ich więcej.

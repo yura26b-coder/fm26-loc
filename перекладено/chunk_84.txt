@@ -1,0 +1,1248 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-445176
+[%club#1-short] secured a [%number#1 - human goals]-[%number#2 - opposition goals] win over [%club#2-short].
+
+STR-445178
+[%club#1-short] did just enough to secure a [%number#1 - human goals]-[%number#2 - opposition goals] win over [%club#2-short].
+
+STR-445179
+[%team#1-short] defeat rivals
+
+STR-445180
+Hire Tutor
+
+STR-445196
+(loan)
+
+STR-445200
+View Now
+
+STR-445201
+Compare To Now
+
+STR-445202
+[%string#1 club name] ([%number#1 year])
+
+STR-445203
+Setting club histories
+
+STR-445204
+Initialising staff
+
+STR-445205
+Setting up awards
+
+STR-445206
+Setting up expectations
+
+STR-445208
+We appear to have a group of players lacking in determination
+
+STR-445209
+[%person#1-surname] is our top creator, with [%number#1] league assists
+
+STR-445210
+It is the policy of the club to only sign players of Basque origin.
+
+STR-445211
+It is rumoured that the board have heard [%person#1-you] are looking at management opportunities elsewhere and would welcome your moving on from the club.\n\nA source close to them has indicated they have already started interviewing candidates to replace you.
+
+STR-445212
+The Board of Directors have heard rumours that [%person#1-you] are looking at management opportunities elsewhere.\n\nWhile they can understand the allure of managing at [%club#2] they remind that you enjoy their support and hope you will remain at [%club#1].
+
+STR-445213
+[%person#1] on the way out of [%club#1]
+
+STR-445217
+Nationality
+
+STR-445223
+(loan) [%number#1]
+
+STR-445224
+Add Transfer Funds
+
+STR-445225
+Add Transfer Funds (BUY NOW)
+
+STR-445232
+Game Start Date
+
+STR-445242
+(loan) - New Entry
+
+STR-445245
+New Entry
+
+STR-445256
+cold
+
+STR-445257
+flu
+
+STR-445258
+virus
+
+STR-445259
+food poisoning
+
+STR-445260
+serious viral infection
+
+STR-445261
+twisted ankle
+
+STR-445262
+sprained ankle
+
+STR-445263
+damaged foot
+
+STR-445264
+stubbed toe
+
+STR-445265
+damaged heel
+
+STR-445266
+broken toe
+
+STR-445267
+strained ankle ligaments
+
+STR-445268
+damaged achilles tendon
+
+STR-445269
+torn ankle ligaments
+
+STR-445270
+broken ankle
+
+STR-445271
+broken foot
+
+STR-445272
+bruised shin
+
+STR-445273
+calf strain
+
+STR-445274
+torn calf muscle
+
+STR-445275
+gashed leg
+
+STR-445276
+shin splints
+
+STR-445277
+broken leg
+
+STR-445278
+twisted knee
+
+STR-445279
+strained knee ligaments
+
+STR-445280
+damaged knee cap
+
+STR-445281
+damaged knee cartilage
+
+STR-445282
+torn knee ligaments
+
+STR-445283
+damaged cruciate ligaments
+
+STR-445284
+pulled hamstring
+
+STR-445285
+thigh strain
+
+STR-445286
+torn hamstring
+
+STR-445287
+dead leg
+
+STR-445288
+groin strain
+
+STR-445289
+torn groin muscle
+
+STR-445290
+hip injury
+
+STR-445291
+broken pelvis
+
+STR-445292
+bruised rib
+
+STR-445293
+chest injury
+
+STR-445294
+back strain
+
+STR-445295
+fractured ribs
+
+STR-445296
+broken ribs
+
+STR-445297
+slipped disc
+
+STR-445298
+damaged spine
+
+STR-445299
+stubbed finger
+
+STR-445300
+cut hand
+
+STR-445301
+broken finger
+
+STR-445302
+broken hand
+
+STR-445303
+sprained wrist
+
+STR-445304
+strained wrist
+
+STR-445305
+damaged elbow
+
+STR-445306
+fractured wrist
+
+STR-445307
+gashed arm
+
+STR-445308
+fractured arm
+
+STR-445309
+broken wrist
+
+STR-445310
+broken arm
+
+STR-445311
+damaged shoulder
+
+STR-445312
+dislocated shoulder
+
+STR-445313
+broken shoulder
+
+STR-445314
+strained neck
+
+STR-445315
+damaged neck
+
+STR-445316
+broken collarbone
+
+STR-445317
+bruised head
+
+STR-445318
+facial injury
+
+STR-445319
+gashed head
+
+STR-445320
+bruised jaw
+
+STR-445321
+concussion
+
+STR-445322
+broken nose
+
+STR-445323
+fractured jaw
+
+STR-445324
+dislocated jaw
+
+STR-445325
+fractured cheekbone
+
+STR-445326
+broken cheekbone
+
+STR-445327
+broken jaw
+
+STR-445328
+fractured skull
+
+STR-445329
+arthritis
+
+STR-445330
+faith healing
+
+STR-445331
+physiotherapy
+
+STR-445332
+surgery
+
+STR-445333
+radiotherapy
+
+STR-445334
+holiday
+
+STR-445335
+a cold
+
+STR-445336
+a serious viral infection
+
+STR-445337
+a twisted ankle
+
+STR-445338
+a sprained ankle
+
+STR-445339
+a damaged foot
+
+STR-445340
+a stubbed toe
+
+STR-445341
+a damaged heel
+
+STR-445342
+a broken toe
+
+STR-445343
+a damaged achilles tendon
+
+STR-445344
+a broken ankle
+
+STR-445345
+a broken foot
+
+STR-445346
+a bruised shin
+
+STR-445347
+a calf strain
+
+STR-445348
+a torn calf muscle
+
+STR-445349
+a gashed leg
+
+STR-445350
+a broken leg
+
+STR-445351
+a twisted knee
+
+STR-445352
+a damaged knee cap
+
+STR-445353
+a pulled hamstring
+
+STR-445354
+a bruised thigh
+
+STR-445355
+a thigh strain
+
+STR-445356
+a torn hamstring
+
+STR-445357
+a dead leg
+
+STR-445358
+a groin strain
+
+STR-445359
+a torn groin muscle
+
+STR-445360
+a hip injury
+
+STR-445361
+a broken pelvis
+
+STR-445362
+a bruised rib
+
+STR-445363
+a chest injury
+
+STR-445364
+a back strain
+
+STR-445365
+a slipped disc
+
+STR-445366
+a damaged spine
+
+STR-445367
+a stubbed finger
+
+STR-445368
+a cut hand
+
+STR-445369
+a broken finger
+
+STR-445370
+a broken hand
+
+STR-445371
+a sprained wrist
+
+STR-445372
+a strained wrist
+
+STR-445373
+a damaged elbow
+
+STR-445374
+a fractured wrist
+
+STR-445375
+a gashed arm
+
+STR-445376
+a fractured arm
+
+STR-445377
+a broken wrist
+
+STR-445378
+a broken arm
+
+STR-445379
+a dislocated shoulder
+
+STR-445380
+a broken shoulder
+
+STR-445381
+a strained neck
+
+STR-445382
+a damaged neck
+
+STR-445383
+a broken collarbone
+
+STR-445384
+a bruised head
+
+STR-445385
+a facial injury
+
+STR-445386
+a gashed head
+
+STR-445387
+a bruised jaw
+
+STR-445388
+a broken nose
+
+STR-445389
+a fractured jaw
+
+STR-445390
+a dislocated jaw
+
+STR-445391
+a fractured cheekbone
+
+STR-445392
+a broken cheekbone
+
+STR-445393
+a broken jaw
+
+STR-445394
+a fractured skull
+
+STR-445395
+internal injury
+
+STR-445396
+foot injury
+
+STR-445397
+shin injury
+
+STR-445398
+knee injury
+
+STR-445399
+thigh injury
+
+STR-445400
+groin injury
+
+STR-445401
+upper body injury
+
+STR-445402
+hand injury
+
+STR-445403
+arm injury
+
+STR-445404
+shoulder injury
+
+STR-445405
+neck injury
+
+STR-445406
+head injury
+
+STR-445407
+rehabilitation
+
+STR-445414
+shin splints
+
+STR-447623
+Indirect Free Kick Takers - Wide
+
+STR-447624
+Indirect Free Kick Takers - Deep
+
+STR-447853
+unpredictable striker
+
+STR-450236
+The starting eleven must include a minimum of one outfield player that was used in a previous official first-team match (injured players are exempt)
+
+STR-450237
+The starting eleven must include a minimum of one outfield player that was used in the previous [%number#1] official first-team matches (injured players are exempt)
+
+STR-450238
+The starting eleven must include a minimum of [%number#1] outfield players that were used in a previous official first-team match (injured players are exempt).
+
+STR-450239
+The starting eleven must include a minimum of [%number#1] outfield players that were used in one of the previous [%number#2] official first-team matches (injured players are exempt)
+
+STR-450260
+Pass - Bad
+
+STR-450261
+Tackle - Bad
+
+STR-450262
+Chance Created
+
+STR-450270
+This mentality is best employed for matches where the team should be superior but need to remain wary of the opponent's counter-attacking threat. It aims to move the ball around the park and to patiently probe the final third to find space as and when it opens up. Although full-backs overlap and midfielders break ahead of the forwards, they will generally only do so during relatively risk-free situations and will usually sit back and help the midfield maintain possession until chances open up.
+
+STR-450272
+Never mark tightly
+
+STR-450273
+Always mark tightly
+
+STR-450276
+Tackle normally
+
+STR-450277
+Go easy when tackling
+
+STR-450278
+Go hard when tackling
+
+STR-450279
+Show onto left foot
+
+STR-450280
+Show onto right foot
+
+STR-450281
+Show onto weaker foot
+
+STR-450282
+Mark Specific Position
+
+STR-450284
+Lost a lot of possession on the left side of the pitch in own third.
+
+STR-450285
+Lost a lot of possession in central areas of own third of the pitch.
+
+STR-450286
+Lost a lot of possession on the right side of the pitch in own third.
+
+STR-450287
+Lost a lot of possession on the left side of the pitch in the middle third.
+
+STR-450288
+Lost a lot of possession in central areas of the middle third of the pitch.
+
+STR-450289
+Lost a lot of possession on the right side of the pitch in the middle third.
+Polish Reference:
+STR-445176
+[%club#1-short]{zapewnił} sobie zwycięstwo [%number#1 - human goals]-[%number#2 - opposition goals] w meczu, w którym przeciwnikiem {był}[%club#2-short].
+
+STR-445178
+[%club#1-short]{zapewnił} sobie w bólach zwycięstwo [%number#1 - human goals]-[%number#2 - opposition goals] w meczu, w którym przeciwnikiem {był}[%club#2-short].
+
+STR-445179
+[%team#1-short]{pokonuje} rywali
+
+STR-445180
+Zatrudnij korepetytora
+
+STR-445196
+(wypożyczenie)
+
+STR-445200
+Pokaż teraz
+
+STR-445201
+Porównaj z chwilą obecną
+
+STR-445202
+[%string#1 club name] ([%number#1 year])
+
+STR-445203
+Konfigurowanie historii klubów
+
+STR-445204
+Inicjalizacja pracowników
+
+STR-445205
+Konfigurowanie nagród
+
+STR-445206
+Konfigurowanie oczekiwań
+
+STR-445208
+Mamy w zespole grupę piłkarzy pozbawionych determinacji
+
+STR-445209
+[%male#1-surname] jest naszym najlepszym kreatorem z [%number#1] ligowymi asystami na koncie
+[%female#1-surname] jest naszą najlepszą kreatorką z [%number#1] ligowymi asystami na koncie
+
+STR-445210
+Zgodnie z polityką klubu można do niego sprowadzać wyłącznie zawodników o baskijskich korzeniach.
+
+STR-445211
+Według niepotwierdzonych pogłosek zarząd dowiedział się, że rozglądasz się za wolnymi posadami w innych zespołach, i bardzo chętnie pozbyłby się ciebie z klubu.\n\nDobrze poinformowane źródło utrzymuje wręcz, że działacze już rozpoczęli rozmowy z potencjalnymi kandydatami.[%male#1-hidden]
+
+STR-445212
+Do zarządu dotarły pogłoski, jakobyś rozglądał się za wolnymi posadami w innych zespołach.\n\nDziałacze rozumieją, że [%club#2] to atrakcyjny kierunek dla każdego menedżera, chcą ci wszakże przypomnieć, że cieszysz się ich poparciem, i mają nadzieję, że pozostaniesz w klubie [%club#1-long].[%male#1-hidden]
+Do zarządu dotarły pogłoski, jakobyś rozglądała się za wolnymi posadami w innych zespołach\n\nDziałacze rozumieją, że [%club#2] to atrakcyjny kierunek dla każdego menedżera, chcą ci wszakże przypomnieć, że cieszysz się ich poparciem, i mają nadzieję, że pozostaniesz w klubie [%club#1-long].[%female#1-hidden]
+
+STR-445213
+[%male#1] ([%club#1]) o krok od odejścia
+
+STR-445217
+Narodowość
+
+STR-445223
+(wypożyczenie) [%number#1]
+
+STR-445224
+Dodaj fundusze transferowe
+
+STR-445225
+Dodaj fundusze transferowe (KUP TERAZ)
+
+STR-445232
+Data rozpoczęcia gry
+
+STR-445242
+(wypożyczenie) - Nowy wpis
+
+STR-445245
+Nowy wpis
+
+STR-445256
+przeziębienie
+
+STR-445257
+grypa
+
+STR-445258
+wirus
+
+STR-445259
+zatrucie
+
+STR-445260
+poważna infekcja wirusowa
+
+STR-445261
+skręcenie stawu skokowego
+
+STR-445262
+naciągnięcie więzadeł stawu skokowego
+
+STR-445263
+uraz stopy
+
+STR-445264
+wybicie palucha
+
+STR-445265
+uraz pięty
+
+STR-445266
+złamanie palucha
+
+STR-445267
+naciągnięcie więzadeł stawu skokowego
+
+STR-445268
+uszkodzenie ścięgna Achillesa
+
+STR-445269
+zerwanie więzadeł stawu skokowego
+
+STR-445270
+złamanie stawu skokowego
+
+STR-445271
+złamanie stopy
+
+STR-445272
+stłuczenie podudzia
+
+STR-445273
+naciągnięcie mięśnia brzuchatego łydki
+
+STR-445274
+zerwanie mięśnia brzuchatego łydki
+
+STR-445275
+rana cięta nogi
+
+STR-445276
+zespół przeciążenia piszczeli
+
+STR-445277
+złamanie nogi
+
+STR-445278
+skręcenie kolana
+
+STR-445279
+naciągnięcie więzadeł kolanowych
+
+STR-445280
+uraz rzepki
+
+STR-445281
+uszkodzenie łąkotki
+
+STR-445282
+zerwanie więzadeł kolanowych
+
+STR-445283
+uszkodzenie więzadeł kolanowych
+
+STR-445284
+naciągnięcie mięśnia czworogłowego uda
+
+STR-445285
+naciągnięcie mięśni uda
+
+STR-445286
+zerwanie mięśnia czworogłowego uda
+
+STR-445287
+stłuczenie nogi
+
+STR-445288
+uraz pachwiny
+
+STR-445289
+naderwanie mięśni skośnych brzucha
+
+STR-445290
+uraz stawu biodrowego
+
+STR-445291
+złamanie miednicy
+
+STR-445292
+stłuczenie żeber
+
+STR-445293
+uraz klatki piersiowej
+
+STR-445294
+naciągnięcie mięśni grzbietu
+
+STR-445295
+pęknięcie żeber
+
+STR-445296
+złamanie żeber
+
+STR-445297
+przemieszczenie krążka międzykręgowego
+
+STR-445298
+uszkodzenie kręgosłupa
+
+STR-445299
+wybicie palca
+
+STR-445300
+rana cięta ręki
+
+STR-445301
+złamanie palca
+
+STR-445302
+złamanie ręki
+
+STR-445303
+zwichnięcie nadgarstka
+
+STR-445304
+naciągnięcie nadgarstka
+
+STR-445305
+uszkodzenie stawu łokciowego
+
+STR-445306
+pęknięcie kości nadgarstka
+
+STR-445307
+rana cięta ramienia
+
+STR-445308
+pęknięcie kości ramienia
+
+STR-445309
+złamanie kości nadgarstka
+
+STR-445310
+złamanie kości ramienia
+
+STR-445311
+uszkodzenie stawu barkowego
+
+STR-445312
+zwichnięcie stawu barkowego
+
+STR-445313
+złamanie w stawie barkowym
+
+STR-445314
+naciągnięcie mięśni szyi
+
+STR-445315
+uraz szyi
+
+STR-445316
+złamanie obojczyka
+
+STR-445317
+stłuczenie dłoni
+
+STR-445318
+uraz twarzoczaszki
+
+STR-445319
+rana cięta głowy
+
+STR-445320
+stłuczenie żuchwy
+
+STR-445321
+wstrząśnienie mózgu
+
+STR-445322
+złamanie nosa
+
+STR-445323
+pęknięcie żuchwy
+
+STR-445324
+zwichnięcie żuchwy
+
+STR-445325
+pęknięcie kości jarzmowej
+
+STR-445326
+złamanie kości jarzmowej
+
+STR-445327
+złamanie żuchwy
+
+STR-445328
+pęknięcie kości czaszki
+
+STR-445329
+zapalenie stawu
+
+STR-445330
+medycyna niekonwencjonalna
+
+STR-445331
+fizjoterapia
+
+STR-445332
+operacja
+
+STR-445333
+radioterapia
+
+STR-445334
+urlop
+
+STR-445335
+przeziębienie
+
+STR-445336
+poważna infekcja wirusowa
+
+STR-445337
+skręcenie stawu skokowego
+
+STR-445338
+naciągnięcie więzadeł stawu skokowego
+
+STR-445339
+uraz stopy
+
+STR-445340
+wybicie palucha
+
+STR-445341
+uraz pięty
+
+STR-445342
+złamanie palucha
+
+STR-445343
+uszkodzenie ścięgna Achillesa
+
+STR-445344
+złamanie stawu skokowego
+
+STR-445345
+złamanie stopy
+
+STR-445346
+stłuczenie podudzia
+
+STR-445347
+naciągnięcie mięśnia brzuchatego łydki
+
+STR-445348
+zerwanie mięśnia brzuchatego łydki
+
+STR-445349
+rana cięta nogi
+
+STR-445350
+złamanie nogi
+
+STR-445351
+skręcenie kolana
+
+STR-445352
+uraz rzepki
+
+STR-445353
+naciągnięcie mięśnia czworogłowego uda
+
+STR-445354
+stłuczone udo
+
+STR-445355
+naciągnięcie mięśni uda
+
+STR-445356
+zerwanie mięśnia czworogłowego uda
+
+STR-445357
+stłuczenie nogi
+
+STR-445358
+uraz pachwiny
+
+STR-445359
+naderwanie mięśni skośnych brzucha
+
+STR-445360
+uraz stawu biodrowego
+
+STR-445361
+złamanie miednicy
+
+STR-445362
+stłuczenie żeber
+
+STR-445363
+uraz klatki piersiowej
+
+STR-445364
+naciągnięcie mięśni grzbietu
+
+STR-445365
+przemieszczenie krążka międzykręgowego
+
+STR-445366
+uszkodzenie kręgosłupa
+
+STR-445367
+wybicie palca
+
+STR-445368
+rana cięta ręki
+
+STR-445369
+złamanie palca
+
+STR-445370
+złamanie ręki
+
+STR-445371
+zwichnięcie nadgarstka
+
+STR-445372
+naciągnięcie nadgarstka
+
+STR-445373
+uszkodzenie stawu łokciowego
+
+STR-445374
+pęknięcie kości nadgarstka
+
+STR-445375
+rana cięta ramienia
+
+STR-445376
+pęknięcie kości ramienia
+
+STR-445377
+złamanie kości nadgarstka
+
+STR-445378
+złamanie kości ramienia
+
+STR-445379
+zwichnięcie stawu barkowego
+
+STR-445380
+złamanie w stawie barkowym
+
+STR-445381
+naciągnięcie mięśni szyi
+
+STR-445382
+uraz szyi
+
+STR-445383
+złamanie obojczyka
+
+STR-445384
+stłuczenie dłoni
+
+STR-445385
+uraz twarzoczaszki
+
+STR-445386
+rana cięta głowy
+
+STR-445387
+stłuczenie żuchwy
+
+STR-445388
+złamanie nosa
+
+STR-445389
+pęknięcie żuchwy
+
+STR-445390
+zwichnięcie żuchwy
+
+STR-445391
+pęknięcie kości jarzmowej
+
+STR-445392
+złamanie kości jarzmowej
+
+STR-445393
+złamanie żuchwy
+
+STR-445394
+pęknięcie kości czaszki
+
+STR-445395
+uraz brzucha
+
+STR-445396
+uraz stopy
+
+STR-445397
+uraz goleni
+
+STR-445398
+uraz kolana
+
+STR-445399
+uraz uda
+
+STR-445400
+uraz pachwiny
+
+STR-445401
+uraz korpusu
+
+STR-445402
+uraz ręki
+
+STR-445403
+uraz ramienia
+
+STR-445404
+uraz barku
+
+STR-445405
+uraz szyi
+
+STR-445406
+uraz głowy
+
+STR-445407
+rehabilitacja
+
+STR-445414
+zespół przeciążenia piszczeli
+
+STR-447623
+Pośrednie rzuty wolne - ze skrzydła
+
+STR-447624
+Pośrednie rzuty wolne - z głębi pola
+
+STR-447853
+nieprzewidywalny napastnik
+
+STR-450236
+W wyjściowej jedenastce musi się znaleźć co najmniej 1 zawodnik z pola, który wystąpił w poprzednim oficjalnym spotkaniu pierwszego zespołu (wymóg nie obejmuje kontuzjowanych piłkarzy)
+
+STR-450237
+W wyjściowej jedenastce musi się znaleźć co najmniej 1 zawodnik z pola, który wystąpił w [%number#2] poprzednich oficjalnych spotkaniach pierwszego zespołu (wymóg nie obejmuje kontuzjowanych piłkarzy)
+
+STR-450238
+W wyjściowej jedenastce musi się znaleźć co najmniej [%number#1] zawodników z pola, którzy wystąpili w poprzednim oficjalnym spotkaniu pierwszego zespołu (wymóg nie obejmuje kontuzjowanych piłkarzy).
+
+STR-450239
+W wyjściowej jedenastce musi się znaleźć co najmniej [%number#1] zawodników z pola, którzy wystąpili w jednym z [%number#2] poprzednich oficjalnych spotkań pierwszego zespołu (wymóg nie obejmuje kontuzjowanych piłkarzy)
+
+STR-450260
+Podanie - nieudane
+
+STR-450261
+Odbiór piłki - nieudany
+
+STR-450262
+Stworzona sytuacja
+
+STR-450270
+Ta mentalność najbardziej nadaje się na spotkania, które spodziewasz się wygrać, lecz obawiasz się kontrataków rywali. Jej celem jest rozgrywanie piłki na całej szerokości boiska i cierpliwe poszukiwanie luk w defensywie przeciwnika. Choć boczni obrońcy będą próbować rozgrywać piłkę na obieg, a pomocnicy wychodzić przed napastników w ataku, będą to czynić jedynie w sytuacjach, gdy nie będzie się to wiązać ze zbytnim ryzykiem. Częściej zaś będą czekać w tylnych formacjach, pomagając drugiej linii w rozgrywaniu piłki do chwili, gdy nadarzy się okazja do zadania zabójczego ciosu.
+
+STR-450272
+Nigdy nie kryj rywala krótko
+
+STR-450273
+Zawsze kryj krótko rywala
+
+STR-450276
+Zachowuj się normalnie przy odbiorze piłki
+
+STR-450277
+Szanuj kości rywala przy odbiorze piłki
+
+STR-450278
+Nigdy nie odstawiaj nogi przy odbiorze piłki
+
+STR-450279
+Zmuś do gry lewą nogą
+
+STR-450280
+Zmuś do gry prawą nogą
+
+STR-450281
+Zmuś do gry słabszą nogą
+
+STR-450282
+Kryj konkretną pozycję
+
+STR-450284
+Częste straty piłki na lewym skrzydle pod własną bramką.
+
+STR-450285
+Częste straty piłki w środku pola pod własną bramką.
+
+STR-450286
+Częste straty piłki na prawym skrzydle pod własną bramką.
+
+STR-450287
+Częste straty piłki na lewym skrzydle w centralnej strefie boiska.
+
+STR-450288
+Częste straty piłki w środku pola w centralnej strefie boiska.
+
+STR-450289
+Częste straty piłki na prawym skrzydle w centralnej strefie boiska.

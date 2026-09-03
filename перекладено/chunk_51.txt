@@ -1,0 +1,680 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-407846
+[%person#2-surname] cannot be signed as [%person#2-he] is not of Basque nationality.
+
+STR-407888
+None
+
+STR-407891
+Dubious
+
+STR-407894
+Unsure
+
+STR-407897
+Slight Interest
+
+STR-407900
+Interested
+
+STR-407903
+Very Interested
+
+STR-407906
+[%person#1-surname] is the best young [%position#1-lowercase] at the club, and is tipped to become a global superstar.
+
+STR-407907
+[%person#1-surname] is the best young [%position#1-lowercase] at the club, and is tipped to become the first choice [%position#1-lowercase] one day.
+
+STR-407908
+[%person#1-surname] is the best young [%position#1-lowercase] at the club, and is tipped to become an indispensable member of the first team in the future.
+
+STR-407909
+[%person#1-surname] is the best young [%position#1-lowercase] at the club, and is tipped to become an important member of the first team in the future.
+
+STR-407910
+[%person#1-surname] is the best young [%position#1-lowercase] at the club, and is tipped to break into the first team in the future.
+
+STR-407911
+[%person#1-surname] is the best young [%position#1-lowercase] at the club, and could become a useful squad member in the future.
+
+STR-407913
+[%person#1-surname] is the best young [%position#1-lowercase_no_sides] at the club, but is unlikely to ever establish [%person#1-himself] in the first team.
+
+STR-407914
+[%person#1-surname] has the potential to become a world-class [%position#1-lowercase_no_sides] in the future.
+
+STR-407915
+[%person#1-surname] has the potential to be the first choice [%position#1-lowercase] one day.
+
+STR-407916
+[%person#1-surname] has the potential to be one of the best players at the club.
+
+STR-407917
+[%person#1-surname] has the potential to be a key member of the first team in the future.
+
+STR-407918
+[%person#1-surname] has the potential to be a regular member of the first team in the future.
+
+STR-407919
+[%person#1-surname] has the potential to be a decent first team player in the future.
+
+STR-407920
+[%person#1-surname] has the potential to be a useful first team player in the future.
+
+STR-407921
+[%person#1-surname] may have the potential to be a useful first team player in the future.
+
+STR-407922
+[%person#1-surname] is unlikely to ever establish [%person#1-himself] in the first team squad.
+
+STR-407923
+[%person#1-surname] is a world class [%position#1-lowercase], but [%person#1-he] needs adequate competition to stay at the highest level.
+
+STR-407924
+[%person#1-surname] is a world class [%position#1-lowercase] and should be our undisputed first choice.
+
+STR-407925
+[%person#1-surname] is currently the best [%position#1-lowercase] at the club. However, being the only keeper at the club could put too much pressure on [%person#1-him] at such a tender age.
+
+STR-407926
+[%person#1-surname] is currently the best [%position#1-lowercase] at the club. However, due to [%person#1-his] tender age it might be a mistake to give [%person#1-him] too much responsibility.
+
+STR-407927
+While [%person#1-surname] is a quality [%position#1-lowercase], [%person#1-he] could do with some competition for [%person#1-his] place in the team.
+
+STR-407928
+[%person#1-surname] is the best [%position#1-lowercase] at the club and should be our undisputed first choice.
+
+STR-407929
+While [%person#1-surname] is a solid [%position#1-lowercase], [%person#1-he] could do with some competition for [%person#1-his] place in the team.
+
+STR-407930
+[%person#1-surname] is the best [%position#1-lowercase] at the club.
+
+STR-407931
+While [%person#1-surname] isn't great, there are no other alternatives in the [%position#1-general] department.
+
+STR-407932
+[%person#1-surname] is currently the best [%position#1-lowercase] at the club, but may not be good enough to hold down a regular spot.
+
+STR-407933
+[%person#1-surname] is a world-class [%position#1-lowercase].
+
+STR-407934
+[%person#1-surname] has the potential to become a world-class [%position#1-lowercase].
+
+STR-407935
+[%person#1-surname] has the potential to become the first choice [%position#1-lowercase] one day.
+
+STR-407936
+[%person#1-surname] has the potential to become one of the best players at the club.
+
+STR-407937
+[%person#1-surname] has the potential to become a key member of the first team.
+
+STR-407938
+[%person#1-surname] has the potential to be a quality player.
+
+STR-407939
+[%person#1-surname] is an indispensable member of the first team.
+
+STR-407940
+[%person#1-surname] is an important first team player.
+
+STR-407941
+[%person#1-surname] is a quality player.
+
+STR-407942
+[%person#1-surname] is a good player.
+
+STR-407943
+[%person#1-surname] is a decent player.
+
+STR-407944
+[%person#1-surname] is a useful player.
+
+STR-407945
+[%person#1-surname] should not be in serious contention for a first team place.
+
+STR-407986
+[%club#1-short] are currently [%number#1-nth] in the [%comp#1-short].
+
+STR-407987
+It is thought that [%club#1-short] have little to offer and only complacency should deny you the victory.
+
+STR-407988
+It is thought that [%club#1-short] will provide a difficult test and that retaining possession will be especially important.
+
+STR-407989
+[%club#1-short] will provide a stern test and should under no circumstances be underestimated.
+
+STR-407990
+[%club#1-short] scout report
+
+STR-407991
+Scout report on [%club#1-short]
+
+STR-408033
+deadly striker
+
+STR-408035
+pacy goalscorer
+
+STR-408036
+goalpoacher
+
+STR-408038
+prolific striker
+
+STR-408039
+dynamic forward
+
+STR-408040
+powerhouse forward
+
+STR-408041
+powerful forward
+
+STR-408042
+creative forward
+
+STR-408043
+exciting forward
+
+STR-408044
+skilful attacker
+
+STR-408045
+inspirational midfielder
+
+STR-408046
+free-scoring midfielder
+
+STR-408047
+playmaker
+
+STR-408048
+ball-winner
+
+STR-408049
+dynamic midfielder
+
+STR-408050
+hard working midfielder
+
+STR-408051
+reliable midfielder
+
+STR-408052
+pacy midfielder
+
+STR-408053
+pacy full-back
+
+STR-408054
+exciting full-back
+
+STR-408055
+quick defender
+
+STR-408056
+cultured defender
+
+STR-408057
+veteran
+
+STR-408058
+rookie
+
+STR-408059
+Africa
+
+STR-408060
+Asia
+
+STR-408061
+Caribbean
+
+STR-408062
+Central America
+
+STR-408063
+UK and Ireland
+
+STR-408064
+Eastern Europe
+
+STR-408065
+Middle East
+
+STR-408066
+North Africa
+
+STR-408067
+North America
+
+STR-408068
+Oceania
+
+STR-408069
+Scandinavia
+
+STR-408070
+South America
+
+STR-408071
+Central Europe
+
+STR-408072
+Southern Europe
+
+STR-408146
+The board expect the club to achieve [%comp#1-short] qualification this season.
+
+STR-408147
+The board expect the club to attain a safe mid-table league position.
+
+STR-408156
+Assistant manager worried about player morale
+
+STR-408160
+Assistant manager fears revolt over training
+
+STR-408161
+Assistant manager raises concerns about training
+
+STR-408174
+Training report from assistant manager
+
+STR-408175
+Assistant manager training report
+
+STR-408176
+Applying changes
+
+STR-408177
+Work permits scrapped
+
+STR-408178
+Work permits to remain
+
+STR-408179
+Football's governing body has stated that the vote to remove work permits has succeeded, hence from today no work permits will be required when transferring non-EU players.
+
+STR-408180
+Football's governing body has stated that the vote to remove work permits has failed, therefore work permits will still be required when transferring non-EU players.
+
+STR-408181
+Transfer windows scrapped
+
+STR-408182
+Transfer windows to remain
+Polish Reference:
+STR-407846
+[%male#2-surname] nie może zostać zatrudniony, gdyż nie jest on narodowości baskijskiej.
+[%female#2-surname] nie może zostać zatrudniona, gdyż nie jest ona narodowości baskijskiej.
+
+STR-407888
+Brak
+
+STR-407891
+Wątpliwości
+
+STR-407894
+Brak pewności
+
+STR-407897
+Niewielkie zainteres.
+
+STR-407900
+Zainteresowanie
+
+STR-407903
+Duże zainteresowanie
+
+STR-407906
+[%male#1-surname] to najlepszy młody [%position#1-lowercase] w klubie i zapowiada się na wielką gwiazdę.
+[%female#1-surname] to najlepsza młoda [%position#1-lowercase] w klubie i zapowiada się na wielką gwiazdę.
+
+STR-407907
+[%male#1-surname] to najlepszy młody [%position#1-lowercase] w klubie i zapowiada się na wybór numer jeden na tej pozycji.
+[%female#1-surname] to najlepsza młoda [%position#1-lowercase] w klubie i zapowiada się na wybór numer jeden na tej pozycji.
+
+STR-407908
+[%male#1-surname] to najlepszy młody [%position#1-lowercase] w klubie i zapowiada się na kluczowego zawodnika na tej pozycji.
+[%female#1-surname] to najlepsza młoda [%position#1-lowercase] w klubie i zapowiada się na kluczową zawodniczkę na tej pozycji.
+
+STR-407909
+[%male#1-surname] to najlepszy młody [%position#1-lowercase] w klubie i zapowiada się na ważnego zawodnika na tej pozycji.
+[%female#1-surname] to najlepsza młoda [%position#1-lowercase] w klubie i zapowiada się na ważną zawodniczkę na tej pozycji.
+
+STR-407910
+[%male#1-surname] to najlepszy młody [%position#1-lowercase] w klubie i zapowiada się na zawodnika pierwszego zespołu na tej pozycji.
+[%female#1-surname] to najlepsza młoda [%position#1-lowercase] w klubie i zapowiada się na zawodniczkę pierwszego zespołu na tej pozycji.
+
+STR-407911
+[%male#1-surname] to najlepszy młody [%position#1-lowercase] w klubie i w przyszłości może się przydać w zespole.
+[%female#1-surname] to najlepsza młoda [%position#1-lowercase] w klubie i w przyszłości może się przydać w zespole.
+
+STR-407913
+[%male#1-surname] to najlepszy młody [%position#1-lowercase_no_sides] w klubie, ale jest mało prawdopodobne, by na stałe przebił się do pierwszego zespołu.
+[%female#1-surname] to najlepsza młoda [%position#1-lowercase_no_sides] w klubie, ale jest mało prawdopodobne, by na stałe przebiła się do pierwszego zespołu.
+
+STR-407914
+[%male#1-surname] ma potencjał, by zostać w przyszłości piłkarzem światowego formatu.
+[%female#1-surname] ma potencjał, by zostać w przyszłości piłkarką światowego formatu.
+
+STR-407915
+[%male#1-surname] ma potencjał, by zostać wyborem numer jeden na tej pozycji.
+
+STR-407916
+[%male#1-surname] ma potencjał, by zostać jednym z najlepszych zawodników klubu.
+[%female#1-surname] ma potencjał, by zostać jedną z najlepszych zawodniczek klubu.
+
+STR-407917
+[%male#1-surname] ma potencjał, by stać się kluczowym zawodnikiem pierwszego zespołu.
+[%female#1-surname] ma potencjał, by stać się kluczową zawodniczką pierwszego zespołu.
+
+STR-407918
+[%male#1-surname] ma potencjał, by stać się podstawowym zawodnikiem pierwszego zespołu.
+[%female#1-surname] ma potencjał, by stać się podstawową zawodniczką pierwszego zespołu.
+
+STR-407919
+[%male#1-surname] ma potencjał, by stać się przyzwoitym zawodnikiem pierwszego zespołu.
+[%female#1-surname] ma potencjał, by stać się przyzwoitą zawodniczką pierwszego zespołu.
+
+STR-407920
+[%male#1-surname] ma potencjał, by stać się użytecznym zawodnikiem pierwszego zespołu.
+[%female#1-surname] ma potencjał, by stać się użyteczną zawodniczką pierwszego zespołu.
+
+STR-407921
+[%male#1-surname] być może ma potencjał, by stać się użytecznym zawodnikiem pierwszego zespołu.
+[%female#1-surname] być może ma potencjał, by stać się użyteczną zawodniczką pierwszego zespołu.
+
+STR-407922
+[%male#1-surname] raczej nie przebije się na stałe do pierwszego zespołu.
+
+STR-407923
+[%male#1-surname] to [%position#1-lowercase] klasy światowej, ale potrzebuje rywalizacji w zespole, by utrzymać wysoki poziom.
+
+STR-407924
+[%male#1-surname] jest piłkarzem klasy światowej i powinien być naszym pierwszym wyborem na swojej pozycji.
+[%female#1-surname] jest piłkarką klasy światowej i powinna być naszym pierwszym wyborem na swojej pozycji.
+
+STR-407925
+[%male#1-surname] to obecnie nasz najlepszy [%position#1-lowercase]. Jednakże fakt, że jest jedynym bramkarzem w klubie, może wywierać na niego zbytnią presję jak na jego młody wiek.
+[%female#1-surname] to obecnie nasza najlepsza [%position#1-lowercase]. Jednakże fakt, że jest jedyną bramkarką w klubie, może wywierać na nią zbytnią presję jak na jej młody wiek.
+
+STR-407926
+[%male#1-surname] to obecnie nasz najlepszy [%position#1-lowercase]. Jednakże jego wiek stanowi przeciwwskazanie do tego, by składać na jego barki zbyt wielką odpowiedzialność.
+[%female#1-surname] to obecnie nasza najlepsza [%position#1-lowercase]. Jednakże jej wiek stanowi przeciwwskazanie do tego, by składać na jej barki zbyt wielką odpowiedzialność.
+
+STR-407927
+Choć [%male#1-surname] to klasowy [%position#1-lowercase], przydałoby mu się trochę rywalizacji w zespole.
+Choć [%female#1-surname] to klasowa [%position#1-lowercase], przydałoby jej się trochę rywalizacji w zespole.
+
+STR-407928
+[%male#1-surname] to najlepszy [%position#1-lowercase] w klubie i powinien być naszym pierwszym wyborem na swojej pozycji.
+[%female#1-surname] to najlepsza [%position#1-lowercase] w klubie i powinna być naszym pierwszym wyborem na swojej pozycji.
+
+STR-407929
+Choć [%male#1-surname] to solidny [%position#1-lowercase], przydałoby mu się trochę rywalizacji w zespole.
+Choć [%female#1-surname] to solidna [%position#1-lowercase], przydałoby jej się trochę rywalizacji w zespole.
+
+STR-407930
+[%male#1-surname] to najlepszy [%position#1-lowercase] w klubie.
+[%female#1-surname] to najlepsza [%position#1-lowercase-female] w klubie.
+
+STR-407931
+Choć [%male#1-surname] nie jest jakimś wyjątkowym zawodnikiem, jako [%position#1-general] nie ma dla siebie rywali.
+Choć [%female#1-surname] nie jest jakimś wyjątkową zawodniczką, jako [%position#1-general] nie ma dla siebie rywali.
+
+STR-407932
+[%male#1-surname] to obecnie najlepszy [%position#1-lowercase] w klubie, ale i tak może mieć problemu z utrzymaniem miejsca w pierwszym zespole.
+[%female#1-surname] to obecnie najlepsza [%position#1-lowercase] w klubie, ale i tak może mieć problemu z utrzymaniem miejsca w pierwszym zespole.
+
+STR-407933
+[%male#1-surname] to [%position#1-lowercase] światowego formatu.
+
+STR-407934
+[%male#1-surname] to potencjalnie [%position#1-lowercase] światowego formatu.
+
+STR-407935
+[%male#1-surname] to potencjalnie nasz [%position#1-lowercase] numer jeden.
+[%female#1-surname] to potencjalnie nasza [%position#1-lowercase] numer jeden.
+
+STR-407936
+[%male#1-surname] ma potencjał, by zostać jednym z najlepszych zawodników klubu.
+[%female#1-surname] ma potencjał, by zostać jedną z najlepszych zawodniczek klubu.
+
+STR-407937
+[%male#1-surname] ma potencjał, by stać się kluczowym zawodnikiem pierwszego zespołu.
+[%female#1-surname] ma potencjał, by stać się kluczową zawodniczką pierwszego zespołu.
+
+STR-407938
+[%male#1-surname] ma potencjał, by stać się klasowym zawodnikiem.[%male#1-hidden]
+[%female#1-surname] ma potencjał, by stać się klasową zawodniczką.[%female#1-hidden]
+
+STR-407939
+[%male#1-surname] jest niezastąpionym elementem pierwszego zespołu.
+
+STR-407940
+[%male#1-surname] jest ważnym graczem pierwszego zespołu.
+[%female#1-surname] jest ważną zawodniczką pierwszego zespołu.
+
+STR-407941
+[%male#1-surname] jest klasowym piłkarzem.
+[%female#1-surname] jest klasową piłkarką.
+
+STR-407942
+[%male#1-surname] jest dobrym piłkarzem.
+[%female#1-surname] jest dobrą piłkarką.
+
+STR-407943
+[%male#1-surname] jest przyzwoitym piłkarzem.
+[%female#1-surname] jest przyzwoitą piłkarką.
+
+STR-407944
+[%male#1-surname] jest użytecznym zawodnikiem.
+[%female#1-surname] jest użyteczną zawodniczką.
+
+STR-407945
+[%male#1-surname] nie powinien liczyć się w rywalizacji o miejsce w pierwszym zespole.
+[%female#1-surname] nie powinna liczyć się w rywalizacji o miejsce w pierwszym zespole.
+
+STR-407986
+[%club#1-short]{zajmuje} obecnie [%number#1-nth] miejsce w tabeli ([%comp#1-short]).
+
+STR-407987
+[%club#1-short]{ma} niewiele do zaoferowania i tylko zlekceważenie przeciwnika może odebrać wam zwycięstwo.
+
+STR-407988
+[%club#1-short]{będzie} trudnym przeciwnikiem i w meczu z nimi utrzymanie się przy piłce będzie miało kluczowe znaczenie.
+
+STR-407989
+[%club#1-short]{będzie} ciężkim przeciwnikiem, którego pod żadnym pozorem nie wolno zlekceważyć.
+
+STR-407990
+[%club#1-short]: Raport scouta
+
+STR-407991
+[%club#1-short]: Raport z obserwacji
+
+STR-408033
+zabójczo groźny napastnik
+
+STR-408035
+szybki łowca bramek
+
+STR-408036
+łowca bramek
+
+STR-408038
+bramkostrzelny napastnik
+
+STR-408039
+dynamiczny napastnik
+
+STR-408040
+silny napastnik
+
+STR-408041
+potężnie zbudowany napastnik
+
+STR-408042
+kreatywny napastnik
+
+STR-408043
+fantastyczny napastnik
+
+STR-408044
+zdolny napastnik
+
+STR-408045
+pomocnik o wielkim autorytecie
+
+STR-408046
+bramkostrzelny pomocnik
+
+STR-408047
+rozgrywający
+
+STR-408048
+specjalista w odbiorze piłki
+
+STR-408049
+dynamiczny pomocnik
+
+STR-408050
+pracowity pomocnik
+
+STR-408051
+solidny pomocnik
+
+STR-408052
+szybki pomocnik
+
+STR-408053
+szybki boczny obrońca
+
+STR-408054
+fantastyczny boczny obrońca
+
+STR-408055
+szybki obrońca
+
+STR-408056
+nienaganny technicznie obrońca
+
+STR-408057
+weteran
+
+STR-408058
+debiutant
+
+STR-408059
+Afryka
+
+STR-408060
+Azja
+
+STR-408061
+CONCACAF
+
+STR-408062
+Ameryka Środkowa
+
+STR-408063
+Wyspy Brytyjskie
+
+STR-408064
+Europa Wschodnia
+
+STR-408065
+Bliski Wschód
+
+STR-408066
+Afryka Północna
+
+STR-408067
+Ameryka Północna
+
+STR-408068
+Oceania
+
+STR-408069
+Skandynawia
+
+STR-408070
+Ameryka Południowa
+
+STR-408071
+Europa Środkowa
+
+STR-408072
+Europa Południowa
+
+STR-408146
+Zarząd oczekuje, że w tym sezonie klub zakwalifikuje się do: [%comp#1-short].
+
+STR-408147
+Zarząd oczekuje, że w tym sezonie klub zajmie bezpieczne miejsce w środku tabeli.
+
+STR-408156
+Asystent zaniepokojony morale zawodników
+
+STR-408160
+Asystent ostrzega przed buntem na treningu
+
+STR-408161
+Asystent zgłasza zastrzeżenia wobec treningów
+
+STR-408174
+Raport asystenta z treningów
+
+STR-408175
+Raport asystenta z treningów
+
+STR-408176
+Dokonywanie zmian
+
+STR-408177
+Zniesienie pozwoleń na pracę
+
+STR-408178
+Utrzymanie pozwoleń na pracę
+
+STR-408179
+Światowa federacja piłkarska poinformowała o pozytywnym wyniku głosowania nad zniesieniem pozwoleń na pracę, tak więc od dzisiaj nie będą one wymagane od zawodników spoza UE.
+
+STR-408180
+Światowa federacja piłkarska poinformowała o negatywnym wyniku głosowania nad zniesieniem pozwoleń na pracę, tak więc będą one nadal wymagane od zawodników spoza UE.
+
+STR-408181
+Zniesienie okien transferowych
+
+STR-408182
+Utrzymanie okien transferowych

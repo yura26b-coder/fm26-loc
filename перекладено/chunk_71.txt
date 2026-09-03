@@ -1,0 +1,538 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-433509
+Coef
+
+STR-433510
+Stable
+
+STR-433511
+Coefficients
+
+STR-433512
+Home Menu - Transfer deadline day
+
+STR-433513
+[%nation#1-nationality] FA assess [%comp#1-short] performance
+
+STR-433514
+The [%nation#1-nationality] Football Association are delighted to have qualified from the [%comp#1-short].
+
+STR-433515
+The [%nation#1-nationality] Football Association are satisfied with the team's performance in [%comp#1-short], despite failing to qualify.
+
+STR-433516
+The [%nation#1-nationality] Football Association are disappointed with the team's failure to qualify from the [%comp#1-short].
+
+STR-433517
+The [%nation#1-nationality] Football Association are delighted with the team's success in the [%comp#1-short].
+
+STR-433518
+The [%nation#1-nationality] Football Association are very pleased with the team's performance in the [%comp#1-short].
+
+STR-433519
+The [%nation#1-nationality] Football Association are satisfied with the team's performance in the [%comp#1-short].
+
+STR-433520
+The [%nation#1-nationality] Football Association are disappointed with the team's performance in the [%comp#1-short].
+
+STR-433521
+The [%nation#1-nationality] Football Association are very disappointed with the team's performance in the [%comp#1-short].
+
+STR-433522
+[%nation#1-nationality] FA indicate their expectations
+
+STR-433523
+The [%nation#1-nationality] Football Association expect the team to uphold the country's honour in the forthcoming friendly matches.
+
+STR-433524
+The [%nation#1-nationality] Football Association expect the team to be competitive in the [%comp#1-short].
+
+STR-433525
+The [%nation#1-nationality] Football Association expect the team to win the [%comp#1-short].
+
+STR-433526
+The [%nation#1-nationality] Football Association expect the team to qualify from the [%comp#1-short].
+
+STR-433527
+The [%nation#1-nationality] Football Association expect the team to qualify for the [%comp#1-short].
+
+STR-433528
+The [%nation#1-nationality] Football Association hope the team will qualify from the [%comp#1-short].
+
+STR-433529
+The [%nation#1-nationality] Football Association expect the team to be competitive in the [%comp#1-short], but accept qualification will be difficult.
+
+STR-433530
+The [%nation#1-nationality] Football Association hope the team will qualify for the [%fixture_name#1].
+
+STR-433531
+Despite having little hope of qualification, the [%nation#1-nationality] Football Association expect the team to play with pride during the [%comp#1-short].
+
+STR-433532
+Hiring staff
+
+STR-433533
+Backroom staff welcome you to the club
+
+STR-433534
+[%club#1-short] do not have any other members of staff at present. [%person#1-Your] personal assistant suggests putting job adverts out advertising these positions as soon as possible.
+
+STR-433535
+[%club#1-short]{s} backroom team have welcomed [%person#1-you] to the club and are excited to get started under [%person#1-your] leadership. They invite [%person#1-you] to view the facilities and evaluate the current setup.
+
+STR-433536
+They also suggest [%person#1-you] look into hiring more staff as the current team feel they are overworked at present.
+
+STR-433537
+They also suggest [%person#1-you] look into hiring a coach to manage the players more effectively in training.
+
+STR-433538
+They also suggest [%person#1-you] look into hiring another coach to manage the players more effectively in training.
+
+STR-433539
+They also suggest [%person#1-you] look into hiring more coaches to manage the players more effectively in training.
+
+STR-433540
+They also suggest [%person#1-you] look into hiring a scout to be able to gather reports on potential new signings.
+
+STR-433541
+They also suggest [%person#1-you] look into hiring another scout to boost the club's scouting network.
+
+STR-433542
+They also suggest [%person#1-you] look into hiring more scouts to boost the club's scouting network.
+
+STR-433543
+They also suggest [%person#1-you] look into hiring a physio to help players recover from injuries.
+
+STR-433544
+They also suggest [%person#1-you] look into hiring another physio to ease the workload on the medical team.
+
+STR-433545
+They also suggest [%person#1-you] look into hiring more physios to ease the workload on the medical team.
+
+STR-433546
+WB
+
+STR-433547
+[%team#1-short] have qualified for the [%fixture_name#1-long].
+
+STR-433548
+[%team#1-short] have failed to qualify for the [%fixture_name#1-long].
+
+STR-433549
+[%team#1-short] qualify for [%fixture_name#1-nocomp]
+
+STR-433550
+[%team#1-short] qualify for [%fixture_name#1-long]
+
+STR-433551
+[%team#1-short] denied [%stadium#2] berth
+
+STR-433561
+Pens S
+
+STR-433582
+Cannot connect to Game Center
+
+STR-433583
+Please ensure you are logged in via the Game Center and check your network connection then try again.
+
+STR-433594
+per month
+
+STR-433595
+per annum
+
+STR-433596
+per week
+
+STR-433597
+[%team#1-short] have won promotion to the [%comp#2-long].
+
+STR-433598
+[%team#1-short] have been relegated from the [%comp#1-long].
+
+STR-433599
+With their senior club due to play in this division next season, league rules dictate that they must be in a lower division.
+
+STR-433600
+Champions [%team#1-short] complete septuple!!!
+
+STR-433601
+Champions [%team#1-short] complete sextuple!!!
+
+STR-433602
+Champions [%team#1-short] complete quintuple!!!
+
+STR-433770
+[%team#1-short] cannot gain promotion.
+
+STR-433771
+[%team#1-short] cannot gain promotion this season.
+
+STR-433772
+[%team#1-short] cannot gain promotion for [%number#1] seasons
+
+STR-433877
+As part of the breakaway, players from [%nation#4] will continue to be treated as non-foreign to the nations leaving the [%agreement#1].
+
+STR-433881
+Players coming in from the [%agreement#1] will now need to apply for work permits to play in [%nation_list#1].
+
+STR-433882
+[%agreement#1] players already playing in these nations have been given special status to allow them to be treated as non-foreign and will not require any work permit.
+
+STR-433883
+[%agreement#1] players already playing in these nations have been given special status to allow them to be treated as non-foreign and will not require any work permit.
+
+STR-433884
+[%agreement#1] players already playing in these nations will only face these restrictions upon signing a new contract.
+
+STR-433896
+Roster Compliance Date ([%date#1-long]) - players released after this date still contribute to the salary cap if they are on Guaranteed Contracts
+
+STR-433920
+The board will not allow hiring while the club has a restricted staff budget.
+
+STR-433939
+Teams start with all their league records, along with [%number#1]% of points from the [%stage_name#1]
+
+STR-433940
+Teams start with all their league records, along with [%number#1]% of points from the main league stage
+
+STR-434074
+0[%number#1]:0[%number#2]
+
+STR-434075
+0[%number#1]:[%number#2]
+
+STR-434076
+0[%number#1]:0[%number#2]:0[%number#3]
+
+STR-434077
+0[%number#1]:0[%number#2]:[%number#3]
+
+STR-434078
+0[%number#1]:[%number#2]:0[%number#3]
+
+STR-434079
+0[%number#1]:[%number#2]:[%number#3]
+
+STR-434080
+0[%number#1]:0[%number#2]
+
+STR-434081
+0[%number#1]:[%number#2]
+
+STR-434423
+[%continent#1-continentality]
+
+STR-434424
+[%nation#1-nationality]
+
+STR-434425
+Some players, including [%person#1] and [%person#2], appeared unfocused during warm-ups as if something was bothering them.
+
+STR-434457
+Worldwide Club
+
+STR-434458
+International
+
+STR-434459
+Fixture rules in [%string#1] is using same squad selection value as a different fixture rules in [%string#2]
+
+STR-434478
+Cannot add stage [%number#1] from [%comp#1] to [%comp#2] when that competition has no stages of its own yet
+
+STR-434479
+Fixture rules in [%string#1] does not have a valid squad selection value
+
+STR-434640
+[%cash#1-roundlarge] awarded for each domestic U[%number#1] player playing in their first competitive league match
+Polish Reference:
+STR-433509
+Współcz.
+
+STR-433510
+Stabilna
+
+STR-433511
+Współczynniki
+
+STR-433512
+Menu główne - Ostatni dzień transferów
+
+STR-433513
+[%comp#1-short]: {upper}[%nation#1-nationality1] ZPN ocenia grę reprezentacji
+
+STR-433514
+{upper}[%nation#1-nationality1] ZPN jest zachwycony tym, że zespół zdołał się zakwalifikować z: [%comp#1-short].
+
+STR-433515
+{upper}[%nation#1-nationality1] ZPN jest usatysfakcjonowany postawą zespołu w rozgrywkach ([%comp#1-short]), choć nie udało mu się zakwalifikować.
+
+STR-433516
+{upper}[%nation#1-nationality1] ZPN jest rozczarowany tym, że zespół nie zdołał się zakwalifikować z: [%comp#1-short].
+
+STR-433517
+{upper}[%nation#1-nationality1] ZPN jest zachwycony sukcesem zespołu w rozgrywkach ([%comp#1-short]).
+
+STR-433518
+{upper}[%nation#1-nationality1] ZPN jest bardzo zadowolony z postawy zespołu w rozgrywkach ([%comp#1-short]).
+
+STR-433519
+{upper}[%nation#1-nationality1] ZPN jest usatysfakcjonowany postawą zespołu w rozgrywkach ([%comp#1-short]).
+
+STR-433520
+{upper}[%nation#1-nationality1] ZPN jest rozczarowany postawą zespołu w rozgrywkach ([%comp#1-short]).
+
+STR-433521
+{upper}[%nation#1-nationality1] ZPN jest bardzo rozczarowany postawą zespołu w rozgrywkach ([%comp#1-short]).
+
+STR-433522
+{upper}[%nation#1-nationality1] ZPN ujawnia swe oczekiwania
+
+STR-433523
+{upper}[%nation#1-nationality1] ZPN oczekuje, że reprezentacja nie przyniesie krajowi wstydu w najbliższych meczach towarzyskich.
+
+STR-433524
+{upper}[%nation#1-nationality1] ZPN oczekuje, że reprezentacja będzie ambitnie walczyć w rozgrywkach ([%comp#1-short]).
+
+STR-433525
+{upper}[%nation#1-nationality1] ZPN oczekuje, że reprezentacja zwycięży w rozgrywkach ([%comp#1-short]).
+
+STR-433526
+{upper}[%nation#1-nationality1] ZPN oczekuje, że reprezentacja zakwalifikuje się z: [%comp#1-short].
+
+STR-433527
+{upper}[%nation#1-nationality1] ZPN oczekuje, że reprezentacja zakwalifikuje się do: [%comp#1-short].
+
+STR-433528
+{upper}[%nation#1-nationality1] ZPN ma nadzieję, że reprezentacja pomyślnie przejdzie ten etap rozgrywek: [%comp#1-short].
+
+STR-433529
+{upper}[%nation#1-nationality1] ZPN oczekuje, że reprezentacja będzie ambitnie walczyć w rozgrywkach ([%comp#1-short]), ale przyznaje, że o zakwalifikowanie się nie będzie łatwo.
+
+STR-433530
+{upper}[%nation#1-nationality1] ZPN ma nadzieję, że reprezentacja zakwalifikuje się do: [%fixture_name#1].
+
+STR-433531
+Choć [%nation#1-nationality1] ZPN nie oczekuje zakwalifikowania się, działacze mają nadzieję, że reprezentacja pokaże się w rozgrywkach z dobrej strony ([%comp#1-short]).
+
+STR-433532
+Zatrudnianie pracowników sztabu szkoleniowego
+
+STR-433533
+Sztab szkoleniowy wita cię w klubie
+
+STR-433534
+[%club#1-short]{nie zatrudnia} obecnie nikogo w sztabie szkoleniowym. Twój sekretarz sugeruje, abyś jak najszybciej zamieścił stosowne ogłoszenia w urzędzie pracy.[%male#1-hidden]
+[%club#1-short]{nie zatrudnia} obecnie nikogo w sztabie szkoleniowym. Twój sekretarz sugeruje, abyś jak najszybciej zamieściła stosowne ogłoszenia w urzędzie pracy.[%female#1-hidden]
+
+STR-433535
+Sztab szkoleniowy powitał cię w klubie [%club#1-long], deklarując, że wszyscy liczą na wiele sukcesów pod twoim przywództwem. Zasugerowano ci również, abyś zapoznał się z obiektami i ocenił obecną strukturę klubu.[%male#1-hidden]
+Sztab szkoleniowy powitał cię w klubie [%club#1-long], deklarując, że wszyscy liczą na wiele sukcesów pod twoim przywództwem. Zasugerowano ci również, abyś zapoznała się z obiektami i ocenił obecną strukturę klubu.[%female#1-hidden]
+
+STR-433536
+Pojawiła się też sugestia, abyś rozważył zatrudnienie kolejnych współpracowników, gdyż obecni są przepracowani.[%male#1-hidden]
+Pojawiła się też sugestia, abyś rozważyła zatrudnienie kolejnych współpracowników, gdyż obecni są przepracowani.[%female#1-hidden]
+
+STR-433537
+Pojawiła się też sugestia, abyś rozważył zatrudnienie trenera, by podnieść efektywność treningów.[%male#1-hidden]
+Pojawiła się też sugestia, abyś rozważyła zatrudnienie trenera, by podnieść efektywność treningów.[%female#1-hidden]
+
+STR-433538
+Pojawiła się też sugestia, abyś rozważył zatrudnienie kolejnego trenera, by podnieść efektywność treningów.[%male#1-hidden]
+Pojawiła się też sugestia, abyś rozważyła zatrudnienie kolejnego trenera, by podnieść efektywność treningów.[%female#1-hidden]
+
+STR-433539
+Pojawiła się też sugestia, abyś rozważył zatrudnienie kolejnych trenerów, by podnieść efektywność treningów.[%male#1-hidden]
+Pojawiła się też sugestia, abyś rozważyła zatrudnienie kolejnych trenerów, by podnieść efektywność treningów.[%female#1-hidden]
+
+STR-433540
+Pojawiła się też sugestia, abyś rozważył zatrudnienie scouta, by móc otrzymywać raporty o potencjalnych wzmocnieniach.[%male#1-hidden]
+Pojawiła się też sugestia, abyś rozważyła zatrudnienie scouta, by móc otrzymywać raporty o potencjalnych wzmocnieniach.[%female#1-hidden]
+
+STR-433541
+Pojawiła się też sugestia, abyś rozważył zatrudnienie kolejnego scouta, by wzmocnić klubowy pion scoutingu.[%male#1-hidden]
+Pojawiła się też sugestia, abyś rozważyła zatrudnienie kolejnego scouta, by wzmocnić klubowy pion scoutingu.[%female#1-hidden]
+
+STR-433542
+Pojawiła się też sugestia, abyś rozważył zatrudnienie kolejnych scoutów, by wzmocnić klubowy pion scoutingu.[%male#1-hidden]
+Pojawiła się też sugestia, abyś rozważyła zatrudnienie kolejnych scoutów, by wzmocnić klubowy pion scoutingu.[%female#1-hidden]
+
+STR-433543
+Pojawiła się też sugestia, abyś rozważył zatrudnienie fizjoterapeuty, by przyspieszyć rekonwalescencję kontuzjowanych piłkarzy.[%male#1-hidden]
+Pojawiła się też sugestia, abyś rozważyła zatrudnienie fizjoterapeuty, by przyspieszyć rekonwalescencję kontuzjowanych piłkarzy.[%female#1-hidden]
+
+STR-433544
+Pojawiła się też sugestia, abyś rozważył zatrudnienie kolejnego fizjoterapeuty, by odciążyć zespół medyczny.[%male#1-hidden]
+Pojawiła się też sugestia, abyś rozważyła zatrudnienie kolejnego fizjoterapeuty, by odciążyć zespół medyczny.[%female#1-hidden]
+
+STR-433545
+Pojawiła się też sugestia, abyś rozważył zatrudnienie kolejnych fizjoterapeutów, by odciążyć zespół medyczny.[%male#1-hidden]
+Pojawiła się też sugestia, abyś rozważyła zatrudnienie kolejnych fizjoterapeutów, by odciążyć zespół medyczny.[%female#1-hidden]
+
+STR-433546
+BWO
+
+STR-433547
+[%team#1-short]{zakwalifikował} się do rozgrywek ([%fixture_name#1-long]).
+
+STR-433548
+[%team#1-short]{nie zdołał} się zakwalifikować do rozgrywek ([%fixture_name#1-long]).
+
+STR-433549
+[%fixture_name#1-nocomp]: [%team#1-short] z awansem
+
+STR-433550
+[%fixture_name#1-long]: [%team#1-short] z awansem
+
+STR-433551
+[%team#1-short]{może} zapomnieć o wizycie na stadionie [%stadium#2]
+
+STR-433561
+Gol (k)
+
+STR-433582
+Połączenie z Centrum Gier niemożliwe
+
+STR-433583
+Upewnij się, że jesteś zalogowany za pośrednictwem Centrum Gier, i sprawdź swoje połączenie sieciowe, a następnie spróbuj raz jeszcze.
+
+STR-433594
+miesięcznie
+
+STR-433595
+rocznie
+
+STR-433596
+tyg.
+
+STR-433597
+[%team#1-short]{zapewnił} sobie awans do: [%comp#2-long].
+
+STR-433598
+[%team#1-short]{spadł} z: [%comp#1-long].
+
+STR-433599
+Jako że w przyszłym sezonie w tych rozgrywkach występować będzie pierwsza drużyna, zgodnie z przepisami muszą znaleźć się w niższej lidze.
+
+STR-433600
+[%team#1-short]: Mistrzowie z siódmym trofeum!!!
+
+STR-433601
+[%team#1-short]: Mistrzowie na szóstkę!!!
+
+STR-433602
+[%team#1-short]: Mistrzowie na piątkę!!!
+
+STR-433770
+[%team#1-short]{nie może} awansować.
+
+STR-433771
+[%team#1-short]{nie może} awansować w obecnym sezonie.
+
+STR-433772
+[%team#1-short]{nie może} awansować przez [%number#1] sez.
+
+STR-433877
+W efekcie tego rozłamu piłkarze narodowości [%nation#4-nationality1]ej nadal nie będą traktowani jako obcokrajowcy w krajach opuszczających organizację ([%agreement#1]).
+
+STR-433881
+Piłkarze sprowadzani z krajów objętych postanowieniami traktatów, jakie {narzuca}[%agreement#1], będą odtąd zmuszeni występować o pozwolenie na pracę (dotyczy następujących krajów: [%nation_list#1]).
+
+STR-433882
+Piłkarze z klubów z tych krajów, objęci postanowieniami traktatów, jakie {narzuca}[%agreement#1], otrzymali specjalny status, dzięki czemu nie będą traktowani jak obcokrajowcy i nie będą potrzebować pozwolenia na pracę.
+
+STR-433883
+Piłkarze z klubów z tych krajów, objęci postanowieniami traktatów, jakie {narzuca}[%agreement#1], otrzymali specjalny status, dzięki czemu nie będą traktowani jak obcokrajowcy i nie będą potrzebować pozwolenia na pracę.
+
+STR-433884
+Piłkarzy z klubów z tych krajów, objętych postanowieniami traktatów, jakie {narzuca}[%agreement#1], ograniczenia te dotkną dopiero w chwili podpisania nowego kontraktu.
+
+STR-433896
+Termin zgodności składu ([%date#1-short]) - piłkarze zwolnieni po tym terminie liczą się do limitu płac, o ile są zatrudnieni na kontraktach gwarantowanych
+
+STR-433920
+Zarząd nie pozwoli na zatrudnianie pracowników, podczas gdy klub dysponuje dla nich ograniczonym budżetem płac.
+
+STR-433939
+Zespoły wchodzą do fazy ze wszystkimi wynikami ligowymi oraz [%number#1]% punktów z fazy: [%stage_name#1]
+
+STR-433940
+Zespoły wchodzą do fazy ze wszystkimi wynikami ligowymi oraz [%number#1]% punktów z głównej fazy ligowej
+
+STR-434074
+0[%number#1]:0[%number#2]
+
+STR-434075
+0[%number#1]:[%number#2]
+
+STR-434076
+0[%number#1]:0[%number#2]:0[%number#3]
+
+STR-434077
+0[%number#1]:0[%number#2]:[%number#3]
+
+STR-434078
+0[%number#1]:[%number#2]:0[%number#3]
+
+STR-434079
+0[%number#1]:[%number#2]:[%number#3]
+
+STR-434080
+0[%number#1]:0[%number#2]
+
+STR-434081
+0[%number#1]:[%number#2]
+
+STR-434423
+[%continent#1]
+
+STR-434424
+[%nation#1]
+
+STR-434425
+Kilku naszych piłkarzy, w tym [%male#1] oraz [%male#2], nie potrafiło skoncentrować się podczas rozgrzewki, jak gdyby coś ich gryzło.
+
+STR-434457
+Klubowe globalnie
+
+STR-434458
+Reprezentacje
+
+STR-434459
+Reguły meczowe ([%string#1]) wykorzystują tę samą wartość wyboru składu co inne przepisy ([%string#2])
+
+STR-434478
+Nie można dodać [%number#1]. fazy z rozgrywek ([%comp#1]) do rozgrywek ([%comp#2]), gdyż nie skonfigurowano w nich jeszcze żadnej fazy
+
+STR-434479
+Reguły meczowe ([%string#1]) nie zawierają ważnej wartości wyboru składu
+
+STR-434640
+[%cash#1-roundlarge] premii przyznawane jest za każdego krajowego zawodnika U-[%number#1], który zadebiutuje w meczu ligowym

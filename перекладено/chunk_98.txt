@@ -1,0 +1,545 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-465317
+The main job of the No-Nonsense Centre-Back is to stop the opposing attackers from playing and to clear the ball from danger when required.\nThe aim is to win the ball without giving away a free kick and get it cleared safely up field in a no-nonsense manner.
+
+STR-465319
+[%person#1-surname] loan ends early
+
+STR-465320
+Sack Manager (DEBUG)
+
+STR-465321
+Attend Board Meeting (DEBUG)
+
+STR-465322
+Move cash between budgets by tapping along the adjustable slider
+
+STR-465323
+Transfer Funds
+
+STR-465324
+Unfortunately you are too busy looking for a new job to be able to study for the exam
+
+STR-465328
+Player Attribute Highlighting
+
+STR-465330
+Injured
+
+STR-465335
+All Items Bundle
+
+STR-465341
+Join the Board
+
+STR-465342
+Expand Stadium
+
+STR-465343
+Youth Academy
+
+STR-465344
+Manager's Son
+
+STR-465345
+Editor
+
+STR-465346
+Gold Coaching
+
+STR-465347
+New Stadium
+
+STR-465348
+[%person#1-He] believes that [%club#1-short] will look to play a high tempo, attacking style of football in a [%string#1 formation name] formation.\n\n
+
+STR-465350
+[%person#1-He] believes that [%club#1-short] will look to play an attacking style of football in a [%string#1 formation name] formation.\n\n
+
+STR-465352
+[%person#1-He] believes that [%club#1-short] will line up in a [%string#1 formation name] formation and look to dominate possession of the ball.\n\n
+
+STR-465354
+[%person#1-He] believes that [%club#1-short] will line up in a [%string#1 formation name] formation and will be looking to play on the counter-attack.\n\n
+
+STR-465356
+[%person#1-He] believes that [%club#1-short] will line up in a [%string#1 formation name] formation, with the sole intention of preventing us from creating chances.\n\n
+
+STR-465358
+[%person#1-He] believes that [%club#1-short] will line up in a [%string#1 formation name] formation, with the aim of limiting the number of chances we can create against them.\n\n
+
+STR-465360
+[%person#1-He] believes that [%club#1-short] will line up in a [%string#1 formation name] formation.\n\n
+
+STR-465371
+[%person#1] has been singled out as their biggest goal threat. Stopping the service to [%person#1-him] will increase our chances of getting a result.
+
+STR-465372
+[%person#1] provides their creative spark and stopping [%person#1-him] receiving the ball will increase our chances of getting a result.
+
+STR-465373
+[%person#1] is a specialist from dead-ball situations so we should try to avoid giving away cheap set pieces.
+
+STR-465374
+[%person#1] has excellent delivery from wide areas so we should try to limit [%person#1-his] opportunities to cross the ball into dangerous areas.
+
+STR-465375
+[%person#1] is dangerous when [%person#1-he] gets the ball at [%person#1-his] feet and can run at the opposition.
+
+STR-465377
+[%person#1] is a commanding figure at the heart of their defence.
+
+STR-465378
+[%person#1] is an excellent passer of the ball and will dominate the midfield if we allow [%person#1-him] enough time and space.
+
+STR-465379
+[%person#1] is very good at winning the ball back in midfield and regaining possession for [%person#1-his] team.
+
+STR-465380
+[%club#1-short] are on a [%number#1] match winning streak and occupy [%number#2-nth] place in {the}[%comp#1-short].
+
+STR-465381
+[%club#1-short] are currently on a [%number#1] match unbeaten run and occupy [%number#2-nth] place in {the}[%comp#1-short].
+
+STR-465382
+[%club#1-short] have suffered [%number#1] straight defeats and sit in [%number#2-nth] place in {the}[%comp#1-short].
+
+STR-465383
+[%club#1-short] are without a win in their last [%number#1] matches and sit in [%number#2-nth] place in the [%comp#1-short].
+
+STR-465384
+[%club#1-short] have suffered [%number#1] straight defeats and we are heavy favourites to heap more misery on them.
+
+STR-465385
+[%club#1-short] are without a win in their last [%number#1] matches and we are expected to keep their unwanted run going.
+
+STR-465386
+[%club#1-short] are on a [%number#1] match winning streak, so we will have to be at our very best to get something from this game.
+
+STR-465387
+[%club#1-short] have not lost in [%number#1] matches, so we will have to be at our best to get something from this game.
+
+STR-465388
+[%club#1-short] have suffered [%number#1] straight defeats, but this will prove a difficult test for us.
+
+STR-465389
+[%club#1-short] are without a win in their last [%number#1] matches, but this will prove a difficult test for us.
+
+STR-465390
+[%club#1-short] are on a [%number#1] match winning streak, so we will have to be at our best to get something from this game.
+
+STR-465391
+[%club#1-short] have suffered [%number#1] straight defeats, but they will provide a stern test and should not be underestimated.
+
+STR-465392
+[%club#1-short] are without a win in their last [%number#1] matches, but they will provide a stern test and should not be underestimated.
+
+STR-465393
+Away
+
+STR-465394
+Home
+
+STR-465395
+Third
+
+STR-465396
+Our finances are in a very healthy state.
+
+STR-465397
+Our finances are secure.
+
+STR-465398
+Our finances are OK.
+
+STR-465399
+Our finances are insecure.
+
+STR-465400
+The club is currently bankrupt and in dire straits financially.
+
+STR-465401
+[%person#1-I] don't feel that joining [%person#2-your] club would be a good move for [%person#1-my] career at this time.
+
+STR-465404
+Current Offer
+
+STR-465405
+Previous Offer
+
+STR-465406
+Interested Clubs
+
+STR-465407
+Club
+
+STR-465408
+Transfer Type
+
+STR-465409
+Decision
+
+STR-465410
+No active interest from other clubs at this time
+
+STR-465412
+Offer Type
+
+STR-465413
+Transfer Fee
+
+STR-465414
+Buy Back Fee
+
+STR-465416
+We feel as though these talks dragged on too long without reaching an agreement. Therefore, we are not interested in resuming negotiations for now.
+
+STR-465417
+We don't feel as though these talks made sufficient progress and so will not be resuming talks for now.
+
+STR-465418
+We are not interested in renewing transfer talks due to the previous breakdown in negotiations.
+
+STR-465419
+We would be willing to sell [%person#1-surname], but only for the right price.
+
+STR-465420
+We would rather the player didn't leave for a rival club. However, the player is available for transfer and we will listen to sensible offers.
+
+STR-465421
+We are willing to listen to any offers for [%person#1-surname].
+
+STR-465422
+We are somewhat reluctant to let the player leave on loan to a rival.
+
+STR-465423
+We are willing to listen to loan offers for [%person#1-surname] but would prefer him going to a larger club.
+
+STR-465424
+We are willing to listen to loan offers for [%person#1-surname] but it will take an enticing offer to interest us
+
+STR-465425
+We are willing to listen to loan offers for [%person#1-surname] because you are a local club.
+
+STR-465426
+We are willing to listen to loan offers for [%person#1-surname] because you are a relatively local club.
+
+STR-465427
+We are willing to consider a loan offers for [%person#1-surname].
+
+STR-465428
+We are willing to listen to loan offers for [%person#1-surname].
+
+STR-465429
+We have no interest in selling [%person#1-surname] as we believe the player will be an important player in the future.
+
+STR-465430
+We have no interest in selling [%person#1-surname] as we feel [%person#1-he] is indispensable to the club.
+
+STR-465431
+We see [%person#1-surname] as an indispensable member of the team and are not willing to let [%person#1-him] leave the club.
+
+STR-465432
+We see [%person#1-surname] as an important member of the first team squad and are not looking to let [%person#1-him] leave the club.
+
+STR-465433
+We are not keen on letting [%person#1-surname] move to a rival club as [%person#1-he] is highly rated for the future.
+
+STR-465434
+We aren't that interested in selling [%person#1-surname] to a rival club.
+
+STR-465435
+Let's talk about doing a deal for [%person#1-surname].
+
+STR-465436
+Due to the terms agreed in [%person#1-surname]{s} transfer, [%club#1-short] have the right to buy the player back for a fee of [%cash#1-short-roundlarge].
+Polish Reference:
+STR-465317
+Głównym zadaniem tradycyjnego obrońcy jest uniemożliwianie napastnikom przeciwnika swobodnej gry i wybijanie piłki poza strefę zagrożenia.\nJego celem jest odbiór piłki bez faulu i bezceremonialne wyekspediowanie jej w głąb pola.
+
+STR-465319
+[%male#1-surname]: Przedwczesny koniec wypożyczenia
+
+STR-465320
+Zwolnij menedżera (DEBUG)
+
+STR-465321
+Weź udział w spotkaniu z zarządem (DEBUG)
+
+STR-465322
+Przenieś gotówkę między budżetami stukając na suwaku
+
+STR-465323
+Budżet transferowy
+
+STR-465324
+Niestety poszukiwania nowej pracy nie zostawiają ci czasu na naukę do tego egzaminu.
+
+STR-465328
+Wyróżnianie atrybutów zawodników
+
+STR-465330
+Kontuzjowani
+
+STR-465335
+Pakiet wszystkich przedmiotów.
+
+STR-465341
+Dołącz do zarządu
+
+STR-465342
+Rozbudowa stadionu
+
+STR-465343
+Akademię juniorska
+
+STR-465344
+Syn menedżera
+
+STR-465345
+Edytor
+
+STR-465346
+Złota odznaka trenerska
+
+STR-465347
+Nowy stadion
+
+STR-465348
+Uważa, że [%club#1-short]{będzie} grać szybką, ofensywną piłkę w ustawieniu [%string#1 formation name].\n\n[%male#1-hidden]
+
+STR-465350
+Uważa, że [%club#1-short]{będzie} grać ofensywną piłkę w ustawieniu [%string#1 formation name].\n\n[%male#1-hidden]
+
+STR-465352
+Uważa, że [%club#1-short]{wyjdzie} w ustawieniu [%string#1 formation name], starając się zdominować posiadanie piłki.\n\n[%male#1-hidden]
+
+STR-465354
+Uważa, że [%club#1-short]{wyjdzie} w ustawieniu [%string#1 formation name], starając się grać z kontrataku.\n\n[%male#1-hidden]
+
+STR-465356
+Uważa, że [%club#1-short]{wyjdzie} w ustawieniu [%string#1 formation name], starając się uniemożliwić nam stwarzanie sytuacji podbramkowych.\n\n[%male#1-hidden]
+
+STR-465358
+Uważa, że [%club#1-short]{wyjdzie} w ustawieniu [%string#1 formation name], starając się maksymalnie zredukować liczbę stwarzanych przez nas sytuacji podbramkowych.\n\n[%male#1-hidden]
+
+STR-465360
+Uważa, że [%club#1-short]{wyjdzie} w ustawieniu [%string#1 formation name].\n\n[%male#1-hidden]
+
+STR-465371
+[%male#1] uważany jest za ich najgroźniejszego zawodnika pod bramką rywali. Odcięcie go od podań zwiększy nasze szanse na korzystny wynik.
+
+STR-465372
+[%male#1] jest kreatorem gry w ich zespole i odcięcie go od podań zwiększy nasze szanse na korzystny wynik.
+
+STR-465373
+[%male#1] jest specjalistą od stałych fragmentów gry, więc powinniśmy im takowych nie prezentować.
+
+STR-465374
+[%male#1] potrafi świetnie wrzucić piłkę ze skrzydła, więc musimy dopilnować, by miał jak najmniej okazji po temu.
+
+STR-465375
+[%male#1] jest szczególnie groźny z piłką przy nodze w pojedynkach jeden na jednego
+
+STR-465377
+[%male#1] jest filarem linii defensywy swojego zespołu.
+
+STR-465378
+[%male#1] potrafi doskonale podać piłkę i jeśli zostawimy mu zbyt dużo czasu i miejsca, zdominuje środek pola.
+
+STR-465379
+[%male#1] doskonale odbiera piłkę w środku pola.
+
+STR-465380
+[%club#1-short]{kontynuuje} serię [%number#1] zwycięstw, zajmując [%number#2-nth] miejsce w tabeli ([%comp#1-short]).
+
+STR-465381
+[%club#1-short]{kontynuuje} serię [%number#1] spotkań bez porażki, zajmując [%number#2-nth] miejsce w tabeli ([%comp#1-short]).
+
+STR-465382
+[%club#1-short]{ma} na koncie serię [%number#1] porażek, zajmując [%number#2-nth] miejsce w tabeli ([%comp#1-short]).
+
+STR-465383
+[%club#1-short]{ma} na koncie serię [%number#1] meczów bez zwycięstwa, zajmując [%number#2-nth] miejsce w tabeli ([%comp#1-short]).
+
+STR-465384
+[%club#1-short]{doznał} [%number#1] porażek z rzędu, więc mamy spore szanse, by dorzucić im jeszcze jedną.
+
+STR-465385
+[%club#1-short]{ma} na koncie serię [%number#1] meczów bez zwycięstwa i na nas raczej jej nie przerwie.
+
+STR-465386
+[%club#1-short]{ma} na koncie serię [%number#1] zwycięstw, więc musimy spisać się naprawdę dobrze, by coś ugrać z tego spotkania.
+
+STR-465387
+[%club#1-short]{ma} na koncie serię [%number#1] meczów bez porażki, więc musimy spisać się naprawdę dobrze, by coś ugrać z tego spotkania.
+
+STR-465388
+[%club#1-short]{ma} na koncie serię [%number#1] porażek, ale to nie będzie dla nas łatwe spotkanie.
+
+STR-465389
+[%club#1-short]{ma} na koncie serię [%number#1] meczów bez zwycięstwa, ale to nie będzie dla nas łatwe spotkanie.
+
+STR-465390
+[%club#1-short]{ma} na koncie serię [%number#1] zwycięstw, więc musimy dobrze się spisać, by coś ugrać z tego spotkania.
+
+STR-465391
+[%club#1-short]{ma} na koncie serię [%number#1] porażek, ale to trudny przeciwnik, którego pod żadnym pozorem nie wolno zlekceważyć.
+
+STR-465392
+[%club#1-short]{ma} na koncie serię [%number#1] meczów bez zwycięstwa, ale to trudny przeciwnik, którego pod żadnym pozorem nie wolno zlekceważyć.
+
+STR-465393
+Wyjazdowa
+
+STR-465394
+Domowa
+
+STR-465395
+Trzecia
+
+STR-465396
+Nasze finanse są w bardzo dobrym stanie.
+
+STR-465397
+Nasze finanse są niezagrożone.
+
+STR-465398
+Nasze finanse są w porządku.
+
+STR-465399
+Nasze finanse są zagrożone.
+
+STR-465400
+Klub jest bankrutem i znajduje się w opałach finansowych.
+
+STR-465401
+Nie wydaje mi się, by przejście do pańskiego klubu byłoby obecnie dobrym posunięciem z perspektywy mojej kariery.[%male#1-hidden][%male#2-hidden]
+Nie wydaje mi się, by przejście do pani klubu byłoby obecnie dobrym posunięciem z perspektywy mojej kariery.[%male#1-hidden][%female#2-hidden]
+Nie wydaje mi się, by przejście do pańskiego klubu byłoby obecnie dobrym posunięciem z perspektywy mojej kariery.[%female#1-hidden][%male#2-hidden]
+Nie wydaje mi się, by przejście do pani klubu byłoby obecnie dobrym posunięciem z perspektywy mojej kariery.[%female#1-hidden][%female#2-hidden]
+
+STR-465404
+Aktualna oferta
+
+STR-465405
+Poprzednia oferta
+
+STR-465406
+Zainteresowane kluby
+
+STR-465407
+Klub
+
+STR-465408
+Rodzaj transferu
+
+STR-465409
+Decyzja
+
+STR-465410
+Brak aktywnego zainteresowania ze strony innych klubów
+
+STR-465412
+Typ oferty
+
+STR-465413
+Kwota transferu
+
+STR-465414
+Kwota odkupu
+
+STR-465416
+Uważamy, że te rozmowy trwały zbyt długo i ich końca nie było widać. Dlatego też nie jesteśmy obecnie zainteresowani wznowieniem negocjacji.
+
+STR-465417
+Nie wydaje nam się, abyśmy zrobili zadowalające postępy w trakcie tych rozmów, więc na razie rezygnujemy z ich wznowienia.
+
+STR-465418
+Nie jesteśmy zainteresowani wznowieniem negocjacji transferowych po ich wcześniejszym zerwaniu.
+
+STR-465419
+[%male#1-surname] mógłby zostać sprzedany, ale wyłącznie za odpowiednią cenę
+[%female#1-surname] mogłaby zostać sprzedana, ale wyłącznie za odpowiednią cenę
+
+STR-465420
+Wolelibyśmy, żeby ten piłkarz nie przeszedł do rywalizującego z nami klubu. Niemniej jednak jest jak najbardziej na sprzedaż, więc wysłuchamy każdej rozsądnej oferty.
+
+STR-465421
+Jesteśmy gotowi rozważyć każdą ofertę, której przedmiotem będzie [%male#1-surname].
+
+STR-465422
+Niechętnie zapatrujemy się na odejście tego zawodnika do rywalizującego z nami klubu.
+
+STR-465423
+Jesteśmy gotowi rozważyć każdą ofertę wypożyczenia, której przedmiotem będzie [%male#1-surname], ale wolelibyśmy, aby trafił do większego klubu.
+Jesteśmy gotowi rozważyć każdą ofertę wypożyczenia, której przedmiotem będzie [%female#1-surname], ale wolelibyśmy, aby trafiła do większego klubu.
+
+STR-465424
+Jesteśmy gotowi rozważyć każdą ofertę wypożyczenia, której przedmiotem będzie [%male#1-surname], ale jedynie kusząca propozycja mogłaby nas zainteresować.
+
+STR-465425
+Jesteśmy gotowi rozważyć każdą ofertę wypożyczenia, której przedmiotem będzie [%male#1-surname], jako że jesteście lokalnym klubem.
+
+STR-465426
+Jesteśmy gotowi rozważyć każdą ofertę wypożyczenia, której przedmiotem będzie [%male#1-surname], jako że jesteście stosunkowo lokalnym klubem.
+
+STR-465427
+Jesteśmy gotowi rozważyć każdą ofertę wypożyczenia, której przedmiotem będzie [%male#1-surname].
+Jesteśmy gotowi rozważyć każdą ofertę, której przedmiotem będzie [%female#1-surname].
+
+STR-465428
+Jesteśmy gotowi wysłuchać każdej oferty, której przedmiotem będzie [%male#1-surname].
+
+STR-465429
+Nie jesteśmy zainteresowani tym, by [%male#1-surname] został sprzedany, gdyż w przyszłości stanie się dla nas ważnym zawodnikiem.
+Nie jesteśmy zainteresowani tym, by [%female#1-surname] została sprzedana, gdyż w przyszłości stanie się dla nas ważną zawodniczką.
+
+STR-465430
+Nie jesteśmy zainteresowani tym, by [%male#1-surname] został sprzedany, gdyż naszym zdaniem jest nie do zastąpienia.
+Nie jesteśmy zainteresowani tym, by [%female#1-surname] została sprzedana, gdyż naszym zdaniem jest nie do zastąpienia.
+
+STR-465431
+[%male#1-surname] to kluczowy zawodnik naszego zespołu, dlatego nie zgodzimy się na jego odejście z klubu.
+[%female#1-surname] to kluczowa zawodniczka naszego zespołu, dlatego nie zgodzimy się na jej odejście z klubu.
+
+STR-465432
+[%male#1-surname] to ważny zawodnik pierwszego zespołu, dlatego nie planujemy zgodzić się na jego odejście z klubu.
+[%female#1-surname] to ważna zawodniczka pierwszego zespołu, dlatego nie planujemy zgodzić się na jej odejście z klubu.
+
+STR-465433
+Nie jesteśmy skłonni zgodzić się, by [%male#1-surname] odszedł do rywalizującego z nami klubu, gdyż pokładamy w nim wielkie nadzieje na przyszłość.
+Nie jesteśmy skłonni zgodzić się, by [%female#1-surname] odeszła do rywalizującego z nami klubu, gdyż pokładamy w niej wielkie nadzieje na przyszłość.
+
+STR-465434
+Nie jesteśmy aż tak zainteresowani tym, by [%male#1-surname] odszedł do rywalizującego z nami klubu.
+Nie jesteśmy aż tak zainteresowani tym, by [%female#1-surname] odeszła do rywalizującego z nami klubu.
+
+STR-465435
+Porozmawiajmy o transferze, którego przedmiotem ma być [%male#1-surname].
+
+STR-465436
+Zgodnie z warunkami transferu, którego przedmiotem jest [%male#1-surname], [%club#1-short]{ma} prawo odkupić tego zawodnika za kwotę [%cash#1-short-roundlarge].
+Zgodnie z warunkami transferu, którego przedmiotem jest [%female#1-surname], [%club#1-short]{ma} prawo odkupić tę zawodniczkę za kwotę [%cash#1-short-roundlarge].

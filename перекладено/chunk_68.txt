@@ -1,0 +1,514 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-424153
+Upon expiry of their contracts, players will be assigned a fee (decided by a committee) and are free to move club regardless of an agreement being made between clubs, as long as the fee is met.
+
+STR-424154
+Upon expiry of their contracts, players above the age of [%number#1] will be assigned a fee (decided by a committee) and are free to move club regardless of an agreement being made between clubs, as long as the fee is met.
+
+STR-424155
+Upon expiry of their contracts, players below the age of [%number#1] will be assigned a fee (decided by a committee) and are free to move club regardless of an agreement being made between clubs, as long as the fee is met.
+
+STR-424156
+Upon expiry of their contracts, [%number#1] year-old players will be assigned a fee (decided by a committee) and are free to move club regardless of an agreement being made between clubs, as long as the fee is met.
+
+STR-424157
+Upon expiry of their contracts, players aged [%number#1]-[%number#2] will be assigned a fee (decided by a committee) and are free to move club regardless of an agreement being made between clubs, as long as the fee is met.
+
+STR-424158
+Upon expiry of their contracts, players will be assigned a minimum fee release clause (decided by a committee) if negotiations between two teams break down over their transfer.
+
+STR-424159
+Upon expiry of their contracts, players above the age of [%number#1] will be assigned a minimum fee release clause (decided by a committee) if negotiations between two teams break down over their transfer.
+
+STR-424160
+Upon expiry of their contracts, players below the age of [%number#1] will be assigned a minimum fee release clause (decided by a committee) if negotiations between two teams break down over their transfer.
+
+STR-424161
+Upon expiry of their contracts, [%number#1] year-old players will be assigned a minimum fee release clause (decided by a committee) if negotiations between two teams break down over their transfer.
+
+STR-424162
+Upon expiry of their contracts, players aged [%number#1]-[%number#2] will be assigned a minimum fee release clause (decided by a committee) if negotiations between two teams break down over their transfer.
+
+STR-424176
+[%wage#1] minimum wage for reserve players [%number#1] years old and up.
+
+STR-424177
+[%wage#1] minimum wage for reserve players.
+
+STR-424178
+[%wage#1] minimum wage for senior players [%number#1] years old and up.
+
+STR-424179
+[%wage#1] minimum wage for senior players.
+
+STR-424182
+[%number#1]% of int. appearances in recent matches.
+
+STR-424183
+Percentage of int. appearances in recent matches dependent on player's national association's official nation ranking:
+
+STR-424188
+[%number#1]% of int. appearances in recent matches (senior, youth or both).
+
+STR-424190
+Minimum of [%number#1] points required based on following criteria.
+
+STR-424191
+[%number#1] points if transfer fee paid is in the top [%number#2]% of all transfers to the [%comp#1] in the last 2 transfer windows. (currently [%cash#1-roundlarge])
+
+STR-424192
+[%number#1] points if transfer fee paid is in the top [%number#2]-[%number#3]% of all transfers to the [%comp#1] in the last 2 transfer windows. (currently [%cash#1-roundlarge])
+
+STR-424193
+[%number#1] points if player wage is in top [%number#2]% of the top [%number#3] earners at the club.
+
+STR-424194
+[%number#1] points if player wage is in top [%number#2]-[%number#3]% of the top [%number#4] earners at the club.
+
+STR-424196
+Players with good potential.
+
+STR-424197
+[%number#1]% of first team games played in.
+
+STR-424198
+Pass - Assist
+
+STR-424199
+Cross - Assist
+
+STR-424200
+Touches
+
+STR-424202
+The minimum value is [%number#1]
+
+STR-424203
+The maximum value is [%number#1]
+
+STR-424204
+Negative numbers are allowed
+
+STR-424205
+Negative numbers are not allowed
+
+STR-424206
+Fractional numbers are allowed
+
+STR-424207
+Text limit reached.
+
+STR-424324
+Excellent
+
+STR-424325
+Impressive
+
+STR-424326
+Good
+
+STR-424327
+Average
+
+STR-424328
+Adequate
+
+STR-424329
+Below Average
+
+STR-424330
+Basic
+
+STR-424331
+None
+
+STR-424332
+Top
+
+STR-424333
+Superb
+
+STR-424334
+Great
+
+STR-424335
+Good
+
+STR-424336
+Average
+
+STR-424337
+Adequate
+
+STR-424338
+Basic
+
+STR-424339
+Poor
+
+STR-424340
+None
+
+STR-424341
+[%string#1 Player Name] has been selected in the [%nation#1] squad for the [%comp#1].
+
+STR-424342
+[%string#1 Player Name] has been called up to their national squad for the [%comp#1].
+
+STR-424343
+[%string#1 Player Name 1] and [%string#2 Player Name 2] have been selected in the [%nation#1] squad for the [%comp#1].
+
+STR-424344
+[%string#1 Player Name 1] and [%string#2 Player Name 2] have been selected in their nation's squad for the [%comp#1].
+
+STR-424345
+[%string#1 Player Name 1] and [%string#2 Player Name 2] have been selected in the [%nation#1] and [%nation#2] squads for the [%comp#1].
+
+STR-424346
+[%string#1 Player Name 1] and [%string#2 Player Name 2] have been selected in their nations' squads for the [%comp#1].
+
+STR-424347
+[%string#1 Player Name 1], [%string#2 Player Name 2] and [%string#3 Player Name 3] have been selected in the [%nation#1] squad for the [%comp#1].
+
+STR-424348
+[%string#1 Player Name 1], [%string#2 Player Name 2] and [%string#3 Player Name 3] have been selected in their nation's squad for the [%comp#1].
+
+STR-424349
+[%string#1 Player Name 1], [%string#2 Player Name 2] and [%string#3 Player Name 3] have been chosen to represent their countries in the [%comp#1].
+
+STR-424350
+[%number#1] players from [%club#1] have been selected in the [%nation#1] squad for the [%comp#1].
+
+STR-424351
+[%number#1] players from [%club#1] have been selected in their national squad for the [%comp#1].
+
+STR-424352
+[%number#1] players from [%club#1] will be representing [%number#2-text] different nations at the [%comp#1].
+
+STR-424355
+\n\nBoth players go into the competition without having played a senior international game.
+
+STR-424356
+\n\n[%string#1 Player Name 1] and [%string#2 Player Name 2] go into the competition without having played a senior international game.
+
+STR-424357
+\n\nAll three players could be set to win their first international caps.
+
+STR-424358
+\n\n[%string#1 Player Name 1], [%string#2 Player Name 2] and [%string#3 Player Name 3] could be set to win their first international caps.
+
+STR-424359
+\n\nAll [%number#1-text] players will be looking to make their international debuts in the competition, including the likes of [%string#2 Player Name 1], [%string#3 Player Name 2] and [%string#4 Player Name 3].
+
+STR-424360
+\n\n[%number#1] players will be looking to make their international debuts in the competition, including the likes of [%string#2 Player Name 1], [%string#3 Player Name 2] and [%string#4 Player Name 3].
+
+STR-424361
+\n\nThey include [%string#1 Player Name 1], [%string#2 Player Name 2] and [%string#3 Player Name 3].
+
+STR-424362
+[%club#1] player selected for [%comp#1]
+
+STR-424363
+[%club#1] players selected for [%comp#1]
+
+STR-424372
+[%number#1] players from [%club#1] have been called up to the [%nation#1] squad for the forthcoming matches.
+
+STR-424373
+[%number#1] players from [%club#1] have been called up to represent [%number#2-text] different nations for the latest round of international fixtures.
+
+STR-424374
+[%number#1] players have been called up for the latest round of international fixtures.
+
+STR-424377
+\n\nBoth players could be set to win their first international caps.
+
+STR-424378
+\n\n[%string#1 Player Name 1] and [%string#2 Player Name 2] could be set to win their first international caps.
+
+STR-424379
+\n\nAll [%number#1-text] players could be set to make their international debuts, including the likes of [%string#2 Player Name 1], [%string#3 Player Name 2] and [%string#4 Player Name 3].
+
+STR-424380
+\n\n[%number#1] players could be set to make their international debuts, including the likes of [%string#2 Player Name 1], [%string#3 Player Name 2] and [%string#4 Player Name 3].
+
+STR-424381
+[%string#1 Player Name] selected in [%nation#1] squad
+
+STR-424382
+[%string#1 Player Name] selected for national squad
+
+STR-424384
+[%club#1-short] struggled to contain [%club#2-short] but somehow managed to hold on to draw [%number#1 - human goals]-[%number#2 - opposition goals] in what was a great result against one of the best clubs in the world.
+
+STR-424385
+[%club#1-short] struggled to contain [%club#2-short] but somehow managed to hold on to draw [%number#1 - human goals]-[%number#2 - opposition goals] in what was a great result against a very strong side.
+Polish Reference:
+STR-424153
+Po wygaśnięciu ich kontraktów piłkarzom przypisana zostanie opłata (ustalana przez komisję), po wniesieniu której będą mogli zmienić pracodawcę niezależnie od tego, czy negocjacje pomiędzy klubami w kwestii ich transferu zakończą się powodzeniem.
+
+STR-424154
+Po wygaśnięciu ich kontraktów piłkarzom w wieku powyżej [%number#1] lat przypisana zostanie opłata (ustalana przez komisję), po wniesieniu której będą mogli zmienić pracodawcę niezależnie od tego, czy negocjacje pomiędzy klubami w kwestii ich transferu zakończą się powodzeniem.
+
+STR-424155
+Po wygaśnięciu ich kontraktów piłkarzom w wieku poniżej [%number#1] lat przypisana zostanie opłata (ustalana przez komisję), po wniesieniu której będą mogli zmienić pracodawcę niezależnie od tego, czy negocjacje pomiędzy klubami w kwestii ich transferu zakończą się powodzeniem.
+
+STR-424156
+Po wygaśnięciu ich kontraktów piłkarzom w wieku [%number#1] lat przypisana zostanie opłata (ustalana przez komisję), po wniesieniu której będą mogli zmienić pracodawcę niezależnie od tego, czy negocjacje pomiędzy klubami w kwestii ich transferu zakończą się powodzeniem.
+
+STR-424157
+Po wygaśnięciu ich kontraktów piłkarzom w wieku [%number#1]-[%number#2] lat przypisana zostanie opłata (ustalana przez komisję), po wniesieniu której będą mogli zmienić pracodawcę niezależnie od tego, czy negocjacje pomiędzy klubami w kwestii ich transferu zakończą się powodzeniem.
+
+STR-424158
+Po wygaśnięciu ich kontraktów piłkarzom przypisana zostanie klauzula oferty minimalnej (ustalana przez komisję), o ile negocjacje pomiędzy klubami w kwestii ich transferu zakończą się niepowodzeniem.
+
+STR-424159
+Po wygaśnięciu ich kontraktów piłkarzom w wieku powyżej [%number#1] lat przypisana zostanie klauzula oferty minimalnej (ustalana przez komisję), o ile negocjacje pomiędzy klubami w kwestii ich transferu zakończą się niepowodzeniem.
+
+STR-424160
+Po wygaśnięciu ich kontraktów piłkarzom w wieku poniżej [%number#1] lat przypisana zostanie klauzula oferty minimalnej (ustalana przez komisję), o ile negocjacje pomiędzy klubami w kwestii ich transferu zakończą się niepowodzeniem.
+
+STR-424161
+Po wygaśnięciu ich kontraktów piłkarzom w wieku [%number#1] lat przypisana zostanie klauzula oferty minimalnej (ustalana przez komisję), o ile negocjacje pomiędzy klubami w kwestii ich transferu zakończą się niepowodzeniem.
+
+STR-424162
+Po wygaśnięciu ich kontraktów piłkarzom w wieku [%number#1]-[%number#2] lat przypisana zostanie klauzula oferty minimalnej (ustalana przez komisję), o ile negocjacje pomiędzy klubami w kwestii ich transferu zakończą się niepowodzeniem.
+
+STR-424176
+Minimalne wynagrodzenie w wysokości [%wage#1] dla piłkarzy rezerw w wieku co najmniej [%number#1] lat.
+
+STR-424177
+Minimalne wynagrodzenie w wysokości [%wage#1] dla piłkarzy rezerw.
+
+STR-424178
+Minimalne wynagrodzenie w wysokości [%wage#1] dla piłkarzy na kontraktach seniorskich w wieku co najmniej [%number#1] lat.
+
+STR-424179
+Minimalne wynagrodzenie w wysokości [%wage#1] dla piłkarzy na kontraktach seniorskich.
+
+STR-424182
+[%number#1]% występów w ostatnich meczach reprezentacji.
+
+STR-424183
+Procent występów w ostatnich meczach reprezentacji w zależności od miejsca macierzystej federacji piłkarza w rankingu:
+
+STR-424188
+[%number#1]% występów w ostatnich meczach reprezentacji (seniorskiej, młodzieżowej lub obu).
+
+STR-424190
+Wymagana ilość punktów to co najmniej [%number#1], w oparciu o następujące kryteria.
+
+STR-424191
+[%number#1] pkt, jeśli kwota transferu jest wśród [%number#2]% wszystkich transferów do: [%comp#1] podczas dwóch ostatnich okien transferowych (obecnie [%cash#1-roundlarge]).
+
+STR-424192
+[%number#1] pkt, jeśli kwota transferu jest wśród [%number#2]-[%number#3]% wszystkich transferów do: [%comp#1] podczas dwóch ostatnich okien transferowych (obecnie [%cash#1-roundlarge])
+
+STR-424193
+[%number#1] pkt, jeśli piłkarz jest wśród [%number#2]% najlepiej zarabiających piłkarzy klubu.
+
+STR-424194
+[%number#1] pkt, jeśli piłkarz jest wśród [%number#2]-[%number#3]% [%number#4] najlepiej zarabiających piłkarzy klubu.
+
+STR-424196
+Piłkarze z potencjałem.
+
+STR-424197
+[%number#1]% rozegranych meczów pierwszego zespołu.
+
+STR-424198
+Podanie - asysta
+
+STR-424199
+Dośrodkowanie - asysta
+
+STR-424200
+Kontakty z piłką
+
+STR-424202
+Wartość minimalna to [%number#1]
+
+STR-424203
+Wartość maksymalna to [%number#1]
+
+STR-424204
+Liczby ujemne nie dopuszczone
+
+STR-424205
+Liczby ujemne nie są dopuszczone
+
+STR-424206
+Ułamki są dopuszczone
+
+STR-424207
+Osiągnięto limit tekstu.
+
+STR-424324
+Doskonałe
+
+STR-424325
+Imponujące
+
+STR-424326
+Dobre
+
+STR-424327
+Przeciętne
+
+STR-424328
+Zadowalające
+
+STR-424329
+Poniżej przeciętnej
+
+STR-424330
+Podstawowe
+
+STR-424331
+Brak
+
+STR-424332
+Ultranowoczesne
+
+STR-424333
+Wyśmienite
+
+STR-424334
+Świetne
+
+STR-424335
+Dobre
+
+STR-424336
+Przeciętne
+
+STR-424337
+Zadowalające
+
+STR-424338
+Podstawowe
+
+STR-424339
+Kiepskie
+
+STR-424340
+Brak
+
+STR-424341
+[%string#1 Player Name] ([%nation#1]) został powołany do kadry na nadchodzący turniej ([%comp#1]).
+
+STR-424342
+[%string#1 Player Name] został powołany do kadry na nadchodzący turniej ([%comp#1]).
+
+STR-424343
+[%string#1 Player Name 1] i [%string#2 Player Name 2] ([%nation#1]) zostali powołani do reprezentacji na nadchodzący turniej ([%comp#1]).
+
+STR-424344
+[%string#1 Player Name 1] i [%string#2 Player Name 2] zostali powołani do reprezentacji na nadchodzący turniej ([%comp#1]).
+
+STR-424345
+[%string#1 Player Name 1] i [%string#2 Player Name 2] zostali powołani do swoich reprezentacji na nadchodzący turniej ([%comp#1]).
+
+STR-424346
+[%string#1 Player Name 1] i [%string#2 Player Name 2] zostali powołani do swoich reprezentacji na nadchodzący turniej ([%comp#1]).
+
+STR-424347
+[%string#1 Player Name 1], [%string#2 Player Name 2] i [%string#3 Player Name 3] ([%nation#1]) zostali powołani do reprezentacji na nadchodzący turniej ([%comp#1]).
+
+STR-424348
+[%string#1 Player Name 1], [%string#2 Player Name 2] i [%string#3 Player Name 3] zostali powołani do swojej reprezentacji na nadchodzący turniej ([%comp#1]).
+
+STR-424349
+[%string#1 Player Name 1], [%string#2 Player Name 2] i [%string#3 Player Name 3] zostali powołani do swoich reprezentacji na nadchodzący turniej ([%comp#1]).
+
+STR-424350
+[%number#1] zawodników klubu [%club#1-long] zostało powołanych do [%nation#1-nationality1]ej reprezentacji na nadchodzący turniej ([%comp#1]).
+
+STR-424351
+[%number#1] zawodników klubu [%club#1-long] zostało powołanych do swojej reprezentacji na nadchodzący turniej ([%comp#1]).
+
+STR-424352
+[%number#1] zawodników klubu [%club#1-long] zostało powołanych do [%number#2-text] różnych reprezentacji na nadchodzący turniej ([%comp#1]).
+
+STR-424355
+\n\nObaj zawodnicy pojadą na ten turniej jako kompletni debiutanci.
+
+STR-424356
+\n\n[%string#1 Player Name 1] i [%string#2 Player Name 2] pojadą na ten turniej jako kompletni debiutanci.
+
+STR-424357
+\n\nCała trójka pojedzie na ten turniej jako kompletni debiutanci.
+
+STR-424358
+\n\n[%string#1 Player Name 1], [%string#2 Player Name 2] i [%string#3 Player Name 3] pojadą na ten turniej jako kompletni debiutanci.
+
+STR-424359
+\n\nCała [%number#1-text] zawodników, w tym [%string#2 Player Name 1], [%string#3 Player Name 2] i [%string#4 Player Name 3], pojedzie na ten turniej jako kompletni debiutanci.
+
+STR-424360
+\n\n[%number#1] zawodników, w tym [%string#2 Player Name 1], [%string#3 Player Name 2] i [%string#4 Player Name 3], pojedzie na ten turniej jako kompletni debiutanci.
+
+STR-424361
+\n\nSą wśród nich [%string#1 Player Name 1], [%string#2 Player Name 2] i [%string#3 Player Name 3].
+
+STR-424362
+[%comp#1]: [%club#1]{ma} swojego reprezentanta na turnieju
+
+STR-424363
+[%comp#1]: [%club#1]{ma} swoich reprezentantów na turnieju
+
+STR-424372
+[%number#1] zawodników klubu [%club#1-long] ([%nation#1]) zostało powołanych do reprezentacji na najbliższe mecze międzynarodowe.
+
+STR-424373
+[%number#1] zawodników klubu [%club#1-long] zostało powołanych do [%number#2-text] reprezentacji na najbliższe mecze międzynarodowe.
+
+STR-424374
+[%number#1] zawodników zostało powołanych do reprezentacji na najbliższe mecze międzynarodowe.
+
+STR-424377
+\n\nObaj zawodnicy mają zatem szansę na debiut w drużynie narodowej.
+
+STR-424378
+\n\n[%string#1 Player Name 1] i [%string#2 Player Name 2] mają zatem szansę na debiut w drużynie narodowej.
+
+STR-424379
+\n\nCała [%number#1-text] zawodników, w tym [%string#2 Player Name 1], [%string#3 Player Name 2] i [%string#4 Player Name 3], ma szansę na debiut w drużynie narodowej.
+
+STR-424380
+\n\n[%number#1] zawodników, w tym [%string#2 Player Name 1], [%string#3 Player Name 2] i [%string#4 Player Name 3], ma szansę na debiut w drużynie narodowej.
+
+STR-424381
+[%nation#1]: [%string#1 Player Name] powołany do reprezentacji
+
+STR-424382
+[%string#1 Player Name] powołany do reprezentacji
+
+STR-424384
+[%club#1-short]{miał} problemy w meczu, w którym ich przeciwnikiem {był}[%club#2-short], lecz jakimś cudem udało im się obronić remis [%number#1 - human goals]-[%number#2 - opposition goals], będący świetnym wynikiem w konfrontacji z jednym z najmocniejszych klubów na świecie.
+
+STR-424385
+[%club#1-short]{miał} problemy w meczu, w którym ich przeciwnikiem {był}[%club#2-short], lecz jakimś cudem udało im się obronić remis [%number#1 - human goals]-[%number#2 - opposition goals], będący świetnym wynikiem w konfrontacji z bardzo mocnym rywalem.

@@ -1,0 +1,317 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-410914
+[%string#1 - Staff Name] resigns from [%person#1-his] position as player-manager at [%club#1] and has not decided to stay on in a playing role.
+
+STR-410915
+[%string#1 - Staff Name] has stood down from [%person#1-his] position as manager at [%club#1].\n\n[%person#1-He] will remain at the club in a playing capacity.
+
+STR-410916
+[%string#1 - Staff Name] resigns from [%person#1-his] position as manager at [%club#1] after increasing pressure surrounding [%person#1-his] future.
+
+STR-410918
+[%string#1 - Manager Name] has been removed as national team manager by the [%nation#1-nationality] Football Association.\n\nHowever, [%person#1-he] has outlined [%person#1-his] desire to remain a part of the national squad.
+
+STR-410919
+[%string#1 - Staff Name] has been removed as manager by the [%club#1] Board of Directors.\n\n[%person#1-He] will remain at the club in a playing capacity.
+
+STR-410920
+[%string#1 - Manager Name] has been removed as national team manager by the [%nation#1-nationality] Football Association.
+
+STR-410921
+[%string#1 - Staff Name] has today been sacked by the [%club#1] Board of Directors.\n\nThey have decided not to keep [%person#1-him] on in a playing capacity.
+
+STR-410922
+[%string#1 - Staff Name] has been sacked by the newly appointed [%club#1] board.\n\nThe club issued a statement indicating that they wanted to cut all ties linked to the club's old regime.
+
+STR-410923
+[%string#1 - Staff Name] has been sacked by the [%club#1] board.\n\nThe club issued a statement indicating that they felt that the former manager had simply taken the club as far as [%person#1-he] could.
+
+STR-410924
+The [%club#1] board have issued a press release indicating they have reluctantly allowed manager [%string#1 - Staff Name] to leave the club.\n\nThey are sad to be losing a manager of [%person#1-his] calibre and thank [%person#1-him] for the hard work during [%person#1-his] time at the club
+
+STR-410925
+The [%club#1] board have sensationally sacked [%string#1 - Staff Name] so soon after initially appointing them.\n\nThey felt that the former manager's appointment had been a mistake that needed to be rectified for the club to move forward.
+
+STR-410926
+The [%club#1] board have issued a press release indicating that they have reluctantly dismissed manager [%string#1 - Staff Name].\n\nThey were quick to indicate that the timing of this sacking has nothing to do with the rumours of discord between themselves and the manager, indicating that it was simply time for a fresh face at the club.
+
+STR-410928
+[%string#1 - Staff Name] has been sacked by the [%club#1] board. They feel they need a new manager who will give the team a better chance of avoiding relegation this season.
+
+STR-410930
+After intense speculation linking [%string#1 - Staff Name] with other managerial posts, the [%club#1] Board of Directors have decided to terminate [%person#1-his] contract with immediate effect. They feel that the former manager's position had become untenable.
+
+STR-410931
+Due to the club's poor league position, [%string#1 - Staff Name] has been sacked by the [%club#1] board.
+
+STR-410932
+[%string#1 - Staff Name] has been sacked by the [%club#1] board following a disappointing run of recent results.
+
+STR-410933
+[%string#1 - Staff Name] has been sacked by the [%club#1] board. They feel that with the money they have invested, the team should be producing better results than they currently are.
+
+STR-410934
+[%string#1 - Staff Name] has been sacked by the [%club#1] Board of Directors. It is rumoured that [%string#1 - Staff Name]{s} perceived lack of financial management led to [%person#1-his] eventual departure.
+
+STR-410935
+After overwhelming supporter pressure, the [%club#1] board have decided to terminate [%string#1 - Staff Name]{s} contract with immediate effect.
+
+STR-410936
+[%string#1 - Staff Name] has been sacked by the [%club#1] Board of Directors. Many spectators believe poor business in the transfer market ultimately led to [%person#1-his] sacking.
+
+STR-410937
+After very public speculation of a breakdown in the relationship between [%string#1 - Staff Name] and [%person#1-his] backroom staff, the [%club#1] board have removed [%string#1 - Staff Name] from [%person#1-his] position as manager with immediate effect.
+
+STR-410938
+[%string#1 - Staff Name] has been sacked by the [%club#1] board. They feel that a new manager will bring a fresh approach to the team.
+
+STR-410939
+[%string#1 - Staff Name] has retired from [%person#1-his] position as [%club#1] manager.
+
+STR-410940
+[%club#1-short] manager [%string#1 - Staff Name] is already being touted by the media as the hot favourite to take over.
+
+STR-410941
+[%club#1-short] assistant manager [%string#1 - Staff Name] is already being touted by the media as the hot favourite to take over.
+
+STR-410942
+[%club#1-short] coach [%string#1 - Staff Name] is already being touted by the media as the hot favourite to take over.
+
+STR-410943
+[%club#1-short]{s} [%string#1 - Staff Name] is already being touted by the media as the hot favourite to take over.
+
+STR-410944
+[%string#1 - Staff Name] is already being touted by the media as the hot favourite to take over.
+
+STR-410950
+According to one media report, [%club#1-short] manager [%string#1 - Staff Name] is the front-runner to become the team's next manager.
+
+STR-410951
+According to one media report, [%club#1-short] assistant manager [%string#1 - Staff Name] is the front-runner to become the team's next manager.
+
+STR-410952
+According to one media report, [%club#1-short] coach [%string#1 - Staff Name] is the front-runner to become the team's next manager.
+
+STR-410953
+According to one media report, [%club#1-short]{s} [%string#1 - Staff Name] is the front-runner to become the team's next manager.
+
+STR-410954
+According to one media report, [%string#1 - Staff Name] is the front-runner to become the team's next manager.
+
+STR-410955
+[%club#1-short] manager [%string#1 - Staff Name] is believed to be high on the [%nation#1-nationality] FA's shortlist of potential replacements.
+
+STR-410956
+[%club#1-short] assistant manager [%string#1 - Staff Name] is believed to be high on the [%nation#1-nationality] FA's shortlist of potential replacements.
+
+STR-410957
+[%club#1-short] coach [%string#1 - Staff Name] is believed to be high on the [%nation#1-nationality] FA's shortlist of potential replacements.
+
+STR-410958
+[%club#1-short]{s} [%string#1 - Staff Name] is believed to be high on the [%nation#1-nationality] FA's shortlist of potential replacements.
+
+STR-410959
+[%string#1 - Manager Name] is believed to be high on the [%nation#1-nationality] FA's shortlist of potential replacements.
+
+STR-410960
+[%club#1-short] manager [%string#1 - Staff Name] is believed to be high on the club's shortlist of potential replacements.
+
+STR-410961
+[%club#1-short] assistant manager [%string#1 - Staff Name] is believed to be high on the club's shortlist of potential replacements.
+
+STR-410962
+[%club#1-short] coach [%string#1 - Staff Name] is believed to be high on the club's shortlist of potential replacements.
+
+STR-410963
+[%club#1-short]{s} [%string#1 - Staff Name] is believed to be high on the club's shortlist of potential replacements.
+
+STR-410964
+[%string#1 - Staff Name] is believed to be high on the club's shortlist of potential replacements.
+
+STR-410965
+[%club#1-short] manager [%string#1 - Staff Name] is currently the bookies' favourite for the job.
+
+STR-410966
+[%club#1-short] assistant manager [%string#1 - Staff Name] is currently the bookies' favourite for the job.
+
+STR-410967
+[%club#1-short] coach [%string#1 - Staff Name] is currently the bookies' favourite for the job.
+
+STR-410968
+[%club#1-short]{s} [%string#1 - Staff Name] is currently the bookies' favourite for the job.
+Polish Reference:
+STR-410914
+[%string#1 - Staff Name] ([%club#1]) zrezygnował z funkcji grającego menedżera, nie pozostanie też w klubie jako jego zawodnik.[%male#1-hidden]
+[%string#1 - Staff Name] ([%club#1]) zrezygnował z funkcji grającej menedżerki, nie pozostanie też w klubie jako jego zawodniczka.[%female#1-hidden]
+
+STR-410915
+Menedżer [%string#1 - Staff Name] ([%club#1]) podał się do dymisji.\n\nPozostanie wszakże w klubie jako jego zawodnik.[%male#1-hidden]
+Menedżerka [%string#1 - Staff Name] ([%club#1]) podała się do dymisji.\n\nPozostanie wszakże w klubie jako jego zawodniczka.[%female#1-hidden]
+
+STR-410916
+[%string#1 - Staff Name] ([%club#1]) rezygnuje z funkcji menedżera, ulegając presji związanej z jego przyszłością.[%male#1-hidden]
+[%string#1 - Staff Name] ([%club#1]) rezygnuje z funkcji menedżerki, ulegając presji związanej z jej przyszłością.[%female#1-hidden]
+
+STR-410918
+[%string#1 - Staff Name] został zwolniony z funkcji selekcjonera przez prezesa [%nation#1-nationality1] ZPNu.\n\nDał wszakże do zrozumienia, że pragnie pozostać częścią reprezentacji.[%male#1-hidden]
+[%string#1 - Staff Name] została zwolniona z funkcji selekcjonerki przez prezesa [%nation#1-nationality1] ZPNu.\n\nDała wszakże do zrozumienia, że pragnie pozostać częścią reprezentacji.[%female#1-hidden]
+
+STR-410919
+[%string#1] ([%club#1]) został zwolniony przez zarząd z funkcji menedżera.\n\nPozostanie wszakże w klubie jako jego zawodnik.[%male#1-hidden]
+[%string#1] ([%club#1]) została zwolniona przez zarząd z funkcji menedżerki.\n\nPozostanie wszakże w klubie jako jego zawodniczka.[%female#1-hidden]
+
+STR-410920
+[%string#1 - Staff Name] został zwolniony z funkcji selekcjonera przez prezesa [%nation#1-nationality1]ego ZPN-u.
+
+STR-410921
+[%string#1] ([%club#1]) został zwolniony przez zarząd z funkcji menedżera.\n\nDziałacze zdecydowali, że nie zatrzymają go w klubie w roli zawodnika.[%male#1-hidden]
+[%string#1] ([%club#1]) została zwolniona przez zarząd z funkcji menedżerki.\n\nDziałacze zdecydowali, że nie zatrzymają jej w klubie w roli zawodniczki.[%female#1-hidden]
+
+STR-410922
+[%string#1 - Staff Name] ([%club#1]) został zwolniony przez nowy zarząd.\n\nKlub wydał oświadczenie, w którym zadeklarował chęć odseparowania się grubą kreską od przeszłości.
+
+STR-410923
+[%string#1 - Staff Name] ([%club#1]) został zwolniony przez zarząd.\n\nKlub wydał oświadczenie, w którym zadeklarował, że były menedżer nie osiągnąłby z zespołem niczego więcej.[%male#1-hidden]
+[%string#1 - Staff Name] ([%club#1]) została zwolniona przez zarząd.\n\nKlub wydał oświadczenie, w którym zadeklarował, że była menedżerka nie osiągnęłaby z zespołem niczego więcej.[%female#1-hidden]
+
+STR-410924
+Zarząd wydał oświadczenie, w którym wyraził niechętnie zgodę na to, by menedżer [%string#1 - Staff Name] ([%club#1]) odszedł z klubu.\n\nDziałaczom szkoda jest tracić menedżera takiego kalibru i są mu wdzięczni za ciężką pracę, jaką wykonał z zespołem.[%male#1-hidden]
+Zarząd wydał oświadczenie, w którym wyraził niechętnie zgodę na to, by menedżerka [%string#1 - Staff Name] ([%club#1]) odeszła z klubu.\n\nDziałaczom szkoda jest tracić menedżerkę takiego kalibru i są jej wdzięczni za ciężką pracę, jaką wykonała z zespołem.[%female#1-hidden]
+
+STR-410925
+Zarząd podjął sensacyjną decyzję, by [%string#1 - Staff Name] ([%club#1]) został zwolniony krótko po podjęciu pracy w klubie.\n\nIch zdaniem zatrudnienie go było błędem, który należało naprawić, by zespół mógł się rozwijać.
+
+STR-410926
+Zarząd wydał oświadczenie, w którym ogłosił niechętnie decyzję, by menedżer [%string#1 - Staff Name] ([%club#1]) został zwolniony z klubu.\n\nDziałacze zaprzeczyli też, by miało to związek z pogłoskami o nieporozumieniach między nimi, deklarując, że klub potrzebował po prostu świeżego spojrzenia.
+
+STR-410928
+[%string#1 - Staff Name] ([%club#1]) został zwolniony przez zarząd klubu. Zdaniem działaczy nowy menedżer daje więcej nadziei na uniknięcie spadku w tym sezonie.
+
+STR-410930
+Po intensywnych spekulacjach, jakoby [%string#1 - Staff Name] ([%club#1]) przymierzał się do innych klubów, zarząd zdecydował się rozwiązać z nim kontrakt w trybie natychmiastowym. Ich zdaniem były już menedżer nie był w stanie obronić swojego zachowania.[%male#1-hidden]
+Po intensywnych spekulacjach, jakoby [%string#1 - Staff Name] ([%club#1]) przymierzała się do innych klubów, zarząd zdecydował się rozwiązać z nią kontrakt w trybie natychmiastowym. Ich zdaniem była już menedżerka nie była w stanie obronić swojego zachowania.[%female#1-hidden]
+
+STR-410931
+W związku ze złą pozycją ligową zarząd klubu zadecydował, że [%string#1 - Staff Name] ([%club#1]) musi zwolnić stanowisko.
+
+STR-410932
+[%string#1 - Staff Name] ([%club#1]) został zwolniony przez zarząd klubu po serii rozczarowujących wyników.
+
+STR-410933
+[%string#1 - Staff Name] ([%club#1]) został zwolniony przez zarząd klubu. Zdaniem działaczy po dokonanych inwestycjach zespół powinien spisywać się zdecydowanie lepiej.
+
+STR-410934
+[%string#1 - Staff Name] ([%club#1]) został zwolniony przez zarząd klubu. Według niepotwierdzonych pogłosek menedżer wykopał sobie grób brakiem kontroli nad finansami.[%male#1-hidden]
+[%string#1 - Staff Name] ([%club#1]) została zwolniona przez zarząd klubu. Według niepotwierdzonych pogłosek menedżerka wykopała sobie grób brakiem kontroli nad finansami.[%female#1-hidden]
+
+STR-410935
+Wskutek potężnych nacisków ze strony kibiców zarząd zdecydował się rozwiązać w trybie natychmiastowym kontrakt, którym z klubem związany był [%string#1 - Staff Name] ([%club#1]).
+
+STR-410936
+[%string#1 - Staff Name] ([%club#1]) został zwolniony przez zarząd klubu. Zdaniem ekspertów zgubiła go seria nieudanych transferów.[%male#1-hidden]
+[%string#1 - Staff Name] ([%club#1]) została zwolniona przez zarząd klubu. Zdaniem ekspertów zgubiła ją seria nieudanych transferów.[%female#1-hidden]
+
+STR-410937
+Po publicznych spekulacjach, jakoby [%string#1 - Staff Name] ([%club#1]) skłócił się ze swoimi współpracownikami, zarząd zdecydował się usunąć go ze stanowiska menedżera w trybie natychmiastowym.[%male#1-hidden]
+Po publicznych spekulacjach, jakoby [%string#1 - Staff Name] ([%club#1]) skłóciła się ze swoimi współpracownikami, zarząd zdecydował się usunąć ją ze stanowiska menedżerki w trybie natychmiastowym.[%female#1-hidden]
+
+STR-410938
+[%string#1 - Staff Name] ([%club#1]) został zwolniony przez zarząd klubu. Ich zdaniem nowy menedżer wniesie świeże spojrzenie do zespołu.
+
+STR-410939
+[%string#1 - Staff Name] ([%club#1]) zakończył karierę menedżerską[%male#1-hidden]
+[%string#1 - Staff Name] ([%club#1]) zakończyła karierę menedżerską[%female#1-hidden]
+
+STR-410940
+Menedżer [%string#1 - Staff Name] ([%club#1-short]) już teraz wymieniany jest przez media jako jeden z faworytów do tego stanowiska.
+
+STR-410941
+Asystent menedżera [%string#1 - Staff Name] ([%club#1-short]) już teraz wymieniany jest przez media jako jeden z faworytów do tego stanowiska.
+
+STR-410942
+Trener [%string#1 - Staff Name] ([%club#1-short]) już teraz wymieniany jest przez media jako jeden z faworytów do tego stanowiska.
+
+STR-410943
+[%string#1 - Staff Name] ([%club#1-short]) już teraz wymieniany jest przez media jako jeden z faworytów do tego stanowiska.
+
+STR-410944
+[%string#1 - Staff Name] już teraz wymieniany jest przez media jako jeden z faworytów do tego stanowiska.
+
+STR-410950
+Według artykułu w poczytnej bulwarówce menedżer [%string#1 - Staff Name] ([%club#1-short]) jest liderem w wyścigu do tego stanowiska.
+
+STR-410951
+Według artykułu w poczytnej bulwarówce asystent menedżera [%string#1 - Staff Name] ([%club#1-short]) jest liderem w wyścigu do tego stanowiska.
+
+STR-410952
+Według artykułu w poczytnej bulwarówce trener [%string#1 - Staff Name] ([%club#1-short]) jest liderem w wyścigu do tego stanowiska.
+
+STR-410953
+Według artykułu w poczytnej bulwarówce [%string#1 - Staff Name] ([%club#1-short]) jest liderem w wyścigu do tego stanowiska.
+
+STR-410954
+Według artykułu w poczytnej bulwarówce [%string#1 - Staff Name] jest liderem w wyścigu do tego stanowiska.
+
+STR-410955
+Menedżer [%string#1 - Staff Name] ([%club#1-short]) uważany jest za jednego z mocnych kandydatów na liście sporządzonej przez działaczy [%nation#1-nationality1]ego ZPNu.
+
+STR-410956
+Asystent menedżera [%string#1 - Staff Name] ([%club#1-short]) uważany jest za jednego z mocnych kandydatów na liście sporządzonej przez działaczy [%nation#1-nationality1]ego ZPNu.
+
+STR-410957
+Trener [%string#1 - Staff Name] ([%club#1-short]) uważany jest za jednego z mocnych kandydatów na liście sporządzonej przez działaczy [%nation#1-nationality1]ego ZPNu.
+
+STR-410958
+[%string#1 - Staff Name] ([%club#1-short]) uważany jest za jednego z mocnych kandydatów na liście sporządzonej przez działaczy [%nation#1-nationality1]ego ZPNu.
+
+STR-410959
+[%string#1 - Manager Name] uważany jest za jednego z mocnych kandydatów na liście sporządzonej przez działaczy [%nation#1-nationality1]ego ZPNu.
+
+STR-410960
+Menedżer [%string#1 - Staff Name] ([%club#1-short]) uważany jest za jednego z mocnych kandydatów na liście sporządzonej przez działaczy klubu.
+
+STR-410961
+Asystent menedżera [%string#1 - Staff Name] ([%club#1-short]) uważany jest za jednego z mocnych kandydatów na liście sporządzonej przez działaczy klubu.
+
+STR-410962
+Trener [%string#1 - Staff Name] ([%club#1-short]) uważany jest za jednego z mocnych kandydatów na liście sporządzonej przez działaczy klubu.
+
+STR-410963
+[%string#1 - Staff Name] ([%club#1-short]) uważany jest za jednego z mocnych kandydatów na liście sporządzonej przez działaczy klubu.
+
+STR-410964
+[%string#1 - Staff Name] uważany jest za jednego z mocnych kandydatów na liście sporządzonej przez działaczy klubu.
+
+STR-410965
+Menedżer [%string#1 - Staff Name] ([%club#1-short]) jest obecnie faworytem bukmacherów do objęcia tego stanowiska.
+
+STR-410966
+Asystent menedżera [%string#1 - Staff Name] ([%club#1-short]) jest obecnie faworytem bukmacherów do objęcia tego stanowiska.
+
+STR-410967
+Trener [%string#1 - Staff Name] ([%club#1-short]) jest obecnie faworytem bukmacherów do objęcia tego stanowiska.
+
+STR-410968
+[%string#1 - Staff Name] ([%club#1-short]) jest obecnie faworytem bukmacherów do objęcia tego stanowiska.

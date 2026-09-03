@@ -1,0 +1,177 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-407573
+[%string#3 - Coach Name] believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] is angry with [%person#2-your] criticism over [%person#2-his] injury status and says [%person#2-he] is desperate to get back to playing football again.
+
+STR-407574
+[%person#1-Your] assistant believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] is angry with [%person#2-your] criticism over [%person#2-his] injury status and says [%person#2-he] is desperate to get back to playing football again.
+
+STR-407575
+[%string#3 - Coach Name] believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] sole focus is getting [%person#2-himself] back to full fitness and has not reacted to [%person#1-your] recent criticism.
+
+STR-407576
+[%person#1-Your] assistant believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] sole focus is getting [%person#2-himself] back to full fitness and has not reacted to [%person#1-your] recent criticism.
+
+STR-407577
+[%string#3 - Coach Name] believes that [%person#1-your] words of criticism have lit a fire under [%position#1-lowercase_no_sides] [%string#2 - Player Name]. [%person#2-He] has stepped up efforts in training to try and turn [%person#2-his] form around.
+
+STR-407578
+[%person#1-Your] assistant believes that [%person#1-your] words of criticism have lit a fire under [%position#1-lowercase_no_sides] [%string#2 - Player Name]. [%person#2-He] has stepped up efforts in training to try and turn [%person#2-his] form around.
+
+STR-407579
+[%string#3 - Coach Name] believes that [%person#1-your] criticism of [%position#1-lowercase_no_sides] [%string#2 - Player Name]{s} recent form might be having a detrimental effect on the player.
+
+STR-407580
+[%person#1-Your] assistant believes that [%person#1-your] criticism of [%position#1-lowercase_no_sides] [%string#2 - Player Name]{s} recent form might be having a detrimental effect on the player.
+
+STR-407581
+[%string#3 - Coach Name] is concerned that [%position#1-lowercase_no_sides] [%string#2 - Player Name] seems to be ignoring [%person#1-your] criticism of [%person#2-his] poor recent form.
+
+STR-407582
+[%person#1-Your] assistant is concerned that [%position#1-lowercase_no_sides] [%string#2 - Player Name] seems to be ignoring [%person#1-your] criticism of [%person#2-his] poor recent form.
+
+STR-407583
+[%string#3 - Coach Name] has noted that [%position#1-lowercase_no_sides] [%string#2 - Player Name] appears largely unaffected by [%person#1-your] recent criticism of [%person#2-his] poor form.
+
+STR-407584
+[%person#1-Your] assistant has noted that [%position#1-lowercase_no_sides] [%string#2 - Player Name] appears largely unaffected by [%person#1-your] recent criticism of [%person#2-his] poor form.
+
+STR-407585
+[%string#3 - Coach Name] believes that [%person#1-your] words of criticism have lit a fire under [%position#1-lowercase_no_sides] [%string#2 - Player Name]. [%person#2-He] has stepped up efforts in training to try and make [%person#2-his] game more consistent.
+
+STR-407586
+[%person#1-Your] assistant believes that [%person#1-your] words of criticism have lit a fire under [%position#1-lowercase_no_sides] [%string#2 - Player Name]. [%person#2-He] has stepped up efforts in training to try and make [%person#2-his] game more consistent.
+
+STR-407587
+[%string#3 - Coach Name] believes that [%person#1-your] criticism of [%position#1-lowercase_no_sides] [%string#2 - Player Name]{s} inconsistent form might be having a detrimental effect on the player.
+
+STR-407588
+[%person#1-Your] assistant believes that [%person#1-your] criticism of [%position#1-lowercase_no_sides] [%string#2 - Player Name]{s} inconsistent form might be having a detrimental effect on the player.
+
+STR-407589
+[%string#3 - Coach Name] is concerned that [%position#1-lowercase_no_sides] [%string#2 - Player Name] seems to be ignoring [%person#1-your] criticism of [%person#2-his] inconsistent form.
+
+STR-407590
+[%person#1-Your] assistant is concerned that [%position#1-lowercase_no_sides] [%string#2 - Player Name] seems to be ignoring [%person#1-your] criticism of [%person#2-his] inconsistent form.
+
+STR-407591
+[%string#3 - Coach Name] has noted that [%position#1-lowercase_no_sides] [%string#2 - Player Name] appears largely unaffected by [%person#1-your] recent criticism of [%person#2-his] inconsistent form.
+Polish Reference:
+STR-407573
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest oburzony twoją krytyką w związku z odniesioną przez niego kontuzją, twierdząc, że nie może się doczekać powrotu na boisko.[%male#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest oburzona twoją krytyką w związku z odniesioną przez nią kontuzją, twierdząc, że nie może się doczekać powrotu na boisko.[%female#2-hidden]
+
+STR-407574
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest oburzony twoją krytyką w związku z odniesioną przez niego kontuzją, twierdząc, że nie może się doczekać powrotu na boisko.[%male#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest oburzona twoją krytyką w związku z odniesioną przez nią kontuzją, twierdząc, że nie może się doczekać powrotu na boisko.[%male#1-hidden][%female#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest oburzony twoją krytyką w związku z odniesioną przez niego kontuzją, twierdząc, że nie może się doczekać powrotu na boisko.[%female#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest oburzona twoją krytyką w związku z odniesioną przez nią kontuzją, twierdząc, że nie może się doczekać powrotu na boisko.[%female#1-hidden][%female#2-hidden]
+
+STR-407575
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest skoncentrowany wyłącznie na powrocie do pełni sił i zignorował twoje krytyczne uwagi.[%male#2-hidden][%male#1-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest skoncentrowana wyłącznie na powrocie do pełni sił i zignorowała twoje krytyczne uwagi.[%female#2-hidden][%male#1-hidden]
+
+STR-407576
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest skoncentrowany wyłącznie na powrocie do pełni sił i zignorował twoje krytyczne uwagi.[%male#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest skoncentrowana wyłącznie na powrocie do pełni sił i zignorowała twoje krytyczne uwagi.[%male#1-hidden][%female#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest skoncentrowany wyłącznie na powrocie do pełni sił i zignorował twoje krytyczne uwagi.[%female#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest skoncentrowana wyłącznie na powrocie do pełni sił i zignorowała twoje krytyczne uwagi.[%female#1-hidden][%female#2-hidden]
+
+STR-407577
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczął bardziej przykładać się do treningów, by wrócić do dawnej formy.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczęła bardziej przykładać się do treningów, by wrócić do dawnej formy.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczął bardziej przykładać się do treningów, by wrócić do dawnej formy.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczęła bardziej przykładać się do treningów, by wrócić do dawnej formy.[%female#1-hidden][%female#2-hidden]
+
+STR-407578
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczął bardziej przykładać się do treningów, by wrócić do dawnej formy.[%male#1-hidden][%male#2-hidden]
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczęła bardziej przykładać się do treningów, by wrócić do dawnej formy.[%male#1-hidden][%female#2-hidden]
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczął bardziej przykładać się do treningów, by wrócić do dawnej formy.[%female#1-hidden][%male#2-hidden]
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczęła bardziej przykładać się do treningów, by wrócić do dawnej formy.[%female#1-hidden][%female#2-hidden]
+
+STR-407579
+[%string#3 - Coach Name] jest zdania, że po twoich krytycznych uwagach [%position#1-lowercase_no_sides] [%string#2 - Player Name] może mieć problemy z utrzymaniem formy.[%male#1-hidden]
+
+STR-407580
+Twój asystent jest zdania, że po twoich krytycznych uwagach [%position#1-lowercase_no_sides] [%string#2 - Player Name] może mieć problemy z utrzymaniem formy.[%male#1-hidden]
+
+STR-407581
+[%string#3 - Coach Name] niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jego kiepskiej gry w ostatnim czasie.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jej kiepskiej gry w ostatnim czasie.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jego kiepskiej gry w ostatnim czasie.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jej kiepskiej gry w ostatnim czasie.[%female#1-hidden][%female#2-hidden]
+
+STR-407582
+Twój asystent niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jego kiepskiej gry w ostatnim czasie.[%male#1-hidden][%male#2-hidden]
+Twój asystent niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jej kiepskiej gry w ostatnim czasie.[%male#1-hidden][%female#2-hidden]
+Twój asystent niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jego kiepskiej gry w ostatnim czasie.[%female#1-hidden][%male#2-hidden]
+Twój asystent niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jej kiepskiej gry w ostatnim czasie.[%female#1-hidden][%female#2-hidden]
+
+STR-407583
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jego kiepskiej formy.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jej kiepskiej formy.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jego kiepskiej formy.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jej kiepskiej formy.[%female#1-hidden][%female#2-hidden]
+
+STR-407584
+Twój asystent zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jego kiepskiej formy.[%male#1-hidden][%male#2-hidden]
+Twój asystent zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jej kiepskiej formy.[%male#1-hidden][%female#2-hidden]
+Twój asystent zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jego kiepskiej formy.[%female#1-hidden][%male#2-hidden]
+Twój asystent zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jej kiepskiej formy.[%female#1-hidden][%female#2-hidden]
+
+STR-407585
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczął bardziej przykładać się do treningów, by ustabilizować formę.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczęła bardziej przykładać się do treningów, by ustabilizować formę.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczął bardziej przykładać się do treningów, by ustabilizować formę.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczęła bardziej przykładać się do treningów, by ustabilizować formę.[%female#1-hidden][%female#2-hidden]
+
+STR-407586
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczął bardziej przykładać się do treningów, by ustabilizować formę.[%male#1-hidden][%male#2-hidden]
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczęła bardziej przykładać się do treningów, by ustabilizować formę.[%male#1-hidden][%female#2-hidden]
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczął bardziej przykładać się do treningów, by ustabilizować formę.[%female#1-hidden][%male#2-hidden]
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaczęła bardziej przykładać się do treningów, by ustabilizować formę.[%female#1-hidden][%female#2-hidden]
+
+STR-407587
+[%string#3 - Coach Name] jest zdania, że po twoich krytycznych uwagach [%position#1-lowercase_no_sides] [%string#2 - Player Name] może mieć problemy z utrzymaniem stabilnej formy.[%male#1-hidden]
+
+STR-407588
+Twój asystent jest zdania, że po twoich krytycznych uwagach [%position#1-lowercase_no_sides] [%string#2 - Player Name] może mieć problemy z utrzymaniem stabilnej formy.[%male#1-hidden]
+
+STR-407589
+[%string#3 - Coach Name] niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jego nierównej formy.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jej nierównej formy.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jego nierównej formy.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jej nierównej formy.[%female#1-hidden][%female#2-hidden]
+
+STR-407590
+Twój asystent niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jego nierównej formy.[%male#1-hidden][%male#2-hidden]
+Twój asystent niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jej nierównej formy.[%male#1-hidden][%female#2-hidden]
+Twój asystent niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jego nierównej formy.[%female#1-hidden][%male#2-hidden]
+Twój asystent niepokoi się, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ignoruje twoją krytykę jej nierównej formy.[%female#1-hidden][%female#2-hidden]
+
+STR-407591
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jego nierównej formy.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jej nierównej formy.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jego nierównej formy.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie przejmuje się szczególnie twoją krytyką jej nierównej formy.[%female#1-hidden][%female#2-hidden]

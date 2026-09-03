@@ -1,0 +1,695 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-410969
+[%string#1 - Staff Name] is currently the bookies' favourite for the job.
+
+STR-410970
+However, other names such as [%string#1 - Staff Name] and [%string#2 - Staff Name] are also believed to be in the running.
+
+STR-410971
+Other names such as [%string#1 - Staff Name] and [%string#2 - Staff Name] are also being linked with the vacant hot seat.
+
+STR-410972
+[%string#1 - Staff Name] is also believed to be in the running.
+
+STR-410973
+[%string#1 - Staff Name] is also being linked with the vacant hot seat.
+
+STR-410974
+[%string#1 - Staff Name] linked with [%club#1-short] job
+
+STR-410975
+[%string#1 - Staff Name] is rumoured to have been approached by [%club#1] about the vacant managerial position.
+
+STR-410976
+[%string#1 - Staff Name] is rumoured to be considering taking over the [%club#1] manager's position.
+
+STR-410977
+[%string#1 - Staff Name] has been strongly linked with the [%club#1] manager's job in recent days.
+
+STR-410978
+[%string#1 - Staff Name] is rumoured to be interested in becoming [%club#1]{s} new manager.
+
+STR-410979
+[%club#1-short] offer [%string#1 - Staff Name] the position of manager
+
+STR-410982
+[%club#1-short] offer [%string#1 - Staff Name] the position of manager.
+
+STR-410983
+[%club#1-short] offer [%person#1-you] the position of manager
+
+STR-410984
+[%club#1] have offered [%person#1-you] the position of manager.
+
+STR-410987
+There is a small amount of money available in transfer funds to help [%person#1-you] achieve these goals.
+
+STR-410988
+Due to [%person#1-your] lack of a response they have chosen to offer the position to another manager.
+
+STR-410989
+They eagerly await [%person#1-your] acceptance of this job offer.
+
+STR-410990
+[%person#1-You] have accepted this job offer.
+
+STR-410991
+[%person#1-You] have rejected this job offer.
+
+STR-410992
+The Board of Directors have heard rumours that [%person#1-you] are looking at management opportunities elsewhere.\n\nThey stress that if these rumours were substantiated then they would be forced to look for a manager who was more committed to [%club#1].
+
+STR-410993
+The Board of Directors are aware that [%person#1-you] are interested in managing another club.\n\nThey are keen to remind [%person#1-you] that [%person#1-your] responsibilities lie with [%club#1] and hope that [%person#1-you] are committed to staying at the club.
+
+STR-410994
+The Board of Directors are unimpressed by reports that [%person#1-you] have shown an interest in managing another club.\n\nThey warn that if [%person#1-you] are not committed to the club they will be forced to search for [%person#1-your] replacement.
+
+STR-410995
+Memo from board received
+
+STR-410996
+[%person#1-You] have already applied to [%club#1-short]
+
+STR-410997
+[%club#1-short] dismiss [%person#1-your] job application
+
+STR-410998
+[%club#1-short] acknowledge [%person#1-your] job application
+
+STR-410999
+[%club#1-short] have already received [%person#1-your] application for the vacant manager role.\n\nThey wish to remind [%person#1-you] that they will evaluate [%person#1-your] application in due course.
+
+STR-411000
+[%club#1-short] have rejected [%person#1-your] job application out of hand.
+
+STR-411001
+[%club#1-short] acknowledge [%person#1-your] job application.\n\nThey will announce their choice of manager in due course.
+
+STR-411002
+[%person#1-surname] begins managerial career
+
+STR-411003
+[%person#1] has now passed all the examinations required to become a fully qualified football manager.\n\n[%person#1-He] will now be looking for [%person#1-his] first job in management.
+
+STR-411004
+Finding a new job
+
+STR-411005
+Now that [%person#1-you] are looking for a new job, [%person#1-your] agent has reminded [%person#1-you] to regularly check the Job Centre for any managerial positions that may become available.
+
+STR-411006
+[%person#1-hidden]has begun looking for a first job in football management.
+
+STR-411019
+Formation vs [%club#1]
+
+STR-411022
+GK
+
+STR-411024
+D
+
+STR-411025
+DM
+
+STR-411026
+M
+
+STR-411027
+AM
+
+STR-411028
+F
+
+STR-411029
+L
+
+STR-411030
+C
+
+STR-411031
+R
+
+STR-411041
+4-4-2 Diamond
+
+STR-411048
+Breezy
+
+STR-411049
+Gusty
+
+STR-411050
+Strong Wind
+
+STR-411051
+Gale
+
+STR-411052
+Dry
+
+STR-411053
+Wet
+
+STR-411054
+Drizzle
+
+STR-411055
+Downpour
+
+STR-411056
+Showers
+
+STR-411057
+Light Snow
+
+STR-411058
+Heavy Snow
+
+STR-411059
+Sleet
+
+STR-411060
+Hail
+
+STR-411062
+Normal
+
+STR-411063
+Muddy
+
+STR-411064
+Damp
+
+STR-411065
+Water-logged
+
+STR-411066
+Frozen
+
+STR-411067
+Snowy
+
+STR-411077
+[%person#1-You]'re Fired!
+
+STR-411088
+Club announces drastic cost-cutting
+
+STR-411089
+Chairman reveals plans
+
+STR-411090
+[%club#1] close youth academy
+
+STR-411097
+Club announces drastic cost cutting
+
+STR-411099
+[%club#1] sell training ground
+
+STR-411105
+Club bans troublemakers
+
+STR-411106
+[%club#1] ban troublemakers from home matches
+
+STR-411107
+[%club#1] supporter protest
+
+STR-411110
+[%person#1-You] have chosen to come out and offer the demonstrating fans [%person#1-your] support.
+
+STR-411116
+Angel investor saves club
+
+STR-411117
+Local businessman buys [%club#1]
+
+STR-411145
+Relegation looms for [%club#1]?
+
+STR-411146
+[%club#1] players revolt
+
+STR-411147
+Cash running out at [%club#1]
+
+STR-411148
+Can [%club#1] win silverware?
+
+STR-411149
+[%club#1] bought by asset stripper
+
+STR-411151
+[%club#1] in the money
+
+STR-411152
+[%club#1] win the [%comp#1]
+
+STR-411153
+[%string#1 person name] masterminds giant killing
+
+STR-411154
+[%club#1] win the league
+
+STR-411155
+Accolade for [%string#1 person name]
+
+STR-411156
+[%club#1] are promoted
+
+STR-411157
+[%string#1 person name] signs for [%club#1]
+
+STR-411159
+Publicly Protest
+
+STR-411160
+Privately Protest
+
+STR-411161
+Accept Decision
+
+STR-411162
+Publicly sympathise with supporters
+
+STR-411166
+After their dodgy start to the season [%club#1]{s} supporters can finally breathe a sigh of relief as the club are now safe from relegation.
+
+STR-411167
+The [%club#1] manager will be pleased by the return to training of many of the club's regular first team players.\n\nHowever, it might be argued that they will struggle to regain their places in the side, after their replacements showed impressive form when called upon.
+
+STR-411168
+The [%club#1] manager will be breathing more easily, now that many of the club's regular first team players are back in training.\n\nThe supporters are hoping that these players will be the catalyst to improve the club's recent form.
+
+STR-411169
+The [%club#1] manager finally appears to have won the club's fans and players over to [%person#1-his] style of management.\n\nThe strong form exhibited by the club has largely negated any concerns.
+
+STR-411170
+While [%club#1]{s} form hasn't been wonderful of late, the manager appears to have finally won the club's fans and players over to [%person#1-his] style of management.
+
+STR-411177
+[%club#1] takeover completed
+
+STR-411178
+[%club#1] safe from relegation
+
+STR-411179
+[%club#1] injury crisis abates
+
+STR-411180
+[%club#1] manager quietens critics
+
+STR-411181
+[%club#1] board announce finances have stabilised
+
+STR-411182
+[%club#1] celebrate winning silverware
+
+STR-411183
+[%person#1-hidden]guides [%club#1-short] to safety
+
+STR-411184
+[%person#1-hidden]undaunted by [%club#1-short] injury crisis
+
+STR-411185
+[%person#1-hidden]has silenced critics at [%club#1-short]
+
+STR-411186
+[%club#1]{s} [%string#1 score] win against [%club#2] was a further sign of their improving fortunes.\n\nThey remain in a poor position but their manager continues to inspire the team to fight against what seems like inevitable relegation.
+
+STR-411192
+[%club#1]{s} [%string#1 score] loss against [%club#2] may have hit the team hard.\n\nThe club have played well in recent weeks but the continued supporter protests must be making it difficult for the players to focus.
+
+STR-411194
+[%club#1] drew [%string#1 score] against [%club#2].\n\nDuring the match supporters continued their protests against the current owner of the club.
+
+STR-411196
+[%club#1]{s} [%string#1 score] win against [%club#2] secured them vital points.\n\nHowever, the club are still in very real danger of relegation and need to continue to pick up points if they are going to have any chance of survival.
+Polish Reference:
+STR-410969
+[%string#1 - Staff Name] jest obecnie faworytem bukmacherów do objęcia tego stanowiska.
+
+STR-410970
+Jednakże pewne szanse na zatrudnienie mają też między innymi [%string#1 - Staff Name] oraz [%string#2 - Staff Name].
+
+STR-410971
+Pewne szanse na objęcie tego stanowiska mają też między innymi [%string#1 - Staff Name] oraz [%string#2 - Staff Name].
+
+STR-410972
+Pewne szanse na zatrudnienie ma też [%string#1 - Staff Name].
+
+STR-410973
+Pewne szanse na objęcie tego stanowiska ma też [%string#1 - Staff Name].
+
+STR-410974
+[%club#1-short]: [%string#1 - Staff Name] łączony z zespołem
+
+STR-410975
+Media twierdzą, że [%string#1 - Staff Name] otrzymał propozycję objęcia stanowiska menedżera w klubie [%club#1-long].
+
+STR-410976
+[%string#1 - Staff Name] rozważa ponoć objęcie stanowiska menedżera w klubie [%club#1-long].
+
+STR-410977
+[%string#1 - Staff Name] jest od paru dni mocno łączony z wakującym stanowiskiem menedżera w klubie [%club#1-long].
+
+STR-410978
+[%string#1 - Staff Name] ponoć zainteresowanie stanowiskiem menedżera w klubie [%club#1-long].
+
+STR-410979
+[%club#1-short]: [%string#1 - Staff Name] otrzymuje propozycję objęcia zespołu
+
+STR-410982
+[%string#1 - Staff Name] otrzymał propozycję objęcia zespołu [%club#1-long].
+
+STR-410983
+[%club#1-short]{oferuje} ci pozycję menedżera[%male#1-hidden]
+[%club#1-short]{oferuje} ci pozycję menedżerki[%female#1-hidden]
+
+STR-410984
+[%club#1]{zaoferował} ci pozycję menedżera[%male#1-hidden]
+[%club#1]{zaoferował} ci pozycję menedżerki[%female#1-hidden]
+
+STR-410987
+Aby zrealizować te cele, możesz skorzystać z niewielkiego funduszu transferowego.[%male#1-hidden]
+
+STR-410988
+W związku z brakiem odpowiedzi z twoje strony działacze zdecydowali się zaoferować to stanowisko innemu kandydatowi.[%male#1-hidden]
+
+STR-410989
+Działacze liczą na to, że zgodzisz się objąć to stanowisko.[%male#1-hidden]
+
+STR-410990
+Zaakceptowałeś tę propozycję.[%male#1-hidden]
+Zaakceptowałaś tę propozycję.[%female#1-hidden]
+
+STR-410991
+Odrzuciłeś tę propozycję.[%male#1-hidden]
+Odrzuciłaś tę propozycję.[%female#1-hidden]
+
+STR-410992
+Zarząd klubu [%club#1-long] powziął informacje, że podobno przyglądasz się możliwości zatrudnienia w innym klubie.\n\nDziałacze stawiają jasno sprawę, że jeśli te pogłoski się potwierdzą, będą zmuszeni poszukać kogoś bardziej lojalnego na twoje miejsce.[%male#1-hidden]
+
+STR-410993
+Zarząd klubu [%club#1-long] jest świadom twojego zainteresowania pracą w innym klubie.\n\nDziałacze pragną ci przypomnieć o twoich zobowiązaniach wobec klubu i mają nadzieję, że okażesz się jego lojalnym pracownikiem.[%male#1-hidden]
+Zarząd klubu [%club#1-long] jest świadom twojego zainteresowania pracą w innym klubie.\n\nDziałacze pragną ci przypomnieć o twoich zobowiązaniach wobec klubu i mają nadzieję, że okażesz się jego lojalną pracownicą.[%female#1-hidden]
+
+STR-410994
+Zarząd klubu [%club#1-long] nie jest zachwycony doniesieniami, że interesujesz się możliwością zatrudnienia w innym klubie.\n\nDziałacze ostrzegają się, że jeśli nie zademonstrujesz lojalności wobec klubu, będą musieli znaleźć kogoś na twoje miejsce.[%male#1-hidden]
+
+STR-410995
+Wiadomość od zarządu
+
+STR-410996
+Złożyłeś już ofertę pracy w klubie [%club#1-long][%male#1-hidden]
+Złożyłaś już ofertę pracy w klubie [%club#1-long][%female#1-hidden]
+
+STR-410997
+[%club#1-short]{odrzuca} twoje podanie o pracę[%male#1-hidden]
+
+STR-410998
+[%club#1-short]{potwierdza} otrzymanie twojego podania o pracę[%male#1-hidden]
+
+STR-410999
+[%club#1-short]{otrzymał} już twoje podanie o zatrudnienie na wolnym etacie menedżera.\n\nDziałacze przypominają ci, że rozważą je w odpowiednim czasie.[%male#1-hidden]
+
+STR-411000
+[%club#1-short]{odrzucił} twoje podanie o pracę bez czytania.[%male#1-hidden]
+
+STR-411001
+[%club#1-short]{potwierdza} otrzymanie twojego podania o pracę.\n\nDecyzja działaczy zostanie ogłoszona w stosownym czasie.[%male#1-hidden]
+
+STR-411002
+[%male#1-surname] rozpoczyna karierę menedżerską
+
+STR-411003
+[%male#1] zdał wszystkie egzaminy i został wykwalifikowanym menedżerem piłkarskim.\n\nBędzie teraz szukać swojej pierwszej pracy.
+[%female#1] zdała wszystkie egzaminy i została wykwalifikowaną menedżerką piłkarską.\n\nBędzie teraz szukać swojej pierwszej pracy.
+
+STR-411004
+Znalezienie nowej pracy
+
+STR-411005
+Skoro szukasz już nowej pracy, twój agent przypomina ci, abyś regularnie zaglądał do biura pracy, czy nie pojawiły się w nim aby nowe oferty dla menedżerów.[%male#1-hidden]
+Skoro szukasz już nowej pracy, twój agent przypomina ci, abyś regularnie zaglądała do biura pracy, czy nie pojawiły się w nim aby nowe oferty dla menedżerów.[%female#1-hidden]
+
+STR-411006
+[%male#1-hidden]rozpoczął poszukiwania pierwszej pracy w menedżerce
+[%female#1-hidden]rozpoczęła poszukiwania pierwszej pracy w menedżerce
+
+STR-411019
+Ustawienie vs [%club#1]
+
+STR-411022
+BR
+
+STR-411024
+O
+
+STR-411025
+DP
+
+STR-411026
+P
+
+STR-411027
+OP
+
+STR-411028
+N
+
+STR-411029
+L
+
+STR-411030
+Ś
+
+STR-411031
+P
+
+STR-411041
+4-4-2 Diament
+
+STR-411048
+Wietrznie
+
+STR-411049
+Porywisty wiatr
+
+STR-411050
+Silny wiatr
+
+STR-411051
+Wichura
+
+STR-411052
+Sucho
+
+STR-411053
+Mokro
+
+STR-411054
+Mżawka
+
+STR-411055
+Ulewa
+
+STR-411056
+Przelotne deszcze
+
+STR-411057
+Lekki śnieg
+
+STR-411058
+Gęsty śnieg
+
+STR-411059
+Deszcz ze śniegiem
+
+STR-411060
+Grad
+
+STR-411062
+Normalna
+
+STR-411063
+Błotnista
+
+STR-411064
+Mokra
+
+STR-411065
+Zalana wodą
+
+STR-411066
+Zmarznięta
+
+STR-411067
+Zaśnieżona
+
+STR-411077
+Jesteś zwolniony![%male#1-hidden]
+Jesteś zwolniona![%female#1-hidden]
+
+STR-411088
+Klub ogłasza drastyczne środki oszczędnościowe
+
+STR-411089
+Prezes ujawnia plany
+
+STR-411090
+[%club#1]{zamyka} akademię juniorską
+
+STR-411097
+Klub ogłasza drastyczne środki oszczędnościowe
+
+STR-411099
+[%club#1]{sprzedaje} boisko treningowe
+
+STR-411105
+Klub szafuje zakazami stadionowymi
+
+STR-411106
+[%club#1-long]{nakłada} zakazy na wichrzycieli
+
+STR-411107
+[%club#1]: Protest kibiców
+
+STR-411110
+Zdecydowałeś się wyjść do protestujących i poprzeć ich postulaty.[%male#1-hidden]
+Zdecydowałaś się wyjść do protestujących i poprzeć ich postulaty.[%female#1-hidden]
+
+STR-411116
+Nieoczekiwany zbawca ratuje klub
+
+STR-411117
+[%club#1]: Lokalny przedsiębiorca kupuje klub
+
+STR-411145
+[%club#1] w obliczu spadku?
+
+STR-411146
+[%club#1]: Bunt w szatni
+
+STR-411147
+[%club#1] bez gotówki?
+
+STR-411148
+Czy [%club#1]{da} radę zdobyć jakieś trofeum?
+
+STR-411149
+[%club#1] w rękach złomiarza
+
+STR-411151
+[%club#1]{liczy} pieniądze
+
+STR-411152
+[%comp#1]: [%club#1]{zwycięża}
+
+STR-411153
+[%string#1 person name] ojcem zwycięstwa nad gigantami
+
+STR-411154
+[%club#1]{wygrywa} ligę
+
+STR-411155
+[%string#1 person name] obsypany pochwałami
+
+STR-411156
+[%club#1] z awansem
+
+STR-411157
+[%string#1 person name] i [%club#1] uzgadniają warunki
+
+STR-411159
+Publiczny protest
+
+STR-411160
+Prywatny protest
+
+STR-411161
+Akceptacja decyzji
+
+STR-411162
+Publicznie stań po stronie kibiców
+
+STR-411166
+Po nierównym wejściu w sezon kibice mogą w końcu odetchnąć z ulgą, gdyż [%club#1]{zapewnił} sobie w końcu utrzymanie.
+
+STR-411167
+Menedżer klubu [%club#1-long] na pewno ucieszy się z powrotu wielu podstawowych zawodników do treningów.\n\nMożna zaryzykować stwierdzenie, że mogą mieć problemy z odzyskaniem swoich miejsc w zespole, gdyż ich zmiennicy pokazali imponującą dyspozycję.
+
+STR-411168
+Menedżer klubu [%club#1-long] może odetchnąć z ulgą po powrocie wielu podstawowych zawodników do treningów.\n\nKibice mają nadzieję, że pomogą drużynie w odzyskaniu dawnej dyspozycji.
+
+STR-411169
+Menedżer klubu [%club#1-long] przekonał chyba w końcu do siebie kibiców.\n\nDobra postawa zespołu walnie przyczyniła się do tego, że mało kto ma jeszcze zastrzeżenia do jego stylu pracy z drużyną.[%male#1-hidden]
+Menedżerka klubu [%club#1-long] przekonała chyba w końcu do siebie kibiców.\n\nDobra postawa zespołu walnie przyczyniła się do tego, że mało kto ma jeszcze zastrzeżenia do jej stylu pracy z drużyną.[%female#1-hidden]
+
+STR-411170
+Choć forma zespołu ostatnimi czasy nie zachwycała, menedżer klubu [%club#1-long] przekonał chyba kibiców i zawodników do swojego stylu pracy z drużyną.[%male#1-hidden]
+Choć forma zespołu ostatnimi czasy nie zachwycała, menedżerka klubu [%club#1-long] przekonała chyba kibiców i zawodników do swojego stylu pracy z drużyną.[%female#1-hidden]
+
+STR-411177
+[%club#1]: Udana próba przejęcia
+
+STR-411178
+[%club#1]: Klub niezagrożony spadkiem
+
+STR-411179
+[%club#1]: Plaga kontuzji ustępuje
+
+STR-411180
+[%club#1]: Menedżer ucisza krytyków
+
+STR-411181
+[%club#1]: Zarząd informuje o ustabilizowaniu finansów
+
+STR-411182
+[%club#1]{świętuje} zdobycie trofeum
+
+STR-411183
+[%male#1-hidden]ratuje zespół przed spadkiem
+
+STR-411184
+[%male#1-hidden]daje sobie radę mimo kontuzji
+
+STR-411185
+[%male#1-hidden]ucisza krytyków
+
+STR-411186
+Zwycięstwo [%string#1 score] w meczu [%club#1]-[%club#2] było kolejnym znakiem powolnego wychodzenia z kryzysu.\n\nZespół nadal zajmuje rozczarowujące miejsce, ale menedżer nadal motywuje zawodników do walki z nieuniknionym, zdawałoby się, spadkiem.
+
+STR-411192
+Porażka [%string#1 score] w meczu [%club#1]-[%club#2] była dla zespołu ciężkim ciosem.\n\nDrużyna w ostatnich tygodniach grała dobrze, ale ciągłe protesty kibiców na pewno utrudniają zawodnikom koncentrację.
+
+STR-411194
+Podczas zremisowanego [%string#1 score] meczu [%club#1]-[%club#2] kibice kontynuowali swój protest wymierzony przeciwko obecnemu właścicielowi klubu.
+
+STR-411196
+Zwycięstwo [%string#1 score] w meczu [%club#1]-[%club#2] przyniosło zespołowi ważne punkty.\n\nKlub wciąż nie może być pewien utrzymania i jeśli chcą uniknąć spadku, muszą pilnie ciułać punkty.

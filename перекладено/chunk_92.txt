@@ -1,0 +1,333 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-463171
+[%person#1-I]'m not interested in opening fresh contract talks as we only agreed new terms recently.
+
+STR-463172
+[%person#1-I] have no interest in signing a new contract as [%person#1-I] am planning to retire at the end of this season.
+
+STR-463173
+[%person#1-I] have no interest in joining a new club as [%person#1-I]'m planning to retire at the end of this season.
+
+STR-463174
+[%person#1-I]'m not interested in returning to the club at this time.
+
+STR-463175
+[%person#1-I] have no interest in signing for such a small club.
+
+STR-463176
+It would take a very lucrative offer to persuade [%person#1-me] to join the club.
+
+STR-463177
+[%person#1-I] don't believe the club can meet [%person#1-my] contract demands.
+
+STR-463178
+[%person#1-I]'m very happy at [%club#1-short] and have no desire to leave at this moment.
+
+STR-463179
+[%person#1-I]'m settled at [%club#1-short] and have no desire to leave at this moment.
+
+STR-463180
+[%person#1-I]'m not that interested in taking a backwards step at this stage in [%person#1-my] career.
+
+STR-463181
+[%person#1-I]'m not interested in entering talks as [%person#1-I]'m expecting to leave the club in the near future.
+
+STR-463182
+[%person#1-I]'m not that interested in contract talks as [%person#1-I]'m expecting to leave the club in the near future.
+
+STR-463183
+[%person#1-I] don't believe the club has the resources to offer [%person#1-me] the improved contract [%person#1-I] desire.
+
+STR-463184
+[%person#1-I] won't even consider renewing [%person#1-my] contract until [%person#2-you] have proven [%person#2-yourself] as a manager.
+
+STR-463185
+[%person#1-I] have no interest in negotiating new terms at this time.
+
+STR-463186
+[%person#1-I] feel I may have outgrown the club and [%person#1-I] want to keep my options open.
+
+STR-463187
+[%person#1-I] don't feel valued at a club that [%person#1-I] hold so dear to my heart.
+
+STR-463188
+[%person#1-I] don't want to discuss signing a new contract at this time.
+
+STR-463189
+[%person#1-I] feel like a more experienced manager would be beneficial to [%person#1-my] development at this early stage of [%person#1-my] career.
+
+STR-463190
+[%person#1-I]'m not convinced by [%person#2-your] managerial ability and so [%person#1-I] would like a better contract to sign for [%person#2-you].
+
+STR-463191
+[%person#1-I]'m somewhat reluctant to sign for such an inexperienced manager, but if it means [%person#1-I] have a club again then [%person#1-I]'m willing to hear [%person#2-your] offer.
+
+STR-463192
+[%person#1-I]'m not convinced by [%person#2-your] managerial ability and so [%person#1-I] would like a better contract to sign for [%person#2-your] club.
+
+STR-463193
+[%person#1-I] believe there are bigger clubs than [%person#2-yours] who would be willing to sign me, so [%person#2-you] will need to make me an enticing offer.
+
+STR-463194
+[%person#1-I]'m seen as a key player at [%club#1-short], [%person#1-I]'m not convinced it would be in [%person#1-my] best interests to leave that behind.
+
+STR-463195
+[%person#1-I]'m demanding a wage of [%string#3 - full wage string] until [%string#2 contract end date] in addition to a signing on fee of [%cash#2-short-roundsmall].
+
+STR-463196
+[%person#1-I]'m asking for a wage of [%string#3 - full wage string] until [%string#2 contract end date] in addition to a signing on fee of [%cash#2-short-roundsmall].
+
+STR-463197
+[%person#1-I]'m expecting a wage of [%string#3 - full wage string] until [%string#2 contract end date] in addition to a signing on fee of [%cash#2-short-roundsmall].
+
+STR-463198
+[%person#1-I]'m demanding a wage of [%string#3 - full wage string] until [%string#2 contract end date].
+
+STR-463199
+[%person#1-I]'m asking for a wage of [%string#3 - full wage string] until [%string#2 contract end date].
+
+STR-463200
+[%person#1-I]'m expecting a wage of [%string#3 - full wage string] until [%string#2 contract end date].
+
+STR-463201
+[%person#1-I] am also seeking assurances that [%person#1-I] will be considered a more important member of the first team squad.
+
+STR-463202
+There are several clubs that are monitoring [%person#1-my] situation closely including [%club#1-short], who are free to discuss terms with [%person#1-me] at any point under the Bosman ruling.
+
+STR-463203
+Several clubs are monitoring [%person#1-my] situation closely including [%club#1-short], which could represent an interesting option for [%person#1-me] should these talks fail.
+
+STR-463204
+[%club#1-short] are monitoring [%person#1-my] situation closely and are free to discuss terms with [%person#1-me] at any point under the Bosman ruling.
+
+STR-463205
+[%club#1-short] are monitoring [%person#1-my] situation closely, and could represent an interesting option for [%person#1-me] should these talks fail.
+
+STR-463206
+Several clubs are monitoring [%person#1-my] situation closely, some of which could represent possible options for [%person#1-me] should these talks fail.
+
+STR-463208
+[%person#1-I]'m happy that everything was sorted out so quickly. Although [%person#1-I] do wonder why it has taken so long to offer [%person#1-me] this new deal.
+
+STR-463209
+[%person#1-I]'m relieved that these contract talks were wrapped up so quickly. [%person#1-I] was worried that [%person#2-you] weren't going to consider renewing [%person#1-my] contract.
+
+STR-463210
+[%person#1-I]'m delighted that everything was sorted out so quickly and that [%person#1-I] am able to extend [%person#1-my] stay here.
+
+STR-463211
+[%person#1-I]'m pleased that everything was sorted out so quickly.
+
+STR-463212
+[%person#1-I]'m delighted that everything was sorted out so quickly and that [%person#1-I] am able to commit [%person#1-my] long-term future to the club.
+
+STR-463213
+[%person#1-I]'m happy that everything was sorted out so quickly. [%person#1-I] can see that [%person#2-you] are very eager to secure [%person#1-my] services.
+
+STR-463214
+[%person#1-I]'m relieved that we have finally agreed the terms of [%person#1-my] new contract. [%person#1-I] was worried we weren't going to be able to reach an agreement in time.
+
+STR-463215
+[%person#1-I]'m relieved that we have finally agreed the terms that mean [%person#1-I] can extend [%person#1-my] stay here.
+
+STR-463216
+[%person#1-I]'m not happy that it took this long to reach an agreement, but [%person#1-I]'m finally satisfied with the terms of this contract offer.
+
+STR-463217
+[%person#1-I]'m pleased that these negotiations have finally drawn to a close.
+Polish Reference:
+STR-463171
+Nie jestem zainteresowany nowymi negocjacjami kontraktowymi, gdyż dopiero co uzgodniliśmy nowe warunki.[%male#1-hidden]
+Nie jestem zainteresowana nowymi negocjacjami kontraktowymi, gdyż dopiero co uzgodniliśmy nowe warunki.[%female#1-hidden]
+
+STR-463172
+Nie jestem zainteresowany nowym kontraktem, gdyż zamierzam zakończyć karierę po sezonie.[%male#1-hidden]
+Nie jestem zainteresowana nowym kontraktem, gdyż zamierzam zakończyć karierę po sezonie.[%female#1-hidden]
+
+STR-463173
+Nie jestem zainteresowany zmianą klubu, gdyż zamierzam zakończyć karierę po sezonie.[%male#1-hidden]
+Nie jestem zainteresowana zmianą klubu, gdyż zamierzam zakończyć karierę po sezonie.[%female#1-hidden]
+
+STR-463174
+Nie jestem obecnie zainteresowany powrotem do klubu.[%male#1-hidden]
+Nie jestem obecnie zainteresowana powrotem do klubu.[%female#1-hidden]
+
+STR-463175
+Nie jestem zainteresowany grą w tak małym klubie.[%male#1-hidden]
+Nie jestem zainteresowana grą w tak małym klubie.[%female#1-hidden]
+
+STR-463176
+Tylko bardzo atrakcyjna oferta może przekonać mnie do przejścia do klubu.[%male#1-hidden]
+
+STR-463177
+Nie wierzę, by klub był w stanie spełnić moje wymagania.[%male#1-hidden]
+
+STR-463178
+Jest mi bardzo dobrze w obecnym klubie i na tę chwilę nie zamierzam z niego odchodzić.[%male#1-hidden]
+
+STR-463179
+Doskonale się odnajduję w obecnym klubie i na tę chwilę nie zamierzam z niego odchodzić.[%male#1-hidden]
+
+STR-463180
+Na tym etapie mojej kariery nie jestem zainteresowany zrobieniem kroku wstecz.[%male#1-hidden]
+Na tym etapie mojej kariery nie jestem zainteresowana zrobieniem kroku wstecz.[%female#1-hidden]
+
+STR-463181
+Nie jestem zainteresowany rozpoczęciem rozmów, gdyż zamierzam w najbliższej przyszłości odejść z klubu[%male#1-hidden]
+Nie jestem zainteresowana rozpoczęciem rozmów, gdyż zamierzam w najbliższej przyszłości odejść z klubu[%female#1-hidden]
+
+STR-463182
+Nie jestem szczególnie zainteresowany rozpoczęciem rozmów kontraktowych, gdyż zamierzam w najbliższej przyszłości odejść z klubu[%male#1-hidden]
+Nie jestem szczególnie zainteresowana rozpoczęciem rozmów kontraktowych, gdyż zamierzam w najbliższej przyszłości odejść z klubu[%female#1-hidden]
+
+STR-463183
+Nie wydaje mi się, by klub był w stanie zaproponować mi taki kontrakt, jakiego oczekuję.[%male#1-hidden]
+
+STR-463184
+Nie zamierzam nawet myśleć o przedłużeniu kontraktu, póki nie udowodni pan, że się pan nadaje na naszego menedżera.[%male#1-hidden][%male#2-hidden]
+Nie zamierzam nawet myśleć o przedłużeniu kontraktu, póki nie udowodni pani, że się pani nadaje na naszą menedżerkę.[%male#1-hidden][%female#2-hidden]
+Nie zamierzam nawet myśleć o przedłużeniu kontraktu, póki nie udowodni pan, że się pan nadaje na naszego menedżera.[%female#1-hidden][%male#2-hidden]
+Nie zamierzam nawet myśleć o przedłużeniu kontraktu, póki nie udowodni pani, że się pani nadaje na naszą menedżerkę.[%female#1-hidden][%female#2-hidden]
+
+STR-463185
+Nie jestem obecnie zainteresowany negocjowaniem nowego kontraktu.[%male#1-hidden]
+Nie jestem obecnie zainteresowana negocjowaniem nowego kontraktu.[%female#1-hidden]
+
+STR-463186
+Wydaje mi się, że ten klub zrobił się dla mnie za mały, i nie chcę zamykać sobie żadnych drzwi.[%male#1-hidden]
+
+STR-463187
+Nie czuję się doceniany w klubie, który jest tak bliski memu sercu.[%male#1-hidden]
+Nie czuję się doceniana w klubie, który jest tak bliski memu sercu.[%female#1-hidden]
+
+STR-463188
+Nie chcę w tej chwili rozmawiać o podpisaniu nowego kontraktu.[%male#1-hidden]
+
+STR-463189
+Wydaje mi się, że bardziej doświadczony menedżer bardziej pomógłby mi w rozwoju na tak wczesnym etapie kariery.[%male#1-hidden]
+
+STR-463190
+Nie jestem przekonany co do pańskich umiejętności menedżerskich, więc jeśli miałbym przejść do pańskiego klubu, oczekuję lepszego kontraktu.[%male#1-hidden][%male#2-hidden]
+Nie jestem przekonany co do pani umiejętności menedżerskich, więc jeśli miałbym przejść do pani klubu, oczekuję lepszego kontraktu.[%male#1-hidden][%female#2-hidden]
+Nie jestem przekonana co do pańskich umiejętności menedżerskich, więc jeśli miałabym przejść do pańskiego klubu, oczekuję lepszego kontraktu.[%female#1-hidden][%male#2-hidden]
+Nie jestem przekonana co do pani umiejętności menedżerskich, więc jeśli miałabym przejść do pani klubu, oczekuję lepszego kontraktu.[%female#1-hidden][%female#2-hidden]
+
+STR-463191
+Nie zachwyca mnie perspektywa wiązania się z tak niedoświadczonym menedżerem, ale skoro dzięki temu znów będę mieć klub, jestem gotów wysłuchać pańskiej propozycji.[%male#1-hidden][%male#2-hidden]
+Nie zachwyca mnie perspektywa wiązania się z tak niedoświadczoną menedżerką, ale skoro dzięki temu znów będę mieć klub, jestem gotów wysłuchać pani propozycji.[%male#1-hidden][%female#2-hidden]
+Nie zachwyca mnie perspektywa wiązania się z tak niedoświadczonym menedżerem, ale skoro dzięki temu znów będę mieć klub, jestem gotowa wysłuchać pańskiej propozycji.[%female#1-hidden][%male#2-hidden]
+Nie zachwyca mnie perspektywa wiązania się z tak niedoświadczoną menedżerką, ale skoro dzięki temu znów będę mieć klub, jestem gotowa wysłuchać pani propozycji.[%female#1-hidden][%female#2-hidden]
+
+STR-463192
+Nie jestem przekonany co do pańskich umiejętności menedżerskich, więc jeśli miałbym przejść do pańskiego klubu, oczekuję lepszego kontraktu.[%male#1-hidden][%male#2-hidden]
+Nie jestem przekonany co do pani umiejętności menedżerskich, więc jeśli miałbym przejść do pani klubu, oczekuję lepszego kontraktu.[%male#1-hidden][%female#2-hidden]
+Nie jestem przekonana co do pańskich umiejętności menedżerskich, więc jeśli miałabym przejść do pańskiego klubu, oczekuję lepszego kontraktu.[%female#1-hidden][%male#2-hidden]
+Nie jestem przekonana co do pani umiejętności menedżerskich, więc jeśli miałabym przejść do pani klubu, oczekuję lepszego kontraktu.[%female#1-hidden][%female#2-hidden]
+
+STR-463193
+Uważam, że kluby większe od pańskiego byłyby zainteresowane podpisaniem ze mną kontraktu, więc musi mi pan przedstawić atrakcyjną ofertę.[%male#1-hidden][%male#2-hidden]
+Uważam, że kluby większe od pani byłyby zainteresowane podpisaniem ze mną kontraktu, więc musi mi pani przedstawić atrakcyjną ofertę.[%male#1-hidden][%female#2-hidden]
+Uważam, że kluby większe od pańskiego byłyby zainteresowane podpisaniem ze mną kontraktu, więc musi mi pan przedstawić atrakcyjną ofertę.[%female#1-hidden][%male#2-hidden]
+Uważam, że kluby większe od pani byłyby zainteresowane podpisaniem ze mną kontraktu, więc musi mi pani przedstawić atrakcyjną ofertę.[%female#1-hidden][%female#2-hidden]
+
+STR-463194
+[%club#1-short]{uważa} mnie za kluczowego zawodnika swojego zespołu, więc rezygnacja z tego nie leży w moim najlepiej pojętym interesie.[%male#1-hidden]
+[%club#1-short]{uważa} mnie za kluczową zawodniczkę swojego zespołu, więc rezygnacja z tego nie leży w moim najlepiej pojętym interesie.[%female#1-hidden]
+
+STR-463195
+Żądam wynagrodzenia w wysokości [%string#3 - full wage string] do [%string#2 contract end date], a także [%cash#2-short-roundsmall] za podpisanie kontraktu.[%male#1-hidden]
+
+STR-463196
+Oczekuję wynagrodzenia w wysokości [%string#3 - full wage string] do [%string#2 contract end date], a także [%cash#2-short-roundsmall] za podpisanie kontraktu.[%male#1-hidden]
+
+STR-463197
+Spodziewam się wynagrodzenia w wysokości [%string#3 - full wage string] do [%string#2 contract end date], a także [%cash#2-short-roundsmall] za podpisanie kontraktu.[%male#1-hidden]
+
+STR-463198
+Żądam wynagrodzenia w wysokości [%string#3 - full wage string] do [%string#2 contract end date].[%male#1-hidden]
+
+STR-463199
+Oczekuję wynagrodzenia w wysokości [%string#3 - full wage string] do [%string#2 contract end date].[%male#1-hidden]
+
+STR-463200
+Spodziewam się wynagrodzenia w wysokości [%string#3 - full wage string] do [%string#2 contract end date].[%male#1-hidden]
+
+STR-463201
+Oczekuję też zapewnienia, że będę odgrywać ważniejszą rolę w pierwszym zespole.[%male#1-hidden]
+
+STR-463202
+Kilka klubów uważnie monitoruje moją sytuację i w każdej chwili mogą one złożyć mi propozycję na prawie Bosmana.[%male#1-hidden]
+
+STR-463203
+Kilka klubów uważnie monitoruje moją sytuację i na przykład [%club#1-short]{mógł}by być dla mnie ciekawą alternatywą w przypadku fiaska tych rozmów.[%male#1-hidden]
+
+STR-463204
+[%club#1-short]{obserwuje} uważnie moją sytuację i w każdej chwili mogę otrzymać od nich propozycję na prawie Bosmana.[%male#1-hidden]
+
+STR-463205
+[%club#1-short]{obserwuje} uważnie moją sytuację i mogliby być dla mnie ciekawą alternatywą w przypadku fiaska tych rozmów.[%male#1-hidden]
+
+STR-463206
+Kilka klubów uważnie monitoruje moją sytuację i parę z nich mogłoby być dla mnie ciekawą alternatywą w przypadku fiaska tych rozmów.[%male#1-hidden]
+
+STR-463208
+Cieszę się, że wszystko zostało tak szybko uzgodnione. Choć nadal się zastanawiam, dlaczego tak długo musiałem czekać na propozycję nowego kontraktu.[%male#1-hidden]
+Cieszę się, że wszystko zostało tak szybko uzgodnione. Choć nadal się zastanawiam, dlaczego tak długo musiałam czekać na propozycję nowego kontraktu.[%female#1-hidden]
+
+STR-463209
+Ulżyło mi, że tak szybko doszliśmy do porozumienia. Martwiłem się już, że nie zdecyduje się pan na przedłużenie mojego kontraktu.[%male#1-hidden][%male#2-hidden]
+Ulżyło mi, że tak szybko doszliśmy do porozumienia. Martwiłem się już, że nie zdecyduje się pani na przedłużenie mojego kontraktu.[%male#1-hidden][%female#2-hidden]
+Ulżyło mi, że tak szybko doszliśmy do porozumienia. Martwiłam się już, że nie zdecyduje się pan na przedłużenie mojego kontraktu.[%female#1-hidden][%male#2-hidden]
+Ulżyło mi, że tak szybko doszliśmy do porozumienia. Martwiłam się już, że nie zdecyduje się pani na przedłużenie mojego kontraktu.[%female#1-hidden][%female#2-hidden]
+
+STR-463210
+Bardzo się cieszę, że tak szybko wszystko uzgodniliśmy i mogę na dłużej związać się z klubem.[%male#1-hidden]
+
+STR-463211
+Cieszę się, że tak szybko wszystko uzgodniliśmy.[%male#1-hidden]
+
+STR-463212
+Bardzo się cieszę, że tak szybko wszystko uzgodniliśmy i mogę na dłużej związać się z klubem.[%male#1-hidden]
+
+STR-463213
+Cieszę się, że tak szybko wszystko uzgodniliśmy. Widzę, że naprawdę panu zależy na tym, żebym grał w pańskim zespole.[%male#1-hidden][%male#2-hidden]
+Cieszę się, że tak szybko wszystko uzgodniliśmy. Widzę, że naprawdę pani zależy na tym, żebym grał w pani zespole.[%male#1-hidden][%female#2-hidden]
+Cieszę się, że tak szybko wszystko uzgodniliśmy. Widzę, że naprawdę panu zależy na tym, żebym grał w pańskim zespole.[%female#1-hidden][%male#2-hidden]
+Cieszę się, że tak szybko wszystko uzgodniliśmy. Widzę, że naprawdę pani zależy na tym, żebym grał w pani zespole.[%female#1-hidden][%female#2-hidden]
+
+STR-463214
+Odczuwam ulgę, że w końcu udało nam się uzgodnić warunki mojego nowego kontraktu. Martwiłem się już, że nie zdążymy na czas osiągnąć porozumienia.[%male#1-hidden]
+Odczuwam ulgę, że w końcu udało nam się uzgodnić warunki mojego nowego kontraktu. Martwiłam się już, że nie zdążymy na czas osiągnąć porozumienia.[%female#1-hidden]
+
+STR-463215
+Odczuwam ulgę, że w końcu udało nam się uzgodnić warunki i mogę zostać tu na dłużej.[%male#1-hidden]
+
+STR-463216
+Nie podoba mi się to, że osiągnięcie porozumienia zajęło nam tyle czasu, ale teraz jestem w końcu zadowolony z warunków tej propozycji kontraktowej.[%male#1-hidden]
+Nie podoba mi się to, że osiągnięcie porozumienia zajęło nam tyle czasu, ale teraz jestem w końcu zadowolona z warunków tej propozycji kontraktowej.[%female#1-hidden]
+
+STR-463217
+Cieszę się, że te negocjacje nareszcie się skończyły.[%male#1-hidden]

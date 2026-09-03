@@ -1,0 +1,162 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-407555
+[%string#3 - Coach Name] does not believe that [%person#1-your] words of criticism have particularly affected [%position#1-lowercase_no_sides] [%string#2 - Player Name] one way or the other.
+
+STR-407556
+[%person#1-Your] assistant does not believe that [%person#1-your] words of criticism have particularly affected [%position#1-lowercase_no_sides] [%string#2 - Player Name] one way or the other.
+
+STR-407557
+[%string#3 - Coach Name] believes that [%person#1-your] words of criticism have lit a fire under [%position#1-lowercase_no_sides] [%string#2 - Player Name], who seems to be reacting positively in training.
+
+STR-407558
+[%person#1-Your] assistant believes that [%person#1-your] words of criticism have lit a fire under [%position#1-lowercase_no_sides] [%string#2 - Player Name], who seems to be reacting positively in training.
+
+STR-407559
+[%string#3 - Coach Name] believes that [%person#1-your] continued criticism of [%position#1-lowercase_no_sides] [%string#2 - Player Name] might be having a detrimental effect on the player who looked dejected in training.
+
+STR-407560
+[%person#1-Your] assistant believes that [%person#1-your] continued criticism of [%position#1-lowercase_no_sides] [%string#2 - Player Name] might be having a detrimental effect on the player who looked dejected in training.
+
+STR-407561
+[%string#3 - Coach Name] is concerned that the message is not getting through to [%position#1-lowercase_no_sides] [%string#2 - Player Name], who seems to be ignoring [%person#1-your] repeated criticism.
+
+STR-407562
+[%person#1-Your] assistant is concerned that the message is not getting through to [%position#1-lowercase_no_sides] [%string#2 - Player Name], who seems to be ignoring [%person#1-your] repeated criticism.
+
+STR-407563
+[%string#3 - Coach Name] believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] has responded positively to [%person#1-your] recent praise. [%person#2-He] appreciates that [%person#1-you] have recognised a change in [%person#2-his] attitude following [%person#1-your] earlier criticisms.
+
+STR-407564
+[%person#1-Your] assistant believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] has responded positively to [%person#1-your] recent praise. [%person#2-He] appreciates that [%person#1-you] have recognised a change in [%person#2-his] attitude following [%person#1-your] earlier criticisms.
+
+STR-407565
+[%string#3 - Coach Name] has noted that [%position#1-lowercase_no_sides] [%string#2 - Player Name] attitude in training has not changed following [%person#1-your] recent praise. It seems the player is able to take both the criticism and the praise [%person#1-you] give [%person#2-him].
+
+STR-407566
+[%person#1-Your] assistant has noted that [%position#1-lowercase_no_sides] [%string#2 - Player Name] attitude in training has not changed following [%person#1-your] recent praise. It seems the player is able to take both the criticism and the praise [%person#1-you] give [%person#2-him].
+
+STR-407567
+[%string#3 - Coach Name] believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] has responded positively to [%person#1-your] recent criticism. [%person#2-He] accepts that [%person#2-he] may have become a bit complacent after [%person#1-your] earlier praise.
+
+STR-407568
+[%person#1-Your] assistant believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] has responded positively to [%person#1-your] recent criticism. [%person#2-He] accepts that [%person#2-he] may have become a bit complacent after [%person#1-your] earlier praise.
+
+STR-407569
+[%string#3 - Coach Name] believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] has reacted negatively to [%person#1-your] recent criticism. [%person#2-He] feels that the criticism is harsh after [%person#1-you] previously praised [%person#2-him].
+
+STR-407570
+[%person#1-Your] assistant believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] has reacted negatively to [%person#1-your] recent criticism. [%person#2-He] feels that the criticism is harsh after [%person#1-you] previously praised [%person#2-him].
+
+STR-407571
+[%string#3 - Coach Name] believes that [%person#1-your] words of criticism have gotten through to [%position#1-lowercase_no_sides] [%string#2 - Player Name], who seems to be stepping up [%person#2-his] rehabilitation from injury.
+
+STR-407572
+[%person#1-Your] assistant believes that [%person#1-your] words of criticism have gotten through to [%position#1-lowercase_no_sides] [%string#2 - Player Name], who seems to be stepping up [%person#2-his] rehabilitation from injury.
+Polish Reference:
+STR-407555
+[%string#3 - Coach Name] nie sądzi, by [%position#1-lowercase_no_sides] [%string#2 - Player Name] zareagował w jakikolwiek sposób na krytykę z twojej strony.[%male#1-hidden]
+
+STR-407556
+Twój asystent nie sądzi, by [%position#1-lowercase_no_sides] [%string#2 - Player Name] zareagował w jakikolwiek sposób na krytykę z twojej strony.[%male#1-hidden]
+
+STR-407557
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] prezentuje pozytywną postawę na treningach.[%male#1-hidden]
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] prezentuje pozytywną postawę na treningach.[%female#1-hidden]
+
+STR-407558
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] prezentuje pozytywną postawę na treningach.[%male#1-hidden]
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] prezentuje pozytywną postawę na treningach.[%female#1-hidden]
+
+STR-407559
+[%string#3 - Coach Name] jest zdania, że twoje krytyczne uwagi odbijają się negatywnie na zawodniku i [%position#1-lowercase_no_sides] [%string#2 - Player Name] sprawia wrażenie podłamanego na treningach.[%male#1-hidden]
+
+STR-407560
+Twój asystent jest zdania, że twoje krytyczne uwagi odbijają się negatywnie na zawodniku i [%position#1-lowercase_no_sides] [%string#2 - Player Name] sprawia wrażenie podłamanego na treningach.[%male#1-hidden]
+
+STR-407561
+[%string#3 - Coach Name] obawia się, że twoje krytyczne uwagi nie docierają do zawodnika, a [%position#1-lowercase_no_sides] [%string#2 - Player Name] zdaje się je ignorować.[%male#1-hidden]
+
+STR-407562
+Twój asystent obawia się, że twoje krytyczne uwagi nie docierają do zawodnika, a [%position#1-lowercase_no_sides] [%string#2 - Player Name] zdaje się je ignorować.[%male#1-hidden]
+
+STR-407563
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagował na pochwały z twojej strony. Cieszy się zwłaszcza z tego, że zauważyłeś zmianę w jego zachowaniu po wcześniejszej krytyce.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagowała na pochwały z twojej strony. Cieszy się zwłaszcza z tego, że zauważyłeś zmianę w jej zachowaniu po wcześniejszej krytyce.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagował na pochwały z twojej strony. Cieszy się zwłaszcza z tego, że zauważyłaś zmianę w jego zachowaniu po wcześniejszej krytyce.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagowała na pochwały z twojej strony. Cieszy się zwłaszcza z tego, że zauważyłaś zmianę w jej zachowaniu po wcześniejszej krytyce.[%female#1-hidden][%female#2-hidden]
+
+STR-407564
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagował na pochwały z twojej strony. Cieszy się zwłaszcza z tego, że zauważyłeś zmianę w jego zachowaniu po wcześniejszej krytyce.[%male#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagowała na pochwały z twojej strony. Cieszy się zwłaszcza z tego, że zauważyłeś zmianę w jej zachowaniu po wcześniejszej krytyce.[%male#1-hidden][%female#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagował na pochwały z twojej strony. Cieszy się zwłaszcza z tego, że zauważyłaś zmianę w jego zachowaniu po wcześniejszej krytyce.[%female#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagowała na pochwały z twojej strony. Cieszy się zwłaszcza z tego, że zauważyłaś zmianę w jej zachowaniu po wcześniejszej krytyce.[%female#1-hidden][%female#2-hidden]
+
+STR-407565
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie zmienił swojego podejścia do treningu po twoich pochwałach. Wygląda na to, że potrafi sobie radzić tak z krytyką, jak i z pochwałami z twojej strony.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie zmieniła swojego podejścia do treningu po twoich pochwałach. Wygląda na to, że potrafi sobie radzić tak z krytyką, jak i z pochwałami z twojej strony.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie zmienił swojego podejścia do treningu po twoich pochwałach. Wygląda na to, że potrafi sobie radzić tak z krytyką, jak i z pochwałami z twojej strony.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie zmieniła swojego podejścia do treningu po twoich pochwałach. Wygląda na to, że potrafi sobie radzić tak z krytyką, jak i z pochwałami z twojej strony.[%female#1-hidden][%female#2-hidden]
+
+STR-407566
+Twój asystent zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie zmienił swojego podejścia do treningu po twoich pochwałach. Wygląda na to, że potrafi sobie radzić tak z krytyką, jak i z pochwałami z twojej strony.[%male#1-hidden][%male#2-hidden]
+Twój asystent zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie zmieniła swojego podejścia do treningu po twoich pochwałach. Wygląda na to, że potrafi sobie radzić tak z krytyką, jak i z pochwałami z twojej strony.[%male#1-hidden][%female#2-hidden]
+Twój asystent zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie zmienił swojego podejścia do treningu po twoich pochwałach. Wygląda na to, że potrafi sobie radzić tak z krytyką, jak i z pochwałami z twojej strony.[%female#1-hidden][%male#2-hidden]
+Twój asystent zauważył, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] nie zmieniła swojego podejścia do treningu po twoich pochwałach. Wygląda na to, że potrafi sobie radzić tak z krytyką, jak i z pochwałami z twojej strony.[%female#1-hidden][%female#2-hidden]
+
+STR-407567
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagował na twoje krytyczne uwagi. Przyznaje też, że po wcześniejszych pochwałach trochę przestał się starać.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagowała na twoje krytyczne uwagi. Przyznaje też, że po wcześniejszych pochwałach trochę przestała się starać.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagował na twoje krytyczne uwagi. Przyznaje też, że po wcześniejszych pochwałach trochę przestał się starać.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagowała na twoje krytyczne uwagi. Przyznaje też, że po wcześniejszych pochwałach trochę przestała się starać.[%female#1-hidden][%female#2-hidden]
+
+STR-407568
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagował na twoje krytyczne uwagi. Przyznaje też, że po wcześniejszych pochwałach trochę przestał się starać.[%male#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagowała na twoje krytyczne uwagi. Przyznaje też, że po wcześniejszych pochwałach trochę przestała się starać.[%male#1-hidden][%female#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagował na twoje krytyczne uwagi. Przyznaje też, że po wcześniejszych pochwałach trochę przestał się starać.[%female#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] pozytywnie zareagowała na twoje krytyczne uwagi. Przyznaje też, że po wcześniejszych pochwałach trochę przestała się starać.[%female#1-hidden][%female#2-hidden]
+
+STR-407569
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] negatywnie zareagował na twoje krytyczne uwagi. Jego zdaniem nie zasłużył na nie, zwłaszcza w świetle twoich wcześniejszych pochwał.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] negatywnie zareagowała na twoje krytyczne uwagi. Jej zdaniem nie zasłużyła na nie, zwłaszcza w świetle twoich wcześniejszych pochwał.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] negatywnie zareagował na twoje krytyczne uwagi. Jego zdaniem nie zasłużył na nie, zwłaszcza w świetle twoich wcześniejszych pochwał.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] negatywnie zareagowała na twoje krytyczne uwagi. Jej zdaniem nie zasłużyła na nie, zwłaszcza w świetle twoich wcześniejszych pochwał.[%female#1-hidden][%female#2-hidden]
+
+STR-407570
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] negatywnie zareagował na twoje krytyczne uwagi. Jego zdaniem nie zasłużył na nie, zwłaszcza w świetle twoich wcześniejszych pochwał.[%male#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] negatywnie zareagowała na twoje krytyczne uwagi. Jej zdaniem nie zasłużyła na nie, zwłaszcza w świetle twoich wcześniejszych pochwał.[%male#1-hidden][%female#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] negatywnie zareagował na twoje krytyczne uwagi. Jego zdaniem nie zasłużył na nie, zwłaszcza w świetle twoich wcześniejszych pochwał.[%female#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] negatywnie zareagowała na twoje krytyczne uwagi. Jej zdaniem nie zasłużyła na nie, zwłaszcza w świetle twoich wcześniejszych pochwał.[%female#1-hidden][%female#2-hidden]
+
+STR-407571
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zintensyfikował swoje starania, by powrócić do pełni sił po kontuzji.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zintensyfikowała swoje starania, by powrócić do pełni sił po kontuzji.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zintensyfikował swoje starania, by powrócić do pełni sił po kontuzji.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zintensyfikowała swoje starania, by powrócić do pełni sił po kontuzji.[%female#1-hidden][%female#2-hidden]
+
+STR-407572
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zintensyfikował swoje starania, by powrócić do pełni sił po kontuzji.[%male#1-hidden][%male#2-hidden]
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłeś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zintensyfikowała swoje starania, by powrócić do pełni sił po kontuzji.[%male#1-hidden][%female#2-hidden]
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodnika i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zintensyfikował swoje starania, by powrócić do pełni sił po kontuzji.[%female#1-hidden][%male#2-hidden]
+Twój asystent jest zdania, że swoimi krytycznymi uwagami dotarłaś do zawodniczki i [%position#1-lowercase_no_sides] [%string#2 - Player Name] zintensyfikowała swoje starania, by powrócić do pełni sił po kontuzji.[%female#1-hidden][%female#2-hidden]

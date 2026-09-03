@@ -1,0 +1,609 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-450449
+Following the completion of this season's Best Eleven, [%club#1] supporters club has proudly announced that [%person#1] and [%person#2] have been considered good enough to enter your personal overall best eleven.
+
+STR-450450
+Following the completion of this season's Best Eleven, [%club#1] supporters club has proudly announced that a number of this season's squad have been considered good enough to induct into your personal overall best eleven.
+
+STR-450452
+[%club#1] are delighted to indicate that several players from the club have been selected in this season's world best eleven.\n\nThis is a tremendous achievement and demonstrates the strength of squad at the club.
+
+STR-450453
+Hide Description
+
+STR-450454
+Show Description
+
+STR-450456
+Support
+
+STR-450847
+Unknown
+
+STR-451250
+(Matches not involving national service clubs)
+
+STR-451255
+After this date players' contracts will be considered Guaranteed if the player turns 24 during the calendar year and has spent at least one complete season in the MLS
+
+STR-451256
+matches
+
+STR-451257
+match
+
+STR-451258
+a match
+
+STR-451262
+&
+
+STR-451265
+This unlockable removes loan restrictions from the game. Achieve this by having a loaned player win an annual award.
+
+STR-451281
+[%person#1-Your] personal assistant has reminded [%person#1-you] that [%person#2] and [%person#3] have contracts which are due to expire in one week's time.
+
+STR-451286
+When enabled, certain player attributes are not visible to you until you have scouted the player. If you wish to be able to see all player attributes from the start of the game you should disable this option.
+
+STR-451294
+The [%comp#1] won't be played this year due to [%team#1-short] being the only team qualifying for it.
+
+STR-451299
+Clubs around the country have taken their decisions on which players are to be released at the end of their contracts. A newspaper article has compiled a list of the best players available but is linking them to clubs with far larger stature than yours.
+
+STR-451300
+Clubs around the country have taken their decisions on which players are to be released at the end of their contracts. A newspaper article has compiled a list of the best players available but [%person#1] doesn't believe any of them would consider joining the club.
+
+STR-451301
+Displaying initial selection from start of career
+
+STR-451304
+Released Player List
+
+STR-451343
+at any time
+
+STR-451368
+First Class
+
+STR-451369
+Excellent
+
+STR-451370
+Impressive
+
+STR-451371
+Fairly Good
+
+STR-451372
+Decent
+
+STR-451373
+Average
+
+STR-451374
+Below Average
+
+STR-451381
+The board indicate the club has already invested in players.
+
+STR-451382
+The board indicate the club has no funds available for transfers at this time.
+
+STR-451395
+CRC
+
+STR-451396
+Costa Rican Colon
+
+STR-451397
+KZT
+
+STR-451398
+Kazakhstani Tenge
+
+STR-451399
+KWD
+
+STR-451400
+Kuwaiti Dinar
+
+STR-451401
+QAR
+
+STR-451402
+Qatari Riyal
+
+STR-451403
+VND
+
+STR-451404
+Vietnamese Dong
+
+STR-451420
+The Loan Arranger
+
+STR-451421
+[%person#1-You] are able to hire an attorney and appeal against this decision at the cost of [%cash#1].
+
+STR-451422
+[%person#1-full] requests a physio role
+
+STR-451428
+No players shortlisted at present.
+
+STR-451430
+Additional Testing
+
+STR-451444
+About
+
+STR-451459
+[%club#1] are not represented in the [%award#1-long] on this occasion.
+
+STR-451460
+[%club#1] are not represented in the [%award#1-long].
+
+STR-451461
+[%person#1] is one of several [%club#1] players to be selected.
+
+STR-451462
+[%club#1] performed particularly well with both [%person#1] and [%person#2] having been selected.
+
+STR-451493
+This will allow you to edit the active game world database while playing.
+
+STR-451494
+Updated at the end of each season
+
+STR-451496
+Internal reports are not shared between clubs.
+
+STR-451500
+The [%person#1-surname] Stadium
+
+STR-451510
+\n\n[%person#1-He] indicated [%person#1-he] found the personal tuition invaluable and isn't sure [%person#1-he] would have passed the exam without it.
+
+STR-451512
+Hires a tutor to ensure that your staff pass their training exam.
+
+STR-451521
+[%person#1-He] has indicated [%person#1-he] has no interest in joining the club as a physio.
+
+STR-451522
+[%person#1-He] has indicated [%person#1-he] has no interest in joining the club as a scout.
+
+STR-451523
+[%person#1-He] has indicated [%person#1-he] has no interest in joining the club as an assistant manager.
+
+STR-451524
+[%person#1-He] has indicated [%person#1-he] has no interest in joining the club as a coach presently.
+
+STR-451543
+Players signed after the Fourth Round stage are ineligible
+
+STR-451556
+Grudgingly admits [%person#1-full] is an effective coach
+
+STR-451628
+Not judging
+
+STR-451872
+Players may be allowed to play for the parent club's reserve team whilst on loan
+
+STR-451873
+Under-[%number#1] players may be allowed to play for the parent club's reserve team whilst on loan
+
+STR-451874
+(Providing parent club and loanee club do not play in same reserve division)
+
+STR-451875
+This will instruct free-kick takers to either take a direct shot at goal or pass to a team-mate to keep it varied rather than sticking to any one particular strategy.
+
+STR-451993
+C
+
+STR-451994
+F
+
+STR-452017
+No Transfer Windows
+
+STR-452018
+No Loan Restrictions
+
+STR-452019
+No Work Permits
+
+STR-452024
+Unavailable to play club football in official matches from [%date#2-short] to [%date#1-short].
+
+STR-452063
+left wing-back
+
+STR-452064
+right wing-back
+
+STR-452440
+Top team from Indian Super League
+
+STR-452441
+Pass - Received
+
+STR-452442
+Cross - Received
+
+STR-452450
+Thinks [%person#1-full] is a better coach than a manager
+
+STR-452457
+Club Board
+
+STR-452458
+National FA
+
+STR-452460
+[%person#1] has indicated [%person#1-he] is very happy with how [%team#1-long] [%position#1-lowercase_no_sides] [%person#2] has been responding to [%person#1-his] coaching.
+
+STR-452461
+[%club#1-short] were incredibly lucky today as they survived a dire performance in which they almost had their first leg lead entirely overturned. They salvaged the tie in the end, managing to keep the score down to a [%number#1 - opposition goals]-[%number#2 - human goals] defeat against [%club#2-short], and followed this with a fortunate penalty shoot-out win.
+
+STR-452464
+Following [%person#1-his] recent success at international level, many media pundits believe [%person#1-surname] will have the pick of any available national jobs in the future as any nation would feel privileged to be able to hire [%person#1-him].
+
+STR-452465
+[%person#1-Your] scouts are unable to carry out more individual assignments at this time as they already have a full list of players to gather reports on.
+
+STR-452466
+[%person#1] suggests expanding the scouting team to ease the burden on the current setup.
+
+STR-452467
+It has been suggested that [%person#1-you] look to expand the scouting team to ease the burden on the current setup.
+
+STR-452469
+[%person#1-He] has indicated [%person#1-he] has no interest in working alongside you as a physio.
+
+STR-452470
+[%person#1-He] has indicated [%person#1-he] has no interest in working alongside you as a scout.
+
+STR-452471
+[%person#1-He] has indicated [%person#1-he] has no interest in working alongside you as an assistant manager.
+
+STR-452472
+[%person#1-He] has indicated [%person#1-he] has no interest in working alongside you as a coach.
+
+STR-452473
+[%person#1-full] indicated that [%person#1-he] has no interest in joining the club at present.
+
+STR-452474
+[%person#1-He] has indicated [%person#1-he] is very happy at [%person#1-his] current club and not interested in leaving at present.
+Polish Reference:
+STR-450449
+Po ustaleniu składu jedenastki marzeń na ten sezon rzecznik kibiców klubu [%club#1-long] z dumą ogłosił, że [%male#1] i [%male#2] uznani zostali za wystarczająco dobrych, by znaleźć się w twojej jedenastce wszech czasów.
+Po ustaleniu składu jedenastki marzeń na ten sezon rzecznik kibiców klubu [%club#1-long] z dumą ogłosił, że [%female#1] i [%female#2] uznane zostały za wystarczająco dobre, by znaleźć się w twojej jedenastce wszech czasów.
+
+STR-450450
+Po ustaleniu składu jedenastki marzeń na ten sezon rzecznik kibiców klubu [%club#1-long] z dumą ogłosił, że kilku zawodników z tegorocznego składu uznanych zostało za wystarczająco dobrych, by znaleźć się w twojej jedenastce wszech czasów.
+
+STR-450452
+[%club#1]{ma} przyjemność zakomunikować, że kilku zawodników klubu trafiło do najlepszej jedenastki na świecie za ten sezon.\n\nJest to olbrzymie wyróżnienie, które dowodzi siły klubowego zespołu.
+
+STR-450453
+Ukryj opis
+
+STR-450454
+Pokaż opis
+
+STR-450456
+Wsparcie
+
+STR-450847
+Nieznana
+
+STR-451250
+(Mecze bez udziału klubów, w których odbywana jest służba wojskowa)
+
+STR-451255
+Po tym terminie kontrakty piłkarzy zostaną uznane za gwarantowane, o ile piłkarz kończy 24 lata w tym roku kalendarzowym i rozegrał co najmniej jeden pełen sezon w MLS
+
+STR-451256
+m.
+
+STR-451257
+mecz
+
+STR-451258
+mecz
+
+STR-451262
+i
+
+STR-451265
+Ta zawartość do odblokowania usuwa z gry ograniczenia wypożyczeń. Aby ją osiągnąć, wypożyczony przez ciebie zawodnik musi zdobyć doroczną nagrodę.
+
+STR-451281
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za tydzień.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za tydzień.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za tydzień.[%female#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za tydzień.[%female#1-hidden]
+
+STR-451286
+Po włączeniu tej opcji niektóre atrybuty pozostaną ukryte do momentu przescoutowania zawodnika. Aby od samego początku widzieć wszystkie atrybuty piłkarzy, należy wyłączyć tę opcję.
+
+STR-451294
+W tym roku [%comp#1]{nie odbędzie} się, gdyż [%team#1-short]{jest} jedynym zespołem, który zakwalifikował się do tych rozgrywek.
+
+STR-451299
+Kluby z całego kraju podjęły decyzje, którzy ich piłkarze odejdą po wygaśnięciu obecnych umów. Znany magazyn piłkarski opublikował listę najlepszych zawodników z tej grupy, ale łączy ich ze znacznie większymi klubami.
+
+STR-451300
+Kluby z całego kraju podjęły decyzje, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. Znany magazyn piłkarski opublikował listę najciekawszych nazwisk z tej grupy, ale [%male#1] uważa, że żaden z nich nie będzie zainteresowany dołączeniem do naszego klubu.
+
+STR-451301
+Pierwotny wybór z początku kariery
+
+STR-451304
+Lista zwolnionych piłkarzy
+
+STR-451343
+w każdej chwili
+
+STR-451368
+Pierwszej klasy
+
+STR-451369
+Doskonale
+
+STR-451370
+Imponująco
+
+STR-451371
+W miarę dobrze
+
+STR-451372
+Przyzwoicie
+
+STR-451373
+Przeciętnie
+
+STR-451374
+Poniżej przeciętnej
+
+STR-451381
+Zarząd informuje, że klub już zainwestował w piłkarzy.
+
+STR-451382
+Zarząd informuje, że w chwili obecnej klub nie dysponuje środkami na transfery.
+
+STR-451395
+CRC
+
+STR-451396
+Kostarykański colón
+
+STR-451397
+KZT
+
+STR-451398
+Kazachstański tenge
+
+STR-451399
+KWD
+
+STR-451400
+Kuwejcki dinar
+
+STR-451401
+QAR
+
+STR-451402
+Katarski rial
+
+STR-451403
+VND
+
+STR-451404
+Wietnamski dong
+
+STR-451420
+Lichwiarz
+
+STR-451421
+Masz prawo wynająć adwokata i odwołać się od tej decyzji za opłatą [%cash#1].[%male#1-hidden]
+
+STR-451422
+[%male#1-full] jest zainteresowany pracą w roli fizjoterapeuty
+[%female#1-full] jest zainteresowana pracą w roli fizjoterapeuty
+
+STR-451428
+Brak piłkarzy na liście życzeń.
+
+STR-451430
+Dodatkowe testy
+
+STR-451444
+Informacje
+
+STR-451459
+Tym razem [%club#1]{nie ma} żadnego przedstawiciela w: [%award#1-long].
+
+STR-451460
+[%club#1]{nie ma} żadnego przedstawiciela w: [%award#1-long].
+
+STR-451461
+[%male#1] ([%club#1]) jest jednym z kilku wyróżnionych zawodników klubu.
+[%female#1] ([%club#1]) jest jedną z kilku wyróżnionych zawodniczek klubu.
+
+STR-451462
+[%club#1]{spisał} się szczególnie dobrze, gdyż wyróżnieni zostali [%male#1] oraz [%male#2].
+[%club#1]{spisał} się szczególnie dobrze, gdyż wyróżnione zostały [%female#1] oraz [%female#2].
+
+STR-451493
+Ta zawartość pozwoli ci na edycję aktywnej bazy danych gry podczas rozgrywki.
+
+STR-451494
+Aktualizacja po każdym sezonie
+
+STR-451496
+Kluby nie wymieniają się wewnętrznymi raportami.
+
+STR-451500
+Stadion „[%male#1-surname]”
+
+STR-451510
+\n\nDał do zrozumienia, że pomoc korepetytora okazała się absolutnie bezcenna i nie wie, czy bez niej zdałby ten egzamin.[%male#1-hidden]
+\n\nDała do zrozumienia, że pomoc korepetytora okazała się absolutnie bezcenna i nie wie, czy bez niej zdałaby ten egzamin.[%female#1-hidden]
+
+STR-451512
+Zatrudnia korepetytora, dzięki któremu twój pracownik zda egzamin zawodowy.
+
+STR-451521
+Oświadczył, że nie jest obecnie zainteresowany zatrudnieniem w klubie w charakterze fizjoterapeuty.[%male#1-hidden]
+Oświadczyła, że nie jest obecnie zainteresowana zatrudnieniem w klubie w charakterze fizjoterapeutki.[%female#1-hidden]
+
+STR-451522
+Oświadczył, że nie jest obecnie zainteresowany zatrudnieniem w klubie w charakterze scouta.[%male#1-hidden]
+Oświadczyła, że nie jest obecnie zainteresowana zatrudnieniem w klubie w charakterze scoutki.[%female#1-hidden]
+
+STR-451523
+Oświadczył, że nie jest obecnie zainteresowany zatrudnieniem w klubie w charakterze asystenta menedżera.[%male#1-hidden]
+Oświadczyła, że nie jest obecnie zainteresowana zatrudnieniem w klubie w charakterze asystentki menedżera.[%female#1-hidden]
+
+STR-451524
+Oświadczył, że nie jest obecnie zainteresowany zatrudnieniem w klubie w charakterze trenera.[%male#1-hidden]
+Oświadczyła, że nie jest obecnie zainteresowana zatrudnieniem w klubie w charakterze trenerki.[%female#1-hidden]
+
+STR-451543
+Zawodnicy zakontraktowani po czwartej rundzie nie są uprawnieni do gry
+
+STR-451556
+Niechętnie przyznaje, że [%male#1-full] jest skutecznym trenerem
+Niechętnie przyznaje, że [%female#1-full] jest skuteczną trenerką
+
+STR-451628
+Nie oceniane
+
+STR-451872
+Piłkarze w trakcie wypożyczenia mogą grać w rezerwach klubu macierzystego
+
+STR-451873
+Piłkarze U-[%number#1] w trakcie wypożyczenia mogą grać w rezerwach klubu macierzystego
+
+STR-451874
+(O ile kluby macierzysty i wypożyczające nie grają w tej samej lidze rezerw)
+
+STR-451875
+To polecenie nakazuje wykonawcom rzutów wolnych oddawanie bezpośrednich strzałów na bramkę albo podawanie piłki w różne strefy boiska.
+
+STR-451993
+C
+
+STR-451994
+F
+
+STR-452017
+Brak okien transferowych
+
+STR-452018
+Brak ograniczeń wypożyczeń
+
+STR-452019
+Brak pozwoleń na pracę
+
+STR-452024
+Nie może reprezentować klubu w oficjalnych meczach w okresie [%date#2-short]-[%date#1-short].
+
+STR-452063
+lewy wysunięty obrońca
+
+STR-452064
+prawy wysunięty obrońca
+
+STR-452440
+Najlepszy zespół z indyjskiej Superligi
+
+STR-452441
+Podanie - przyjęte
+
+STR-452442
+Dośrodkowanie - przyjęte
+
+STR-452450
+Uważa, że [%male#1-full] jest lepszym trenerem niż menedżerem
+Uważa, że [%female#1-full] jest lepszą trenerką niż menedżerką
+
+STR-452457
+Zarząd klubu
+
+STR-452458
+Krajowy ZPN
+
+STR-452460
+[%male#1] dał do zrozumienia, że jest bardzo zadowolony z tego, jak [%position#1-lowercase_no_sides] [%male#2] ([%team#1-long]) reaguje na jego sugestie na treningach.
+[%female#1] dała do zrozumienia, że jest bardzo zadowolona z tego, jak [%position#1-lowercase_no_sides] [%male#2] ([%team#1-long]) reaguje na jej sugestie na treningach.
+
+STR-452461
+[%club#1-short]{miał} mnóstwo szczęścia, gdyż niemalże udało im się roztrwonić przewagę z pierwszego spotkania. Koniec końców uratowali losy dwumeczu, przegrywając jedynie [%number#1 - opposition goals]-[%number#2 - human goals] w meczu, w którym ich przeciwnikiem {był}[%club#2-short], a następnie lepiej wykonywali rzuty karne.
+
+STR-452464
+Po ostatnich sukcesach na arenie międzynarodowej jest niemalże pewne, że w przyszłości [%male#1-surname] będzie mógł przebierać w ofertach, jako że każdy ZPN będzie sobie poczytywać zatrudnienie go za prawdziwy zaszczyt.
+Po ostatnich sukcesach na arenie międzynarodowej jest niemalże pewne, że w przyszłości [%female#1-surname] będzie mogła przebierać w ofertach, jako że każdy ZPN będzie sobie poczytywać zatrudnienie jej za prawdziwy zaszczyt.
+
+STR-452465
+Twoi scouci nie mogą podejmować się obecnie kolejnych zadań, gdyż mają przydzieloną maksymalną liczbę zawodników do obserwacji.[%male#1-hidden]
+
+STR-452466
+[%male#1] zaleca zwiększenie liczebności zespołu scoutów, by zredukować ich obciążenia.
+
+STR-452467
+Zostało ci zasugerowane, abyś zwiększył liczebność zespołu scoutów, by zredukować ich obciążenia.[%male#1-hidden]
+Zostało ci zasugerowane, abyś zwiększyła liczebność zespołu scoutów, by zredukować ich obciążenia.[%female#1-hidden]
+
+STR-452469
+Oświadczył, że nie jest zainteresowany pracą u twojego boku w charakterze fizjoterapeuty.[%male#1-hidden]
+Oświadczyła, że nie jest zainteresowana pracą u twojego boku w charakterze fizjoterapeutki.[%female#1-hidden]
+
+STR-452470
+Oświadczył, że nie jest zainteresowany pracą u twojego boku w charakterze scouta.[%male#1-hidden]
+Oświadczyła, że nie jest zainteresowana pracą u twojego boku w charakterze scoutki.[%female#1-hidden]
+
+STR-452471
+Oświadczył, że nie jest zainteresowany pracą u twojego boku w charakterze asystenta menedżera.[%male#1-hidden]
+Oświadczyła, że nie jest zainteresowana pracą u twojego boku w charakterze asystentki menedżera.[%female#1-hidden]
+
+STR-452472
+Oświadczył, że nie jest zainteresowany pracą u twojego boku w charakterze trenera.[%male#1-hidden]
+Oświadczyła, że nie jest zainteresowana pracą u twojego boku w charakterze trenerki.[%female#1-hidden]
+
+STR-452473
+[%male#1-full] oświadczył, że nie jest obecnie zainteresowany zatrudnieniem w klubie.
+[%female#1-full] oświadczyła, że nie jest obecnie zainteresowana zatrudnieniem w klubie.
+
+STR-452474
+Oświadczył, że jest mu bardzo dobrze w obecnym klubie i obecnie nie ma zamiaru z niego odchodzić.[%male#1-hidden]
+Oświadczyła, że jest jej bardzo dobrze w obecnym klubie i obecnie nie ma zamiaru z niego odchodzić.[%female#1-hidden]

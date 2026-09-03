@@ -1,0 +1,287 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-424387
+A cagey tactical battle between [%club#1-short] and [%club#2-short] ended in a [%number#1 - human goals]-[%number#2 - opposition goals] stalemate.
+
+STR-424391
+It may be time for [%person#1-me] to look at other options
+
+STR-424406
+As this bid meets the buyout amount in the player's current loan contract [%person#1-you] cannot reject this offer.
+
+STR-424407
+This bid meets the buyout amount in the player's current loan contract.
+
+STR-424408
+Reports
+
+STR-424409
+Internal reports are not shared between clubs.
+
+STR-424410
+Staff Name
+
+STR-424452
+[%team#1-short] can look forward to a trip to [%stadium#2] for the [%fixture_name#1-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] win over [%team#2-short] at [%stadium#1-short].
+
+STR-424453
+[%team#1-short] can look forward to a trip to [%stadium#2] for the [%fixture_name#1-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] win in extra time over [%team#2-short] at [%stadium#1-short].
+
+STR-424454
+[%team#1-short] are through to the [%fixture_name#1-long] at [%stadium#2] after a penalty shootout victory following a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424455
+[%team#1-short] are through to the [%fixture_name#1-long] at [%stadium#2] after winning on shootouts following their [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424456
+[%team#1-short] are through to the [%fixture_name#1-long] at [%stadium#2], triumphing on away goals following their [%number#1 - human goals]-[%number#2 - opposition goals] aggregate draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424457
+[%team#1-short] are through to the [%fixture_name#1-long] at [%stadium#2] after a dramatic golden goal victory following their [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424458
+[%team#1-short] are through to the [%fixture_name#1-long] at [%stadium#2] after a dramatic silver goal victory following their [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424459
+[%team#1-short] can look forward to a trip to [%stadium#2] for the [%fixture_name#1-long] following a [%number#1 - human goals]-[%number#2 - opposition goals] aggregate win over [%team#2-short] at [%stadium#1-short].
+
+STR-424461
+[%team#1-short] are through to the [%fixture_name#1-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] win over [%team#2-short] at [%stadium#1-short].
+
+STR-424462
+[%team#1-short] are through to the [%fixture_name#1-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] win after extra time over [%team#2-short] at [%stadium#1-short].
+
+STR-424463
+[%team#1-short] are through to the [%fixture_name#1-long] on penalties after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424464
+[%team#1-short] are through to the [%fixture_name#1-long] on shootouts after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424465
+[%team#1-short] are through to the [%fixture_name#1-long] on away goals after a [%number#1 - human goals]-[%number#2 - opposition goals] aggregate draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424466
+[%team#1-short] are through to the [%fixture_name#1-long] on the golden goal rule after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424467
+[%team#1-short] are through to the [%fixture_name#1-long] on the silver goals rule after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424468
+[%team#1-short] are through to the [%fixture_name#1-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] aggregate win over [%team#2-short] at [%stadium#1-short].
+
+STR-424470
+[%team#1-short] are through to the [%fixture_name#1-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] win over [%team#2-short].
+
+STR-424471
+[%team#1-short] are through to the [%fixture_name#1-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] win after extra time over [%team#2-short].
+
+STR-424472
+[%team#1-short] are through to the [%fixture_name#1-long] on penalties after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short].
+
+STR-424473
+[%team#1-short] are through to the [%fixture_name#1-long] on shootouts after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short].
+
+STR-424474
+[%team#1-short] are through to the [%fixture_name#1-long] on away goals after a [%number#1 - human goals]-[%number#2 - opposition goals] aggregate draw with [%team#2-short].
+
+STR-424475
+[%team#1-short] are through to the [%fixture_name#1-long] on the golden goal rule after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short].
+
+STR-424476
+[%team#1-short] are through to the [%fixture_name#1-long] on the silver goals rule after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short].
+
+STR-424477
+[%team#1-short] are through to the [%fixture_name#1-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] aggregate win over [%team#2-short].
+
+STR-424478
+[%team#1-short] have won in the [%fixture_name#2-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] win over [%team#2-short] at [%stadium#1-short].
+
+STR-424479
+[%team#1-short] have won in the [%fixture_name#2-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] win after extra time over [%team#2-short] at [%stadium#1-short].
+
+STR-424480
+[%team#1-short] have won in the [%fixture_name#2-long] on penalties after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424481
+[%team#1-short] have won in the [%fixture_name#2-long] on shootouts after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424482
+[%team#1-short] have won in the [%fixture_name#2-long] on away goals after a [%number#1 - human goals]-[%number#2 - opposition goals] aggregate draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424483
+[%team#1-short] have won in the [%fixture_name#2-long] on the golden goal rule after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424484
+[%team#1-short] have won in the [%fixture_name#2-long] on the silver goals rule after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424485
+[%team#1-short] have won in the [%fixture_name#2-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] aggregate win over [%team#2-short] at [%stadium#1-short].
+
+STR-424487
+[%team#1-short] have won in the [%fixture_name#2-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] win over [%team#2-short].
+
+STR-424488
+[%team#1-short] have won in the [%fixture_name#2-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] win after extra time over [%team#2-short].
+
+STR-424489
+[%team#1-short] have won in the [%fixture_name#2-long] on penalties after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short].
+
+STR-424490
+[%team#1-short] have won in the [%fixture_name#2-long] on shootouts after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short].
+
+STR-424491
+[%team#1-short] have won in the [%fixture_name#2-long] on away goals after a [%number#1 - human goals]-[%number#2 - opposition goals] aggregate draw with [%team#2-short].
+Polish Reference:
+STR-424387
+Fascynujący niczym partia szachów pojedynek taktyczny [%club#1-short]-[%club#2-short] zakończył się remisem [%number#1 - human goals]-[%number#2 - opposition goals].
+
+STR-424391
+Być może powinienem już rozważyć inne opcje[%male#1-hidden]
+Być może powinnam już rozważyć inne opcje[%female#1-hidden]
+
+STR-424406
+Jako że ta oferta odpowiada klauzuli wykupu w umowie wypożyczenia zawodnika, nie możesz jej odrzucić.[%male#1-hidden]
+
+STR-424407
+Ta oferta odpowiada klauzuli wykupu w umowie wypożyczenia zawodnika.
+
+STR-424408
+Raporty
+
+STR-424409
+Kluby nie wymieniają się wewnętrznymi raportami.
+
+STR-424410
+Nazwisko współpracownika
+
+STR-424452
+[%team#1-short]{może} szykować się na wizytę na stadionie [%stadium#2] ([%fixture_name#1-long]) po zwycięstwie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424453
+[%team#1-short]{może} szykować się na wizytę na stadionie [%stadium#2] ([%fixture_name#1-long]) po zwycięstwie [%number#1 - human goals]-[%number#2 - opposition goals] w dogrywce meczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424454
+[%team#1-short]{wywalczył} awans dzięki rzutom karnym po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short]. Nagrodą za ten sukces będzie wizyta na stadionie [%stadium#2] oraz [%fixture_name#1-long].
+
+STR-424455
+[%team#1-short]{wywalczył} awans dzięki konkursowi rzutów karnych po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short]. Nagrodą za ten sukces będzie wizyta na stadionie [%stadium#2] oraz [%fixture_name#1-long].
+
+STR-424456
+[%team#1-short]{wywalczył} awans dzięki bramkom zdobytym na wyjeździe po zremisowanym [%number#1 - human goals]-[%number#2 - opposition goals] dwumeczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short]. Nagrodą za ten sukces będzie wizyta na stadionie [%stadium#2] oraz [%fixture_name#1-long].
+
+STR-424457
+[%team#1-short]{wywalczył} awans dzięki złotej bramce po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short]. Nagrodą za ten sukces będzie wizyta na stadionie [%stadium#2] oraz [%fixture_name#1-long].
+
+STR-424458
+[%team#1-short]{wywalczył} awans dzięki srebrnej bramce po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short]. Nagrodą za ten sukces będzie wizyta na stadionie [%stadium#2] oraz [%fixture_name#1-long].
+
+STR-424459
+[%team#1-short]{może} szykować się na wizytę na stadionie [%stadium#2] ([%fixture_name#1-long]) po zwycięstwie [%number#1 - human goals]-[%number#2 - opposition goals] w dwumeczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424461
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) po zwycięstwie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424462
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) po zwycięstwie [%number#1 - human goals]-[%number#2 - opposition goals] w dogrywce meczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424463
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) w rzutach karnych po zremisowanym [%number#1 - human goals]-[%number#2 - opposition goals] meczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424464
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) w rzutach karnych po zremisowanym [%number#1 - human goals]-[%number#2 - opposition goals] meczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424465
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) dzięki bramkom zdobytym na wyjeździe po zremisowanym [%number#1 - human goals]-[%number#2 - opposition goals] dwumeczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424466
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) dzięki złotej bramce po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424467
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) dzięki srebrnej bramce po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu na stadionie [%stadium#1-short], w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424468
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) na stadionie [%stadium#1-short] po zwycięstwie [%number#1 - human goals]-[%number#2 - opposition goals] w dwumeczu, w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424470
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) po zwycięstwie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu, w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424471
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) po zwycięstwie [%number#1 - human goals]-[%number#2 - opposition goals] w dogrywce meczu, w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424472
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) w rzutach karnych po zremisowanym [%number#1 - human goals]-[%number#2 - opposition goals] meczu, w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424473
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) w rzutach karnych po zremisowanym [%number#1 - human goals]-[%number#2 - opposition goals] meczu, w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424474
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) dzięki bramkom zdobytym na wyjeździe po zremisowanym [%number#1 - human goals]-[%number#2 - opposition goals] dwumeczu, w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424475
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) dzięki złotej bramce po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu, w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424476
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) dzięki srebrnej bramce po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu, w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424477
+[%team#1-short]{wywalczył} awans ([%fixture_name#1-long]) po zwycięstwie [%number#1 - human goals]-[%number#2 - opposition goals] w dwumeczu, w którym przeciwnikiem {był}[%team#2-short].
+
+STR-424478
+[%team#1-short]{zwyciężył} [%number#1 - human goals]-[%number#2 - opposition goals] w meczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424479
+[%team#1-short]{zwyciężył} [%number#1 - human goals]-[%number#2 - opposition goals] w dogrywce meczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424480
+[%team#1-short]{wygrał} w rzutach karnych po zremisowanym [%number#1 - human goals]-[%number#2 - opposition goals] meczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424481
+[%team#1-short]{wygrał} w konkursie rzutów karnych po zremisowanym [%number#1 - human goals]-[%number#2 - opposition goals] meczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424482
+[%team#1-short]{zwyciężył} dzięki bramkom zdobytym na wyjeździe po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w dwumeczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424483
+[%team#1-short]{odniósł} zwycięstwo w rozgrywkach ([%fixture_name#2-long]) dzięki złotej bramce po remisie [%number#1 - human goals]-[%number#2 - opposition goals] na stadionie [%stadium#1-short] w meczu, w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424484
+[%team#1-short]{odniósł} zwycięstwo w rozgrywkach ([%fixture_name#2-long]) dzięki srebrnej bramce po remisie [%number#1 - human goals]-[%number#2 - opposition goals] na stadionie [%stadium#1-short] w meczu, w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424485
+[%fixture_name#2-long]: [%team#1-short]{wygrał} [%number#1 - human goals]-[%number#2 - opposition goals] w dwumeczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424487
+[%team#1-short]{zwyciężył} [%number#1 - human goals]-[%number#2 - opposition goals] w meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424488
+[%team#1-short]{zwyciężył} [%number#1 - human goals]-[%number#2 - opposition goals] w dogrywce meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424489
+[%team#1-short]{wygrał} w rzutach karnych po zremisowanym [%number#1 - human goals]-[%number#2 - opposition goals] meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424490
+[%team#1-short]{wygrał} w konkursie rzutów karnych po zremisowanym [%number#1 - human goals]-[%number#2 - opposition goals] meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424491
+[%team#1-short]{zwyciężył} dzięki bramkom zdobytym na wyjeździe po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w dwumeczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).

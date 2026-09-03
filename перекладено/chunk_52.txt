@@ -1,0 +1,1103 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-408183
+Football's governing body has stated that the vote to remove transfer windows has succeeded, hence from next season there will be no transfer windows in operation.
+
+STR-408184
+Football's governing body has stated that the vote to remove transfer windows has failed, therefore usual transfer windows will remain in operation for next season and beyond.
+
+STR-408256
+Young Janitor
+
+STR-408257
+Young Einstein
+
+STR-408258
+Sycophantic Goalkeeper
+
+STR-408259
+Sycophantic Defender
+
+STR-408260
+Sycophantic Winger
+
+STR-408261
+Sycophantic Midfielder
+
+STR-408262
+Sycophantic Poacher
+
+STR-408264
+Sycophantic Striker
+
+STR-408265
+Goalkeeping Protege
+
+STR-408266
+Defensive Protege
+
+STR-408267
+Midfield Protege
+
+STR-408268
+Attacking Protege
+
+STR-408269
+Very Poor
+
+STR-408270
+Poor
+
+STR-408271
+Good
+
+STR-408272
+Very Good
+
+STR-408273
+Superb
+
+STR-408274
+Superior
+
+STR-408275
+Better
+
+STR-408276
+Marginal
+
+STR-408277
+Same
+
+STR-408292
+[%string#1 Reason 1] and [%string#2 Reason 2]
+
+STR-408328
+\n\n[%club#1] have decided to negotiate the offer.
+
+STR-408340
+[%person#1-He] may sign for another club in return for compensation set by a tribunal.
+
+STR-408345
+[%person#1-He] will be eligible to leave the club under the Bosman ruling if no new contract has been agreed by that point.
+
+STR-408384
+\n\nThe likes of [%club#1] and [%club#2] are expected to lead the chase for the player.
+
+STR-408480
+Despite only conceding [%number#1] goals in [%number#2] appearances, the goalkeeper has made some high-profile errors that are a cause for concern.
+
+STR-408554
+Free
+
+STR-408555
+Contract Expired
+
+STR-408559
+Goal Bonus
+
+STR-408560
+Assist Bonus
+
+STR-408561
+Clean Sheet Bonus
+
+STR-408562
+Invalid bonus type
+
+STR-408563
+Big Club.
+
+STR-408564
+Man.
+
+STR-408566
+[%club#1] receive a percentage of [%string#1 Player Surname (eg. Vaughan)]{s} transfer fee
+
+STR-408591
+[%club#1] respond to enquiry about [%string#1 Player Surname (eg. Zamora)]
+
+STR-408592
+Response to [%string#1 Player Surname (eg. Zamora)] enquiry
+
+STR-408649
+Because the player's contract has expired [%person#1-you] are not in a position to prevent their attempt to sign the player.
+
+STR-408650
+\n\n[%club#1] will be due [%cash#1] in compensation if the deal goes ahead.
+
+STR-408676
+\n\nThe transfer will go through on the [%string#1 Date string(e.g.10th November 1998)].
+
+STR-408690
+\n\nThe transfer will go through upon the expiry of the player's current contract.
+
+STR-408695
+a player
+
+STR-408710
+\n\n[%person#1-You] must reduce the size of [%person#1-your] squad before the transfer date because the board will not allow a squad of more than [%number#1] players.
+
+STR-408725
+until the end of the season
+
+STR-408739
+\n\n[%club#1] have made a new bid.
+
+STR-408908
+[%club#1] agree to [%club#2] delay
+
+STR-408914
+Board concerned by size of the first team squad
+
+STR-408915
+Board concerned at the size of squad
+
+STR-408955
+[%club#1] to sell their way to financial stability?
+
+STR-408991
+\n\n[%club#1], [%club#2] and [%club#3] are rumoured to be the other clubs vying for the player's signature.
+
+STR-408992
+\n\n[%club#1] and [%club#2] are rumoured to be the other clubs vying for the player's signature.
+
+STR-409001
+for a month
+
+STR-409002
+1 month
+
+STR-409003
+for 2 months
+
+STR-409004
+2 months
+
+STR-409005
+for 3 months
+
+STR-409006
+3 months
+
+STR-409007
+for 4 months
+
+STR-409008
+4 months
+
+STR-409009
+for 5 months
+
+STR-409010
+5 months
+
+STR-409011
+for 6 months
+
+STR-409012
+6 months
+
+STR-409013
+for 7 months
+
+STR-409014
+7 months
+
+STR-409015
+for 8 months
+
+STR-409016
+8 months
+
+STR-409017
+for 9 months
+
+STR-409018
+9 months
+
+STR-409019
+for 10 months
+
+STR-409020
+10 months
+
+STR-409021
+for 11 months
+
+STR-409022
+11 months
+
+STR-409023
+for 12 months
+
+STR-409024
+12 months
+
+STR-409025
+OK
+
+STR-409026
+Retry
+
+STR-409027
+Overwrite
+
+STR-409028
+DEL
+
+STR-409029
+ALT
+
+STR-409030
+CAPS
+
+STR-409031
+SPACE
+
+STR-409033
+Injury Crisis
+
+STR-409034
+Your club has hit a freak spell where nearly all of your first team players are out injured. Can you steer the club through this tough period and continue to achieve results to keep the board happy?
+
+STR-409035
+Unrest at Home
+
+STR-409036
+Hired as a virtual unknown, your appointment has disappointed senior players at the club. Can you somehow manage to achieve the board's expectations and convince the players of your credentials?
+
+STR-409037
+The Invincibles
+
+STR-409038
+Your club has gone on a long unbeaten run causing huge media speculation that the team might become one of the few teams to survive an entire season without defeat. Can you guide the team into the history books?
+
+STR-409039
+Austerity Measures
+
+STR-409040
+You Can't Win Anything With Kids
+
+STR-409041
+The Dangers of Capitalism
+
+STR-409043
+The Saviour Cometh
+
+STR-409044
+The club has turned to you in their darkest hour. The midpoint of the season has passed and the team are mired in a relegation battle. Can you guide them to safety before the end of the season?
+
+STR-409045
+Austerity Measures
+
+STR-409046
+Your club is approaching serious financial difficulty. The owners have instructed you to sell your high earning players in order to reduce costs and raise funds. Can you steer the club away from financial ruin while remaining competitive on the pitch?
+
+STR-409047
+You Can't Win Anything With Kids
+
+STR-409053
+A desperate [%club#1] board have hired [%string#1 Player Name] as manager after their previous manager abruptly quit.\n\nThe new manager takes over the task of keeping the club's youthful squad on track for what could be a successful season.
+
+STR-409055
+[%club#1] have been on incredible form so far this season.\n\nSome newspapers are starting to mention the possibility of [%string#1 Surname (eg. Jones)] leading the team into the history books with an unbeaten season.
+
+STR-409056
+Can [%string#1 Surname (eg. Jones)] save [%club#1]?
+
+STR-409057
+[%club#1] injury crisis
+
+STR-409058
+Players revolt against [%string#1 Surname (eg. Jones)] appointment
+
+STR-409059
+[%string#1 Surname (eg. Jones)] hired in desperate move
+
+STR-409060
+[%club#1] facing cuts to survive
+
+STR-409061
+[%club#1] hire unknown as manager
+
+STR-409062
+[%person#1-hidden]to save [%club#1-short] from asset stripper?
+
+STR-409063
+[%person#1-hidden]to guide young [%club#1-short] squad to glory?
+
+STR-409064
+[%person#1-hidden]to save [%club#1-short] from relegation?
+
+STR-409065
+[%person#1-hidden]to guide [%club#1-short] through injury crisis?
+
+STR-409066
+[%person#1-hidden]appointment causes [%club#1-short] player revolt!
+
+STR-409067
+[%person#1-hidden]tasked with raising funds at [%club#1-short]!
+
+STR-409068
+[%person#1-hidden]attempts to guide [%club#1-short] to an unbeaten season!
+
+STR-409069
+League Table
+
+STR-409070
+Fixtures
+
+STR-409071
+Player Stats
+
+STR-409072
+Team Stats
+
+STR-409073
+History
+
+STR-409074
+Rules
+
+STR-409075
+Transfer Windows
+
+STR-409076
+Windows
+
+STR-409078
+Seedings
+
+STR-409079
+Qualifiers
+
+STR-409080
+Competition Links
+
+STR-409081
+Please select the competition page to be displayed
+
+STR-409082
+Local
+
+STR-409083
+iCloud
+
+STR-409084
+Save Location
+
+STR-409085
+Please select the location of data storage to examine
+
+STR-409092
+Confidence Links
+
+STR-409093
+Please select the position to display confidence for
+
+STR-409094
+Personal
+
+STR-409095
+Eligibility
+
+STR-409096
+Coach Report
+
+STR-409097
+Progress
+
+STR-409098
+DEBUG
+
+STR-409099
+Player Links
+
+STR-409100
+Please select the section of the Player Profile to display
+
+STR-409101
+Manager Links
+
+STR-409102
+Please select the section of the Manager Profile to display
+
+STR-409105
+Match Stats
+
+STR-409106
+Action Zones
+
+STR-409107
+Home Stats
+
+STR-409108
+Away Stats
+
+STR-409109
+Player Ratings
+
+STR-409110
+Match Analysis
+
+STR-409111
+Match Review
+
+STR-409112
+Please select the information to view
+
+STR-409113
+Latest Scores
+
+STR-409114
+Live Table
+
+STR-409115
+Match View
+
+STR-409116
+Please select the information to view while the match is playing
+
+STR-409117
+Pitch
+
+STR-409118
+[%club#1]
+
+STR-409119
+[%nation#1]
+
+STR-409120
+Home Page Focus
+
+STR-409121
+Please select the team the home page should focus upon
+
+STR-409122
+Board Request Focus
+
+STR-409123
+Please select the team the manager requests should focus upon
+
+STR-409124
+Confidence Page Focus
+
+STR-409125
+Please select the team the confidence page should focus upon
+
+STR-409126
+Finances
+
+STR-409127
+Transfer History
+
+STR-409128
+Transfers
+
+STR-409129
+Team Report
+
+STR-409130
+Next Match
+
+STR-409131
+Club History
+
+STR-409132
+Club Links
+
+STR-409133
+Please select the area of the club to enter
+
+STR-409134
+Load Tactic
+
+STR-409135
+Save Tactic
+
+STR-409136
+Save/Load Tactic
+
+STR-409137
+Please select an option
+
+STR-409138
+Congratulations! You have unlocked everything!
+
+STR-409139
+Nearly completed, keep at it
+
+STR-409140
+You've made a good start, keep going
+
+STR-409141
+Can you unlock them all?
+
+STR-409142
+Page [%number#1]/[%number#2]
+
+STR-409143
+Please wait - connecting to store
+Polish Reference:
+STR-408183
+Światowa federacja piłkarska poinformowała o pozytywnym wyniku głosowania nad zniesieniem okien transferowych, tak więc od kolejnego sezonu przestaną one obowiązywać.
+
+STR-408184
+Światowa federacja piłkarska poinformowała o negatywnym wyniku głosowania nad zniesieniem okien transferowych, tak więc będą one dalej obowiązywać w przyszłym i kolejnych sezonach.
+
+STR-408256
+Ukryty talent
+
+STR-408257
+Młody Einstein
+
+STR-408258
+Bramkarz-lizus
+
+STR-408259
+Obrońca-lizus
+
+STR-408260
+Skrzydłowy-lizus
+
+STR-408261
+Pomocnik-lizus
+
+STR-408262
+Lis pola karnego-lizus
+
+STR-408264
+Napastnik-lizus
+
+STR-408265
+Protegowany bramkarz
+
+STR-408266
+Protegowany obrońca
+
+STR-408267
+Protegowany pomocnik
+
+STR-408268
+Protegowany napastnik
+
+STR-408269
+Bardzo kiepskie
+
+STR-408270
+Kiepskie
+
+STR-408271
+Dobre
+
+STR-408272
+Bardzo dobre
+
+STR-408273
+Wyśmienite
+
+STR-408274
+Wyraźnie lepsze
+
+STR-408275
+Lepsze
+
+STR-408276
+Marginalnie lepsze
+
+STR-408277
+Identyczne
+
+STR-408292
+[%string#1 Reason 1] oraz [%string#2 Reason 2]
+
+STR-408328
+\n\n[%club#1]{zdecydował} się na negocjowanie oferty.
+
+STR-408340
+Może przejść do innego klubu za ustaloną przez trybunał rekompensatą.[%male#1-hidden]
+
+STR-408345
+Będzie mógł teraz opuścić klub na prawie Bosmana, o ile warunki nowego kontraktu nie zostaną uzgodnione.[%male#1-hidden]
+Będzie mogła teraz opuścić klub na prawie Bosmana, o ile warunki nowego kontraktu nie zostaną uzgodnione.[%female#1-hidden]
+
+STR-408384
+\n\nTakie zespoły jak [%club#1] czy [%club#2] zapewne odegrają teraz kluczową rolę w walce o tego zawodnika.
+
+STR-408480
+Choć w [%number#2] występach wpuścił ogólną liczbę zaledwie [%number#1] goli, popełnił sporo poważnych błędów i jest przy nim duży znak zapytania.
+
+STR-408554
+Wolny transfer
+
+STR-408555
+Wygaśnięcie kontraktu
+
+STR-408559
+Premia bramkowa
+
+STR-408560
+Premia za asysty
+
+STR-408561
+Premia za czyste konto
+
+STR-408562
+Nieprawidłowy rodzaj premii
+
+STR-408563
+WKlub.
+
+STR-408564
+KMen.
+
+STR-408566
+[%string#1 Player Surname (eg. Vaughan)]: [%club#1]{otrzymuje} procent kwoty transferu
+
+STR-408591
+[%string#1 Player Surname (eg. Zamora)]: [%club#1]{odpowiada} na zapytanie
+
+STR-408592
+[%string#1 Player Surname (eg. Zamora)]: Odpowiedz na zapytanie
+
+STR-408649
+Jako że kontrakt tego zawodnika wygasł, nie możesz przeszkodzić mu w związaniu się z innym klubem.[%male#1-hidden]
+
+STR-408650
+\n\n[%club#1]{otrzyma} [%cash#1] rekompensaty w przypadku sfinalizowania transakcji.
+
+STR-408676
+\n\nTransfer zostanie przeprowadzony [%string#1 Date string(e.g.10th November 1998)].
+
+STR-408690
+\n\nTransfer zostanie zrealizowany po wygaśnięciu obecnego kontraktu zawodnika.
+
+STR-408695
+zawodnik
+
+STR-408710
+\n\nMusisz zredukować liczebność składu przed terminem realizacji transferu, gdyż zarząd nie zgodzi się, by w zespole było więcej niż [%number#1] piłkarzy.[%male#1-hidden]
+
+STR-408725
+do końca sezonu
+
+STR-408739
+\n\n[%club#1]{złożył} nową ofertę.
+
+STR-408908
+[%club#1]{zgadza} się na odłożenie decyzji
+
+STR-408914
+Zarząd zaniepokojony liczebnością pierwszego zespołu
+
+STR-408915
+Zarząd zaniepokojony liczebnością zespołu
+
+STR-408955
+[%club#1]{ratuje} finanse poprzez wyprzedaż?
+
+STR-408991
+\n\nPozostałe kluby walczące o jego podpis to podobno [%club#1], [%club#2] oraz [%club#3].
+
+STR-408992
+\n\nPozostałe kluby walczące o jego podpis to podobno [%club#1] oraz [%club#2].
+
+STR-409001
+na 1 miesiąc
+
+STR-409002
+1 miesiąc
+
+STR-409003
+na 2 miesiące
+
+STR-409004
+2 miesiące
+
+STR-409005
+na 3 miesiące
+
+STR-409006
+3 miesiące
+
+STR-409007
+na 4 miesiące
+
+STR-409008
+4 miesiące
+
+STR-409009
+na 5 miesięcy
+
+STR-409010
+5 miesięcy
+
+STR-409011
+na 6 miesięcy
+
+STR-409012
+6 miesięcy
+
+STR-409013
+na 7 miesięcy
+
+STR-409014
+7 miesięcy
+
+STR-409015
+na 8 miesięcy
+
+STR-409016
+8 miesięcy
+
+STR-409017
+na 9 miesięcy
+
+STR-409018
+9 miesięcy
+
+STR-409019
+na 10 miesięcy
+
+STR-409020
+10 miesięcy
+
+STR-409021
+na 11 miesięcy
+
+STR-409022
+11 miesięcy
+
+STR-409023
+na 12 miesięcy
+
+STR-409024
+12 miesięcy
+
+STR-409025
+OK
+
+STR-409026
+Ponów
+
+STR-409027
+Nadpisz
+
+STR-409028
+DEL
+
+STR-409029
+ALT
+
+STR-409030
+CAPS
+
+STR-409031
+SPACJA
+
+STR-409033
+Plaga kontuzji
+
+STR-409034
+Twojemu klubowi przydarzył się nie lada pech i prawie wszyscy zawodnicy pierwszego składu nabawili się kontuzji. Czy dasz radę przeprowadzić klub przez tę burzę i mimo niej osiągać wyniki, które zadowolą zarząd?
+
+STR-409035
+Wojna domowa
+
+STR-409036
+Jako totalny anonim samą swoją obecnością w klubie narobiłeś sobie wrogów wśród klubowej starszyzny. Czy dasz radę spełnić oczekiwania zarządu i przekonać zawodników do siebie?
+
+STR-409037
+Niepokonani
+
+STR-409038
+Twój klub ma za sobą długą serię meczów bez porażki i media roztrząsają wasze szanse na dołączenie do elitarnego grona drużyn niepokonanych przez cały sezon. Czy zdołasz przejść z zespołem do historii?
+
+STR-409039
+Kryzys
+
+STR-409040
+Dzieciakami niczego się nie wygra
+
+STR-409041
+Drapieżny kapitalizm
+
+STR-409043
+Przybywa Zbawiciel
+
+STR-409044
+Klub sięgnął po ciebie w swojej najczarniejszej godzinie. Sezon minął półmetek, a zespół rozpaczliwie walczy o utrzymanie. Czy będziesz w stanie wyprowadzić go na bezpieczne wody przed końcem sezonu?
+
+STR-409045
+Kryzys
+
+STR-409046
+Twój klub jest w poważnych opałach finansowych. Właściciele polecili ci, abyś sprzedał najwięcej zarabiających zawodników, by w ten sposób zredukować koszty i zebrać trochę środków. Czy jesteś w stanie uchronić klub przed katastrofą finansową, jednocześnie dotrzymując kroku rywalom?
+
+STR-409047
+Dzieciakami niczego się nie wygra
+
+STR-409053
+W przypływie desperacji po dymisji dotychczasowego menedżera [%club#1]{zdecydował}, że na jego miejsce zatrudniony zostanie [%string#1 Player Name].\n\nZadaniem nowego menedżera jest utrzymanie w ryzach młodego zespołu w drodze po udane zwieńczenie sezonu.
+
+STR-409055
+[%club#1]{utrzymuje} w tym sezonie niewiarygodną formę.\n\nCzęść mediów zaczyna przebąkiwać o tym, że [%string#1 Surname (eg. Jones)] może przejść z zespołem do historii jako autorzy rekordowego sezonu bez choćby jednej porażki.
+
+STR-409056
+[%club#1]: Czy [%string#1 Surname (eg. Jones)] uratuje klub?
+
+STR-409057
+[%club#1] nękany plagą kontuzji
+
+STR-409058
+[%string#1 Surname (eg. Jones)] w obliczu buntu zawodników
+
+STR-409059
+[%string#1 Surname (eg. Jones)] ostatnią deską ratunku
+
+STR-409060
+[%club#1]: Cięcia albo śmierć
+
+STR-409061
+[%club#1]{zatrudnia} anonima
+
+STR-409062
+[%male#1-hidden]uratuje klub [%club#1-long] przed prezesem-złomiarzem?
+
+STR-409063
+[%male#1-hidden]poprowadzi młody zespół ku sławie?
+
+STR-409064
+[%male#1-hidden]uratuje klub przed spadkiem?
+
+STR-409065
+[%male#1-hidden]przeprowadzi klub przez kryzys wywołany kontuzjami?
+
+STR-409066
+[%male#1-hidden]staje się wrogiem numer 1 klubowych buntowników!
+
+STR-409067
+[%male#1-hidden]musi uratować klubowe finanse!
+
+STR-409068
+[%male#1-hidden]próbuje poprowadzić klub do sezonu bez porażki!
+
+STR-409069
+Tabela
+
+STR-409070
+Terminarz
+
+STR-409071
+Stat. zawodników
+
+STR-409072
+Stat. zesp.
+
+STR-409073
+Historia
+
+STR-409074
+Przepisy
+
+STR-409075
+Okna transferowe
+
+STR-409076
+Okna
+
+STR-409078
+Rozstawienia
+
+STR-409079
+Finaliści
+
+STR-409080
+Łącza rozgrywek
+
+STR-409081
+Wybierz stronę rozgrywek, która ma zostać wyświetlona
+
+STR-409082
+Lokalna
+
+STR-409083
+iCloud
+
+STR-409084
+Zapisz lokalizację
+
+STR-409085
+Wybierz lokalizację danych, które chcesz przejrzeć
+
+STR-409092
+Łącza zaufania
+
+STR-409093
+Wybierz pozycję, dla której chcesz wyświetlić zaufanie
+
+STR-409094
+Osobiste
+
+STR-409095
+Dostępność
+
+STR-409096
+Raport trenera
+
+STR-409097
+Postępy
+
+STR-409098
+WYSZUKIWANIE BŁĘDÓW
+
+STR-409099
+Łącza piłkarza
+
+STR-409100
+Wybierz, która sekcja profilu piłkarza ma zostać wyświetlona
+
+STR-409101
+Łącza menedżera
+
+STR-409102
+Wybierz, która sekcja profilu menedżera ma zostać wyświetlona
+
+STR-409105
+Statystyki meczowe
+
+STR-409106
+Strefy boiska
+
+STR-409107
+Stat. gospodarzy
+
+STR-409108
+Stat. gości
+
+STR-409109
+Oceny piłkarzy
+
+STR-409110
+Analiza meczu
+
+STR-409111
+Podsumowanie meczu
+
+STR-409112
+Wybierz informację, z którą się chcesz zapoznać
+
+STR-409113
+Ostatnie wyniki
+
+STR-409114
+Tabela na żywo
+
+STR-409115
+Widok meczowy
+
+STR-409116
+Wybierz informację, z którą się chcesz zapoznać w trakcie meczu
+
+STR-409117
+Boisko
+
+STR-409118
+[%club#1]
+
+STR-409119
+[%nation#1]
+
+STR-409120
+Fokus strony domowej
+
+STR-409121
+Wybierz zespół, na którym ma się skupić strona domowa
+
+STR-409122
+Fokus próśb do zarządu
+
+STR-409123
+Wybierz zespół, na którym mają się skupić prośby menedżera
+
+STR-409124
+Fokus strony zaufania
+
+STR-409125
+Wybierz zespół, na którym ma się skupić strona zaufania
+
+STR-409126
+Finanse
+
+STR-409127
+Historia transferów
+
+STR-409128
+Transfery
+
+STR-409129
+Raport o zespole
+
+STR-409130
+Następny mecz
+
+STR-409131
+Historia klubu
+
+STR-409132
+Łącza klubu
+
+STR-409133
+Wybierz obszar klubu, który chcesz otworzyć
+
+STR-409134
+Wczytaj taktykę
+
+STR-409135
+Zapisz taktykę
+
+STR-409136
+Wczytaj/zapisz taktykę
+
+STR-409137
+Wybierz opcję
+
+STR-409138
+Gratulacje! Odblokowałeś całą zawartość!
+
+STR-409139
+To już prawie wszystko, nie poddawaj się
+
+STR-409140
+Dobrze zacząłeś, oby tak dalej
+
+STR-409141
+Zdołasz wszystko odblokować?
+
+STR-409142
+Strona [%number#1]/[%number#2]
+
+STR-409143
+Zaczekaj - nawiązywanie połączenia ze sklepem

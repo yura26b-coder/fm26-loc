@@ -1,0 +1,547 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-452475
+[%person#1-He] has indicated [%person#1-he] is already at [%person#1-his] preferred club and is not interested in leaving.
+
+STR-452480
+Nom.
+
+STR-452520
+With the team so many points ahead of those below us it looks like the title should be ours.
+
+STR-452521
+With the team so many points ahead of those below us, we don't need to worry about dropping down the table.
+
+STR-452560
+Players under the age of 19 can be registered at any time.
+
+STR-452561
+Lower division team plays at home if they are from the fourth tier or below
+
+STR-452562
+Lower division team plays at home in first leg if they are from the fourth tier or below
+
+STR-452582
+To unlock this you must have a player qualify for the world best eleven.
+
+STR-452583
+[%club#1-short] are celebrating a [%number#1 - human goals]-[%number#2 - opposition goals] win over [%club#2-short]. Despite not being the side's best performance, for their supporters, it is the result that matters.
+
+STR-452584
+[%club#1-short] are celebrating a [%number#1 - human goals]-[%number#2 - opposition goals] win over [%club#2-short]. This wasn't a great match but for their supporters it's the result that matters.
+
+STR-452585
+They realise there is currently an injury crisis at the club, but that doesn't excuse the recent poor form.
+
+STR-453200
+[%person#2] and [%person#3] ensured it was a [%team#1-short] clean sweep as they took second and third place respectively.
+
+STR-453411
+No division levels set up for [%nation#1]
+
+STR-453538
+(except [%team#1-short])
+
+STR-453539
+The number of dates set in stage [%number#1] of the competition is [%number#2] but should be equal to [%number#3].
+
+STR-453549
+Furious
+
+STR-453550
+Very frustrated
+
+STR-453551
+Angry
+
+STR-453552
+Frustrated
+
+STR-453553
+Wound-up
+
+STR-453554
+Anxious
+
+STR-453555
+Desperate
+
+STR-453556
+Despondent
+
+STR-453557
+Arrogant
+
+STR-453558
+Overwhelmed
+
+STR-453559
+Hesitant
+
+STR-453560
+Sceptical
+
+STR-453561
+Convinced
+
+STR-453562
+Self-assured
+
+STR-453563
+Fired up
+
+STR-453564
+Motivated
+
+STR-453566
+Complacent
+
+STR-453567
+Nervous
+
+STR-453568
+Apprehensive
+
+STR-453569
+Assured
+
+STR-453570
+Confident
+
+STR-453571
+Disenchanted
+
+STR-453572
+Unsure
+
+STR-453573
+Dubious
+
+STR-453574
+Calm
+
+STR-454050
+The board are delighted that the team is challenging for qualification for the [%comp#2] through participation in the [%comp#1-short] this season.
+
+STR-454051
+The board are very pleased that the team is challenging for qualification for the [%comp#2] through participation in the [%comp#1-short] this season.
+
+STR-454052
+The board are pleased that the team is challenging for qualification for the [%comp#2] through participation in the [%comp#1-short] this season.
+
+STR-454058
+The board are delighted that the team is challenging for promotion from the [%comp#1-short] this season.
+
+STR-454059
+The Football Association are delighted that the team is challenging for qualification from the [%stage_name#1] of the [%comp#1-short].
+
+STR-454060
+The Football Association are very pleased that the team is challenging for qualification from the [%stage_name#1] of the [%comp#1-short].
+
+STR-454061
+The Football Association are pleased that the team is challenging for qualification from the [%stage_name#1] of the [%comp#1-short].
+
+STR-454062
+The Football Association are delighted that the team is challenging for qualification from the [%comp#1-short].
+
+STR-454063
+The Football Association are very pleased that the team is challenging for qualification from the [%comp#1-short].
+
+STR-454064
+The Football Association are pleased that the team is challenging for qualification from the [%comp#1-short].
+
+STR-454065
+The board are delighted that the team is currently challenging for qualification from the [%stage_name#1] of the [%comp#1-short].
+
+STR-454066
+The board are very pleased that the team is currently challenging for qualification from the [%stage_name#1] of the [%comp#1-short].
+
+STR-454067
+The board are pleased that the team is currently challenging for qualification from the [%stage_name#1] of the [%comp#1-short].
+
+STR-454068
+The board are delighted that the team is currently challenging for qualification from the [%comp#1-short].
+
+STR-454069
+The board are very pleased that the team is currently challenging for qualification from the [%comp#1-short].
+
+STR-454070
+The board are pleased that the team is currently challenging for qualification from the [%comp#1-short].
+
+STR-454071
+The team will be pleased that they are challenging for a place in the [%stage_name#1] of the [%comp#1-short].
+
+STR-454072
+Despite the defeat, the team will be pleased that they are challenging for a place in the [%stage_name#1] of the [%comp#1-short].
+
+STR-454073
+The Football Association are delighted that the team is challenging for a place in the [%stage_name#1] of the [%comp#1-short].
+
+STR-454074
+The Football Association are very pleased that the team is challenging for a place in the [%stage_name#1] of the [%comp#1-short].
+
+STR-454075
+The Football Association are pleased that the team is challenging for a place in the [%stage_name#1] of the [%comp#1-short].
+
+STR-454076
+The board are delighted that the team is challenging for a place in the [%stage_name#1] of the [%comp#1-short].
+
+STR-454077
+The board are very pleased that the team is challenging for a place in the [%stage_name#1] of the [%comp#1-short].
+
+STR-454078
+The board are pleased that the team is challenging for a place in the [%stage_name#1] of the [%comp#1-short].
+
+STR-454079
+The board are delighted that the team is currently in the top half of the [%comp#1-short] this season.
+
+STR-454080
+The board are very pleased that the team is currently in the top half of the [%comp#1-short] this season.
+
+STR-454081
+The board are pleased that the team is currently in the top-half of the [%comp#1-short] this season.
+
+STR-454082
+The board are delighted that the team is currently in mid-table in the [%comp#1-short] this season.
+
+STR-454083
+The board are very pleased that the team is currently in mid-table in the [%comp#1-short] this season.
+
+STR-454084
+The board are pleased that the team is currently in mid-table in the [%comp#1-short] this season.
+
+STR-454085
+The Football Association are delighted that the team is currently making every attempt to be competitive in the [%comp#1-short].
+
+STR-454086
+The Football Association are very pleased that the team is making every attempt to be competitive in the [%comp#1-short].
+
+STR-454087
+The Football Association are pleased that the team is making every attempt to be competitive in the [%comp#1-short].
+
+STR-454088
+The board are delighted that the team is currently clear of the relegation battle in the [%comp#1-short] this season.
+
+STR-454089
+The board are very pleased that the team is currently clear of the relegation battle in the [%comp#1-short] this season.
+
+STR-454090
+The board are pleased that the team is currently clear of the relegation battle in the [%comp#1-short] this season.
+
+STR-454092
+The board are very pleased that the team is making every attempt to be competitive in the [%comp#1-short].
+
+STR-454093
+The board are pleased that the team is making every attempt to be competitive in the [%comp#1-short].
+
+STR-454094
+The board are delighted that the team is currently clear of relegation from the [%comp#1-short] this season.
+
+STR-454095
+The board are very pleased that the team is currently clear of relegation from the [%comp#1-short] this season.
+
+STR-454096
+The board are pleased that the team is currently clear of relegation from the [%comp#1-short] this season.
+
+STR-454836
+The board are satisfied that the team is currently on course to finish in the [%stage_name#1] of the [%comp#1-short] this season.
+
+STR-455054
+[%team#1-short] team-mate [%person#2] was some way behind in second place, but easily beat [%team#3-short]{s} [%person#3], who finished third.
+
+STR-455059
+[%team#2-short] duo [%person#2] and [%person#3] weren't far behind as they came second and third respectively.
+
+STR-455061
+[%person#2] was closely followed by [%team#2-short] team-mate [%person#3], although both ended up some way behind the winner.
+
+STR-455065
+It's testament to the incredible work being done with youth at [%team#1] that all three award winners belong to the club.
+Polish Reference:
+STR-452475
+Oświadczył, że już jest w klubie, który mu odpowiada, i nie ma zamiaru z niego odchodzić.[%male#1-hidden]
+Oświadczyła, że już jest w klubie, który jej odpowiada, i nie ma zamiaru z niego odchodzić.[%female#1-hidden]
+
+STR-452480
+Kw. nom.
+
+STR-452520
+Mamy nad rywalami taką przewagę, że tytuł jest już właściwie nasz.
+
+STR-452521
+Mamy nad rywalami taką przewagę, że nie musimy się obawiać spadku na niższą pozycję w tabeli.
+
+STR-452560
+Piłkarzy U-19 można zgłosić do gry bez ograniczeń czasowych.
+
+STR-452561
+Zespół z niższej ligi gra u siebie, jeśli występuje nie wyżej niż w czwartej lidze
+
+STR-452562
+Zespół z niższej ligi gra pierwszy mecz u siebie, jeśli występuje nie wyżej niż w czwartej lidze
+
+STR-452582
+Aby odblokować tę zawartość, twój zawodnik musi zakwalifikować się do najlepszej jedenastki na świecie
+
+STR-452583
+[%club#1-short]{świętuje} zwycięstwo [%number#1 - human goals]-[%number#2 - opposition goals] w meczu, w którym ich przeciwnikiem {był}[%club#2-short]. Choć zespół nie zagrał najlepiej, liczy się wyłącznie wynik.
+
+STR-452584
+[%club#1-short]{świętuje} zwycięstwo [%number#1 - human goals]-[%number#2 - opposition goals] w meczu, w którym ich przeciwnikiem {był}[%club#2-short]. Nie było to jakieś wybitne spotkanie, ale liczy się wyłącznie wynik.
+
+STR-452585
+Rozumieją, że zespół nęka obecnie plaga kontuzji, ale nie jest ona usprawiedliwieniem dla kiepskiej formy.
+
+STR-453200
+[%male#2] i [%male#3] ([%team#1-short]) postarali się, by podium było sprawą jednego zespołu, zajmując odpowiednio drugie i trzecie miejsce.
+[%female#2] i [%male#3] ([%team#1-short]) postarały się, by podium było sprawą jednego zespołu, zajmując odpowiednio drugie i trzecie miejsce.
+
+STR-453411
+[%nation#1]: Liga nie ma ustawionych poziomów rozgrywek
+
+STR-453538
+(wyjątek: [%team#1-short])
+
+STR-453539
+Liczba terminów w fazie numer [%number#1] rozgrywek wynosi [%number#2], podczas gdy powinna równać się [%number#3].
+
+STR-453549
+Wściekły
+
+STR-453550
+Bardzo sfrustrowany
+
+STR-453551
+Rozzłoszczony
+
+STR-453552
+Sfrustrowany
+
+STR-453553
+Nakręcony
+
+STR-453554
+Zaniepokojony
+
+STR-453555
+Zrozpaczony
+
+STR-453556
+Załamany
+
+STR-453557
+Arogancki
+
+STR-453558
+Przytłoczony
+
+STR-453559
+Niepewny
+
+STR-453560
+Sceptyczny
+
+STR-453561
+Przekonany
+
+STR-453562
+Zdecydowany
+
+STR-453563
+Podekscytowany
+
+STR-453564
+Zmotywowany
+
+STR-453566
+Zadowolony z siebie
+
+STR-453567
+Zdenerwowany
+
+STR-453568
+Bojaźliwy
+
+STR-453569
+Bardzo pewny siebie
+
+STR-453570
+Pewny siebie
+
+STR-453571
+Rozczarowany
+
+STR-453572
+Niepewny
+
+STR-453573
+Wątpiący
+
+STR-453574
+Spokojny
+
+STR-454050
+Zarząd jest zachwycony tym, że zespół walczy w tym sezonie o zakwalifikowanie się do: [%comp#2] poprzez udział w: [%comp#1-short].
+
+STR-454051
+Zarząd jest bardzo zadowolony z tego, że zespół walczy w tym sezonie o zakwalifikowanie się do: [%comp#2] poprzez udział w: [%comp#1-short].
+
+STR-454052
+Zarząd jest zadowolony z tego, że zespół walczy w tym sezonie o zakwalifikowanie się do: [%comp#2] poprzez udział w: [%comp#1-short].
+
+STR-454058
+Zarząd jest zachwycony tym, że zespół walczy w tym sezonie o awans z: [%comp#1-short].
+
+STR-454059
+ZPN jest zachwycony tym, że zespół walczy o awans z: [%stage_name#1] ([%comp#1-short]).
+
+STR-454060
+ZPN jest bardzo zadowolony z tego, że zespół walczy o awans z: [%stage_name#1] ([%comp#1-short]).
+
+STR-454061
+ZPN jest zadowolony z tego, że zespół walczy o awans z: [%stage_name#1] ([%comp#1-short]).
+
+STR-454062
+ZPN jest zachwycony tym, że zespół walczy o awans z: [%comp#1-short].
+
+STR-454063
+ZPN jest bardzo zadowolony z tego, że zespół walczy o awans z: [%comp#1-short].
+
+STR-454064
+ZPN jest zadowolony z tego, że zespół walczy o awans z: [%comp#1-short].
+
+STR-454065
+Zarząd jest zachwycony tym, że zespół walczy obecnie o awans z: [%stage_name#1] ([%comp#1-short]).
+
+STR-454066
+Zarząd jest bardzo zadowolony z tego, że zespół walczy obecnie o awans z: [%stage_name#1] ([%comp#1-short]).
+
+STR-454067
+Zarząd jest zadowolony z tego, że zespół walczy obecnie o awans z: [%stage_name#1] ([%comp#1-short]).
+
+STR-454068
+Zarząd jest zachwycony tym, że zespół walczy obecnie o awans z: [%comp#1-short].
+
+STR-454069
+Zarząd jest bardzo zadowolony z tego, że zespół walczy obecnie o awans z: [%comp#1-short].
+
+STR-454070
+Zarząd jest zadowolony z tego, że zespół walczy obecnie o awans z: [%comp#1-short].
+
+STR-454071
+Zespół będzie zadowolony z tego, że walczy o miejsce w: [%stage_name#1] ([%comp#1-short]).
+
+STR-454072
+Mimo porażki zespół będzie zadowolony z tego, że walczy o miejsce w: [%stage_name#1] ([%comp#1-short]).
+
+STR-454073
+ZPN jest zachwycony tym, że zespół walczy obecnie o miejsce w: [%stage_name#1] ([%comp#1-short]).
+
+STR-454074
+ZPN jest bardzo z tego, że zespół walczy obecnie o miejsce w: [%stage_name#1] ([%comp#1-short]).
+
+STR-454075
+ZPN jest zadowolony z tego, że zespół walczy obecnie o miejsce w: [%stage_name#1] ([%comp#1-short]).
+
+STR-454076
+Zarząd jest zachwycony tym, że zespół walczy obecnie o miejsce w: [%stage_name#1] ([%comp#1-short]).
+
+STR-454077
+Zarząd jest bardzo zadowolony z tego, że zespół walczy obecnie o miejsce w: [%stage_name#1] ([%comp#1-short]).
+
+STR-454078
+Zarząd jest zadowolony z tego, że zespół walczy obecnie o miejsce w: [%stage_name#1] ([%comp#1-short]).
+
+STR-454079
+Zarząd jest zachwycony tym, że zespół zajmuje obecnie miejsce w górnej połowie tabeli ([%comp#1-short]).
+
+STR-454080
+Zarząd jest bardzo zadowolony z tego, że zespół zajmuje obecnie miejsce w górnej połowie tabeli ([%comp#1-short]).
+
+STR-454081
+Zarząd jest zadowolony z tego, że zespół zajmuje obecnie miejsce w górnej połowie tabeli ([%comp#1-short]).
+
+STR-454082
+Zarząd jest zachwycony tym, że zespół zajmuje obecnie miejsce w środkowej strefie tabeli ([%comp#1-short]).
+
+STR-454083
+Zarząd jest bardzo zadowolony z tego, że zespół zajmuje obecnie miejsce w środkowej strefie tabeli ([%comp#1-short]).
+
+STR-454084
+Zarząd jest zadowolony z tego, że zespół zajmuje obecnie miejsce w środkowej strefie tabeli ([%comp#1-short]).
+
+STR-454085
+ZPN jest zachwycony tym, że zespół dokłada wszelkich starań, by pokazać się z dobrej strony w: [%comp#1-short].
+
+STR-454086
+ZPN jest bardzo zadowolony z tego, że zespół dokłada wszelkich starań, by pokazać się z dobrej strony w: [%comp#1-short].
+
+STR-454087
+ZPN jest zadowolony z tego, że zespół dokłada wszelkich starań, by pokazać się z dobrej strony w: [%comp#1-short].
+
+STR-454088
+Zarząd jest zachwycony tym, że zespół nie jest obecnie zaangażowany w walkę o utrzymanie w: [%comp#1-short].
+
+STR-454089
+Zarząd jest bardzo zadowolony z tego, że zespół nie jest obecnie zaangażowany w walkę o utrzymanie w: [%comp#1-short].
+
+STR-454090
+Zarząd jest zadowolony z tego, że zespół nie jest obecnie zaangażowany w walkę o utrzymanie w: [%comp#1-short].
+
+STR-454092
+Zarząd jest bardzo zadowolony z tego, że zespół dokłada wszelkich starań, by pokazać się z dobrej strony w: [%comp#1-short].
+
+STR-454093
+Zarząd jest zadowolony z tego, że zespół dokłada wszelkich starań, by pokazać się z dobrej strony w: [%comp#1-short].
+
+STR-454094
+Zarząd jest zachwycony tym, że zespół zajmuje obecnie miejsce ponad strefą spadkową z: [%comp#1-short].
+
+STR-454095
+Zarząd jest bardzo zadowolony z tego, że zespół zajmuje obecnie miejsce ponad strefą spadkową z: [%comp#1-short].
+
+STR-454096
+Zarząd jest zadowolony z tego, że zespół zajmuje obecnie miejsce ponad strefą spadkową z: [%comp#1-short].
+
+STR-454836
+Zarząd jest zadowolony z tego, że zespół jest na dobrej drodze do zakończenia rozgrywek w: [%stage_name#1] ([%comp#1-short]).
+
+STR-455054
+[%male#2] ([%team#1-short]) zajął drugie miejsce ze sporą stratą do swojego kolegi z zespołu, bez problemu pokonując jednak laureata trzeciego miejsca, którym okazał się [%male#3] ([%team#3-short]).
+[%male#2] ([%team#1-short]) zajął drugie miejsce ze sporą stratą do swojego kolegi z zespołu, bez problemu pokonując jednak laureatkę trzeciego miejsca, którą okazała się [%female#3] ([%team#3-short]).
+[%female#2] ([%team#1-short]) zajęła drugie miejsce ze sporą stratą do swojego kolegi z zespołu, bez problemu pokonując jednak laureata trzeciego miejsca, którym okazał się [%male#3] ([%team#3-short]).
+[%female#2] ([%team#1-short]) zajęła drugie miejsce ze sporą stratą do swojej koleżanki z zespołu, bez problemu pokonując jednak laureatkę trzeciego miejsca, którą okazała się [%female#3] ([%team#3-short]).
+
+STR-455059
+[%male#2] i [%male#3] ([%team#2-short]) znaleźli się tuż za zwycięzcą plebiscytu, ostatecznie zajmując w nim odpowiednio drugie i trzecie miejsce.
+[%female#2] i [%female#3] ([%team#2-short]) znalazły się tuż za zwycięzcą plebiscytu, ostatecznie zajmując w nim odpowiednio drugie i trzecie miejsce.
+
+STR-455061
+[%male#2] ([%team#2-short]) zajął w plebiscycie drugie miejsce, zdobywając nieznaczną przewagę nad miejscem trzecim, które zajął jego kolega z zespołu [%male#3]. Obu jednak sporo zabrakło do zwycięzcy.
+[%male#2] ([%team#2-short]) zajął w plebiscycie drugie miejsce, zdobywając nieznaczną przewagę nad miejscem trzecim, które zajęła jego koleżanka z zespołu [%female#3]. Obu jednak sporo zabrakło do zwycięzcy.
+[%female#2] ([%team#2-short]) zajęła w plebiscycie drugie miejsce, zdobywając nieznaczną przewagę nad miejscem trzecim, które zajął jej kolega z zespołu [%male#3]. Obojgu jednak sporo zabrakło do zwycięzcy.
+[%female#2] ([%team#2-short]) zajęła w plebiscycie drugie miejsce, zdobywając nieznaczną przewagę nad miejscem trzecim, które zajęła jej koleżanka z zespołu [%female#3]. Obu jednak sporo zabrakło do zwycięzcy.
+
+STR-455065
+Jest to pokłosie niesamowitej pracy z młodzieżą, jaką {wykonuje}[%team#1], jako że wszyscy trzej wyróżnieni należą do tego klubu.

@@ -1,0 +1,411 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-440509
+Top team not already qualified for [%continent#1-continentality] competition qualifies for [%fixture_name#1-long]
+
+STR-440510
+midnight
+
+STR-440530
+Scouting team review
+
+STR-440559
+Clubs around the country have taken their decisions on which players are to be released at the end of their contracts. There may be a handful which [%person#1] believes could do a job for our club.
+
+STR-440560
+Clubs around the country have taken their decisions on which players are to be released at the end of their contracts. Among the those that will not be kept on are several which [%person#1] thinks might do a job for the club. \n\n[%person#1-He] has singled out [%person#2] (formerly of [%club#1]) and [%person#3] (formerly of [%club#2]) as being worthy of note.
+
+STR-440561
+Clubs around the country have taken their decisions as to which senior players will not be offered a new deal. Among the disappointed are several which [%person#1] thinks might do a job for the club. \n\n[%person#1-He] has singled out [%person#2] and [%person#3] as particularly interesting.
+
+STR-440563
+Clubs around the country have decided which of their out-of-contract players are to be released. Among those who haven't merited a renewal are several which [%person#1] thinks might do a job for the club. \n\n[%person#1-He] has singled out [%person#2] as particularly noteworthy.
+
+STR-440564
+Clubs around the country taken their decisions regarding which players should be released. [%person#1] has made a shortlist of those [%person#1-he] thinks might be of interest to you.
+
+STR-440571
+Bid
+
+STR-440573
+Feels it is time to end [%person#1-his] playing career
+
+STR-440574
+Considering ending [%person#1-his] playing career
+
+STR-440578
+Clubs around the country have issued their lists of released senior players. Among the disappointed there may be a few who are talented enough to warrant attention.
+
+STR-440580
+Clubs around the country have issued their lists of senior players that are to be released at the expiry of their contracts. Among the those that will not be kept on are several which [%person#1] believes might be good enough for the first team. \n\n[%person#1-He] has singled out [%person#2] (formerly of [%club#1]) and [%person#3] (formerly at [%club#2]) could be worth considering.
+
+STR-440581
+Clubs around the country have taken their decisions as to which senior players will not be offered a new deal. Among the disappointed are several which [%person#1] believes might of interest. \n\n[%person#1-He] has singled out [%person#2] and [%person#3] would be useful signings.
+
+STR-440583
+Clubs around the country have decided which of their out-of-contract players are to be released. Among those who haven't merited a renewal are several which [%person#1] believes could be useful squad players. \n\n[%person#1-He] has singled out [%person#2] as worth approaching.
+
+STR-440598
+While [%person#1-you] have been a respectful colleague, the board are concerned that [%person#1-your] poor performance is damaging the value of the club.
+
+STR-440603
+Review App
+
+STR-440606
+한국어
+
+STR-440607
+Türkçe
+
+STR-440608
+简体中文
+
+STR-441183
+[%comp#1-short]/[%comp#2-short] [%stage_name#1-long] [%stage_name#2-long] [%stage_name#3-long]
+
+STR-441184
+[%comp#1-short]/[%comp#2-short] [%stage_name#1-long] [%stage_name#2-long]
+
+STR-441185
+[%comp#1-short]/[%comp#2-short] [%stage_name#1-long]
+
+STR-441186
+[%comp#1-short]/[%comp#2-short]
+
+STR-441187
+[%comp#1-short]/[%comp#2-short] [%stage_name#1-short] [%stage_name#2-short] [%stage_name#3-short]
+
+STR-441188
+[%comp#1-short]/[%comp#2-short] [%stage_name#1-short] [%stage_name#2-short]
+
+STR-441189
+[%comp#1-short]/[%comp#2-short] [%stage_name#1-short]
+
+STR-441256
+elite goalkeeper
+
+STR-441257
+outstanding goalkeeper
+
+STR-441258
+elite full-back
+
+STR-441259
+outstanding full-back
+
+STR-441260
+elite centre-back
+
+STR-441261
+outstanding centre-back
+
+STR-441262
+elite midfielder
+
+STR-441263
+outstanding midfielder
+
+STR-441264
+elite attacking midfielder
+
+STR-441265
+outstanding attacking midfielder
+
+STR-441266
+elite winger
+
+STR-441267
+outstanding winger
+
+STR-441268
+elite forward
+
+STR-441269
+outstanding forward
+
+STR-441270
+elite striker
+
+STR-441271
+outstanding striker
+
+STR-442343
+[%team#1-short] owe everything to a fantastic start to the season. That kick-started the most unlikely of journeys.
+
+STR-442344
+A remarkable season for [%team#1-short] started superbly and never let up. They are deservedly champions.
+
+STR-442345
+Once [%team#1-short] got rolling early in the season it looked hard to stop them going on to this success.
+
+STR-442346
+How important was that good start!
+
+STR-442347
+[%person#author-I]'ve been banging on about it for ages, it's so important to start well, and we've seen why.
+
+STR-442348
+Right from the very start!
+
+STR-442349
+[%person#author-I] still wasn't confident despite that start.
+
+STR-442350
+Anyone else still doubt us all the way to the end?
+
+STR-442351
+Have to admit [%person#author-I] thought we were a flash in the pan.
+
+STR-442352
+[%team#1-short] owe their title to powering through the middle of the season. That really set them on their way.
+
+STR-442353
+A remarkable season for [%team#1-short] really began to pick up speed in the middle of the campaign. They are deservedly champions.
+
+STR-442354
+Once [%team#1-short] got rolling midway through the season it looked hard to stop them going on to this success.
+
+STR-442355
+How important was that run in the middle of the season!
+
+STR-442356
+[%person#author-I]'ve told people for ages now that it doesn't matter about the start or the finish, teams live and die based on how they fare when things really get tough in the middle of the season.
+
+STR-442357
+Once we got going we were unstoppable!
+
+STR-442358
+[%person#author-I] still wasn't confident despite that run.
+
+STR-442359
+Have to admit [%person#author-I] thought we were going to fall back into old habits after that.
+
+STR-442360
+[%team#1-short] owe their title to a rampant spell of form to finish the season. Nobody could keep pace.
+Polish Reference:
+STR-440509
+Najlepszy zespół, który nie zakwalifikował się do [%continent#1-continentality]ch pucharów, otrzymuje miejsce w: [%fixture_name#1-long]
+
+STR-440510
+północ
+
+STR-440530
+Zespół ds. scoutingu - przegląd
+
+STR-440559
+Kluby z całego kraju podjęły decyzje, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się wielu, których [%male#1] uważa za godnych zatrudnienia w klubie.
+
+STR-440560
+Kluby z całego kraju podjęły decyzje, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilku, których [%male#1] uważa za godnych zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%male#2] (ostatnio [%club#1]) i [%male#3] (ostatnio [%club#2]) są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły decyzje, które ich zawodniczki odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilka, które [%male#1] uważa za godne zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%female#2] (ostatnio [%club#1]) i [%female#3] (ostatnio [%club#2]) są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły decyzje, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilku, których [%female#1] uważa za godnych zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%male#2] (ostatnio [%club#1]) i [%male#3] (ostatnio [%club#2]) są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły decyzje, które ich zawodniczki odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilka, które [%female#1] uważa za godne zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%female#2] (ostatnio [%club#1]) i [%female#3] (ostatnio [%club#2]) są nazwiskami wartymi odnotowania.
+
+STR-440561
+Kluby z całego kraju podjęły decyzje, którzy ich zawodnicy nie otrzymają nowych kontraktów. Wśród nich znajduje się kilku, których [%male#1] uważa za godnych zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%male#2] i [%male#3] są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły decyzje, które ich zawodniczki nie otrzymają nowych kontraktów. Wśród nich znajduje się kilka, które [%male#1] uważa za godne zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%female#2] i [%female#3] są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły decyzję, którzy ich zawodnicy nie otrzymają nowych kontraktów. Wśród nich znajduje się kilku, których [%female#1] uważa za godnych zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%male#2] i [%male#3] są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły decyzje, które ich zawodniczki nie otrzymają nowych kontraktów. Wśród nich znajduje się kilka, które [%female#1] uważa za godne zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%female#2] i [%female#3] są nazwiskami wartymi odnotowania.
+
+STR-440563
+Kluby z całego kraju podjęły decyzje, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilku, których [%male#1] uważa za godnych zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%male#2] jest nazwiskiem godnym odnotowania.
+Kluby z całego kraju podjęły decyzje, które ich zawodniczki odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilka, które [%male#1] uważa za godne zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%female#2] jest nazwiskiem godnym odnotowania.
+Kluby z całego kraju podjęły decyzje, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilku, których [%female#1] uważa za godnych zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%male#2] jest nazwiskiem godnym odnotowania.
+Kluby z całego kraju podjęły decyzje, które ich zawodniczki odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilka, które [%female#1] uważa za godne zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%female#2] jest nazwiskiem godnym odnotowania.
+
+STR-440564
+Kluby z całego kraju podjęły decyzje, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. [%male#1] przygotował listę tych, którzy mogą cię zainteresować.
+Kluby z całego kraju podjęły decyzje, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. [%female#1] przygotowała listę tych, którzy mogą cię zainteresować.
+
+STR-440571
+Oferta
+
+STR-440573
+Uważa, że nadszedł czas na zakończenie kariery[%male#1-hidden]
+
+STR-440574
+Rozważa zakończenie kariery[%male#1-hidden]
+
+STR-440578
+Kluby z całego kraju podjęły decyzję, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. Pośród nich znajduje się kilka potencjalnie interesujących nazwisk.
+
+STR-440580
+Kluby z całego kraju podjęły decyzję, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilku, którzy, jak uważa [%male#1], mogą odnaleźć się w pierwszym zespole.\n\nWskazał również, że zwłaszcza [%male#2] (ostatnio [%club#1]) i [%male#3] (ostatnio [%club#2]) są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły decyzję, które ich zawodniczki odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilka, które, jak uważa [%male#1], mogą odnaleźć się w pierwszym zespole.\n\nWskazał również, że zwłaszcza [%female#2] (ostatnio [%club#1]) i [%female#3] (ostatnio [%club#2]) są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły decyzję, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilku, którzy, jak uważa [%female#1], mogą odnaleźć się w pierwszym zespole.\n\nWskazała również, że zwłaszcza [%male#2] (ostatnio [%club#1]) i [%male#3] (ostatnio [%club#2]) są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły decyzję, które ich zawodniczki odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilka, które, jak uważa [%female#1], mogą odnaleźć się w pierwszym zespole.\n\nWskazała również, że zwłaszcza [%female#2] (ostatnio [%club#1]) i [%female#3] (ostatnio [%club#2]) są nazwiskami wartymi odnotowania.
+
+STR-440581
+Kluby z całego kraju podjęły decyzję, którzy ich zawodnicy nie otrzymają nowych kontraktów. Wśród nich znajduje się kilku, których [%male#1] uważa za wartych zainteresowania.\n\nWskazał również, że zwłaszcza [%male#2] i [%male#3] są nazwiskami, które mogłyby by się nam przydać.
+Kluby z całego kraju podjęły decyzję, które ich zawodniczki nie otrzymają nowych kontraktów. Wśród nich znajduje się kilka, które [%male#1] uważa za warte zainteresowania.\n\nWskazał również, że zwłaszcza [%female#2] i [%female#3] są nazwiskami, które mogłyby by się nam przydać.
+Kluby z całego kraju podjęły decyzję, którzy ich zawodnicy nie otrzymają nowych kontraktów. Wśród nich znajduje się kilku, których [%female#1] uważa za wartych zainteresowania.\n\nWskazała również, że zwłaszcza [%male#2] i [%male#3] są nazwiskami, które mogłyby by się nam przydać.
+Kluby z całego kraju podjęły decyzję, które ich zawodniczki nie otrzymają nowych kontraktów. Wśród nich znajduje się kilka, które [%female#1] uważa za warte zainteresowania.\n\nWskazała również, że zwłaszcza [%female#2] i [%female#3] są nazwiskami, które mogłyby by się nam przydać.
+
+STR-440583
+Kluby z całego kraju podjęły decyzję, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilku, których [%male#1] uważa za potencjalnie użytecznych zawodników składu.\n\nWskazał również, że zwłaszcza [%male#2] jest nazwiskiem godnym odnotowania.
+Kluby z całego kraju podjęły decyzję, które ich zawodniczki odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilka, które [%male#1] uważa za potencjalnie użyteczne zawodniczki składu.\n\nWskazał również, że zwłaszcza [%female#2] jest nazwiskiem godnym odnotowania.
+Kluby z całego kraju podjęły decyzję, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilku, których [%female#1] uważa za potencjalnie użytecznych zawodników składu.\n\nWskazała również, że zwłaszcza [%male#2] jest nazwiskiem godnym odnotowania.
+Kluby z całego kraju podjęły decyzję, które ich zawodniczki odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilka, które [%female#1] uważa za potencjalnie użyteczne zawodniczki składu.\n\nWskazała również, że zwłaszcza [%female#2] jest nazwiskiem godnym odnotowania.
+
+STR-440598
+Choć cieszysz się naszym wielkim szacunkiem, zarząd obawia się, że twoje kiepskie wyniki negatywnie odbijają się na wartości klubu.[%male#1-hidden]
+
+STR-440603
+Oceń grę
+
+STR-440606
+한국어
+
+STR-440607
+Türkçe
+
+STR-440608
+简体中文
+
+STR-441183
+[%comp#1-short]/[%comp#2-short], [%stage_name#1-long] [%stage_name#2-long] [%stage_name#3-long]
+
+STR-441184
+[%comp#1-short]/[%comp#2-short], [%stage_name#1-long] [%stage_name#2-long]
+
+STR-441185
+[%comp#1-short]/[%comp#2-short], [%stage_name#1-long]
+
+STR-441186
+[%comp#1-short]/[%comp#2-short]
+
+STR-441187
+[%comp#1-short]/[%comp#2-short], [%stage_name#1-short] [%stage_name#2-short] [%stage_name#3-short]
+
+STR-441188
+[%comp#1-short]/[%comp#2-short], [%stage_name#1-short] [%stage_name#2-short]
+
+STR-441189
+[%comp#1-short]/[%comp#2-short], [%stage_name#1-short]
+
+STR-441256
+bramkarz z najwyższej półki
+
+STR-441257
+wyróżniający się bramkarz
+
+STR-441258
+boczny obrońca z najwyższej półki
+
+STR-441259
+wyróżniający się boczny obrońca
+
+STR-441260
+środkowy obrońca z najwyższej półki
+
+STR-441261
+wyróżniający się środkowy obrońca
+
+STR-441262
+elitarny pomocnik
+
+STR-441263
+wyróżniający się pomocnik
+
+STR-441264
+elitarny ofensywny pomocnik
+
+STR-441265
+wyróżniający się ofensywny pomocnik
+
+STR-441266
+elitarny skrzydłowy
+
+STR-441267
+wyróżniający się skrzydłowy
+
+STR-441268
+napastnik z najwyższej półki
+
+STR-441269
+wyróżniający się napastnik
+
+STR-441270
+elitarny snajper
+
+STR-441271
+wyróżniający się snajper
+
+STR-442343
+[%team#1-short]{zawdzięcza} wszystko doskonałej formie z początkowej fazy sezonu. To wtedy nabrali rozpędu, który poniósł ich aż po sensacyjny finisz.
+
+STR-442344
+[%team#1-short]{wszedł} bardzo udanie w sezon, nie odpuszczając już aż samego końca. W pełni zasłużyli na zdobycie mistrzostwa.
+
+STR-442345
+Gdy już na starcie rozgrywek [%team#1-short]{złapał} właściwy rytm, stało się jasne, że trudno będzie ich zatrzymać w marszu po ten sukces.
+
+STR-442346
+Jakże ważny był ten udany początek sezonu!
+
+STR-442347
+Od zawsze to powtarzam, początek sezonu ma decydujące znaczenie, i właśnie się o tym przekonaliśmy.[%male#author-hidden]
+
+STR-442348
+Od samego początku!
+
+STR-442349
+Mimo udanego wejścia w sezon nie do końca w nich wierzyłem.[%male#author-hidden]
+Mimo udanego wejścia w sezon nie do końca w nich wierzyłam.[%female#author-hidden]
+
+STR-442350
+Ktoś jeszcze wątpił w nas do samego końca?
+
+STR-442351
+Muszę się przyznać - myślałem, że to tylko chwilowy przebłysk formy.[%male#author-hidden]
+Muszę się przyznać - myślałam, że to tylko chwilowy przebłysk formy.[%female#author-hidden]
+
+STR-442352
+[%team#1-short]{zawdzięcza} tytuł eksplozji formy w połowie sezonu. Kiedy już się rozpędzili, byli nie do zatrzymania.
+
+STR-442353
+Na półmetku rozgrywek zaczęło się stawać jasne, że [%team#1-short]{nie będzie} mieć poważniejszych problemów ze zdobyciem tytułu.
+
+STR-442354
+Gdy na półmetku rozgrywek [%team#1-short]{złapał} właściwy rytm, stało się jasne, że nie będą mieli większych problemów ze zdobyciem mistrzostwa.
+
+STR-442355
+Jakże ważna była ta passa w środkowej części sezonu!
+
+STR-442356
+Od dawna powtarzam, że początek i koniec sezonu są bez znaczenia. O losach zespołu decyduje forma w środkowej części rozgrywek.[%male#author-hidden]
+
+STR-442357
+Kiedy już wzięliśmy się do roboty, byliśmy nie do zatrzymania!
+
+STR-442358
+Mimo tej passy nie do końca w nich wierzyłem.[%male#author-hidden]
+Mimo tej passy nie do końca w nich wierzyłam.[%female#author-hidden]
+
+STR-442359
+Muszę się przyznać - myślałem, że wracają stare, złe czasy.[%male#author-hidden]
+Muszę się przyznać - myślałam, że wracają stare, złe czasy.[%female#author-hidden]
+
+STR-442360
+[%team#1-short]{zawdzięcza} mistrzostwo eksplozji formy w końcówce sezonu. Nikt nie był w stanie dotrzymać im tempa.

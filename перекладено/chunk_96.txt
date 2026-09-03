@@ -1,0 +1,549 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-463478
+[%club#1-short] not surprised by [%person#1-surname] interest
+
+STR-463479
+[%club#1-short] sack [%person#1-surname]
+
+STR-463481
+[%club#1-short] consider [%person#1-surname] interest seriously
+
+STR-463485
+[%person#1-surname] wants to manage [%club#1-short]
+
+STR-463496
+Offer Physio Job
+
+STR-463497
+Offer Scouting Job
+
+STR-463498
+Attend Meeting
+
+STR-463499
+Offer Job
+
+STR-463500
+Offer Coaching Job
+
+STR-463501
+Offer Player Physio Role?
+
+STR-463502
+Confirm Job Offer
+
+STR-463503
+Offer Player Scouting Role?
+
+STR-463506
+Offer Player Coaching Role?
+
+STR-463527
+[%team#1] are looking for a new manager who will, at worst, be able to guide the team to safety via the relegation playoffs in the [%comp#1].
+
+STR-463787
+The expectations for the upcoming season are not yet finalised but will be sent once a decision has been reached.
+
+STR-463788
+Please be aware that, in the unlikely event of the club being relegated, we would be unable to consider keeping [%person#1-you] in the role.
+
+STR-463789
+Please be aware that, in the event of the club being relegated, we would be unable to consider keeping [%person#1-you] in the role.
+
+STR-465158
+Number of teams in [%comp#1-short] ([%number#1]) doesn't match up with number of teams in the real fixtures ([%number#2]).
+
+STR-465159
+Bottom [%number#3-text] teams drop into [%fixture_name#1-long]
+
+STR-465160
+Maximum contract length restricted by the board due to the club's financial situation
+
+STR-465161
+Maximum contract length restricted by the board due to the club's professional status
+
+STR-465162
+Maximum contract length restricted by the board due to the club's current stature
+
+STR-465163
+Maximum contract length restricted by the board due to [%person#1]{s} forthcoming retirement
+
+STR-465164
+Maximum contract length restricted by the board due to [%person#1]{s} age
+
+STR-465165
+Maximum contract length restricted by the board due to [%person#1]{s} injury proneness
+
+STR-465166
+Maximum contract length allowed by the board
+
+STR-465167
+Maximum [%number#1]-year contract length for all players
+
+STR-465168
+Minimum [%number#1]-year contract length for all players
+
+STR-465169
+Maximum [%number#1]-year contract length for players under the age of [%number#2]
+
+STR-465170
+Minimum [%number#1]-year contract length for players under the age of [%number#2]
+
+STR-465171
+Maximum [%number#1]-year contract length for non-EU players
+
+STR-465172
+Minimum [%number#1]-year contract length for non-EU players
+
+STR-465173
+Maximum [%number#1]-year contract length for foreign players
+
+STR-465174
+Minimum [%number#1]-year contract length for foreign players
+
+STR-465175
+Maximum [%number#1]-year contract length for players currently on youth contracts
+
+STR-465176
+Minimum [%number#1]-year contract length for players currently on youth contracts
+
+STR-465177
+Maximum [%number#1]-year contract length for players on part-time contracts earning [%wage#1] or less
+
+STR-465178
+Minimum [%number#1]-year contract length for players on part-time contracts earning [%wage#1] or less
+
+STR-465183
+Lost and recovered a lot of possession on the left side of the pitch in own third.
+
+STR-465184
+Lost and recovered a lot of possession in central areas of own third of the pitch.
+
+STR-465185
+Lost and recovered a lot of possession on the right side of the pitch in own third.
+
+STR-465186
+Lost and recovered a lot of possession on the left side of the pitch in the middle third.
+
+STR-465187
+Lost and recovered a lot of possession in central areas of the middle third of the pitch.
+
+STR-465188
+Lost and recovered a lot of possession on the right side of the pitch in the middle third.
+
+STR-465189
+Lost and recovered a lot of possession on the left side of the pitch in the final third.
+
+STR-465190
+Lost and recovered a lot of possession in central areas of the final third of the pitch.
+
+STR-465191
+Lost and recovered a lot of possession on the right side of the pitch in the final third.
+
+STR-465192
+Regained possession well on the left side of the pitch in own third only to lose it there just as often.
+
+STR-465193
+Regained possession well in central areas of own third of the pitch only to lose it there just as often.
+
+STR-465194
+Regained possession well on the right side of the pitch in own third only to lose it there just as often.
+
+STR-465195
+Regained possession well on the left side of the pitch in the middle third only to lose it there just as often.
+
+STR-465196
+Regained possession well in central areas of the middle third of the pitch only to lose it there just as often.
+
+STR-465197
+Regained possession well on the right side of the pitch in the middle third only to lose it there just as often.
+
+STR-465198
+Regained possession well on the left side of the pitch in the final third only to lose it there just as often.
+
+STR-465199
+Regained possession well in central areas of the final third of the pitch only to lose it there just as often.
+
+STR-465200
+Regained possession well on the right side of the pitch in the final third only to lose it there just as often.
+
+STR-465201
+Good number of touches of the ball in the penalty area but allowed too many in own box.
+
+STR-465202
+Giving up too many touches of the ball in own area but enjoyed plenty in opponent's.
+
+STR-465203
+Not enough touches of the ball in the penalty area but restricting touches in own.
+
+STR-465204
+Limited the number of times the opposition touched the ball in the area but lacked touches in opponents'.
+
+STR-465205
+Good touches-to-shots ratio in the penalty area but gave up too many in own.
+
+STR-465206
+Allowing far too good of a touches-to-shots ratio in own area but enjoying success in opposition's.
+
+STR-465207
+Poor touches-to-shots ratio in the opposition area but limited them in our area.
+
+STR-465208
+Poor touches-to-shots ratio in both penalty areas.
+
+STR-465209
+Moved well into the attacking third of the pitch from positions on the left but been questionable there defensively.
+
+STR-465210
+Moved well into the attacking third of the pitch from central positions but were questionable there defensively.
+
+STR-465211
+Moved well into the attacking third of the pitch from positions on the right but were questionable there defensively.
+
+STR-465212
+Allowed opposition into the attacking third from the left too often but attacked well from there too.
+
+STR-465213
+Allowed opposition into the attacking third from central positions too often but attacked well from there too.
+
+STR-465214
+Allowed opposition into the attacking third from positions on the right too often but attacked well from there too.
+
+STR-465215
+Struggled to make inroads into attacking areas from the left but defended well there.
+
+STR-465216
+Struggled to make inroads into attacking areas from central areas but defended well there.
+
+STR-465217
+Struggled to make inroads into attacking areas from the right but defended well there.
+
+STR-465218
+Defended very well from the left but lacked attacking penetration.
+
+STR-465219
+Defended very well from central positions but lacked attacking penetration.
+
+STR-465220
+Defended very well from the right but lacked attacking penetration.
+
+STR-465221
+Good conversion of final third entries into shots but allowed too many at the other end.
+
+STR-465222
+Allowed too many final third entries to be converted into shots but produced just as many at the other end.
+
+STR-465223
+Poor conversion of final third entries into shots but successfully limiting them at the other end.
+
+STR-465224
+Only allowed a few final third entries to be converted into shots but barely managed any at the other end.
+
+STR-465225
+They are particularly dangerous with set pieces from the left side of the pitch, converting [%number#1] times from [%number#2] attempts.
+
+STR-465226
+They are particularly dangerous with set pieces from the middle of the pitch, converting [%number#1] times from [%number#2] attempts.
+
+STR-465227
+They are particularly dangerous with set pieces from the right side of the pitch, converting [%number#1] times from [%number#2] attempts.
+
+STR-465228
+They struggle greatly with set pieces on the left side of the pitch, failing to score from [%number#2] attempts.
+
+STR-465229
+They struggle greatly with set pieces on the left side of the pitch, scoring just once from [%number#2] attempts.
+
+STR-465230
+They struggle somewhat with set pieces on the left side of the pitch, scoring [%number#1] times in [%number#2] attempts.
+
+STR-465231
+They struggle greatly with set pieces in central areas of the pitch, failing to score from [%number#2] attempts.
+Polish Reference:
+STR-463478
+[%club#1-short]: [%male#1-surname] jest bardzo przewidywalny
+[%club#1-short]: [%female#1-surname] jest bardzo przewidywalna
+
+STR-463479
+[%male#1-surname] ([%club#1-short]) traci pracę
+
+STR-463481
+[%club#1-short]: [%male#1-surname] to poważny kandydat
+[%club#1-short]: [%female#1-surname] to poważna kandydatka
+
+STR-463485
+[%club#1-short]: [%male#1-surname] zainteresowany posadą menedżera
+[%club#1-short]: [%female#1-surname] zainteresowana posadą menedżerki
+
+STR-463496
+Zaoferuj posadę fizjoterapeuty
+
+STR-463497
+Zaoferuj posadę scouta
+
+STR-463498
+Weź udział w spotkaniu
+
+STR-463499
+Zaoferuj posadę
+
+STR-463500
+Zaoferuj posadę trenera
+
+STR-463501
+Zaoferować zawodnikowi posadę fizjoterapeuty?
+
+STR-463502
+Zatwierdź ofertę
+
+STR-463503
+Zaoferować zawodnikowi posadę scouta?
+
+STR-463506
+Zaoferować zawodnikowi posadę trenera?
+
+STR-463527
+[%team#1]{poszukuje} nowego menedżera, który w najgorszym wypadku będzie w stanie uratować ich przed spadkiem w barażach ([%comp#1]).
+
+STR-463787
+Oczekiwania na nadchodzący sezon nie są jeszcze ustalone, ale decyzja powinna wkrótce zapaść.
+
+STR-463788
+Proszę pamiętać, że w razie nieoczekiwanego spadku pana pozostanie na stanowisku nie będzie w ogóle brane pod uwagę.[%male#1-hidden]
+Proszę pamiętać, że w razie nieoczekiwanego spadku pani pozostanie na stanowisku nie będzie w ogóle brane pod uwagę.[%female#1-hidden]
+
+STR-463789
+Proszę pamiętać, że w razie spadku pana pozostanie na stanowisku nie będzie w ogóle brane pod uwagę.[%male#1-hidden]
+Proszę pamiętać, że w razie spadku pani pozostanie na stanowisku nie będzie w ogóle brane pod uwagę.[%female#1-hidden]
+
+STR-465158
+Liczba drużyn w: [%comp#1-short] ([%number#1]) nie zgadza się z liczbą drużyn w rzeczywistych meczach ([%number#2])
+
+STR-465159
+[%number#3-text] zespoły z dołu tabeli spadają do: [%fixture_name#1-long]
+
+STR-465160
+Maksymalna długość kontraktu ograniczona przez zarząd ze względu na obecną sytuację finansową klubu
+
+STR-465161
+Maksymalna długość kontraktu ograniczona przez zarząd ze względu na profesjonalny status klubu
+
+STR-465162
+Maksymalna długość kontraktu ograniczona przez zarząd ze względu na obecną renomę klubu
+
+STR-465163
+Maksymalna długość kontraktu, jaki może otrzymać [%male#1], ograniczona ze względu na zbliżającą się emeryturę
+
+STR-465164
+Maksymalna długość kontraktu, jaki może otrzymać [%male#1], ograniczona ze względu na wiek
+
+STR-465165
+Maksymalna długość kontraktu, jaki może otrzymać [%male#1], ograniczona ze względu na podatność na kontuzje
+
+STR-465166
+Maksymalna długość kontraktu dozwolona przez zarząd
+
+STR-465167
+Co najwyżej [%number#1]-letni kontrakt dla wszystkich zawodników
+
+STR-465168
+Co najmniej [%number#1]-letni kontrakt dla wszystkich zawodników
+
+STR-465169
+Co najwyżej [%number#1]-letni kontrakt dla zawodników U-[%number#2]
+
+STR-465170
+Co najmniej [%number#1]-letni kontrakt dla zawodników U-[%number#2]
+
+STR-465171
+Co najwyżej [%number#1]-letni kontrakt dla zawodników spoza UE
+
+STR-465172
+Co najmniej [%number#1]-letni kontrakt dla zawodników spoza UE
+
+STR-465173
+Co najwyżej [%number#1]-letni kontrakt dla zawodników zagranicznych
+
+STR-465174
+Co najmniej [%number#1]-letni kontrakt dla zawodników zagranicznych
+
+STR-465175
+Co najwyżej [%number#1]-letni kontrakt dla zawodników na kontrakcie juniorskim
+
+STR-465176
+Co najmniej [%number#1]-letni kontrakt dla zawodników na kontrakcie juniorskim
+
+STR-465177
+Co najwyżej [%number#1]-letni kontrakt dla zawodników na kontrakcie półprofesjonalnym z zarobkami wynoszącymi [%wage#1] lub mniej
+
+STR-465178
+Co najmniej [%number#1]-letni kontrakt dla zawodników na kontrakcie półprofesjonalnym z zarobkami wynoszącymi [%wage#1] lub mniej
+
+STR-465183
+Wiele straconych i odzyskanych piłek po lewej stronie boiska w okolicy własnego pola karnego.
+
+STR-465184
+Wiele straconych i odzyskanych piłek na środku boiska w okolicy własnego pola karnego.
+
+STR-465185
+Wiele straconych i odzyskanych piłek po prawej stronie boiska w okolicy własnego pola karnego.
+
+STR-465186
+Wiele straconych i odzyskanych piłek po lewej stronie boiska w okolicy środka pola.
+
+STR-465187
+Wiele straconych i odzyskanych piłek na środku boiska.
+
+STR-465188
+Wiele straconych i odzyskanych piłek po prawej stronie boiska w okolicy środka pola.
+
+STR-465189
+Wiele straconych i odzyskanych piłek po lewej stronie boiska w okolicy pola karnego przeciwnika.
+
+STR-465190
+Wiele straconych i odzyskanych piłek na środku boiska w okolicy pola karnego przeciwnika.
+
+STR-465191
+Wiele straconych i odzyskanych piłek po prawej stronie boiska w okolicy pola karnego przeciwnika.
+
+STR-465192
+Skuteczny odbiór piłki po lewej stronie boiska w okolicy własnego pola karnego, lecz równie wiele strat w tej strefie.
+
+STR-465193
+Skuteczny odbiór piłki na środku boiska w okolicy własnego pola karnego, lecz równie wiele strat w tej strefie.
+
+STR-465194
+Skuteczne odzyskiwanie posiadania po prawej stronie boiska w okolicy własnego pola karnego, lecz równie wiele strat w tej strefie.
+
+STR-465195
+Skuteczny odbiór piłki po lewej stronie boiska w okolicy środka pola, lecz równie wiele strat w tej strefie.
+
+STR-465196
+Skuteczny odbiór piłki na środku boiska, lecz równie wiele strat w tej strefie.
+
+STR-465197
+Skuteczny odbiór piłki po prawej stronie boiska w okolicy środka pola, lecz równie wiele strat w tej strefie.
+
+STR-465198
+Skuteczny odbiór piłki po lewej stronie boiska w okolicy pola karnego przeciwnika, lecz równie wiele strat w tej strefie.
+
+STR-465199
+Skuteczny odbiór piłki na środku boiska w okolicy pola karnego przeciwnika, lecz równie wiele strat w tej strefie.
+
+STR-465200
+Skuteczny odbiór piłki po prawej stronie boiska w okolicy pola karnego przeciwnika, lecz równie wiele strat w tej strefie.
+
+STR-465201
+Dużo kontaktu z piłką w polu karnym rywala, ale pozwoliliśmy mu na zbyt wiele w swoim polu.
+
+STR-465202
+Pozwoliliśmy rywalowi na zbyt wiele kontaktów w naszym polu karnym, ale sami mieliśmy ich sporo pod bramką przeciwnika.
+
+STR-465203
+Zbyt mało kontaktu z piłką w polu karnym rywala, ale ograniczyliśmy je przeciwnikom we własnym polu.
+
+STR-465204
+Ograniczyliśmy rywalowi posiadanie piłki w naszym polu karnym, ale sami też mieliśmy z tym problemy.
+
+STR-465205
+Dobry stosunek strzałów do posiadania w polu karnym rywala, ale w swoim pozwoliliśmy na zbyt wiele okazji.
+
+STR-465206
+Pozwoliliśmy rywalowi na zbyt wiele strzałów w stosunku do posiadania piłki we własnym polu karnym, ale sami również stworzyliśmy spore zagrożenie pod ich bramką.
+
+STR-465207
+Słaby stosunek strzałów do posiadania piłki w polu karnym rywala, ale mocno ograniczyliśmy im okazje w naszej strefie.
+
+STR-465208
+Słaby stosunek strzałów do posiadania piłki w obu polach karnych.
+
+STR-465209
+Groźne ataki lewą stroną boiska, ale defensywa w tej strefie wyglądała kiepsko.
+
+STR-465210
+Groźne ataki środkiem boiska, ale defensywa w tej strefie wyglądała kiepsko.
+
+STR-465211
+Groźne ataki prawą stroną boiska, ale defensywa w tej strefie wyglądała kiepsko.
+
+STR-465212
+Rywale mieli zbyt wiele swobody po lewej stronie, ale sami też mieli tam problemy.
+
+STR-465213
+Rywale mieli zbyt wiele swobody w środkowej strefie boiska, ale sami też mieli tam problemy.
+
+STR-465214
+Rywale mieli zbyt wiele swobody po prawej stronie, ale sami też mieli tam problemy.
+
+STR-465215
+Spore problemy z wejściem w strefę ataku po lewej stronie boiska, ale obrona wyglądała tam solidnie.
+
+STR-465216
+Spore problemy z wejściem w strefę ataku w środkowej strefie boiska, ale obrona wyglądała tam solidnie.
+
+STR-465217
+Spore problemy z wejściem w strefę ataku po prawej stronie boiska, ale obrona wyglądała tam solidnie.
+
+STR-465218
+Bardzo dobra gra defensywna z lewej strony, ale zabrakło tam ruchu w ofensywie.
+
+STR-465219
+Bardzo dobra gra defensywna w środkowej strefie boiska, ale zabrakło tam ruchu w ofensywie.
+
+STR-465220
+Bardzo dobra gra defensywna z prawej strony, ale zabrakło tam ruchu w ofensywie.
+
+STR-465221
+Wiele sytuacji strzeleckich w okolicy pola karnego rywala, ale zbyt wiele takich okazji pod własną bramką.
+
+STR-465222
+Zbyt wiele okazji strzeleckich w okolicy pola karnego pod własną bramką, lecz równie dużo po drugiej stronie boiska.
+
+STR-465223
+Wejścia w okolice pola karnego prawie wcale nie zmieniały się w okazje strzeleckie, ale i skuteczna ich neutralizacja pod własną bramką.
+
+STR-465224
+Zaledwie kilka sytuacji strzeleckich w okolicy pola karnego pod własną bramką, lecz po drugiej stronie boiska spore problemy z ich stwarzaniem.
+
+STR-465225
+Zdobyli ogólną liczbę [%number#1] bramek po [%number#2] rzutach wolnych z lewej strony, co pokazuje ich siłę w takich sytuacjach.
+
+STR-465226
+Zdobyli ogólną liczbę [%number#1] bramek po [%number#2] rzutach wolnych ze środkowej strefy boiska, co pokazuje ich siłę w takich sytuacjach.
+
+STR-465227
+Zdobyli ogólną liczbę [%number#1] bramek po [%number#2] rzutach wolnych z prawej strony, co pokazuje ich siłę w takich sytuacjach.
+
+STR-465228
+Nie zdobyli żadnej bramki po [%number#2] rzutach wolnych z lewej strony, co pokazuje ich słabość w takich sytuacjach.
+
+STR-465229
+Zdobyli zaledwie jedną bramkę po [%number#2] rzutach wolnych z lewej strony, co pokazuje ich słabość w takich sytuacjach.
+
+STR-465230
+Zdobyli ogólną liczbę [%number#1] bramek po [%number#2] rzutach wolnych z lewej strony, co pokazuje ich słabość w takich sytuacjach.
+
+STR-465231
+Nie zdobyli żadnej bramki po [%number#2] rzutach wolnych ze środkowej strefy boiska, co pokazuje ich słabość w takich sytuacjach.

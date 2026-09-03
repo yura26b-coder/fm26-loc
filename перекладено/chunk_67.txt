@@ -1,0 +1,490 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-421528
+The board are very pleased that the team has reached the [%stage_name#1] of the [%comp#1-short].
+
+STR-421529
+The board are pleased that the team has reached the [%stage_name#1] of the [%comp#1-short].
+
+STR-421532
+The board are very pleased that the team is challenging for promotion from the [%comp#1-short] this season.
+
+STR-421533
+The board are pleased that the team is challenging for promotion from the [%comp#1-short] this season.
+
+STR-421549
+The board are satisfied the team is currently on course to avoid finishing bottom of the league this season.
+
+STR-421550
+The board are disappointed the team finished near the bottom of the league this season.
+
+STR-421551
+The board are disappointed the team finished bottom of the league this season.
+
+STR-421552
+The board are extremely disappointed that the team is currently only on course to qualify for the [%comp#2] through participation in the [%comp#1-short] this season.
+
+STR-421553
+The board are very disappointed that the team is currently only on course to qualify for the [%comp#2] through participation in the [%comp#1-short] this season.
+
+STR-421554
+The board are extremely disappointed that the team is currently only on course to win the [%comp#1-short] this season.
+
+STR-421555
+The board are very disappointed that the team is currently only on course to win the [%comp#1-short] this season.
+
+STR-421558
+The board are extremely disappointed that the team is currently only on course to win promotion from the [%comp#1-short] this season.
+
+STR-421559
+The board are very disappointed that the team is currently only on course to win promotion from the [%comp#1-short] this season.
+
+STR-421560
+The board are extremely disappointed that the team is currently only on course to qualify from the [%stage_name#1] of the [%comp#1-short].
+
+STR-421561
+The board are very disappointed that the team is currently only on course to qualify from the [%stage_name#1] of the [%comp#1-short].
+
+STR-421562
+The board are extremely disappointed that the team is currently only on course to qualify from the [%comp#1-short].
+
+STR-421563
+The board are very disappointed that the team is currently only on course to qualify from the [%comp#1-short].
+
+STR-421564
+The board are extremely disappointed that the team is currently only on course to reach the [%stage_name#1] of the [%comp#1-short].
+
+STR-421565
+The board are very disappointed that the team is currently only on course to reach the [%stage_name#1] of the [%comp#1-short].
+
+STR-421566
+The board are extremely disappointed that the team only challenged for promotion from the [%comp#1-short] this season.
+
+STR-421567
+The board are very disappointed that the team only challenged for promotion from the [%comp#1-short] this season.
+
+STR-421568
+The board are extremely disappointed that the team is currently only on course to achieve a top-half finish in the [%comp#1-short] this season.
+
+STR-421569
+The board are very disappointed that the team is currently only on course to achieve a top-half finish in the [%comp#1-short] this season.
+
+STR-421570
+The board are extremely disappointed that the team is currently only on course to achieve a mid-table position within the [%comp#1-short] this season.
+
+STR-421571
+The board are very disappointed that the team is currently only on course to achieve a mid-table position within the [%comp#1-short] this season.
+
+STR-421572
+The board are extremely disappointed that the team is currently only on course to avoid the relegation battle in the [%comp#1-short] this season.
+
+STR-421573
+The board are very disappointed that the team is currently only on course to avoid the relegation battle in the [%comp#1-short] this season.
+
+STR-421574
+The board are extremely disappointed that the team is currently only on course to be competitive in the [%comp#1-short].
+
+STR-421575
+The board are very disappointed that the team is currently only on course to be competitive in the [%comp#1-short].
+
+STR-421576
+The board are extremely disappointed that the team is currently only on course to stay clear of relegation from the [%comp#1-short] this season.
+
+STR-421577
+The board are very disappointed that the team is currently only on course to stay clear of relegation from the [%comp#1-short] this season.
+
+STR-421580
+The board are extremely disappointed that the team appears destined to be involved in a relegation scrap this season.
+
+STR-421581
+The board are very disappointed that the team appears destined to be involved in a relegation scrap this season.
+
+STR-421582
+The board are disappointed the team appears destined to finish near the bottom of the league this season.
+
+STR-421583
+The board are disappointed the team appears destined to finish bottom of the league this season.
+
+STR-421584
+The board are extremely disappointed that the team aren't being competitive in the [%comp#1-short].
+
+STR-421585
+The board are very disappointed that the team aren't being competitive in the [%comp#1-short].
+
+STR-421586
+The board are content that the team have a chance to avoid finishing near the bottom of the league this season.
+
+STR-422885
+Players coming in from the [%agreement#1] will now need to apply for work permits to play in [%nation#1].
+
+STR-424081
+D
+
+STR-424082
+Major Nation
+
+STR-424082$
+Major Country/Region
+
+STR-424082&
+Major Nation
+
+STR-424083
+Selected Nation
+
+STR-424083$
+Selected Country/Region
+
+STR-424083&
+Selected Nation
+
+STR-424084
+Nation Of Interest
+
+STR-424084$
+Country/Region Of Interest
+
+STR-424084&
+Nation Of Interest
+
+STR-424085
+Neighbouring Nation
+
+STR-424085$
+Neighbouring Country/Region
+
+STR-424085&
+Neighbouring Nation
+
+STR-424087
+Players under the age of 21 can be registered at any time.
+
+STR-424099
+(Both teams in [%comp#1-short])
+
+STR-424100
+(Cup final matches)
+
+STR-424101
+(Playoff matches)
+
+STR-424103
+(Youth Teams only)
+
+STR-424126
+Wage Rules
+
+STR-424127
+Clubs can replace a goalkeeper with another goalkeeper outside the registration windows
+
+STR-424129
+Clubs can replace up to [%number#1-text] outfield players once per season outside the registration windows
+
+STR-424133
+Teams entering this stage will start with all their stats from the [%comp#1-short], along with [%number#1]% of their points gained
+
+STR-424134
+Teams entering this stage will start with [%number#1]% of their points gained in the [%comp#1-short]
+
+STR-424135
+Teams entering this stage will start with [%number#1]% of their points gained in the [%comp#1-short], along with their goals scored and conceded
+
+STR-424136
+Teams entering this stage will start with all their stats, along with [%number#1]% of their points gained against certain teams from the [%comp#1-short]
+
+STR-424137
+Teams entering this stage get [%number#1]% of the points difference between them and the lowest ranked team entering from the [%comp#1-short]
+
+STR-424138
+Teams entering this stage will start with all their stats from the [%comp#1-short] group stage, along with [%number#1]% of their points gained
+
+STR-424139
+Teams entering this stage will start with [%number#1]% of their points gained in the [%comp#1-short] group stage
+
+STR-424140
+Teams entering this stage will start with [%number#1]% of their points gained in the [%comp#1-short] group stage, along with their goals scored and conceded
+
+STR-424141
+Teams entering this stage will start with all their stats, along with [%number#1]% of their points gained against certain teams from the [%comp#1-short] group stage
+
+STR-424142
+Teams entering this stage get [%number#1]% of the points difference between them and the lowest ranked team entering from the [%comp#1-short] group stage
+
+STR-424143
+Teams entering this stage get [%number#1]% of the points difference between them and the lowest ranked team entering from the [%comp#1-short] [%stage_name#1]
+
+STR-424146
+Teams can offer 1 player a wage that is above the maximum allowed up to [%wage#1].
+
+STR-424147
+Teams can offer [%number#1] players a wage that is above the maximum allowed up to [%wage#1].
+
+STR-424148
+Upon expiry of their contracts, players cannot move club unless both teams involved reach an agreement.
+
+STR-424149
+Upon expiry of their contracts, players above the age of [%number#1] cannot move club unless both teams involved reach an agreement.
+
+STR-424150
+Upon expiry of their contracts, players below the age of [%number#1] cannot move club unless both teams involved reach an agreement.
+
+STR-424151
+Upon expiry of their contracts, [%number#1] year-old players cannot move club unless both teams involved reach an agreement.
+
+STR-424152
+Upon expiry of their contracts, players aged [%number#1]-[%number#2] cannot move club unless both teams involved reach an agreement.
+Polish Reference:
+STR-421528
+Zarząd jest bardzo zadowolony z tego, że zespół dotarł do: [%stage_name#1], [%comp#1-short].
+
+STR-421529
+Zarząd jest zadowolony z tego, że zespół dotarł do: [%stage_name#1], [%comp#1-short].
+
+STR-421532
+Zarząd jest bardzo zadowolony z tego, że zespół walczy w tym sezonie o awans z rozgrywek ([%comp#1-short]).
+
+STR-421533
+Zarząd jest zadowolony z tego, że zespół walczy w tym sezonie o awans z rozgrywek ([%comp#1-short]).
+
+STR-421549
+Zarząd jest usatysfakcjonowany tym, że zespół jest na najlepszej drodze do zajęcia w tym sezonie lepszego miejsca w lidze niż ostatnie.
+
+STR-421550
+Zarząd jest rozczarowany tym, że zespół zajął w tym sezonie miejsce w ogonie ligowej tabeli.
+
+STR-421551
+Zarząd jest rozczarowany tym, że zespół zajął w tym sezonie ostatnie miejsce w lidze.
+
+STR-421552
+Zarząd jest skrajnie rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na zakwalifikowanie się do: [%comp#2] dzięki udziałowi w: [%comp#1-short].
+
+STR-421553
+Zarząd jest bardzo rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na zakwalifikowanie się do: [%comp#2] dzięki udziałowi w: [%comp#1-short].
+
+STR-421554
+Zarząd jest skrajnie rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na zwycięstwo w rozgrywkach ([%comp#1-short]).
+
+STR-421555
+Zarząd jest bardzo rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na zwycięstwo w rozgrywkach ([%comp#1-short]).
+
+STR-421558
+Zarząd jest skrajnie rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na wywalczenie awansu z: [%comp#1-short].
+
+STR-421559
+Zarząd jest bardzo rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na wywalczenie awansu z: [%comp#1-short].
+
+STR-421560
+Zarząd jest skrajnie rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na wywalczenie awansu z: [%stage_name#1], [%comp#1-short].
+
+STR-421561
+Zarząd jest bardzo rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na wywalczenie awansu z: [%stage_name#1], [%comp#1-short].
+
+STR-421562
+Zarząd jest skrajnie rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na wywalczenie awansu z: [%comp#1-short].
+
+STR-421563
+Zarząd jest bardzo rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na wywalczenie awansu z: [%comp#1-short].
+
+STR-421564
+Zarząd jest skrajnie rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na: [%stage_name#1], [%comp#1-short].
+
+STR-421565
+Zarząd jest bardzo rozczarowany tym, że zespół w tym sezonie ma szansę jedynie na: [%stage_name#1], [%comp#1-short].
+
+STR-421566
+Zarząd jest skrajnie rozczarowany tym, że zespół w tym sezonie jedynie powalczył o awans z rozgrywek ([%comp#1-short]).
+
+STR-421567
+Zarząd jest bardzo rozczarowany tym, że zespół w tym sezonie jedynie powalczył o awans z rozgrywek ([%comp#1-short]).
+
+STR-421568
+Zarząd jest skrajnie rozczarowany tym, że zespół jest na najlepszej drodze do zajęcia jedynie miejsca w górnej części ligowej tabeli ([%comp#1-short]).
+
+STR-421569
+Zarząd jest bardzo rozczarowany tym, że zespół jest na najlepszej drodze do zajęcia jedynie miejsca w górnej części ligowej tabeli ([%comp#1-short]).
+
+STR-421570
+Zarząd jest skrajnie rozczarowany tym, że zespół jest na najlepszej drodze do zajęcia jedynie miejsca w środku ligowej tabeli ([%comp#1-short]).
+
+STR-421571
+Zarząd jest bardzo rozczarowany tym, że zespół jest na najlepszej drodze do zajęcia jedynie miejsca w środku ligowej tabeli ([%comp#1-short]).
+
+STR-421572
+Zarząd jest skrajnie rozczarowany tym, że w chwili obecnej zespół stać jedynie na uniknięcie walki o utrzymanie ([%comp#1-short]).
+
+STR-421573
+Zarząd jest bardzo rozczarowany tym, że w chwili obecnej zespół stać jedynie na uniknięcie walki o utrzymanie ([%comp#1-short]).
+
+STR-421574
+Zarząd jest skrajnie rozczarowany tym, że w chwili obecnej zespół stać jedynie na walkę w rozgrywkach ([%comp#1-short]).
+
+STR-421575
+Zarząd jest bardzo rozczarowany tym, że w chwili obecnej zespół stać jedynie na walkę w rozgrywkach ([%comp#1-short]).
+
+STR-421576
+Zarząd jest skrajnie rozczarowany tym, że zespół w tym sezonie najprawdopodobniej jedynie uniknie spadku z ligi ([%comp#1-short]).
+
+STR-421577
+Zarząd jest bardzo rozczarowany tym, że zespół w tym sezonie najprawdopodobniej jedynie uniknie spadku z ligi ([%comp#1-short]).
+
+STR-421580
+Zarząd jest skrajnie rozczarowany tym, że zespół czeka w tym sezonie rozpaczliwa walka o utrzymanie.
+
+STR-421581
+Zarząd jest bardzo rozczarowany tym, że zespół czeka w tym sezonie rozpaczliwa walka o utrzymanie.
+
+STR-421582
+Zarząd jest rozczarowany tym, że zespół najprawdopodobniej zajmie w miejsce w ogonie ligowej tabeli.
+
+STR-421583
+Zarząd jest rozczarowany tym, że zespół najprawdopodobniej zajmie w tym sezonie ostatnie miejsce w lidze.
+
+STR-421584
+Zarząd jest skrajnie rozczarowany tym, że zespół nie podejmuje walki w rozgrywkach ([%comp#1-short]).
+
+STR-421585
+Zarząd jest bardzo rozczarowany tym, że zespół nie podejmuje walki w rozgrywkach ([%comp#1-short]).
+
+STR-421586
+Zarząd jest usatysfakcjonowany tym, że zespół ma szansę na zajęcie w tym sezonie lepszego miejsca w lidze niż w ogonie tabeli.
+
+STR-422885
+Piłkarze będący obywatelami krajów objętych postanowieniami traktatów, jakie {narzuca}[%agreement#1], będą odtąd potrzebować pozwolenia na pracę, by przejść do [%nation#1-nationality1]ego klubu.
+
+STR-424081
+L
+
+STR-424082
+Ważny kraj
+
+STR-424082$
+Ważny kraj/region
+
+STR-424082&
+Ważny kraj
+
+STR-424083
+Wybrany kraj
+
+STR-424083$
+Wybrany kraj/region
+
+STR-424083&
+Wybrany kraj
+
+STR-424084
+Interesujący kraj
+
+STR-424084$
+Interesujący kraj/region
+
+STR-424084&
+Interesujący kraj
+
+STR-424085
+Sąsiedni kraj
+
+STR-424085$
+Sąsiedni kraj/region
+
+STR-424085&
+Sąsiedni kraj
+
+STR-424087
+Piłkarze w wieku poniżej 21 lat mogą zostać zgłoszeni w dowolnym momencie.
+
+STR-424099
+(oba zespoły w: [%comp#1-short])
+
+STR-424100
+(finałowe mecze pucharowe)
+
+STR-424101
+(mecze barażowe)
+
+STR-424103
+(tylko zespoły juniorskie)
+
+STR-424126
+Przepisy dot. wynagrodzeń
+
+STR-424127
+Kluby mogą zastąpić bramkarza innym bramkarzem poza okresami rejestracji składu
+
+STR-424129
+Raz w sezonie kluby mogą wymienić nie więcej niż [%number#1-text] piłkarzy z pola poza okresami rejestracji składu
+
+STR-424133
+Zespoły rozpoczynające udział w tej fazie zachowują komplet swoich statystyk, a także [%number#1]% zdobytych punktów
+
+STR-424134
+Zespoły rozpoczynające udział w tej fazie zachowują [%number#1]% punktów zdobytych w: [%comp#1-short]
+
+STR-424135
+Zespoły rozpoczynające udział w tej fazie zachowują [%number#1]% punktów zdobytych w: [%comp#1-short], a także statystyki bramek zdobytych i straconych
+
+STR-424136
+Zespoły rozpoczynające udział w tej fazie zachowują komplet swoich statystyk, a także [%number#1]% zdobytych w konfrontacji z wybranymi zespołami w: [%comp#1-short]
+
+STR-424137
+Zespoły rozpoczynające udział w tej fazie otrzymują [%number#1]% różnicy punktów pomiędzy nimi a najniżej sklasyfikowanym uczestnikiem przechodzącym z: [%comp#1-short]
+
+STR-424138
+Zespoły rozpoczynające udział w tej fazie zachowują komplet swoich statystyk z fazy grupowej, a także [%number#1]% zdobytych punktów
+
+STR-424139
+Zespoły rozpoczynające udział w tej fazie zachowują [%number#1]% punktów zdobytych w fazie grupowej ([%comp#1-short])
+
+STR-424140
+Zespoły rozpoczynające udział w tej fazie zachowują [%number#1]% punktów zdobytych w fazie grupowej ([%comp#1-short]), a także statystyki bramek zdobytych i straconych
+
+STR-424141
+Zespoły rozpoczynające udział w tej fazie zachowują komplet swoich statystyk, a także [%number#1]% punktów zdobytych w konfrontacji z wybranymi zespołami fazy grupowej ([%comp#1-short])
+
+STR-424142
+Zespoły rozpoczynające udział w tej fazie otrzymują [%number#1]% różnicy punktów pomiędzy nimi a najniżej sklasyfikowanym uczestnikiem przechodzącym z fazy grupowej ([%comp#1-short])
+
+STR-424143
+Zespoły rozpoczynające udział w tej fazie otrzymują [%number#1]% różnicy punktów pomiędzy nimi a najniżej sklasyfikowanym uczestnikiem przechodzącym z: [%stage_name#1], [%comp#1-short]
+
+STR-424146
+Kluby mogą proponować 1 piłkarzowi wynagrodzenie powyżej dozwolonego maksimum do wysokości [%wage#1]
+
+STR-424147
+Kluby mogą proponować [%number#1] piłkarzom wynagrodzenie powyżej dozwolonego maksimum do wysokości [%wage#1]
+
+STR-424148
+Po wygaśnięciu ich kontraktów piłkarzom nie wolno zmienić pracodawcy, dopóki negocjacje pomiędzy klubami w kwestii ich transferu nie zakończą się powodzeniem.
+
+STR-424149
+Po wygaśnięciu ich kontraktów piłkarzom w wieku powyżej [%number#1] lat nie wolno zmienić pracodawcy, dopóki negocjacje pomiędzy klubami w kwestii ich transferu nie zakończą się powodzeniem.
+
+STR-424150
+Po wygaśnięciu ich kontraktów piłkarzom w wieku poniżej [%number#1] lat nie wolno zmienić pracodawcy, dopóki negocjacje pomiędzy klubami w kwestii ich transferu nie zakończą się powodzeniem.
+
+STR-424151
+Po wygaśnięciu ich kontraktów piłkarzom w wieku [%number#1] lat nie wolno zmienić pracodawcy, dopóki negocjacje pomiędzy klubami w kwestii ich transferu nie zakończą się powodzeniem.
+
+STR-424152
+Po wygaśnięciu ich kontraktów piłkarzom w wieku [%number#1]-[%number#2] lat nie wolno zmienić pracodawcy, dopóki negocjacje pomiędzy klubami w kwestii ich transferu nie zakończą się powodzeniem.

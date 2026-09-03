@@ -1,0 +1,304 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-407451
+[%club#1] face a difficult test away to [%club#2] in the [%string#1 Division] match.
+
+STR-407452
+[%club#1] will have to be at their best to beat [%club#2] in the [%comp#1] match.
+
+STR-407453
+[%club#1] will have to be at their best to beat visitors [%club#2] in the [%comp#1] match.
+
+STR-407454
+[%club#1] will have to be at their best to beat home side [%club#2] in the [%comp#1] match.
+
+STR-407455
+[%club#1]{s} recent bout of poor form is likely to make the prospect of facing [%club#2] all the more daunting.
+
+STR-407456
+[%club#1] will be hoping for a miracle against [%club#2] in the [%comp#1] match.
+
+STR-407457
+[%club#1] will be hoping for a miracle at home to [%club#2] in the [%comp#1] match.
+
+STR-407458
+[%club#1] will be hoping for a miracle away to [%club#2] in the [%comp#1] match.
+
+STR-407459
+[%club#1] fans are confident their side will hand out an absolute battering to a [%club#2] team who have been struggling for results recently.
+
+STR-407460
+[%club#1] strong favourites against [%club#2]
+
+STR-407461
+Easy win predicted for [%club#1]
+
+STR-407462
+[%club#1] favourites against [%club#2]
+
+STR-407463
+[%club#1] slight favourites against [%club#2]
+
+STR-407464
+Close match predicted for [%club#1]
+
+STR-407465
+[%club#1] face tough challenge
+
+STR-407466
+Defeat expected for [%club#1]
+
+STR-407467
+[%club#1] face the impossible
+
+STR-407472
+[%string#1 Player Name (eg. Luke Chadwick)] watched
+
+STR-407503
+[%string#1 Player Name (eg. Jake Vaughan)] has told the local press that he believes his recent form has been down to the fresh tactical approach [%string#2 Manager Name (eg. Marc Vaughan)] has introduced to the side.
+
+STR-407504
+[%string#1 Player Name (eg. Jake Vaughan)] has told the national press that he believes his recent form has been down to the fresh tactical approach [%string#2 Manager Name (eg. Marc Vaughan)] has introduced to the side.
+
+STR-407505
+[%string#1 Player Name (eg. Jake Vaughan)] has told the local press that he believes his wonderful form this season is down to [%string#2 Manager Name (eg. Marc Vaughan)].\n\nHe indicated that his manager has inspired him to ensure his last season is also one of his best.
+
+STR-407506
+[%string#1 Player Name (eg. Jake Vaughan)] has told the local press that he believes his wonderful form this season is due to the effect [%string#2 Manager Name (eg. Marc Vaughan)] has had on his career.
+
+STR-407507
+[%string#1 Player Name (eg. Jake Vaughan)] has told the national press that he believes his wonderful form this season is due to hard work put in by manager [%string#2 Manager Name (eg. Marc Vaughan)] and his understanding of how to get the best out of him.
+
+STR-407508
+[%string#1 Player Name (eg. Vaughan)] thanks boss
+
+STR-407517
+[%club#1] compensated for loss of [%string#1 Player Name Short (eg. Owen)]
+
+STR-407529
+[%string#1 - Manager Surname] critical of [%string#2 - Player Surname]
+
+STR-407530
+[%string#1 - Manager Surname] runs out of superlatives for [%string#2 - Player Surname]
+
+STR-407531
+[%string#1 - Manager Surname] losing patience with [%string#2 - Player Surname]?
+
+STR-407532
+[%string#1 - Manager Surname] heaps praise on [%string#2 - Player Surname]
+
+STR-407533
+[%club#1-short] manager [%string#1 - Manager Name] appears to be losing patience with [%position#1-lowercase_no_sides] [%string#2 - Player Name] after the player was criticised by the manager once again.\n\nThe comments have fuelled rumours that the player may be looking to leave the club in the near future.
+
+STR-407534
+[%club#1-short] [%position#1-lowercase_no_sides] [%string#2 - Player Name] appears to be back in [%string#1 - Manager Name]{s} good books.\n\nAfter criticising the player recently, the manager praised the player's attitude and commitment since the incident.
+
+STR-407535
+[%club#1-short] manager [%string#1 - Manager Name] appears to have lost some faith in [%position#1-lowercase_no_sides] [%string#2 - Player Name] recently.\n\nAfter giving the player high praise earlier on in the season, the manager today was more critical of the player's attitude.
+
+STR-407536
+[%club#1-short] manager [%string#1 - Manager Name] indicated that [%person#1-he] has been frustrated by [%position#1-lowercase_no_sides] [%string#2 - Player Name]{s} negative attitude in [%person#2-his] attempts to regain full fitness.
+
+STR-407537
+[%club#1-short] manager [%string#1 - Manager Name] has admitted that [%position#1-lowercase_no_sides] [%string#2 - Player Name] needs to step up [%person#2-his] performances in the coming weeks.
+
+STR-407538
+[%club#1-short] manager [%string#1 - Manager Name] has admitted that [%position#1-lowercase_no_sides] [%string#2 - Player Name] needs to show more consistency in [%person#2-his] performances if [%person#2-he] wants to be an important first team player.
+
+STR-407539
+[%club#1-short] manager [%string#1 - Manager Name] has told the press that [%person#1-he] is disappointed with [%position#1-lowercase_no_sides] [%string#2 - Player Name] recent comments, and that the player should show more loyalty to the club.
+
+STR-407540
+[%club#1-short] manager [%string#1 - Manager Name] has admitted that [%person#1-he] wants to see improvements from [%position#1-lowercase_no_sides] [%string#2 - Player Name] in the coming weeks.
+
+STR-407541
+[%club#1-short] manager [%string#1 - Manager Name] seems to be running out of superlatives to describe [%position#1-lowercase_no_sides] [%string#2 - Player Name]{s} recent contributions to the team. The player appears to be indispensable to the current manager.
+
+STR-407542
+[%club#1-short] manager [%string#1 - Manager Name] was effusive in [%person#1-his] praise for [%position#1-lowercase_no_sides] [%string#2 - Player Name].\n\n[%person#1-He] told the press that [%person#1-he] is delighted with the player's current form and is currently one of the first names on the team sheet.
+
+STR-407543
+[%club#1-short] manager [%string#1 - Manager Name] told the press that [%person#1-he] is very pleased with the high standard of [%position#1-lowercase_no_sides] [%string#2 - Player Name]{s} recent performances.
+
+STR-407544
+[%club#1-short] manager [%string#1 - Manager Name] told the press that [%person#1-he] was delighted with [%position#1-lowercase_no_sides] [%string#2 - Player Name]{s} performance in the previous match.
+
+STR-407545
+[%club#1-short] manager [%string#1 - Manager Name] told the press that [%person#1-he] was delighted with [%position#1-lowercase_no_sides] [%string#2 - Player Name]{s} performance in recent training sessions.
+
+STR-407546
+[%club#1-short] manager [%string#1 - Manager Name] told the press that [%position#1-lowercase_no_sides] [%string#2 - Player Name]{s} recovery is going well and that [%person#1-he] is delighted with the player's attitude in a time of adversity.
+
+STR-407547
+[%club#1-short] manager [%string#1 - Manager Name] told the press that [%person#1-he] is pleased with [%position#1-lowercase_no_sides] [%string#2 - Player Name]{s} recent contributions to the team.
+
+STR-407554
+[%string#2 - Player Name] reacts to manager conversation
+Polish Reference:
+STR-407451
+[%club#1]{stoi} przed trudnym wyzwaniem w wyjazdowym spotkaniu, w którym ich przeciwnikiem {będzie}[%club#2] ([%string#1 Division]).
+
+STR-407452
+[%club#1]{musi} zagrać perfekcyjnie, by zwyciężyć w spotkaniu, w którym ich przeciwnikiem {będzie}[%club#2] ([%comp#1]).
+
+STR-407453
+[%club#1]{musi} zagrać perfekcyjnie, by zwyciężyć w spotkaniu przed własną publicznością, w którym ich przeciwnikiem {będzie}[%club#2] ([%comp#1]).
+
+STR-407454
+[%club#1]{musi} zagrać perfekcyjnie, by zwyciężyć w wyjazdowym spotkaniu, w którym ich przeciwnikiem {będzie}[%club#2] ([%comp#1]).
+
+STR-407455
+[%club#1]{jest} ostatnio w kiepskiej formie i spotkanie, w którym ich przeciwnikiem {będzie}[%club#2], będzie dla nich sporym wyzwaniem.
+
+STR-407456
+[%club#1]{może} liczyć wyłącznie na cud w spotkaniu, w którym ich przeciwnikiem {będzie}[%club#2] ([%comp#1]).
+
+STR-407457
+[%club#1]{może} liczyć wyłącznie na cud w spotkaniu przed własną publicznością, w którym ich przeciwnikiem {będzie}[%club#2] ([%comp#1]).
+
+STR-407458
+[%club#1]{może} liczyć wyłącznie na cud w wyjazdowym spotkaniu, w którym ich przeciwnikiem {będzie}[%club#2] ([%comp#1]).
+
+STR-407459
+Kibice są przekonani, że [%club#1]{zniszczy} pogrążonych w kryzysie rywali w spotkaniu, w którym ich przeciwnikiem {będzie}[%club#2]
+
+STR-407460
+[%club#1] w roli zdecydowanego faworyta
+
+STR-407461
+[%club#1]{odniesie} łatwe zwycięstwo
+
+STR-407462
+[%club#1] w roli faworyta
+
+STR-407463
+[%club#1] z nieco większymi szansami
+
+STR-407464
+[%club#1] przed wyrównanym spotkaniem
+
+STR-407465
+[%club#1] przed trudnym wyzwaniem
+
+STR-407466
+[%club#1]{może} się spodziewać porażki
+
+STR-407467
+[%club#1] przed niewykonalnym zadaniem
+
+STR-407472
+[%string#1 Player Name (eg. Luke Chadwick)] pod obserwacją
+
+STR-407503
+[%string#1 Player Name (eg. Jake Vaughan)] powiedział dziennikarzowi lokalnego tygodnika, że swoją dobrą dyspozycję w ostatnim czasie zawdzięcza świeżym rozwiązaniom taktycznym, jakie w zespole zastosował [%string#2 Manager Name (eg. Marc Vaughan)].
+
+STR-407504
+[%string#1 Player Name (eg. Jake Vaughan)] powiedział dziennikarzowi ogólnokrajowego tygodnika, że swoją dobrą dyspozycję w ostatnim czasie zawdzięcza świeżym rozwiązaniom taktycznym, jakie w zespole zastosował [%string#2 Manager Name (eg. Marc Vaughan)].
+
+STR-407505
+[%string#1 Player Name (eg. Jake Vaughan)] powiedział dziennikarzowi lokalnego tygodnika, że za jego wspaniałą formę w tym sezonie odpowiada [%string#2 Manager Name (eg. Marc Vaughan)].\n\nDzięki odpowiedniej motywacji ze strony menedżera jego ostatni sezon będzie też jednym z najlepszych.
+
+STR-407506
+[%string#1 Player Name (eg. Jake Vaughan)] powiedział dziennikarzowi lokalnego tygodnika, że za jego wspaniałą formę w tym sezonie odpowiada [%string#2 Manager Name (eg. Marc Vaughan)], który uczynił wiele dobrego dla jego kariery.
+
+STR-407507
+[%string#1 Player Name (eg. Jake Vaughan)] powiedział dziennikarzowi ogólnokrajowego tygodnika, że za jego wspaniałą formę w tym sezonie odpowiada [%string#2 Manager Name (eg. Marc Vaughan)], który dzięki swojej wiedzy i pracowitości zdołał sprawić, że gra na maksimum swoich możliwości.
+
+STR-407508
+[%string#1 Player Name (eg. Vaughan)] dziękuje menedżerowi
+
+STR-407517
+[%string#1 Player Name Short (eg. Owen)]: [%club#1]{otrzymuje} rekompensatę
+
+STR-407529
+[%string#2 - Player Surname]: [%string#1 - Manager Surname] nie szczędzi krytycznych słów
+
+STR-407530
+[%string#1 - Manager Surname] przyznaje, że [%string#2 - Player Surname] zasługuje na słowa najwyższego uznania
+
+STR-407531
+[%string#2 - Player Surname]: [%string#1 - Manager Surname] traci cierpliwość?
+
+STR-407532
+[%string#1 - Manager Surname] uważa, że [%string#2 - Player Surname] to „fenomenalny” zawodnik
+
+STR-407533
+Wiele wskazuje na to, że menedżer [%string#1 - Manager Name] ([%club#1-short]) zaczyna tracić cierpliwość, gdyż [%position#1-lowercase_no_sides] [%string#2 - Player Name] znów zebrał od niego solidne cięgi.\n\nJego wypowiedzi spotęgowały sugestie, że ten zawodnik w najbliższej przyszłości odejdzie z klubu.
+
+STR-407534
+Wygląda na to, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] ([%club#1-short]) poprawił swoje notowania u menedżera.\n\nPo tym jak [%string#1 - Manager Name] skrytykował go jakiś czas temu, tym razem pozytywnie wypowiedział się na temat jego postawy i zaangażowania od tamtego czasu.
+
+STR-407535
+Wygląda na to, że menedżer [%string#1 - Manager Name] ([%club#1-short]) na powrót zaczyna wątpić w to, co prezentuje [%position#1-lowercase_no_sides] [%string#2 - Player Name].\n\nChoć na początku sezonu nie mógł się go nachwalić, dzisiaj bardziej krytycznie skomentował jego postawę.
+
+STR-407536
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) przyznał, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest dla niego źródłem ciągłej frustracji ze względu na jego negatywne podejście do pracy nad powrotem do pełnej sprawności.[%male#1-hidden][%male#2-hidden]
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) przyznał, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest dla niego źródłem ciągłej frustracji ze względu na jej negatywne podejście do pracy nad powrotem do pełnej sprawności.[%male#1-hidden][%female#2-hidden]
+Menedżerka [%string#1 - Manager Name] ([%club#1-short]) przyznała, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest dla niej źródłem ciągłej frustracji ze względu na jego negatywne podejście do pracy nad powrotem do pełnej sprawności.[%female#1-hidden][%male#2-hidden]
+Menedżerka [%string#1 - Manager Name] ([%club#1-short]) przyznała, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] jest dla niej źródłem ciągłej frustracji ze względu na jej negatywne podejście do pracy nad powrotem do pełnej sprawności.[%female#1-hidden][%female#2-hidden]
+
+STR-407537
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) przyznał, że w najbliższych tygodniach [%position#1-lowercase_no_sides] [%string#2 - Player Name] będzie musiał lepiej zaprezentować się na boisku.[%male#2-hidden]
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) przyznał, że w najbliższych tygodniach [%position#1-lowercase_no_sides] [%string#2 - Player Name] będzie musiała lepiej zaprezentować się na boisku.[%female#2-hidden]
+
+STR-407538
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) przyznał, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] musi prezentować bardziej wyrównaną formę, jeśli chce odgrywać ważną rolę w drużynie.[%male#2-hidden]
+
+STR-407539
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) wyznał dziennikarzom, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] rozczarował go swoimi wypowiedziami i powinien demonstrować większą lojalność wobec klubu.[%male#1-hidden]
+Menedżerka [%string#1 - Manager Name] ([%club#1-short]) wyznała dziennikarzom, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] rozczarował ją swoimi wypowiedziami i powinien demonstrować większą lojalność wobec klubu.[%female#1-hidden]
+
+STR-407540
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) wyraził oczekiwanie, że w najbliższych tygodniach [%position#1-lowercase_no_sides] poprawi swoją obecną dyspozycję.[%male#1-hidden]
+Menedżerka [%string#1 - Manager Name] ([%club#1-short]) wyraziła oczekiwanie, że w najbliższych tygodniach [%position#1-lowercase_no_sides] poprawi swoją obecną dyspozycję.[%female#1-hidden]
+
+STR-407541
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) nie miał słów na opisanie tego, co do zespołu wnosi ostatnio [%position#1-lowercase_no_sides] [%string#2 - Player Name]. Zawodnik ten jest obecnie po prostu nie do zastąpienia.
+
+STR-407542
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) nie szczędził pochwał, których adresatem był [%position#1-lowercase_no_sides] [%string#2 - Player Name].\n\nPrzyznał też dziennikarzom, że jest zachwycony jego obecną formą i od niego zaczyna ustalanie meczowego składu.[%male#1-hidden]
+Menedżerka [%string#1 - Manager Name] ([%club#1-short]) nie szczędziła pochwał, których adresatem był [%position#1-lowercase_no_sides] [%string#2 - Player Name].\n\nPrzyznała też dziennikarzom, że jest zachwycona jego obecną formą i od niego zaczyna ustalanie meczowego składu.[%female#1-hidden]
+
+STR-407543
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) powiedział dziennikarzom, że jest bardzo zadowolony z tego, co [%position#1-lowercase_no_sides] [%string#2 - Player Name] pokazuje od jakiegoś czasu na boisku.[%male#1-hidden]
+Menedżerka [%string#1 - Manager Name] ([%club#1-short]) powiedziała dziennikarzom, że jest bardzo zadowolona z tego, co [%position#1-lowercase_no_sides] [%string#2 - Player Name] pokazuje od jakiegoś czasu na boisku.[%female#1-hidden]
+
+STR-407544
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) powiedział dziennikarzom, że jest zachwycony tym, co [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaprezentował w ostatnim meczu.[%male#1-hidden]
+Menedżerka [%string#1 - Manager Name] ([%club#1-short]) powiedziała dziennikarzom, że jest zachwycona tym, co [%position#1-lowercase_no_sides] [%string#2 - Player Name] zaprezentował w ostatnim meczu.[%female#1-hidden]
+
+STR-407545
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) powiedział dziennikarzom, że jest zachwycony tym, co [%position#1-lowercase_no_sides] [%string#2 - Player Name] pokazuje ostatnio na treningach.[%male#1-hidden]
+Menedżerka [%string#1 - Manager Name] ([%club#1-short]) powiedziała dziennikarzom, że jest zachwycona tym, co [%position#1-lowercase_no_sides] [%string#2 - Player Name] pokazuje ostatnio na treningach.[%female#1-hidden]
+
+STR-407546
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) powiedział dziennikarzom, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] szybko wraca do zdrowia po kontuzji, a jego podejście w tych trudnych dla niego chwilach zasługuje na najwyższe uznanie.[%male#1-hidden]
+Menedżerka [%string#1 - Manager Name] ([%club#1-short]) powiedziała dziennikarzom, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] szybko wraca do zdrowia po kontuzji, a jego podejście w tych trudnych dla niego chwilach zasługuje na najwyższe uznanie.[%female#1-hidden]
+
+STR-407547
+Menedżer [%string#1 - Manager Name] ([%club#1-short]) powiedział dziennikarzom, że jest zadowolony z tego, co [%position#1-lowercase_no_sides] [%string#2 - Player Name] wnosi od jakiegoś czasu do gry zespołu.[%male#1-hidden]
+Menedżerka [%string#1 - Manager Name] ([%club#1-short]) powiedziała dziennikarzom, że jest zadowolona z tego, co [%position#1-lowercase_no_sides] [%string#2 - Player Name] wnosi od jakiegoś czasu do gry zespołu.[%female#1-hidden]
+
+STR-407554
+[%string#2 - Player Name] reaguje na rozmowę z menedżerem

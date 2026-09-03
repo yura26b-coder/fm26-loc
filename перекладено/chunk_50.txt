@@ -1,0 +1,353 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-407645
+[%person#1-Your] assistant reports that [%string#2 - Player Name] failed to check in with the medical team this morning to evaluate [%person#2-his] injury.
+
+STR-407646
+[%string#1 - Coach Name] has had reports from the club doctor that [%string#2 - Player Name] seemed more downbeat than usual in today's physiotherapy session.
+
+STR-407647
+[%person#1-Your] assistant has had reports from the club doctor that [%string#2 - Player Name] seemed more downbeat than usual in today's physiotherapy session.
+
+STR-407648
+[%string#1 - Coach Name] reports that [%string#2 - Player Name] was overly aggressive in today's training session putting in some physical challenges that caused have caused other players injury.
+
+STR-407649
+[%person#1-Your] assistant reports that [%string#2 - Player Name] was overly aggressive in today's training session putting in some physical challenges that caused have caused other players injury.
+
+STR-407650
+[%string#1 - Coach Name] reports that [%string#2 - Player Name] cut a dejected figure in today's training session and seemed to be more withdrawn than usual.
+
+STR-407651
+[%person#1-Your] assistant reports that [%string#2 - Player Name] cut a dejected figure in today's training session and seemed to be more withdrawn than usual.
+
+STR-407652
+[%string#1 - Coach Name] reports that while [%string#2 - Player Name] reported for training this morning, [%person#2-he] did not seem to be putting in the required effort and commitment.
+
+STR-407653
+[%person#1-Your] assistant reports that while [%string#2 - Player Name] reported for training this morning, [%person#2-he] did not seem to be putting in the required effort and commitment.
+
+STR-407686
+Apps
+
+STR-407687
+Gls
+
+STR-407688
+Conceded (per game)
+
+STR-407689
+Conc
+
+STR-407690
+Yel
+
+STR-407691
+Red
+
+STR-407692
+Player of the Match
+
+STR-407693
+PoM
+
+STR-407694
+Av R
+
+STR-407703
+Board announce surprise arrival of [%string#1 Staff Name(e.g.Ferguson)]
+
+STR-407704
+The board have indicated that [%string#1 Staff Name(e.g.Franny Jeffers)] has been promoted from [%club#1]{s} youth setup to the first team squad.\n\nFans of the club are hopeful that [%person#1-he] won't receive special treatment due to [%person#1-his] status as son of the current manager.
+
+STR-407705
+[%person#1-hidden]has witnessed their son, [%string#1 Staff Name(e.g.Franny Jeffers)], be promoted from [%club#1]{s} youth setup to the first team squad.
+
+STR-407733
+[%string#1 Staff Name(e.g.Ferguson)] announces decision to retire
+
+STR-407735
+[%string#1 Staff Name(e.g.Duncan Ferguson)] cannot support [%person#1-his] family playing professional football.\n\n[%person#1-He] regretfully announces [%person#1-his] decision to retire from the playing staff at the end of the season.\n\n[%person#1-He] will be seeking a non-playing position in the near future.
+
+STR-407736
+[%string#1 Staff Name(e.g.Duncan Ferguson)] cannot support [%person#1-himself] playing professional football.\n\n[%person#1-He] regretfully announces [%person#1-his] decision to retire at the end of the season.
+
+STR-407737
+[%string#1 Staff Name(e.g.Duncan Ferguson)] cannot support [%person#1-his] family playing professional football.\n\n[%person#1-He] regretfully announces [%person#1-his] decision to retire at the end of the season.
+
+STR-407740
+[%string#1 Staff Name(e.g.Duncan Ferguson)] has decided [%person#1-he] is too old to play professional football.\n\n[%person#1-He] will officially retire from the game at the end of the season.
+
+STR-407741
+[%string#1 Staff Name(e.g.Duncan Ferguson)] has decided to retire from [%person#1-his] position as Manager at the club.\n\n[%person#1-He] will officially retire from the game at the end of the season.
+
+STR-407742
+[%string#1 Staff Name(e.g.Duncan Ferguson)] has decided that [%person#1-he] no longer wishes to work in football and will be to retiring at the end of the season.
+
+STR-407743
+[%string#1 Staff Name(e.g.Duncan Ferguson)] has decided that this will be [%person#1-his] last season playing professional football.
+
+STR-407744
+[%club#1]{s} [%string#1 Staff Name(e.g.Duncan Ferguson)] has announced that [%person#1-he] cannot support [%person#1-his] family playing professional football.\n\n[%person#1-He] regretfully announces [%person#1-his] decision to retire from the playing staff at the end of the season, [%person#1-he] will continue at the club in [%person#1-his] capacity of Manager.
+
+STR-407745
+[%club#1]{s} [%string#1 Staff Name(e.g.Duncan Ferguson)] has announced that cannot support [%person#1-his] family playing professional football.\n\n[%person#1-He] regretfully announces [%person#1-his] decision to retire from the playing staff at the end of the season.\n\n[%person#1-He] will be seeking a non-playing position in the near future.
+
+STR-407746
+[%club#1]{s} [%string#1 Staff Name(e.g.Duncan Ferguson)] has announced that [%person#1-he] cannot support [%person#1-himself] playing professional football.\n\n[%person#1-He] regretfully announces [%person#1-his] decision to retire at the end of the season.
+
+STR-407747
+[%club#1]{s} [%string#1 Staff Name(e.g.Duncan Ferguson)] has announced that [%person#1-he] cannot support [%person#1-his] family playing professional football.[%person#1-He] regretfully announces [%person#1-his] decision to retire at the end of the season.
+
+STR-407748
+[%club#1]{s} [%string#1 Staff Name(e.g.Duncan Ferguson)] has decided [%person#1-he] is too old to play professional football.\n\n[%person#1-He] officially announces [%person#1-his] decision to retire from the playing staff at the end of the season, after which [%person#1-he] will continue in [%person#1-his] capacity as manager at the club.
+
+STR-407749
+[%string#1 Staff Name(e.g.Duncan Ferguson)] has decided [%person#1-he] is too old to play professional football.\n\n[%person#1-He] officially announces [%person#1-his] decision to retire from the playing staff at the end of the season.\n\n[%person#1-He] will be seeking a non-playing position in the near future.
+
+STR-407750
+[%club#1]{s} [%string#1 Staff Name(e.g.Duncan Ferguson)] has decided [%person#1-he] is too old to play professional football.\n\n[%person#1-He] officially announces [%person#1-his] decision to retire at the end of the season.
+
+STR-407751
+[%string#1 Staff Name(e.g.Duncan Ferguson)] has decided [%person#1-he] is too old to play professional football.\n\n[%person#1-He] officially announces [%person#1-his] decision to retire at the end of the season.
+
+STR-407752
+[%club#1]{s} [%string#1 Staff Name(e.g.Duncan Ferguson)] has decided to retire from [%person#1-his] position as Manager at the club.\n\n[%person#1-He] officially announces [%person#1-his] decision to retire at the end of the season.
+
+STR-407753
+[%string#1 Staff Name(e.g.Duncan Ferguson)] has decided [%person#1-he] no longer wants to work within the game.\n\n[%person#1-He] officially announces [%person#1-his] decision to retire at the end of the season.
+
+STR-407754
+[%club#1]{s} [%string#1 Staff Name(e.g.Duncan Ferguson)] has decided that this will be [%person#1-his] last season playing professional football.
+
+STR-407755
+[%string#1 Staff Name] declines to continue playing career
+
+STR-407756
+[%string#1 Staff Name] reconsiders retirement
+
+STR-407757
+In a private meeting, [%string#1 Staff Name] has told [%person#2-you] that [%person#1-he] was flattered by [%person#2-your] request for [%person#1-him] to continue playing for another season.\n\nHowever, [%person#1-he] indicated that [%person#1-he] feels now is the right time for [%person#1-him] to hang up [%person#1-his] boots.
+
+STR-407758
+[%string#1 Staff Name] has indicated that [%person#1-he] was flattered by [%person#2-your] request for [%person#1-him] to continue playing for another season.\n\nIn a private meeting, [%person#1-he] told [%person#2-you] that [%person#1-he] would be delighted to stay on at the club.
+
+STR-407835
+None
+
+STR-407836
+Yes
+
+STR-407837
+No
+
+STR-407838
+None
+
+STR-407839
+Ideal[%string#1 Ideal aptitude for retraining]
+
+STR-407840
+Good
+
+STR-407841
+Reasonable[%string#1 Reasonable aptitude for retraining]
+
+STR-407842
+Poor[%string#1 Poor aptitude for retraining]
+
+STR-407843
+Very Poor
+Polish Reference:
+STR-407645
+Twój asystent informuje, że [%string#2 - Player Name] nie zgłosił się dziś rano na kontrolę swojego stanu zdrowia w związku z doznaną kontuzją.[%male#1-hidden][%male#2-hidden]
+Twój asystent informuje, że [%string#2 - Player Name] nie zgłosiła się dziś rano na kontrolę swojego stanu zdrowia w związku z doznaną kontuzją.[%male#1-hidden][%female#2-hidden]
+
+STR-407646
+[%string#1 - Coach Name] dowiedział się od klubowego lekarza, że podczas dzisiejszej sesji fizjoterapii [%string#2 - Player Name] był bardziej przygnębiony niż zwykle.
+
+STR-407647
+Twój asystent dowiedział się od klubowego lekarza, że podczas dzisiejszej sesji fizjoterapii [%string#2 - Player Name] był bardziej przygnębiony niż zwykle.[%male#1-hidden]
+
+STR-407648
+[%string#1 - Coach Name] informuje, że [%string#2 - Player Name] przejawiał zbytnią agresję na dzisiejszym treningu, a parę jego wejść mogło się skończyć urazami.
+
+STR-407649
+Twój asystent informuje, że [%string#2 - Player Name] przejawiał zbytnią agresję na dzisiejszym treningu, a parę jego wejść mogło się skończyć urazami.[%male#1-hidden]
+
+STR-407650
+[%string#1 - Coach Name] informuje, że [%string#2 - Player Name] wyglądał na dzisiejszym treningu jak z krzyża zdjęty i praktycznie do nikogo się nie odzywał.
+
+STR-407651
+Twój asystent informuje, że [%string#2 - Player Name] wyglądał na dzisiejszym treningu jak z krzyża zdjęty i praktycznie do nikogo się nie odzywał.[%male#1-hidden]
+
+STR-407652
+[%string#1 - Coach Name] informuje, że choć [%string#2 - Player Name] pojawił się na porannym treningu, nie pracował z odpowiednim zaangażowaniem.[%male#2-hidden]
+[%string#1 - Coach Name] informuje, że choć [%string#2 - Player Name] pojawiła się na porannym treningu, nie pracowała z odpowiednim zaangażowaniem.[%female#2-hidden]
+
+STR-407653
+Twój asystent informuje, że choć [%string#2 - Player Name] pojawił się na porannym treningu, nie pracował z odpowiednim zaangażowaniem.[%male#1-hidden][%male#2-hidden]
+Twój asystent informuje, że choć [%string#2 - Player Name] pojawiła się na porannym treningu, nie pracowała z odpowiednim zaangażowaniem.[%male#1-hidden][%female#2-hidden]
+Twój asystent informuje, że choć [%string#2 - Player Name] pojawił się na porannym treningu, nie pracował z odpowiednim zaangażowaniem.[%female#1-hidden][%male#2-hidden]
+Twój asystent informuje, że choć [%string#2 - Player Name] pojawiła się na porannym treningu, nie pracowała z odpowiednim zaangażowaniem.[%female#1-hidden][%female#2-hidden]
+
+STR-407686
+Wyst.
+
+STR-407687
+Br.
+
+STR-407688
+Stracone gole na mecz
+
+STR-407689
+Strc.
+
+STR-407690
+ŻK
+
+STR-407691
+CzK
+
+STR-407692
+Piłkarz meczu
+
+STR-407693
+MVP
+
+STR-407694
+Śr O
+
+STR-407703
+[%string#1 Staff Name(e.g.Ferguson)]: Zaskakująca decyzja personalna zarządu
+
+STR-407704
+Zarząd poinformował, że [%string#1 Staff Name(e.g.Franny Jeffers)] ([%club#1]) został przeniesiony z zespołu juniorskiego do pierwszej drużyny.\n\nKibice mają nadzieję, że nie będzie on traktowany na specjalnych zasadach tylko dlatego, że jest synem obecnego menedżera.[%male#1-hidden]
+
+STR-407705
+[%male#1-hidden]świętował dzień, w którym jego syn przeszedł z zespołu juniorskiego do pierwszej drużyny.
+[%female#1-hidden]świętowała dzień, w którym jej syn przeszedł z zespołu juniorskiego do pierwszej drużyny.
+
+STR-407733
+[%string#1 Staff Name(e.g.Ferguson)] ogłasza zakończenie kariery
+
+STR-407735
+[%string#1 Staff Name(e.g.Duncan Ferguson)] nie jest w stanie dłużej utrzymywać rodziny z gry w piłkę.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie.\n\nW najbliższej przyszłości zamierza znaleźć zatrudnienie jako członek sztabu szkoleniowego.[%male#1-hidden]
+
+STR-407736
+[%string#1 Staff Name(e.g.Duncan Ferguson)] nie jest w stanie dłużej się utrzymywać z gry w piłkę.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie.[%male#1-hidden]
+
+STR-407737
+[%string#1 Staff Name(e.g.Duncan Ferguson)] nie jest w stanie dłużej utrzymywać rodziny z gry w piłkę.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie.[%male#1-hidden]
+
+STR-407740
+[%string#1 Staff Name(e.g.Duncan Ferguson)] jest już za stary na profesjonalny futbol.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie.[%male#1-hidden]
+
+STR-407741
+[%string#1 Staff Name(e.g.Duncan Ferguson)] podjął decyzję o zakończeniu współpracy z klubem w roli jego menedżera.\n\nJego kariera dobiegnie oficjalnie końca po tym sezonie.[%male#1-hidden]
+[%string#1 Staff Name(e.g.Duncan Ferguson)] podjęła decyzję o zakończeniu współpracy z klubem w roli jego menedżerki.\n\nJej kariera dobiegnie oficjalnie końca po tym sezonie.[%female#1-hidden]
+
+STR-407742
+[%string#1 Staff Name(e.g.Duncan Ferguson)] uznał, że nie chce już mieć nic wspólnego z futbolem, i przejdzie na emeryturę po zakończeniu sezonu.[%male#1-hidden]
+
+STR-407743
+[%string#1 Staff Name(e.g.Duncan Ferguson)] zdecydował, że będzie to jego ostatni sezon w profesjonalnym futbolu.[%male#1-hidden]
+
+STR-407744
+[%string#1 Staff Name(e.g.Duncan Ferguson)] ([%club#1]) nie jest w stanie dłużej utrzymywać rodziny z gry w piłkę.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie, choć będzie dalej kontynuować pracę w klubie na stanowisku menedżera.[%male#1-hidden]
+
+STR-407745
+[%string#1 Staff Name(e.g.Duncan Ferguson)] ([%club#1]) nie jest w stanie dłużej utrzymywać rodziny z gry w piłkę.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie.\n\nW najbliższej przyszłości zamierza znaleźć zatrudnienie jako członek sztabu szkoleniowego.[%male#1-hidden]
+
+STR-407746
+[%string#1 Staff Name(e.g.Duncan Ferguson)] ([%club#1]) nie jest w stanie dłużej się utrzymywać z gry w piłkę.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie.[%male#1-hidden]
+
+STR-407747
+[%string#1 Staff Name(e.g.Duncan Ferguson)] ([%club#1]) nie jest w stanie dłużej się utrzymywać z gry w piłkę. Dlatego też podjął decyzję o zakończeniu kariery po tym sezonie.[%male#1-hidden]
+
+STR-407748
+[%string#1 Staff Name(e.g.Duncan Ferguson)] ([%club#1]) jest już za stary na profesjonalny futbol.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie, choć będzie dalej kontynuować pracę w klubie na stanowisku menedżera.[%male#1-hidden]
+
+STR-407749
+[%string#1 Staff Name(e.g.Duncan Ferguson)] jest już za stary na profesjonalny futbol.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie.\n\nW najbliższej przyszłości zamierza znaleźć zatrudnienie jako członek sztabu szkoleniowego.[%male#1-hidden]
+
+STR-407750
+[%string#1 Staff Name(e.g.Duncan Ferguson)] ([%club#1]) jest już za stary na profesjonalny futbol.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie.[%male#1-hidden]
+
+STR-407751
+[%string#1 Staff Name(e.g.Duncan Ferguson)] jest już za stary na profesjonalny futbol.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie.[%male#1-hidden]
+
+STR-407752
+[%string#1 Staff Name(e.g.Duncan Ferguson)] ([%club#1]) podjął decyzję o zakończeniu współpracy z klubem w roli jego menedżera.\n\nJego kariera dobiegnie oficjalnie końca po tym sezonie.[%male#1-hidden]
+[%string#1 Staff Name(e.g.Duncan Ferguson)] ([%club#1]) podjęła decyzję o zakończeniu współpracy z klubem w roli jego menedżerki.\n\nJej kariera dobiegnie oficjalnie końca po tym sezonie.[%female#1-hidden]
+
+STR-407753
+[%string#1 Staff Name(e.g.Duncan Ferguson)] jest już za stary na profesjonalny futbol.\n\nDlatego też podjął decyzję o zakończeniu kariery po tym sezonie.[%male#1-hidden]
+[%string#1 Staff Name(e.g.Duncan Ferguson)] jest już za stara na profesjonalny futbol.\n\nDlatego też podjęła decyzję o zakończeniu kariery po tym sezonie.[%female#1-hidden]
+
+STR-407754
+[%string#1 Staff Name(e.g.Duncan Ferguson)] ([%club#1]) zdecydował, że będzie to jego ostatni sezon w profesjonalnym futbolu.[%male#1-hidden]
+
+STR-407755
+[%string#1 Staff Name] nie chce kontynuować kariery piłkarskiej
+
+STR-407756
+[%string#1 Staff Name] rozważa zmianę decyzji o zakończeniu kariery
+
+STR-407757
+Podczas spotkania w cztery oczy [%string#1 Staff Name] powiedział ci, że twoja prośba, aby przedłużył karierę jeszcze o jeden sezon, bardzo mu schlebiła.\n\nJednakże nadal uważa, że nadeszła już odpowiednia chwila, by zawiesić buty na kołku.[%male#2-hidden][%male#1-hidden]
+Podczas spotkania w cztery oczy [%string#1 Staff Name] powiedziała ci, że twoja prośba, aby przedłużyła karierę jeszcze o jeden sezon, bardzo jej schlebiła.\n\nJednakże nadal uważa, że nadeszła już odpowiednia chwila, by zawiesić buty na kołku.[%male#2-hidden][%female#1-hidden]
+Podczas spotkania w cztery oczy [%string#1 Staff Name] powiedział ci, że twoja prośba, aby przedłużył karierę jeszcze o jeden sezon, bardzo mu schlebiła.\n\nJednakże nadal uważa, że nadeszła już odpowiednia chwila, by zawiesić buty na kołku.[%female#2-hidden][%male#1-hidden]
+Podczas spotkania w cztery oczy [%string#1 Staff Name] powiedziała ci, że twoja prośba, aby przedłużyła karierę jeszcze o jeden sezon, bardzo jej schlebiła.\n\nJednakże nadal uważa, że nadeszła już odpowiednia chwila, by zawiesić buty na kołku.[%female#2-hidden][%female#1-hidden]
+
+STR-407758
+[%string#1 Staff Name] przyznał, że twoja prośba, aby przedłużył karierę jeszcze o jeden sezon, bardzo mu schlebiła.\n\nPodczas spotkania w cztery oczy poinformował cię, że chętnie pozostanie na dłużej w klubie.[%male#1-hidden][%male#2-hidden]
+[%string#1 Staff Name] przyznała, że twoja prośba, aby przedłużyła karierę jeszcze o jeden sezon, bardzo jej schlebiła.\n\nPodczas spotkania w cztery oczy poinformowała cię, że chętnie pozostanie na dłużej w klubie.[%female#1-hidden][%male#2-hidden]
+
+STR-407835
+Brak
+
+STR-407836
+Tak
+
+STR-407837
+Nie
+
+STR-407838
+Brak
+
+STR-407839
+Idealne
+
+STR-407840
+Dobre
+
+STR-407841
+Przyzwoite
+
+STR-407842
+Kiepskie
+
+STR-407843
+Bardzo kiepskie

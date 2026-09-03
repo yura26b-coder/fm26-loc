@@ -1,0 +1,107 @@
+STR-405933
+Гравець команди [%club#1] [%string#1 Player Name (eg. Marc Vaughan)] був звинувачений у зухвалості в газетній статті.\n\nЖурналіст стверджує, що футболісту [%string#2 Player Name (eg Beckham)] краще зосередитися на власній грі, а не сперечатися з арбітрами та суперниками.
+
+STR-405935
+Як повідомляє [%string#2 Media type (eg Italian radio station)], футболіст команди [%club#1] [%string#1 Player Name (eg. Anders Limpar)] насилу витримує повні 90 хвилин.\n\nСхоже, що [%string#3 Player Name eg( Limpar)] потребує відпочинку від футболу, аби відновити сили.
+
+STR-405936
+Футболіст команди [%club#1] [%string#1 Player Name (eg. Anders Limpar)] виглядає втомленим і потребує відпочинку, зазначив сьогодні газетний оглядач.
+
+STR-405937
+Гравець команди [%club#1] [%string#1 Player Name (eg. Anders Limpar)] виглядає виснаженим в останніх матчах і потребує відпочинку, зазначив сьогодні оглядач видання у країні [%nation#1].
+
+STR-405938
+Гравець команди [%club#1] [%string#1 Player Name (eg. Anders Limpar)] ледве витримує всі 90 хвилин на полі, повідомляє репортер місцевої газети.\n\nУ результаті цього страждають форма та впевненість у собі футболіста [%string#2 Player Name eg( Limpar)], підсумував автор.
+
+STR-405939
+Колишній наставник команди стверджує, що [%string#1 Player Name (eg. Anders Limpar)] із клубу [%club#1] занадто лінується, коли м'яч у суперника.
+
+STR-405940
+Колишній менеджер клубу вважає, що [%string#1 Player Name (eg. Anders Limpar)] із команди [%club#1] грає занадто нестабільно, щоб покладатися на нього в кожному матчі.
+
+STR-405941
+Телевізійний експерт розкритикував гравця команди [%club#1] [%string#1 Player Name (eg. Anders Limpar)] за небажання йти в обіграш суперників в останніх матчах.\n\nВін зазначив, що завдяки роботі з м'ячем [%string#2 Player Name eg( Limpar)] здатен наводити жах на захисників суперника.
+
+STR-405942
+Видання [%string#1 Media type (eg Italian newspaper)] припустило, що [%string#2 Player Name (eg. Marc Vaughan)] не викладається на 100% за команду [%club#1] після того, як вирішив залишити клуб.
+
+STR-405943
+Видання [%string#1 Media type (eg Italian newspaper)] повідомляє, що футболіст клубу [%club#1] [%string#2 Player Name (eg. Marc Vaughan)] надзвичайно здивований тим, що його випускають грати в полі.\n\nВін заявив, що є воротарем і волів би грати виключно на своїй позиції.
+
+STR-405944
+Видання [%string#1 Media type (eg Italian newspaper)] пише, що [%string#2 Player Name (eg. Marc Vaughan)] із команди [%club#1] обурений тим, що його використовують не на його найсильнішій позиції.\n\nФутболіст вважає себе природженим гравцем на позиції [%string#3 Player Position] і волів би виходити на поле саме в цьому амплуа.
+
+STR-405945
+За даними [%string#1 Media type (eg Italian newspaper)], гравець команди [%club#1] [%string#2 Player Name (eg. Marc Vaughan)] був помітно незадоволений заміною під час переможного матчу [%string#3 score (eg 40)] проти [%club#2].\n\nЦе породило чутки про напруженість між ним і менеджером [%string#4 Manager Name (eg Fabio Capello)].
+
+STR-405946
+За інформацією [%string#1 Media type (eg Italian newspaper)], [%string#2 Player Name (eg. Marc Vaughan)] із клубу [%club#1] був відверто незадоволений своєю заміною під час нічийного матчу [%string#3 score (eg 40)] проти [%club#2].\n\nЦе викликало чутки про конфлікт між ним і наставником [%string#4 Manager Name (eg Fabio Capello)].
+
+STR-405947
+За даними [%string#1 Media type (eg Italian newspaper)], футболіст клубу [%club#1] [%string#2 Player Name (eg. Marc Vaughan)] був вкрай незадоволений заміною під час програного поєдинку [%string#3 score (eg 40)] проти [%club#2].\n\nЦе спровокувало чутки про напруженість між ним і наставником [%string#4 Manager Name (eg Fabio Capello)].
+
+STR-405948
+Керманич команди [%club#1] [%string#1 Rival Manager (eg. Dobs)] заявив пресі: хоч він і вважає [%string#2 Player Name (eg. Marc Vaughan)] якісним гравцем, він не бачить для нього успіху за нинішнього керівництва у клубі [%club#2].
+
+STR-405950
+Очільник команди [%club#1] [%string#1 Rival Manager (eg. Dobs)], як повідомляється, щиро розсміявся з недавнього придбання клубом [%club#2] футболіста [%string#2 Player Name (eg. Marc Vaughan)].
+
+STR-405951
+[%string#1 Player Name (eg. Marc Vaughan)] ніколи не впишеться в модель гри команди [%club#1], згідно зі словами інсайдера, процитованого у вчорашній національній газеті.
+
+STR-405953
+Телевізійний експерт заявив, що це «не вкладається в голові», як менеджер клубу [%club#1] може вважати, що [%string#1 Player Name (eg. Marc Vaughan)] додає хоч щось грі команди.
+
+STR-405954
+[%string#1 Player Name (eg. Marc Vaughan)] настільки невдало розпочав виступи за клуб [%club#1], що медіа вже міркують про можливу заміну для нього!
+
+STR-405956
+У списку найгірших трансферів поточного сезону опинилося нещодавнє придбання гравця [%string#1 Player Name (eg. Marc Vaughan)] клубом [%club#1].
+
+STR-405957
+Рейтинг найгірших трансферів у країні [%nation#1] цього сезону виділив нещодавнє придбання гравця [%string#1 Player Name (eg. Marc Vaughan)] клубом [%club#1].
+
+STR-405958
+Гравець команди [%club#1] [%string#1 Player Name (eg. Francesco Totti)] заявив, що вкрай розчарований браком взаєморозуміння з менеджером [%string#2 Manager Name (eg Fabio Capello)].\n\n[%string#3 Player Name (eg Totti)] додав, що очікує незабаром відходу одного з них із клубу.
+
+STR-405959
+Менеджер клубу [%club#1] [%string#1 Manager Name (eg Fabio Capello)] зазнав критики з боку свого підопічного.\n\n[%string#2 Player Name (eg. Francesco Totti)] заявив, що не вірить у здатність наставника [%string#3 Manager Name (eg Capello)] мотивувати гравців, і тому варто покращити навички спілкування.
+
+STR-405960
+Низка слабких матчів [%string#1 Player Name (eg. Marc Vaughan)] викликала спекуляції у пресі щодо можливого конфлікту між ним і наставником [%string#2 Manager Name (eg Fabio Capello)].
+
+STR-405961
+Гравець команди [%club#1] [%string#1 Player Name (eg. Francesco Totti)] заявив, що його спад форми в останніх іграх спричинений нерозумінням з боку менеджера [%string#2 Manager Name (eg Fabio Capello)].\n\n[%string#3 Player Name (eg Totti)] зазначив, що очікує відходу одного з них із клубу найближчим часом.
+
+STR-405962
+[%string#1 Player Name (eg. Francesco Totti)] поклав провину за свій спад форми на тренера [%string#2 Manager Name (eg Fabio Capello)].\n\n[%string#3 Player Name (eg Totti)] підкреслив, що ніколи не набере оптимальних кондицій, доки [%string#4 Manager Name (eg Capello)] залишається в клубі.
+
+STR-405963
+Слабкі виступи футболіста команди [%club#1] [%string#1 Player Name (eg. Francesco Totti)] призвели до чуток у пресі про нефутбольні причини цього.\n\nПодейкують, що стосунки між гравцем [%string#2 Player Name (eg Totti)] та менеджером [%string#3 Manager Name (eg Fabio Capello)] останнім часом суттєво погіршилися.
+
+STR-405964
+Слабкі виступи футболіста команди [%club#1] [%string#1 Player Name (eg. Francesco Totti)] викликали припущення у пресі країни [%nation#1], що справжня причина криється за межами поля.\n\nПодейкують, що стосунки гравця [%string#2 Player Name (eg Totti)] із тренером [%string#3 Manager Name (eg Fabio Capello)] останнім часом дали тріщину.
+
+STR-405967
+Як повідомляє [%string#1 Media type (eg Italian newspaper)], недбале ставлення до тренувань з боку [%string#2 Player Name (eg. Marc Vaughan)] ([%club#1]) подає поганий приклад молодим гравцям.
+
+STR-405968
+За інформацією [%string#1 Media type (eg Italian newspaper)], небажання гравця [%string#2 Player Name (eg. Marc Vaughan)] ([%club#1]) купувати житло поблизу свідчить про те, що він не має наміру надовго залишатися в команді.
+
+STR-405969
+У соцмережах поширюються чутки, що [%string#1 - Player Name] ([%club#1-short]) виставив свій будинок на продаж, оскільки розглядає можливість відходу з клубу.
+
+STR-405970
+Газети припускають, що [%string#1 Player Name (eg. Matthew Etherington)] ([%club#1]) важко адаптується, оскільки не має поблизу ні сім'ї, ні друзів.
+
+STR-405971
+Преса країни [%nation#1] зазначає, що [%string#1 Player Name (eg. Matthew Etherington)] ([%club#1]) важко адаптується, оскільки не має поблизу ні сім'ї, ні друзів.
+
+STR-405972
+Видання [%string#1 Media type (eg local english paper)] стверджує, що гравець клубу [%club#1] [%string#2 Player Name (eg. Marc Vaughan)] сумує за домом і хоче повернутися на батьківщину до країни [%nation#1].
+
+STR-405973
+Як повідомляє [%string#1 Media type (eg Spanish sports paper)], футболіст команди [%club#1] [%string#2 Player Name (eg. Marc Vaughan)] сумує за домом і вже контактував із кількома клубами країни [%nation#1] щодо можливого повернення.
+
+STR-405974
+Видання [%string#1 Media type (eg Spanish sports paper)] інформує: хоча [%string#2 Player Name (eg. Marc Vaughan)] ([%club#1]) добре почувається в клубі, він хоче закінчити ігрову кар'єру на батьківщині в країні [%nation#1].

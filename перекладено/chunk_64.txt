@@ -1,0 +1,493 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-418826
+[%string#3 - Coach Name] believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] has reacted negatively to [%person#1-your] recent praise. [%person#2-He] feels that the manager needs to let [%person#2-him] focus on [%person#2-his] own game rather than constantly having the manager in [%person#2-his] ear.
+
+STR-418827
+[%person#1-Your] assistant believes that [%position#1-lowercase_no_sides] [%string#2 - Player Name] has reacted negatively to [%person#1-your] recent praise. [%person#2-He] feels that the manager needs to let [%person#2-him] focus on [%person#2-his] own game rather than constantly having the manager in [%person#2-his] ear.
+
+STR-418873
+[%person#1-Your] appeal was unsuccessful.
+
+STR-418878
+Tap a position on the pitch to choose new position to learn.
+
+STR-418879
+Selected Position
+
+STR-418880
+Current Ability
+
+STR-418881
+[%string#1 - Manager Name] has stood down from [%person#1-his] position as manager of [%nation#1].\n\nHowever, [%person#1-he] has outlined [%person#1-his] desire to remain a part of the national squad.
+
+STR-418882
+[%club#1] and [%club#2]
+
+STR-418883
+[%club#1], [%club#2] and [%club#3]
+
+STR-418884
+[%club#1], [%club#2], [%club#3] and [%club#4]
+
+STR-418885
+[%club#1], [%club#2], [%club#3], [%club#4] and [%club#5]
+
+STR-418886
+[%club#1], [%club#2], [%club#3], [%club#4] [%club#5] and [%club#6]
+
+STR-418887
+[%club#1], [%club#2], [%club#3], [%club#4], [%club#5], [%club#6] and [%club#7]
+
+STR-418888
+[%club#1], [%club#2], [%club#3], [%club#4], [%club#5], [%club#6], [%club#7] and [%club#8]
+
+STR-418889
+[%club#1] have been drawn in [%string#1 group name(e.g.Group A)] along with [%string#2 list of teams(e.g.AC Milan, Barcelona and Real Madrid)].
+
+STR-418890
+\n\nGroup matches will start on [%string#1 Date string(e.g.11th November 1999)].
+
+STR-418891
+\n\nMatches will start on [%string#1 Date string].
+
+STR-418892
+[%comp#1] playoff drawn
+
+STR-418893
+[%comp#1] groups drawn
+
+STR-418894
+[%club#1] will play [%club#2] in the [%string#1 Fixture name(e.g.Scottish Cup Quarter Final)].
+
+STR-418895
+[%club#1] will play away to [%club#2] in the [%string#1 fixture].
+
+STR-418896
+[%club#1] will play at home to [%club#2] in the [%string#1 fixture].
+
+STR-418897
+\n\nThe first leg will be played on [%string#1 date] with [%club#1] at home.
+
+STR-418898
+\n\nThe first leg will be played on [%string#1 Date string(e.g.Wednesday 11th October 1999 )].
+
+STR-418899
+\n\nThe game will be played on [%string#1 Date(e.g.Wednesday 11th October 1999)].
+
+STR-418900
+[%string#1 fixture name(e.g.Scottish Cup Quarter Final] draw
+
+STR-418901
+[%club#1] will play either [%club#2], [%club#3], [%club#4], or [%club#5] in the [%string#1 Fixture name(e.g.Scottish Cup Quarter Final)].
+
+STR-418902
+[%club#1] will play either [%club#2], [%club#3], or [%club#4] in the [%string#1 Fixture name(e.g.Scottish Cup Quarter Final)].
+
+STR-418903
+[%club#1] will play either [%club#2] or [%club#3] in the [%string#1 Fixture name(e.g.Scottish Cup Quarter Final)].
+
+STR-418906
+State of the art
+
+STR-418908
+Poor
+
+STR-418909
+Enjoying [%person#1-his] role at the club
+
+STR-418910
+Angry that [%person#1-his] players aren't listening to [%person#1-him]
+
+STR-418911
+Confident [%person#1-he] can turn things around
+
+STR-418912
+Hopeful [%person#1-he] can turn things around
+
+STR-418913
+Finding [%person#1-his] role challenging
+
+STR-418916
+Preparing to join [%person#1-his] new club
+
+STR-418917
+Looking forward to joining [%person#1-his] new club
+
+STR-418918
+Eager to join [%person#1-his] new club
+
+STR-418919
+Has fond memories of [%person#1-his] time at the club
+
+STR-418922
+Feels [%person#2-full] knows how to get the best out of [%person#1-him]
+
+STR-418923
+Feels [%person#1-he] works well with [%person#2-full] on the training ground
+
+STR-418924
+Feels [%person#1-he] can learn a lot from [%person#2-surname]
+
+STR-418930
+Striving to ensure [%person#1-he] obtains a new contract.
+
+STR-418931
+Wkp
+
+STR-418932
+No work permit
+
+STR-418933
+Cup tied under competition rules
+
+STR-418934
+Unavailable due to injury
+
+STR-418935
+Una
+
+STR-418936
+Improve Youth Facilities
+
+STR-418945
+You have confirmed your [%nation#1] squad for the [%comp#1] finals.\n\n
+
+STR-418946
+You have confirmed your [%nation#1] squad for the match against [%nation#2].\n\n
+
+STR-418947
+You have confirmed your [%nation#1] squad for the matches against [%string#1 Nation List(e.g.Holland and Belgium)].\n\n
+
+STR-418948
+You have confirmed your [%nation#1] squad for the forthcoming matches.\n\n
+
+STR-418949
+The national media have already questioned the inclusion of [%string#1 Player name(e.g.Kevin James)].\n\n
+
+STR-418950
+The fans have already started to show their disappointment at the omission of [%string#1 Player name(e.g.Kevin James)] from the squad.\n\n
+
+STR-418951
+The national media are already speculating about the surprise inclusion of [%string#1 Player name 1(e.g.Kevin James)] and the notable absence of [%string#2 Player name 2(e.g.Kevin James)].\n\n
+
+STR-418952
+The initial media response to the squad selection has been favourable.\n\n
+
+STR-418953
+[%nation#1] squad confirmed
+
+STR-418954
+You have been requested to select [%nation#1]{s} squad for the [%comp#1] finals.\n\n
+
+STR-418956
+You have been requested to select a squad for [%nation#1]{s} upcoming matches against [%string#1 Nation List(e.g.Holland and Belgium)].\n\n
+
+STR-418957
+You have been requested to select a squad for [%nation#1]{s} forthcoming matches.\n\n
+
+STR-418958
+The squad must have a total of [%number#1] players, from which your line-up will be selected.
+
+STR-418959
+The squad can have between [%number#1] and [%number#2] players.
+
+STR-418960
+The squad can have upto [%number#1] players.
+
+STR-418961
+You have submitted your squad.
+
+STR-418962
+[%nation#1] squad to be decided
+
+STR-418964
+[%person#1-surname] is planning to retire in the near future.
+
+STR-418966
+However, [%person#1-he] states this player cannot be signed as [%person#2-he] is not of Basque nationality.
+
+STR-418968
+[%person#1-surname] has a number of concerns about [%person#2-surname] and would suggest pursuing other targets.
+
+STR-418970
+[%person#1-surname] believes that [%person#2-surname] has the potential to become a world class player in the future.
+
+STR-418972
+[%person#1-surname] believes that [%person#2-surname] should be signed at all costs.
+
+STR-418974
+[%person#1-surname] believes that [%person#2-surname] has the potential to become a star player at the club.
+
+STR-418976
+[%person#1-surname] believes that [%person#2-surname] has the potential to become an important member of the first team.
+Polish Reference:
+STR-418826
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] zareagował negatywnie na twoje niedawne pochwały. Zawodnik uważa, że menedżer powinien pozwolić mu w spokoju pracować, zamiast ustawicznie zawracać mu czymś głowę.[%male#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] zareagowała negatywnie na twoje niedawne pochwały. Zawodniczka uważa, że menedżer powinien pozwolić jej w spokoju pracować, zamiast ustawicznie zawracać jej czymś głowę.[%male#1-hidden][%female#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] zareagował negatywnie na twoje niedawne pochwały. Zawodnik uważa, że menedżerka powinna pozwolić mu w spokoju pracować, zamiast ustawicznie zawracać mu czymś głowę.[%female#1-hidden][%male#2-hidden]
+[%string#3 - Coach Name] uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] zareagowała negatywnie na twoje niedawne pochwały. Zawodniczka uważa, że menedżerka powinna pozwolić jej w spokoju pracować, zamiast ustawicznie zawracać jej czymś głowę.[%female#1-hidden][%female#2-hidden]
+
+STR-418827
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] zareagował negatywnie na twoje niedawne pochwały. Zawodnik uważa, że menedżer powinien pozwolić mu w spokoju pracować, zamiast ustawicznie zawracać mu czymś głowę.[%male#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] zareagowała negatywnie na twoje niedawne pochwały. Zawodniczka uważa, że menedżer powinien pozwolić jej w spokoju pracować, zamiast ustawicznie zawracać jej czymś głowę.[%male#1-hidden][%female#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] zareagował negatywnie na twoje niedawne pochwały. Zawodnik uważa, że menedżerka powinna pozwolić mu w spokoju pracować, zamiast ustawicznie zawracać mu czymś głowę.[%female#1-hidden][%male#2-hidden]
+Twój asystent uważa, że [%position#1-lowercase_no_sides] [%string#2 - Player Name] zareagowała negatywnie na twoje niedawne pochwały. Zawodniczka uważa, że menedżerka powinna pozwolić jej w spokoju pracować, zamiast ustawicznie zawracać jej czymś głowę.[%female#1-hidden][%female#2-hidden]
+
+STR-418873
+Twoje odwołanie zakończyło się niepowodzeniem.[%male#1-hidden]
+
+STR-418878
+Stuknij na pozycji na boisku, by wybrać nową pozycję do wytrenowania.
+
+STR-418879
+Wybrana pozycja
+
+STR-418880
+Obecne umiejętności
+
+STR-418881
+[%string#1 - Manager Name] ([%nation#1]) ustąpił z funkcji selekcjonera.\n\nDał wszakże do zrozumienia, że pragnie pozostać częścią reprezentacji.[%male#1-hidden]
+[%string#1 - Manager Name] ([%nation#1]) ustąpiła z funkcji selekcjonerki.\n\nDała wszakże do zrozumienia, że pragnie pozostać częścią reprezentacji.[%female#1-hidden]
+
+STR-418882
+[%club#1] oraz [%club#2]
+
+STR-418883
+[%club#1], [%club#2] oraz [%club#3]
+
+STR-418884
+[%club#1], [%club#2], [%club#3] oraz [%club#4]
+
+STR-418885
+[%club#1], [%club#2], [%club#3], [%club#4] oraz [%club#5]
+
+STR-418886
+[%club#1], [%club#2], [%club#3], [%club#4][%club#5] oraz [%club#6]
+
+STR-418887
+[%club#1], [%club#2], [%club#3], [%club#4], [%club#5], [%club#6] oraz [%club#7]
+
+STR-418888
+[%club#1], [%club#2], [%club#3], [%club#4], [%club#5], [%club#6], [%club#7] oraz [%club#8]
+
+STR-418889
+[%string#1 group name(e.g.Group A)]: [%club#1] oraz [%string#2 list of teams(e.g.AC Milan, Barcelona and Real Madrid)] znalazły się w jednej grupie.
+
+STR-418890
+\n\nMecze grupowe rozpoczną się [%string#1 Date string(e.g.11th November 1999)].
+
+STR-418891
+\n\nMecze rozpoczną się [%string#1 Date string].
+
+STR-418892
+[%comp#1]: Losowanie baraży
+
+STR-418893
+[%comp#1]: Losowanie grup
+
+STR-418894
+[%string#1 Fixture name(e.g.Scottish Cup Quarter Final)]: w tej fazie rozgrywek [%club#1]{rozegra} mecz, w którym przeciwnikiem {będzie}[%club#2].
+
+STR-418895
+[%string#1 fixture]: [%club#1]{zagra} na wyjeździe, a ich przeciwnikiem {będzie}[%club#2].
+
+STR-418896
+[%string#1 fixture]: [%club#1]{zagra} przed własną widownią, a ich przeciwnikiem {będzie}[%club#2].
+
+STR-418897
+\n\nPierwszy mecz rozegrany zostanie [%string#1 date], a jego gospodarzem {będzie}[%club#1].
+
+STR-418898
+\n\nPierwszy mecz rozegrany zostanie [%string#1 Date string(e.g.Wednesday 11th October 1999 )].
+
+STR-418899
+\n\nMecz rozegrany zostanie [%string#1 Date(e.g.Wednesday 11th October 1999)].
+
+STR-418900
+[%string#1 fixture name(e.g.Scottish Cup Quarter Final]: Losowanie
+
+STR-418901
+[%club#1] oraz [%club#2], [%club#3], [%club#4] lub [%club#5] zmierzą się w kolejnej fazie rozgrywek ([%string#1 Fixture name(e.g.Scottish Cup Quarter Final)]).
+
+STR-418902
+[%club#1] oraz [%club#2], [%club#3] lub [%club#4] zmierzą się w kolejnej fazie rozgrywek ([%string#1 Fixture name(e.g.Scottish Cup Quarter Final)]).
+
+STR-418903
+[%club#1] oraz [%club#2] lub [%club#3] zmierzą się w kolejnej fazie rozgrywek ([%string#1 Fixture name(e.g.Scottish Cup Quarter Final)]).
+
+STR-418906
+Ultranowoczesne
+
+STR-418908
+Kiepskie
+
+STR-418909
+Jest zadowolony z roli, jaką odgrywa w klubie[%male#1-hidden]
+Jest zadowolona z roli, jaką odgrywa w klubie[%female#1-hidden]
+
+STR-418910
+Rozzłoszczony, że piłkarze go nie słuchają[%male#1-hidden]
+Rozzłoszczona, że piłkarze jej nie słuchają[%female#1-hidden]
+
+STR-418911
+Przekonany, że jest w stanie postawić zespół na nogi[%male#1-hidden]
+Przekonana, że jest w stanie postawić zespół na nogi[%female#1-hidden]
+
+STR-418912
+Ma nadzieję, że zdoła postawić zespół na nogi[%male#1-hidden]
+
+STR-418913
+Uważa swoją rolę za spore wyzwanie[%male#1-hidden]
+
+STR-418916
+Przygotowuje się na przejście do nowego klubu[%male#1-hidden]
+
+STR-418917
+Cieszy się na przejście do nowego klubu[%male#1-hidden]
+
+STR-418918
+Nie może się doczekać przejścia do nowego klubu[%male#1-hidden]
+
+STR-418919
+Mile wspomina czas spędzony w klubie[%male#1-hidden]
+
+STR-418922
+Uważa, że [%male#2-full] wie, jak sprawić, by grał na maksimum swoich możliwości[%male#1-hidden]
+Uważa, że [%male#2-full] wie, jak sprawić, by grała na maksimum swoich możliwości[%female#1-hidden]
+Uważa, że [%female#2-full] wie, jak sprawić, by grał na maksimum swoich możliwości[%male#1-hidden]
+Uważa, że [%female#2-full] wie, jak sprawić, by grała na maksimum swoich możliwości[%female#1-hidden]
+
+STR-418923
+Uważa, że [%male#2-full] i on dobrze współpracują ze sobą na treningach[%male#1-hidden]
+Uważa, że [%male#2-full] i ona dobrze współpracują ze sobą na treningach[%female#1-hidden]
+
+STR-418924
+Uważa, że [%male#2-surname] może go wiele nauczyć[%male#1-hidden]
+Uważa, że [%male#2-surname] może ją wiele nauczyć[%female#1-hidden]
+
+STR-418930
+Stara się doprowadzić do przedłużenia kontraktu.[%male#1-hidden]
+
+STR-418931
+PnP
+
+STR-418932
+Brak zezwolenia na pracę
+
+STR-418933
+Nieuprawniony na podstawie regulaminu rozgrywek
+
+STR-418934
+Brak dostępności wskutek kontuzji
+
+STR-418935
+NMZ
+
+STR-418936
+Rozbudowa obiektów młodzieżowych
+
+STR-418945
+Zatwierdzono skład [%nation#1-nationality1]ej drużyny narodowej na turniej finałowy ([%comp#1]).\n\n
+
+STR-418946
+Zatwierdzono skład [%nation#1-nationality1]ej drużyny narodowej na mecz, w którym przeciwnikiem {będzie}[%nation#2].\n\n
+
+STR-418947
+Zatwierdzono skład [%nation#1-nationality1]ej drużyny narodowej na mecze, w których przeciwnikami będą [%string#1 Nation List(e.g.Holland and Belgium)].\n\n
+
+STR-418948
+Zatwierdzono skład [%nation#1-nationality1]ej drużyny narodowej na najbliższe spotkania.\n\n
+
+STR-418949
+Media już zdążyły zakwestionować sens decyzji, by w zespole znalazł się [%string#1 Player name(e.g.Kevin James)].\n\n
+
+STR-418950
+Kibice już zdążyli wyrazić rozczarowanie tym, że w drużynie nie znalazł się [%string#1 Player name(e.g.Kevin James)].\n\n
+
+STR-418951
+Media już doszukują się drugiego dna w fakcie, że w zespole nieoczekiwanie miejsce ma [%string#1 Player name 1(e.g.Kevin James)], za to [%string#2 Player name 2(e.g.Kevin James)] jest poza składem.\n\n
+
+STR-418952
+Pierwsze reakcje mediów na powołania są zachęcające.\n\n
+
+STR-418953
+Zatwierdzenie składu [%nation#1-nationality1]ej reprezentacji
+
+STR-418954
+Poproszono cię o wybranie składu [%nation#1-nationality1]ej reprezentacji na zbliżający się turniej finałowy ([%comp#1]).\n\n
+
+STR-418956
+Poproszono cię o wybranie składu [%nation#1-nationality1]ej reprezentacji na zbliżające się mecze, w których przeciwnikami będą [%string#1 Nation List(e.g.Holland and Belgium)].\n\n
+
+STR-418957
+Poproszono cię o wybranie składu [%nation#1-nationality1]ej reprezentacji na najbliższe mecze.\n\n
+
+STR-418958
+W zespole może być najwyżej [%number#1] zawodników, spośród których wybierzesz skład meczowy.
+
+STR-418959
+W zespole może być od [%number#1] do [%number#2] zawodników.
+
+STR-418960
+W zespole może być maksymalnie [%number#1] zawodników.
+
+STR-418961
+Skład zespołu został zgłoszony.
+
+STR-418962
+[%nation#1]: Termin zgłoszenia składu
+
+STR-418964
+[%male#1-surname] zamierza wkrótce zakończyć karierę.
+
+STR-418966
+Dodaje wszakże, że tego piłkarza nie można zatrudnić, gdyż nie jest narodowości baskijskiej.[%male#1-hidden][%male#2-hidden]
+Dodaje wszakże, że tej piłkarki nie można zatrudnić, gdyż nie jest narodowości baskijskiej.[%male#1-hidden][%female#2-hidden]
+Dodaje wszakże, że tego piłkarza nie można zatrudnić, gdyż nie jest narodowości baskijskiej.[%female#1-hidden][%female#2-hidden]
+
+STR-418968
+[%male#2-surname] budzi zastrzeżenia u twojego scouta i [%male#1-surname] sugeruje poświęcenie uwagi innym celom transferowym.
+[%male#2-surname] budzi zastrzeżenia u twojej scoutki i [%female#1-surname] sugeruje poświęcenie uwagi innym celom transferowym.
+
+STR-418970
+[%male#1-surname] uważa, że [%male#2-surname] ma potencjał by zostać w przyszłości piłkarzem światowego formatu.
+[%male#1-surname] uważa, że [%female#2-surname] ma potencjał by zostać w przyszłości piłkarką światowego formatu.
+[%female#1-surname] uważa, że [%male#2-surname] ma potencjał by zostać w przyszłości piłkarzem światowego formatu.
+[%female#1-surname] uważa, że [%female#2-surname] ma potencjał by zostać w przyszłości piłkarką światowego formatu.
+
+STR-418972
+[%male#1-surname] uważa, że [%male#2-surname] powinien zostać kupiony bez względu na koszty.
+[%male#1-surname] uważa, że [%female#2-surname] powinna zostać kupiona bez względu na koszty.
+[%female#1-surname] uważa, że [%male#2-surname] powinien zostać kupiony bez względu na koszty.
+[%female#1-surname] uważa, że [%female#2-surname] powinna zostać kupiona bez względu na koszty.
+
+STR-418974
+[%male#1-surname] uważa, że [%male#2-surname] ma potencjał, by zostać w przyszłości gwiazdą klubu.
+
+STR-418976
+[%male#1-surname] uważa, że [%male#2-surname] ma potencjał, by zostać w przyszłości ważnym zawodnikiem klubu.
+[%male#1-surname] uważa, że [%female#2-surname] ma potencjał, by zostać w przyszłości ważną zawodniczką klubu.
+[%female#1-surname] uważa, że [%male#2-surname] ma potencjał, by zostać w przyszłości ważnym zawodnikiem klubu.
+[%female#1-surname] uważa, że [%female#2-surname] ma potencjał, by zostać w przyszłości ważną zawodniczką klubu.

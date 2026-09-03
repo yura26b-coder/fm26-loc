@@ -1,0 +1,485 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-442361
+A remarkable season for [%team#1-short] really began to pick up speed towards the end of the campaign. They are deservedly champions.
+
+STR-442362
+Once [%team#1-short] got rolling in the latter portion of season it looked hard to stop them going on to this success.
+
+STR-442363
+[%person#author-I] can't quite believe how good we were in that late run.
+
+STR-442364
+The race is won at the very end. Never forget that.
+
+STR-442365
+Have to admit [%person#author-I] thought we were going to fall short.
+
+STR-442366
+[%team#1-short] overcame a poor start to go on and win a title many thought impossible.
+
+STR-442367
+Talk about defying the odds! [%team#1-short] didn't let a bad start stop them from reaching for the sky in a fantastic and memorable season.
+
+STR-442368
+To win the title against all the odds and after such a bad start is almost incomprehensible. Well done [%team#1-short].
+
+STR-442369
+Anyone else refuse to panic after that start?
+
+STR-442370
+[%person#author-I] always had faith they'd bounce back, but not to this degree!
+
+STR-442371
+[%person#author-I] told everyone there was no need to panic!
+
+STR-442372
+[%person#author-I] still don't know what to make of all of this.
+
+STR-442373
+Where do you even begin with this season?
+
+STR-442374
+How exactly has this happened?
+
+STR-442375
+[%team#1-short] overcame a mid-season wobble to go on and win a title many thought impossible.
+
+STR-442376
+Talk about defying the odds! [%team#1-short] didn't let a shaky spell in the middle of the season prevent them from reaching for the sky in a fantastic and memorable season.
+
+STR-442377
+To win the title against all the odds and after losing form in the middle of the season is almost incomprehensible. Well done [%team#1-short].
+
+STR-442378
+Anyone else refuse to panic when things started to go wrong?
+
+STR-442379
+[%team#1-short] overcame a dubious run of late-season form to hold on and win a title many thought impossible.
+
+STR-442380
+Talk about defying the odds! [%team#1-short] didn't let a shaky finish prevent them from reaching for the sky in a fantastic and memorable season.
+
+STR-442381
+To win the title against all the odds and after losing form right at the end is almost incomprehensible. Well done [%team#1-short].
+
+STR-442382
+[%person#author-I] always had faith they'd hold on, even so believing something and actually seeing it are two very different things!
+
+STR-442383
+[%team#1-short] owe everything to a fantastic start to the season. That kick-started their assault on the title.
+
+STR-442384
+A truly impressive season for [%team#1-short] started superbly and never let up. They are deservedly champions.
+
+STR-442385
+[%person#author-I] can't say there was a great deal of competition.
+
+STR-442386
+Anyone else a little underwhelmed?
+
+STR-442387
+Have to admit [%person#author-I] was never really worried.
+
+STR-442388
+[%team#1-short] owe everything to a fantastic middle of the season. That gave them the momentum to go on and lift title.
+
+STR-442389
+A truly impressive season for [%team#1-short] really began to gain traction in the middle of the campaign. They are deservedly champions.
+
+STR-442390
+Once [%team#1-short] got rolling in the middle of season it looked hard to stop them going on to this success.
+
+STR-442391
+How important was that spell in the middle of the year!
+
+STR-442392
+[%person#author-I]'ll tell anyone who'll listen how vital those middle months of the season are. Look at how it helped us.
+
+STR-442393
+Never in doubt!
+
+STR-442394
+A successful season for [%team#1-short] really began to pick up speed towards the end of the campaign. They are deservedly champions.
+
+STR-442395
+[%team#1-short] overcame a poor start to go on and win a title many had tipped them for.
+
+STR-442396
+[%team#1-short] didn't let a bad start stop them from going on to win the title.
+
+STR-442397
+To win the title after such a bad start is very impressive. Well done [%team#1-short].
+
+STR-442398
+[%person#author-I] always had faith they'd bounce back.
+
+STR-442399
+[%person#author-I]'m not really that impressed.
+
+STR-442400
+Well...we were supposed to win it.
+
+STR-442401
+Everything eventually went to plan.
+
+STR-442402
+[%team#1-short] overcame a mid-season wobble to go on and win a title many had tipped them for.
+
+STR-442403
+[%team#1-short] didn't let a shaky spell in the middle of the season stop them from becoming champions.
+
+STR-442404
+To win the title after losing form in the middle of the season is very impressive. Well done [%team#1-short].
+
+STR-442405
+[%team#1-short] overcame a dubious run of late-season form to hold on and win a title many had tipped them for.
+
+STR-442406
+[%team#1-short] didn't let a shaky finish prevent them from completing a memorable season.
+
+STR-442407
+To win the title despite losing form right at the end takes some doing. Well done [%team#1-short].
+
+STR-442408
+[%team#1-short] owe everything to a fantastic start to the season. That kick-started an unlikely promotion push.
+
+STR-442409
+A remarkable season for [%team#1-short] started superbly and never let up. They are deservedly going up.
+
+STR-442410
+Once [%team#1-short] got rolling early in the season it looked hard to stop them going on to promotion.
+
+STR-442411
+[%team#1-short] owe their promotion to powering through the middle of the season. That really set them on their way.
+
+STR-442412
+A remarkable season for [%team#1-short] really began to pick up speed in the middle of the campaign. They are deservedly going up.
+
+STR-442413
+[%team#1-short] owe promotion to a rampant spell of form to finish the season. Nobody could keep pace.
+
+STR-442414
+A remarkable season for [%team#1-short] really began to pick up speed towards the end of the campaign. They are deservedly going up.
+
+STR-442415
+[%team#1-short] overcame a poor start to go on and secure a promotion many thought impossible.
+
+STR-442416
+To win promotion against all the odds and after such a bad start is almost incomprehensible. Well done [%team#1-short].
+
+STR-442417
+[%team#1-short] overcame a mid-season wobble to go on and win a promotion many thought impossible.
+
+STR-442418
+To win promotion against all the odds and after losing form in the middle of the season is almost incomprehensible. Well done [%team#1-short].
+
+STR-442419
+[%team#1-short] overcame a dubious run of late-season form to hold on and win a promotion many thought impossible.
+
+STR-442420
+To win promotion against all the odds and after losing form right at the end is almost incomprehensible. Well done [%team#1-short].
+
+STR-442421
+[%team#1-short] owe everything to a fantastic start to the season. That kick-started their assault on promotion.
+
+STR-442422
+A truly impressive season for [%team#1-short] started superbly and never let up. They are deservedly going up.
+
+STR-442423
+[%team#1-short] owe everything to a fantastic middle of the season. That gave them the momentum to go on and secure promotion.
+
+STR-442424
+A truly impressive season for [%team#1-short] really began to gain traction in the middle of the campaign. They are deservedly going up.
+
+STR-442425
+[%team#1-short] owe their promotion to a rampant spell of form to finish the season. Nobody could keep pace.
+
+STR-442426
+A successful season for [%team#1-short] really began to pick up speed towards the end of the campaign. They are deservedly going up.
+
+STR-442427
+[%team#1-short] overcame a poor start to go on and win a promotion many had tipped them for.
+
+STR-442428
+[%team#1-short] didn't let a bad start stop them from going on to win promotion.
+
+STR-442429
+To win promotion after such a bad start is very impressive. Well done [%team#1-short].
+
+STR-442430
+[%team#1-short] overcame a mid-season wobble to go on and win a promotion many had tipped them for.
+
+STR-442431
+[%team#1-short] didn't let a shaky spell in the middle of the season stop them from securing promotion.
+
+STR-442432
+To win promotion after losing form in the middle of the season is very impressive. Well done [%team#1-short].
+
+STR-442433
+Well...we were supposed to go up.
+
+STR-442434
+[%team#1-short] overcame a dubious run of late-season form to hold on and win a promotion many had tipped them for.
+
+STR-442435
+To win promotion despite losing form right at the end takes some doing. Well done [%team#1-short].
+
+STR-442436
+Well...we were supposed to do it.
+Polish Reference:
+STR-442361
+Dopiero pod koniec rozgrywek stało się jasne, że [%team#1-short]{będzie} mieć jednak udany sezon. W pełni zasłużyli na mistrzowski tytuł.
+
+STR-442362
+Gdy w drugiej połowie rozgrywek [%team#1-short]{złapał} właściwy rytm, stało się jasne, że trudno będzie zatrzymać ich triumfalny marsz na szczyt.
+
+STR-442363
+Aż nie mogę uwierzyć, jak dobrze graliśmy w samej końcówce.[%male#author-hidden]
+
+STR-442364
+Wyścig wygrywa ten, kto pierwszy dobiega do mety. Nie wolno o tym zapominać.
+
+STR-442365
+Muszę się przyznać - nie wierzyłem, że damy radę.[%male#author-hidden]
+Muszę się przyznać - nie wierzyłam, że damy radę.[%female#author-hidden]
+
+STR-442366
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w początkowej fazie sezonu, by wbrew pesymistom zakończyć rozgrywki z tytułem.
+
+STR-442367
+Tak się pokonuje przeciwności losu! [%team#1-short]{nie pozwolił}, by słaby początek rozgrywek pozbawił ich nadziei na fantastyczny, historyczny sezon.
+
+STR-442368
+Mistrzostwo wbrew wszelkim prognozom i mimo beznadziejnego początku sezonu jest niewiarygodnym osiągnięciem. Brawo, [%team#1-short]!
+
+STR-442369
+Ktoś jeszcze oparł się pokusie spanikowania po tym początku sezonu?
+
+STR-442370
+Zawsze wierzyłem, że się pozbierają, ale że aż tak?[%male#author-hidden]
+Zawsze wierzyłam, że się pozbierają, ale że aż tak?[%female#author-hidden]
+
+STR-442371
+A nie mówiłem, że nie ma co panikować?[%male#author-hidden]
+A nie mówiłam, że nie ma co panikować?[%female#author-hidden]
+
+STR-442372
+Nadal nie wiem, co o tym myśleć.[%male#author-hidden]
+
+STR-442373
+Nie ogarniam tego sezonu.
+
+STR-442374
+Jak to się właściwie stało?
+
+STR-442375
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w środkowej fazie sezonu, by mimo wszystko zakończyć rozgrywki z tytułem.
+
+STR-442376
+[%team#1-short]{zaliczył} niezapomniany i wyjątkowy sezon mimo problemów w środkowej fazie rozgrywek.
+
+STR-442377
+Mistrzostwo wbrew wszelkim prognozom i mimo katastrofalnej zadyszki na półmetku rozgrywek jest niewiarygodnym osiągnięciem. Brawo, [%team#1-short]!
+
+STR-442378
+Ktoś jeszcze oparł się pokusie spanikowania, gdy zaczęło nam iść pod górkę?
+
+STR-442379
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w końcowej fazie sezonu, by wbrew pesymistom zakończyć rozgrywki z tytułem.
+
+STR-442380
+[%team#1-short]{zaliczył} niezapomniany i wyjątkowy sezon mimo problemów w samej końcówce.
+
+STR-442381
+Mistrzostwo wbrew wszelkim prognozom i mimo katastrofalnej zadyszki na samym finiszu jest niewiarygodnym osiągnięciem. Brawo, [%team#1-short]!
+
+STR-442382
+Wierzyłem, że wytrzymają, ale co innego wierzyć, co innego zobaczyć to na własne oczy![%male#author-hidden]
+Wierzyłam, że wytrzymają, ale co innego wierzyć, co innego zobaczyć to na własne oczy![%female#author-hidden]
+
+STR-442383
+[%team#1-short]{zawdzięcza} wszystko doskonałej formie z początkowej fazy sezonu. To wtedy nabrali rozpędu, który poniósł ich po mistrzostwo.
+
+STR-442384
+[%team#1-short]{wszedł} świetnie w sezon, nie odpuszczając już aż samego końca. W pełni zasłużyli na ten tytuł.
+
+STR-442385
+Nie powiem, żeby rywale zawiesili nam wysoko poprzeczkę.[%male#author-hidden]
+
+STR-442386
+Ktoś jeszcze odczuwa niedosyt?
+
+STR-442387
+Muszę się przyznać, że ani przez moment się nie niepokoiłem.[%male#author-hidden]
+Muszę się przyznać, że ani przez moment się nie niepokoiłam.[%female#author-hidden]
+
+STR-442388
+[%team#1-short]{zawdzięcza} wszystko doskonałej formie ze środkowej fazy sezonu. To wtedy nabrali rozpędu, który poniósł ich w walce o tytuł.
+
+STR-442389
+Mniej więcej na półmetku rozgrywek [%team#1-short]{zaczął} grać na miarę swoich możliwości. Tak więc w pełni zasłużyli na mistrzostwo.
+
+STR-442390
+Gdy na półmetku rozgrywek [%team#1-short]{złapał} właściwy rytm, stało się jasne, że trudno będzie ich zatrzymać w marszu po sukces.
+
+STR-442391
+Jakże ważne były te wyniki w środkowej części sezonu!
+
+STR-442392
+Zawsze mówiłem, że wszystko rozstrzygnie się w środkowej części sezonu. Sami zobaczcie, ile wtedy osiągnęliśmy.[%male#author-hidden]
+Zawsze mówiłam, że wszystko rozstrzygnie się w środkowej części sezonu. Sami zobaczcie, ile wtedy osiągnęliśmy.[%female#author-hidden]
+
+STR-442393
+Ani na chwilę w nich nie zwątpiłem!
+
+STR-442394
+Dopiero na samym finiszu rozgrywek [%team#1-short]{zaczął} grać na miarę swoich możliwości. Niemniej jednak, w pełni zasłużyli na mistrzostwo.
+
+STR-442395
+[%team#1-short]{zdołał} pozbierać się po kiepskim początku sezonu, by zgodnie z oczekiwaniami wywalczyć tytuł.
+
+STR-442396
+Tak się pokonuje przeciwności losu! [%team#1-short]{nie pozwolił}, by słaby początek rozgrywek pokrzyżował im szyki w walce o mistrzostwo.
+
+STR-442397
+Trzeba się naprawdę postarać, by zdobyć tytuł mimo tak fatalnego wejścia w sezon. Brawo, [%team#1-short]!
+
+STR-442398
+Zawsze wierzyłem, że się pozbierają.[%male#author-hidden]
+Zawsze wierzyłam, że się pozbierają.[%female#author-hidden]
+
+STR-442399
+Też mi wielki sukces.[%male#author-hidden]
+
+STR-442400
+Cóż... przecież mieliśmy wygrać.
+
+STR-442401
+Koniec końców wszystko przebiegło zgodnie z planem.
+
+STR-442402
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w środkowej fazie sezonu, by zgodnie z oczekiwaniami zdobyć mistrzowski tytuł.
+
+STR-442403
+[%team#1-short]{nie pozwolił}, by nierówna forma na półmetku rozgrywek pokrzyżowała im szyki w walce o mistrzostwo.
+
+STR-442404
+Trzeba się naprawdę postarać, by zdobyć tytuł mimo zadyszki na półmetku rozgrywek. Brawo, [%team#1-short]!
+
+STR-442405
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w końcówce sezonu, by zgodnie z przewidywaniami zdobyć tytuł.
+
+STR-442406
+[%team#1-short]{zaliczył} niezapomniany sezon mimo problemów w samej końcówce.
+
+STR-442407
+Trzeba być naprawdę dobrym zespołem, by zdobyć tytuł mimo zadyszki na finiszu. Brawo, [%team#1-short]!
+
+STR-442408
+[%team#1-short]{zawdzięcza} wszystko doskonałej formie z początkowej fazy sezonu. To wtedy nabrali rozpędu, który poniósł ich aż po nieoczekiwany awans.
+
+STR-442409
+[%team#1-short]{wszedł} bardzo udanie w sezon, nie odpuszczając już aż samego końca. W pełni zasłużyli na awans.
+
+STR-442410
+Gdy już na starcie rozgrywek [%team#1-short]{złapał} właściwy rytm, stało się jasne, że trudno będzie ich zatrzymać w walce o awans.
+
+STR-442411
+[%team#1-short]{zawdzięcza} awans eksplozji formy w połowie sezonu. Kiedy już się rozpędzili, byli nie do zatrzymania.
+
+STR-442412
+Na półmetku rozgrywek zaczęło się stawać jasne, że [%team#1-short]{nie będzie} mieć poważniejszych problemów z wywalczeniem awansu.
+
+STR-442413
+[%team#1-short]{zawdzięcza} awans eksplozji formy w końcówce sezonu. Nikt nie był w stanie dotrzymać im tempa.
+
+STR-442414
+Dopiero pod koniec rozgrywek stało się jasne, że [%team#1-short]{będzie} mieć jednak udany sezon. W pełni zasłużyli na awans.
+
+STR-442415
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w początkowej fazie sezonu, by wbrew pesymistom zakończyć rozgrywki na miejscu dającym awans.
+
+STR-442416
+Awans wbrew wszelkim prognozom i mimo beznadziejnego początku sezonu jest niewiarygodnym osiągnięciem. Brawo, [%team#1-short]!
+
+STR-442417
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w środkowej fazie sezonu, by mimo wszystko zakończyć rozgrywki na miejscu dającym awans.
+
+STR-442418
+Awans wbrew wszelkim prognozom i mimo katastrofalnej zadyszki na półmetku rozgrywek jest niewiarygodnym osiągnięciem. Brawo, [%team#1-short]!
+
+STR-442419
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w końcowej fazie sezonu, by wbrew pesymistom zakończyć rozgrywki na miejscu dającym awans.
+
+STR-442420
+Awans wbrew wszelkim prognozom i mimo katastrofalnej zadyszki na samym finiszu jest niewiarygodnym osiągnięciem. Brawo, [%team#1-short]!
+
+STR-442421
+[%team#1-short]{zawdzięcza} wszystko doskonałej formie z początkowej fazy sezonu. To wtedy nabrali rozpędu, który poniósł ich po awans.
+
+STR-442422
+[%team#1-short]{wszedł} świetnie w sezon, nie odpuszczając już aż samego końca. W pełni zasłużyli na awans.
+
+STR-442423
+[%team#1-short]{zawdzięcza} wszystko doskonałej formie ze środkowej fazy sezonu. To wtedy nabrali rozpędu, który poniósł ich w walce o awans.
+
+STR-442424
+Mniej więcej na półmetku rozgrywek [%team#1-short]{zaczął} grać na miarę swoich możliwości. Tak więc w pełni zasłużyli na awans.
+
+STR-442425
+[%team#1-short]{zawdzięcza} awans eksplozji formy w końcówce sezonu. Nikt nie był w stanie dotrzymać im tempa.
+
+STR-442426
+Dopiero na samym finiszu rozgrywek [%team#1-short]{zaczął} grać na miarę swoich możliwości. Niemniej jednak, w pełni zasłużyli na awans.
+
+STR-442427
+[%team#1-short]{zdołał} pozbierać się po kiepskim początku sezonu, by zgodnie z oczekiwaniami wywalczyć awans.
+
+STR-442428
+[%team#1-short]{nie pozwolił}, by słaby początek rozgrywek pokrzyżował im szyki w walce o awans.
+
+STR-442429
+Trzeba się naprawdę postarać, by awansować mimo tak fatalnego wejścia w sezon. Brawo, [%team#1-short]!
+
+STR-442430
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w środkowej fazie sezonu, by zgodnie z oczekiwaniami wywalczyć awans do wyższej klasy rozgrywkowej.
+
+STR-442431
+[%team#1-short]{nie pozwolił}, by nierówna forma na półmetku rozgrywek pokrzyżowała im szyki w walce o awans.
+
+STR-442432
+Trzeba się naprawdę postarać, by wywalczyć awans mimo zadyszki na półmetku rozgrywek. Brawo, [%team#1-short]!
+
+STR-442433
+Cóż... przecież mieliśmy awansować.
+
+STR-442434
+[%team#1-short]{zdołał} przezwyciężyć pewne problemy w końcówce sezonu, by zgodnie z przewidywaniami wywalczyć awans.
+
+STR-442435
+Trzeba być naprawdę dobrym zespołem, by awansować mimo zadyszki na finiszu. Brawo, [%team#1-short]!
+
+STR-442436
+Cóż... przecież mieliśmy to osiągnąć.

@@ -1,0 +1,1366 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-409500
+Are [%person#2-you] sure [%person#2-you] want to sack [%person#1-full] as assistant manager? [%person#1-He] will remain at the club as a player.
+
+STR-409501
+Are [%person#2-you] sure [%person#2-you] want to sack [%person#1-full]? Once completed this action cannot be undone.
+
+STR-409502
+The board remind you that the club already has a full complement of physios
+
+STR-409503
+The board remind you that the club already has a full complement of scouts
+
+STR-409518
+Pos
+
+STR-409520
+Scout has no recent reports to display.
+
+STR-409521
+Injury Type
+
+STR-409522
+Injury Risk
+
+STR-409523
+Recurring Issues
+
+STR-409524
+Currently Injured
+
+STR-409531
+A Rehabilitation specialist will help players recover faster after they are injured.\n\nThey will also be able to suggest if a player requires extensive physiotherapy treatment or surgery for recurring injuries.
+
+STR-409532
+A general coach will help all players within your team to improve their game.
+
+STR-409533
+A defensive coach specialising in helping defensive players improve their game.\n\nA defensive player is a person who plays in a defender, sweeper or defensive midfielder position.
+
+STR-409534
+An attacking coach specialising in helping attacking players improve their game.\n\nAn attacking player is considered to be a person who plays in a striker, attacking midfielder or midfielder position.
+
+STR-409535
+A motivational coach specialises in helping players keep a positive mental attitude and be supportive of one another.\n\nTheir understanding of psychology can also help mitigate the negative effects of more disruptive players during training sessions.
+
+STR-409536
+A goalkeeping coach specialises in helping goalkeepers improve their ability.
+
+STR-409538
+A fitness coach specialises in helping players maximise their physical potential.\n\nThey will be able to help young players improve their speed, stamina and strength and older players with retaining their physical prime until later in their career.
+
+STR-409540
+A first team scout specialises in finding established players who can improve the current team.
+
+STR-409541
+A bargain hunter looks for players who represent good value. This includes looking for players on the transfer list or in the free agent market.
+
+STR-409542
+A youth scout specialises in finding exciting young prospects with potential to bring into the club.
+
+STR-409543
+A tactical analysts' expertise lies in scouting opposition teams to identify their strengths and weaknesses.
+
+STR-409546
+This competition has not been scheduled yet
+
+STR-409548
+Winner
+
+STR-409549
+Runner-Up
+
+STR-409552
+Team Records
+
+STR-409553
+Most Team Points
+
+STR-409554
+Most Team Goals
+
+STR-409556
+Most Team Bookings
+
+STR-409557
+Most Team Red Cards
+
+STR-409558
+Biggest home win
+
+STR-409559
+Biggest away win
+
+STR-409570
+Competitions Menu
+
+STR-409571
+Player Statistics (All Players)
+
+STR-409572
+Player Statistics (Goalkeepers Only)
+
+STR-409573
+Player Statistics (Defenders Only)
+
+STR-409574
+Player Statistics (Midfielders Only)
+
+STR-409575
+Player Statistics (Strikers Only)
+
+STR-409576
+Player Statistics
+
+STR-409577
+Transfer Rules
+
+STR-409578
+Disciplinary Rules
+
+STR-409579
+Competition Rules
+
+STR-409580
+Host Nation
+
+STR-409581
+Past Winner
+
+STR-409582
+First Seeds
+
+STR-409583
+Second Seeds
+
+STR-409584
+Third Seeds
+
+STR-409585
+Continental
+
+STR-409586
+Domestic Competitions
+
+STR-409588
+Continental Competitions
+
+STR-409589
+International Competitions
+
+STR-409590
+Holders
+
+STR-409591
+Overall
+
+STR-409592
+Home
+
+STR-409593
+Away
+
+STR-409594
+Pos
+
+STR-409595
+P
+
+STR-409598
+Offer
+
+STR-409625
+1 year
+
+STR-409626
+[%number#1] years
+
+STR-409627
+Signing On Fee
+
+STR-409631
+Special Thanks
+
+STR-409644
+Select Team's menu to display
+
+STR-409651
+English
+
+STR-409661
+Scouting Badge
+
+STR-409662
+Physio Badge
+
+STR-409665
+Club Teams
+
+STR-409666
+National Teams
+
+STR-409669
+Last 5 Mins
+
+STR-409670
+Match saved.
+
+STR-409671
+Processing Match
+
+STR-409672
+Making Tactical Changes
+
+STR-409673
+ET - HT
+
+STR-409674
+KO
+
+STR-409675
+The referee
+
+STR-409676
+the referee
+
+STR-409677
+Final
+
+STR-409678
+Latest Scores
+
+STR-409679
+[%string#1 player name] [%number#1] (pen)
+
+STR-409680
+Live Table
+
+STR-409681
+Pos
+
+STR-409682
+W
+
+STR-409683
+D
+
+STR-409684
+L
+
+STR-409685
+F
+
+STR-409686
+A
+
+STR-409687
+GD
+
+STR-409688
+Pts
+
+STR-409689
+Possession
+
+STR-409690
+Shots
+
+STR-409691
+Clear chances
+
+STR-409692
+Clear cut chances
+
+STR-409693
+Corners
+
+STR-409694
+Last 5 mins
+
+STR-409699
+Shootout:
+
+STR-409700
+[%string#1 player name] [%number#1]+[%number#2] (pen)
+
+STR-409701
+[%string#1 player name], [%number#1]+[%number#2] (pen)
+
+STR-409702
+[%string#1 player name], [%number#1] (pen)
+
+STR-409703
+Full Time
+
+STR-409704
+Half Time
+
+STR-409706
+ET - Half Time
+
+STR-409707
+Kick-Off
+
+STR-409708
+1st Half
+
+STR-409709
+2nd Half
+
+STR-409710
+ET - 1st Half
+
+STR-409711
+ET - 2nd Half
+
+STR-409713
+Agg: [%number#1]-[%number#2]
+
+STR-409714
+(c)
+
+STR-409715
+Ps (C)
+
+STR-409717
+Tk (W)
+
+STR-409718
+In
+
+STR-409719
+Hd (W)
+
+STR-409720
+Sh (on)
+
+STR-409721
+Cn
+
+STR-409722
+Rt
+
+STR-409723
+Gl
+
+STR-409725
+Sub[%number#1]
+
+STR-409726
+Players to Watch
+
+STR-409730
+Cn
+
+STR-409731
+Rt
+
+STR-409732
+Gl
+
+STR-409733
+Shots on target
+
+STR-409734
+Pass success
+
+STR-409735
+Cross success
+
+STR-409736
+Passes completed
+
+STR-409737
+Crosses completed
+
+STR-409738
+Tackles won
+
+STR-409739
+Headers won
+
+STR-409740
+Fouls
+
+STR-409741
+Offsides
+
+STR-409742
+Yellow cards
+
+STR-409743
+Red cards
+
+STR-409744
+Throw-ins
+
+STR-409745
+Loading match. Please wait...
+
+STR-409748
+No New Messages
+
+STR-409749
+1 New Message
+
+STR-409750
+[%number#1] New Messages
+
+STR-409751
+N
+
+STR-409752
+A
+
+STR-409753
+H
+
+STR-409755
+No available jobs
+
+STR-409756
+1 available job
+
+STR-409757
+[%number#1] available jobs
+
+STR-409758
+Trophy Cabinet
+
+STR-409760
+Job Offer
+
+STR-409761
+Reject Offer
+
+STR-409762
+Accept Offer
+
+STR-409763
+Club Expectations
+
+STR-409765
+Nation Summary
+
+STR-409766
+Continent: [%string#1 Continent (e.g. Europe)]
+
+STR-409767
+Club Summary
+
+STR-409769
+Transfer Budget:
+
+STR-409770
+Wage Budget:
+
+STR-409771
+Current Wage Total:
+
+STR-409773
+Select league to undertake the challenge in
+
+STR-409790
+Load Match
+
+STR-409791
+Please select the match to view
+
+STR-409792
+Are you sure you want to delete this saved match file?
+
+STR-409793
+Are you sure you want to delete all saved match files?
+
+STR-409801
+-
+
+STR-409812
+Holiday Options
+
+STR-409819
+Return from holiday on date:
+
+STR-409820
+Before next match ([%club#1-short]) - [%date#1]
+
+STR-409821
+Next match ([%date#1-shortest])
+
+STR-409822
+Next day ([%date#1-shortest])
+
+STR-409823
+Next week ([%date#1-shortest])
+
+STR-409824
+Next month ([%date#1-shortest])
+
+STR-409825
+Custom Date ([%date#1-shortest])
+
+STR-409826
+Manager Menu
+
+STR-409829
+First Name
+
+STR-409830
+Last Name
+
+STR-409849
+ET
+
+STR-409850
+Cn
+
+STR-409851
+Rt
+
+STR-409852
+Gl
+
+STR-409853
+Free kicks
+
+STR-409854
+As
+
+STR-409855
+Match Settings
+
+STR-409856
+Select View
+
+STR-409857
+Pitch
+
+STR-409858
+Commentary Only
+
+STR-409859
+Select Match Speed
+
+STR-409860
+Very Fast
+
+STR-409861
+Fast
+
+STR-409862
+Slow
+
+STR-409863
+Very Slow
+
+STR-409866
+Extended
+
+STR-409867
+Key
+
+STR-409926
+Warning
+
+STR-409932
+Retain Players - this will keep all of the players from the original club.\n\nRemove Players - this will remove all of the original club's players completely from the game.\n\nRelease Players - this will release all of the original club's players on a free transfer.
+
+STR-409933
+News Item Links
+
+STR-409934
+Select an item to be viewed
+
+STR-409935
+News Links
+
+STR-409936
+Tap an item to view
+
+STR-409937
+News
+
+STR-409938
+No unread news items
+
+STR-409939
+1 unread news item
+
+STR-409940
+[%number#1] unread news items
+
+STR-409942
+No news to display at this time.
+
+STR-409946
+Draw
+
+STR-409952
+Injuries
+
+STR-409953
+Suspensions
+
+STR-409961
+Part-Exchange Player Selection
+
+STR-409962
+No players are suitable for exchange.
+
+STR-409963
+Only players suitable for exchange are shown.
+
+STR-409965
+Player Match Eligibility
+
+STR-409966
+V
+
+STR-409967
+No matches scheduled
+
+STR-409968
+Selection
+
+STR-409969
+Unavailable due to suspension
+
+STR-409970
+Unavailable because of international duty
+
+STR-409971
+Ineligible under competition rules
+
+STR-409973
+Doubtful due to injury
+
+STR-409974
+Available
+
+STR-409975
+Status
+
+STR-409976
+Player Achievements (All)
+
+STR-409984
+Achievements (All)
+
+STR-409992
+Award
+
+STR-409993
+Club
+
+STR-409995
+Season
+
+STR-410010
+Manager Sacked
+
+STR-410011
+Club Bankrupt
+
+STR-410012
+League
+
+STR-410014
+Adverse
+Polish Reference:
+STR-409500
+Na pewno chcesz, by [%male#1-full] został zwolniony z funkcji asystenta menedżera? Tym samym pozostanie w klubie jako zawodnik.[%male#2-hidden]
+Na pewno chcesz, by [%female#1-full] została zwolniona z funkcji asystentki menedżera? Tym samym pozostanie w klubie jako zawodnik.[%male#2-hidden]
+Na pewno chcesz, by [%male#1-full] został zwolniony z funkcji asystenta menedżera? Tym samym pozostanie w klubie jako zawodnik.[%female#2-hidden]
+Na pewno chcesz, by [%female#1-full] została zwolniona z funkcji asystentki menedżera? Tym samym pozostanie w klubie jako zawodnik.[%female#2-hidden]
+
+STR-409501
+Na pewno chcesz, by [%male#1-full] został zwolniony z klubu? Tej akcji nie będzie można cofnąć.[%male#2-hidden]
+Na pewno chcesz, by [%female#1-full] została zwolniona z klubu? Tej akcji nie będzie można cofnąć.[%male#2-hidden]
+Na pewno chcesz, by [%male#1-full] został zwolniony z klubu? Tej akcji nie będzie można cofnąć.[%female#2-hidden]
+Na pewno chcesz, by [%female#1-full] została zwolniona z klubu? Tej akcji nie będzie można cofnąć.[%female#2-hidden]
+
+STR-409502
+Zarząd przypomina ci, że w klubie nie ma wolnych etatów dla fizjoterapeutów.
+
+STR-409503
+Zarząd przypomina ci, że w klubie nie ma wolnych etatów dla scoutów.
+
+STR-409518
+Poz.
+
+STR-409520
+Scout nie dysponuje nowymi raportami, które mógłby przedstawić.
+
+STR-409521
+Rodzaj kontuzji
+
+STR-409522
+Ryzyko kontuzji
+
+STR-409523
+Nawracające problemy
+
+STR-409524
+Kontuzjowany
+
+STR-409531
+Specjalista od rehabilitacji będzie pomagać zawodnikom w szybszym powrocie do zdrowia po kontuzji.\n\nBędzie też w stanie wskazać, którzy piłkarze potrzebują intensywnej fizjoterapii albo operacji w celu wyeliminowania nawracającej kontuzji.
+
+STR-409532
+Trener ogólny będzie w stanie pomóc zawodnikom w podniesieniu umiejętności.
+
+STR-409533
+Trener defensywny będzie w stanie pomóc defensywnym zawodnikom w podniesieniu umiejętności.\n\nZawodnicy defensywni grają na pozycjach obrońcy, ostatniego stopera i defensywnego pomocnika.
+
+STR-409534
+Trener ofensywny będzie w stanie pomóc ofensywnym zawodnikom w podniesieniu umiejętności.\n\nZawodnicy ofensywni grają na pozycjach napastnika, ofensywnego pomocnika i pomocnika.
+
+STR-409535
+Trener motywacyjny specjalizuje się w pomocy zawodnikom w utrzymywaniu pozytywnego podejścia i wspieraniu się nawzajem.\n\nIch znajomość psychologii pomaga też w redukcji negatywnego wpływu, jaki co bardziej destrukcyjni piłkarze mają na treningach.
+
+STR-409536
+Trener bramkarski będzie w stanie pomóc bramkarzom w podniesieniu umiejętności.
+
+STR-409538
+Trener kondycyjny będzie w stanie pomóc ofensywnym zawodnikom w rozwoju fizycznym.\n\nDzięki niemu młodzi zawodnicy będą podnosić szybkość, wytrzymałość i siłę, a starsi dłużej utrzymają się w wysokiej formie.
+
+STR-409540
+Scout pierwszego zespołu specjalizuje się w wyszukiwaniu zawodników, którzy mogą z marszu wzmocnić obecny skład.
+
+STR-409541
+Łowca okazji wyszukuje zawodników po okazyjnych cenach. Są to również piłkarze wystawieni na listę transferową oraz dostępni z wolnego transferu.
+
+STR-409542
+Scout juniorski specjalizuje się w wyszukiwaniu dla klubu młodych zawodników z dużym potencjałem.
+
+STR-409543
+Analityk taktyczny jest specjalistą od obserwacji zespołów rywali w celu identyfikacji ich mocnych i słabych punktów.
+
+STR-409546
+Terminarz tych rozgrywek jeszcze nie został ustalony
+
+STR-409548
+Zwycięzca
+
+STR-409549
+Drugie miejsce
+
+STR-409552
+Rekordy zespołowe
+
+STR-409553
+Najw. punktów (zespół)
+
+STR-409554
+Najw. bramek (zespół)
+
+STR-409556
+Najwięcej kartek (zespół)
+
+STR-409557
+Najw. czerw. kartek (zespół)
+
+STR-409558
+Najw. zwycięstwo u siebie
+
+STR-409559
+Najw. zwycięstwo na wyjeździe
+
+STR-409570
+Menu rozgrywek
+
+STR-409571
+Statystyki piłkarzy (wszyscy piłkarze)
+
+STR-409572
+Statystyki piłkarzy (tylko bramkarze)
+
+STR-409573
+Statystyki piłkarzy (tylko obrońcy)
+
+STR-409574
+Statystyki piłkarzy (tylko pomocnicy)
+
+STR-409575
+Statystyki piłkarzy (tylko napastnicy)
+
+STR-409576
+Statystyki piłkarzy
+
+STR-409577
+Przepisy transferowe
+
+STR-409578
+Przepisy dyscyplinarne
+
+STR-409579
+Przepisy rozgrywek
+
+STR-409580
+Gospodarz
+
+STR-409581
+Poprzedni zwycięzca
+
+STR-409582
+Pierwszy koszyk
+
+STR-409583
+Drugi koszyk
+
+STR-409584
+Trzeci koszyk
+
+STR-409585
+Kontynentalne
+
+STR-409586
+Rozgrywki krajowe
+
+STR-409588
+Rozgrywki kontynentalne
+
+STR-409589
+Rozgrywki międzynarodowe
+
+STR-409590
+Obrońcy tytułu
+
+STR-409591
+Ogółem
+
+STR-409592
+Dom
+
+STR-409593
+Wyjazd
+
+STR-409594
+Poz.
+
+STR-409595
+M
+
+STR-409598
+Oferta
+
+STR-409625
+1 rok
+
+STR-409626
+[%number#1] l.
+
+STR-409627
+Kwota gotówkowa
+
+STR-409631
+Specjalne podziękowania
+
+STR-409644
+Wybierz menu zespołu
+
+STR-409651
+angielski
+
+STR-409661
+Licencja scouta
+
+STR-409662
+Licencja fizjoterapeuty
+
+STR-409665
+Zespoły klubowe
+
+STR-409666
+Reprezentacje
+
+STR-409669
+Ost. 5 minut
+
+STR-409670
+Mecz zapisany.
+
+STR-409671
+Przetwarzanie meczu
+
+STR-409672
+Przeprowadzanie zmian taktycznych
+
+STR-409673
+PRZ D
+
+STR-409674
+RG
+
+STR-409675
+Sędzia
+
+STR-409676
+sędzia
+
+STR-409677
+Finał
+
+STR-409678
+Ostatnie wyniki
+
+STR-409679
+[%string#1 player name] [%number#1] (rz.k.)
+
+STR-409680
+Tabela na żywo
+
+STR-409681
+Poz.
+
+STR-409682
+Z
+
+STR-409683
+R
+
+STR-409684
+P
+
+STR-409685
+D
+
+STR-409686
+P
+
+STR-409687
+RB
+
+STR-409688
+Pkt
+
+STR-409689
+Posiadanie piłki
+
+STR-409690
+Strzały
+
+STR-409691
+Czyste sytuacje
+
+STR-409692
+100% sytuacje
+
+STR-409693
+Rzuty rożne
+
+STR-409694
+Ost. 5 minut
+
+STR-409699
+Rzuty karne:
+
+STR-409700
+[%string#1 player name] [%number#1]+[%number#2] (rz.k.)
+
+STR-409701
+[%string#1 player name] [%number#1]+[%number#2] (rz.k.)
+
+STR-409702
+[%string#1 player name], [%number#1] (rz.k.)
+
+STR-409703
+Koniec meczu
+
+STR-409704
+Przerwa
+
+STR-409706
+Dogr. - przerwa
+
+STR-409707
+Początek meczu
+
+STR-409708
+1. połowa
+
+STR-409709
+2. połowa
+
+STR-409710
+Dogr. - 1. poł.
+
+STR-409711
+Dogr. - 2. poł.
+
+STR-409713
+Dwm: [%number#1]-[%number#2]
+
+STR-409714
+(k)
+
+STR-409715
+PodC
+
+STR-409717
+WślUd
+
+STR-409718
+Prz
+
+STR-409719
+GłwW
+
+STR-409720
+StrC
+
+STR-409721
+Knd
+
+STR-409722
+Oc
+
+STR-409723
+Br
+
+STR-409725
+Rez[%number#1]
+
+STR-409726
+Potencjalne gwiazdy
+
+STR-409730
+Knd
+
+STR-409731
+Oc
+
+STR-409732
+Br
+
+STR-409733
+Celne strzały
+
+STR-409734
+Udane podania
+
+STR-409735
+Udane dośrodkowania
+
+STR-409736
+Celne podania
+
+STR-409737
+Celne dośrodkowania
+
+STR-409738
+Udane wślizgi
+
+STR-409739
+Wygrane pojedynki główkowe
+
+STR-409740
+Faule
+
+STR-409741
+Spalone
+
+STR-409742
+Żółte kartki
+
+STR-409743
+Czerwone kartki
+
+STR-409744
+Auty
+
+STR-409745
+Wczytywanie meczu. Zaczekaj...
+
+STR-409748
+Brak nieprzeczytanych
+
+STR-409749
+Nowe wiadomości: 1
+
+STR-409750
+Nowe wiadomości: [%number#1]
+
+STR-409751
+N
+
+STR-409752
+Goś
+
+STR-409753
+Gsp
+
+STR-409755
+Brak dostępnych posad
+
+STR-409756
+Dostępne posady: 1
+
+STR-409757
+Dostępne posady: [%number#1]
+
+STR-409758
+Szafka na trofea
+
+STR-409760
+Oferta pracy
+
+STR-409761
+Odrzuć ofertę
+
+STR-409762
+Przyjmij ofertę
+
+STR-409763
+Oczekiwania klubu
+
+STR-409765
+Reprezentacja - podsumowanie
+
+STR-409766
+Kontynent: [%string#1 Continent (e.g. Europe)]
+
+STR-409767
+Klub - podsumowanie
+
+STR-409769
+Budżet transferowy:
+
+STR-409770
+Budżet płac:
+
+STR-409771
+Obecne wydatki na płace:
+
+STR-409773
+Wybierz ligę, w której chcesz rozegrać wyzwanie
+
+STR-409790
+Wczytaj mecz
+
+STR-409791
+Wybierz mecz
+
+STR-409792
+Czy na pewno chcesz usunąć ten zapis meczowy?
+
+STR-409793
+Czy na pewno chcesz usunąć wszystkie zapisy meczowe?
+
+STR-409801
+-
+
+STR-409812
+Parametry urlopu
+
+STR-409819
+Data powrotu:
+
+STR-409820
+Przed następnym meczem ([%date#1-shortest]) - [%date#1-short]
+
+STR-409821
+Następny mecz ([%date#1-shortest])
+
+STR-409822
+Następnego dnia ([%date#1-shortest])
+
+STR-409823
+Za tydzień ([%date#1-shortest])
+
+STR-409824
+Za miesiąc ([%date#1-shortest])
+
+STR-409825
+Niestandardowa [%date#1-shortest]
+
+STR-409826
+Menu menedżera
+
+STR-409829
+Imię
+
+STR-409830
+Nazwisko
+
+STR-409849
+Dogr.
+
+STR-409850
+Knd
+
+STR-409851
+Oc
+
+STR-409852
+Br
+
+STR-409853
+Rzuty wolne
+
+STR-409854
+Asy
+
+STR-409855
+Ustawienia meczowe
+
+STR-409856
+Wybierz podgląd
+
+STR-409857
+Boisko
+
+STR-409858
+Tylko komentarz
+
+STR-409859
+Wybierz szybkość meczu
+
+STR-409860
+Bardzo szybka
+
+STR-409861
+Szybka
+
+STR-409862
+Wolna
+
+STR-409863
+Bardzo wolna
+
+STR-409866
+Rozszerzone
+
+STR-409867
+Kluczowe
+
+STR-409926
+Ostrzeżenie
+
+STR-409932
+Zatrzymaj zawodników - ta opcja zachowa wszystkich zawodników z pierwotnego klubu.\n\nUsuń zawodników - ta opcja całkowicie usunie wszystkich zawodników pierwotnego klubu z gry.\n\nZwolnij zawodników - ta opcja przeniesie wszystkich zawodników pierwotnego klubu na wolny transfer.
+
+STR-409933
+Łącza wiadomości
+
+STR-409934
+Wybierz obiekt do pokazania
+
+STR-409935
+Łącza wiadomości
+
+STR-409936
+Stuknij na obiekcie do pokazania
+
+STR-409937
+Wiadomości
+
+STR-409938
+Brak nieprzeczytanych
+
+STR-409939
+Nieprzeczytane: 1
+
+STR-409940
+Nieprzeczytane: [%number#1]
+
+STR-409942
+Brak wiadomości do pokazania.
+
+STR-409946
+Remis
+
+STR-409952
+Kontuzje
+
+STR-409953
+Zawieszenia
+
+STR-409961
+Wybór zawodnika na wymianę
+
+STR-409962
+Żaden zawodnik nie może zostać wymieniony.
+
+STR-409963
+Pokazani są tylko piłkarze, których można wymienić.
+
+STR-409965
+Dostępność piłkarza
+
+STR-409966
+Vs
+
+STR-409967
+Brak zaplanowanych spotkań
+
+STR-409968
+Wybór składu
+
+STR-409969
+Niedostępny wskutek zawieszenia
+
+STR-409970
+Niedostępny wskutek wyjazdu na zgrupowanie kadry
+
+STR-409971
+Nieuprawniony na podstawie regulaminu rozgrywek
+
+STR-409973
+Niepewny wskutek kontuzji
+
+STR-409974
+Może zagrać
+
+STR-409975
+Status
+
+STR-409976
+Osiągnięcia (wszystkie)
+
+STR-409984
+Osiągnięcia (wszystkie)
+
+STR-409992
+Nagroda
+
+STR-409993
+Klub
+
+STR-409995
+Sezon
+
+STR-410010
+Zwolniony menedżer
+
+STR-410011
+Bankrut
+
+STR-410012
+Liga
+
+STR-410014
+Wrogi

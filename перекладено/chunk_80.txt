@@ -1,0 +1,634 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-442511
+Longer this run goes on the better.
+
+STR-442512
+Buzzing to get off to a good start, long may it continue!
+
+STR-442513
+Setting ourselves up well for a title challenge here.
+
+STR-442514
+Not getting ahead of [%person#author-myself] here.
+
+STR-442515
+Don't be silly, of course we can't keep this going or challenge for the title.
+
+STR-442516
+It'll all fall apart soon enough.
+
+STR-442518
+This is such an important time of season to be playing well.
+
+STR-442520
+We're finishing strong, [%person#author-I]'m so excited.
+
+STR-442521
+The title is almost ours, keep the run going!
+
+STR-442522
+We're not going to do it.
+
+STR-442523
+Setting ourselves up well for a promotion challenge here.
+
+STR-442524
+Don't be silly, of course we can't keep this going or challenge for promotion.
+
+STR-442525
+Promotion is almost ours, keep the run going!
+
+STR-442526
+Buzzing to get off to a good start, we're gonna need all the points we can get!
+
+STR-442527
+Setting ourselves up well to avoid a survival battle here.
+
+STR-442528
+Don't be silly, of course we can't keep this going, we're going down.
+
+STR-442529
+Setting ourselves up well for survival here.
+
+STR-442530
+Don't be silly, of course we can't keep this going and stay up.
+
+STR-442531
+Safety is almost ours, keep the run going!
+
+STR-442532
+Setting ourselves up for a chance at survival here.
+
+STR-442533
+Don't be silly, of course we can't keep this going, we're not good enough to stay up.
+
+STR-442535
+This will put us in a position to at least be competitive.
+
+STR-442537
+Finishing strong, couldn't be prouder.
+
+STR-442538
+Would love to see the run continue!
+
+STR-442539
+Doesn't matter at this late stage of the season.
+
+STR-442540
+Too late.
+
+STR-442541
+What good is it going to do us?
+
+STR-442542
+Buzzing to get off to a good start!
+
+STR-442543
+Setting ourselves up well here.
+
+STR-442544
+Don't be silly, of course we can't keep this going.
+
+STR-442545
+This will put us in a good position for the second half of the season.
+
+STR-442546
+Gotta put an end to this slump if we're to continue to upset the odds and mount a title challenge.
+
+STR-442547
+Nobody expected us to challenge for the title, gotta find some form soon to carry on.
+
+STR-442548
+Lots of football left yet, time to find some form and continue this surprising title challenge.
+
+STR-442549
+This run only confirms what [%person#author-I]'ve been saying; we're not good enough to challenge for the title.
+
+STR-442550
+It's only going to get worse.
+
+STR-442551
+Hope everyone's ready for a whole season of this.
+
+STR-442552
+Gotta put an end to this run if we're to continue to upset the odds and really kick on in this title race.
+
+STR-442553
+Nobody expected us to challenge for the title but here we are. Got to get back on track soon though.
+
+STR-442554
+Time to find some form and continue this surprising title challenge into the second half of the season.
+
+STR-442555
+The season is going to fall apart now.
+
+STR-442556
+Hope everyone's ready for more disappointment.
+
+STR-442557
+If we're going to win this title, this run ends NOW.
+
+STR-442558
+Nobody expected us to challenge for the title but here we are. Can't throw it all away at this late stage of the season.
+
+STR-442559
+We have to get back on track, games are running out and so is our title challenge.
+
+STR-442560
+The season is falling apart.
+
+STR-442561
+Gotta put an end to this slump if we're to continue to upset the odds and mount a promotion challenge.
+
+STR-442562
+Nobody expected us to challenge for promotion, gotta find some form soon to carry on.
+
+STR-442563
+Lots of football left yet, time to find some form and continue our surprise promotion challenge.
+
+STR-442564
+This run only confirms what [%person#author-I]'ve been saying; we're not good enough to challenge for promotion.
+
+STR-442565
+Gotta put an end to this run if we're to continue to upset the odds and really kick on in this promotion race.
+
+STR-442566
+Nobody expected us to challenge for promotion but here we are. Got to get back on track soon though.
+
+STR-442567
+Time to find some form and continue our surprise promotion challenge into the second half of the season.
+
+STR-442568
+If we're going to win promotion, this run ends NOW.
+
+STR-442569
+Nobody expected us to challenge for promotion but here we are. Can't throw it all away at this late stage of the season.
+
+STR-442570
+We have to get back on track, games are running out and so is our promotion challenge.
+
+STR-442571
+Gotta put an end to this slump if we're to continue to upset the odds and mount a survival challenge.
+
+STR-442572
+Nobody expected us to challenge for survival, gotta find some form soon to carry on.
+
+STR-442573
+Lots of football left yet, time to find some form and continue this surprising bid to avoid relegation.
+
+STR-442574
+This run only confirms what [%person#author-I]'ve been saying; we're not good enough to stay up.
+
+STR-442575
+Gotta put an end to this run if we're to continue to upset the odds and have a chance of avoiding relegation.
+
+STR-442576
+Nobody expected us to stay up but here we are. Got to get back on track soon though.
+
+STR-442577
+Time to find some form and really try to avoid relegation going into the second half of the season.
+
+STR-442578
+If we're going to stay up, this run ends NOW.
+
+STR-442579
+Nobody expected us to avoid relegation but here we are. Can't throw it all away at this late stage of the season.
+
+STR-442580
+We have to get back on track, games are running out and so is our survival effort.
+
+STR-442581
+Gotta put an end to this slump if we're to continue to upset the odds this season.
+
+STR-442582
+Nobody expected us to be in this position, gotta find some form soon to carry on.
+
+STR-442583
+Lots of football left yet, time to find some form and continue to outperform expectations.
+
+STR-442584
+This run only confirms what [%person#author-I]'ve been saying; we're not good enough.
+
+STR-442585
+Gotta put an end to this run if we're to continue to upset the odds.
+
+STR-442586
+Nobody expected us to be in this position but here we are. Got to get back on track soon though.
+
+STR-442587
+Time to find some form and continue this surprising season into the second half.
+
+STR-442588
+If we're going to finish where we want to, this run ends NOW.
+
+STR-442589
+Nobody expected us to do what we've done so far but here we are. Can't throw it all away at this late stage of the season.
+
+STR-442590
+We have to get back on track, games are running out.
+
+STR-442591
+Gotta put some form together if we're to continue to upset the odds and mount a title challenge.
+
+STR-442592
+Nobody expected us to challenge for the title, a nice run of form would sure go down well right now.
+
+STR-442593
+Lots of football left yet, a good run soon would sure help our surprise title challenge.
+
+STR-442594
+Not convinced we've got what it takes to win the title.
+
+STR-442595
+Nothing's gonna help us win the title, be serious.
+
+STR-442596
+Hope everyone's ready for a season of disappointment.
+
+STR-442597
+A good run soon would sure help our surprise title challenge into the second half of the season.
+
+STR-442598
+Hope everyone's ready for the inevitable disappointment.
+
+STR-442599
+Gotta put some form together if we're to finish strong and actually win this title.
+
+STR-442600
+Nobody expected us to challenge for the title, a nice run of form would go a long way to securing it.
+
+STR-442601
+A good run at this late stage of the season would help bring the title home.
+
+STR-442602
+Not convinced we've got what it takes to secure the title.
+
+STR-442603
+Gotta put some form together if we're to continue to upset the odds and mount a promotion challenge.
+
+STR-442604
+Nobody expected us to challenge for promotion, a nice run of form would sure go down well right now.
+
+STR-442605
+Lots of football left yet, a good run soon would sure help our surprise promotion challenge.
+
+STR-442606
+Not convinced we've got what it takes to win promotion.
+
+STR-442607
+Nothing's gonna help us win promotion, be serious.
+
+STR-442608
+Gotta put some form together if we're to continue to upset the odds and mount a promotion push.
+
+STR-442609
+A good run soon would sure help our surprise promotion bid into the second half of the season.
+
+STR-442610
+Not convinced we've got what it takes to be promoted.
+
+STR-442611
+Nothing's gonna help us get promoted, be serious.
+
+STR-442612
+Gotta put some form together if we're to finish strong and actually go up.
+
+STR-442613
+Nobody expected us to challenge for promotion, a nice run of form would go a long way to securing it.
+
+STR-442614
+A good run at this late stage of the season would help secure promotion.
+
+STR-442615
+Not convinced we've got what it takes to seal promotion.
+
+STR-442616
+Nothing's gonna help us to actually be promoted, be serious.
+Polish Reference:
+STR-442511
+Im dłużej ta passa potrwa, tym lepiej.
+
+STR-442512
+Dobre wejście w sezon to zawsze plus, oby tak dalej!
+
+STR-442513
+Solidne fundamenty pod walkę o tytuł zostały wylane.
+
+STR-442514
+Nie zamierzam dzielić skóry na niedźwiedziu.[%male#author-hidden]
+
+STR-442515
+Co za głupoty, to jasne, że nie utrzymamy długo obecnej dyspozycji, jesteśmy za słabi, by powalczyć o tytuł.
+
+STR-442516
+I tak zaraz wszystko pieprznie.
+
+STR-442518
+W tej fazie sezonu utrzymanie wysokiej formy jest kluczowe.
+
+STR-442520
+Finiszujemy z przytupem, aż nie mogę usiedzieć przed kompem.[%male#author-hidden]
+
+STR-442521
+Tytuł jest na wyciągnięcie ręki, wytrzymajcie!
+
+STR-442522
+Nic z tego nie będzie.
+
+STR-442523
+Solidne fundamenty pod walkę o awans zostały wylane.
+
+STR-442524
+Co za głupoty, to jasne, że nie utrzymamy długo obecnej dyspozycji, jesteśmy za słabi, by powalczyć o awans.
+
+STR-442525
+Awans jest na wyciągnięcie ręki, wytrzymajcie!
+
+STR-442526
+Dobre wejście w sezon to zawsze plus, każdy punkt będzie na wagę złota!
+
+STR-442527
+Fundamenty pod uniknięcie walki o utrzymanie zostały wylane.
+
+STR-442528
+Co za głupoty, jasne, że dłużej to nie potrwa, spadamy i tyle.
+
+STR-442529
+Solidne fundamenty pod utrzymanie zostały wylane.
+
+STR-442530
+Co za głupoty, to jasne, że jeśli to potrwa dłużej, nie unikniemy spadku.
+
+STR-442531
+Utrzymanie jest na wyciągnięcie ręki, wytrzymajcie!
+
+STR-442532
+Fundamenty pod utrzymanie zostały wylane.
+
+STR-442533
+Co za głupoty, to jasne, że nie utrzymamy długo obecnej dyspozycji, jesteśmy za słabi, by uniknąć spadku.
+
+STR-442535
+Teraz przynajmniej mamy o co walczyć.
+
+STR-442537
+Kończymy mocnym uderzeniem, to powód do dumy.
+
+STR-442538
+Chwilo, trwaj!
+
+STR-442539
+W końcówce sezonu to już nieistotne.
+
+STR-442540
+Za późno.
+
+STR-442541
+I na co to się nam niby przyda?
+
+STR-442542
+Dobre wejście w sezon to zawsze plus!
+
+STR-442543
+Fundamenty zostały wylane.
+
+STR-442544
+Co za głupoty, to jasne, że nie utrzymamy długo obecnej dyspozycji.
+
+STR-442545
+Teraz będziemy w dobrej pozycji wyjściowej przed drugą połową sezonu.
+
+STR-442546
+Jeśli dalej chcemy zaskakiwać bukmacherów i powalczyć o tytuł, trzeba szybko wygrzebać się z tego dołka.
+
+STR-442547
+Nikt nie spodziewał się, że będziemy w ogóle walczyć o tytuł, teraz trzeba jak najszybciej odbudować formę, by podtrzymać ten trend.
+
+STR-442548
+Do końca sezonu jeszcze sporo czasu, wystarczy, by odbudować formę i dalej frustrować buków w walce o tytuł.
+
+STR-442549
+Ta passa jedynie potwierdza moje słowa - jesteśmy za słabi, by walczyć o tytuł.[%male#author-hidden]
+
+STR-442550
+Będzie już tylko gorzej.
+
+STR-442551
+Mam nadzieję, że wszyscy zdają sobie sprawę z tego, że tak będzie wyglądać cały sezon.
+
+STR-442552
+Jeśli dalej chcemy zaskakiwać bukmacherów i zachować szansę na tytuł, trzeba szybko wygrzebać się z tego dołka.
+
+STR-442553
+Nikt nie spodziewał się, że możemy powalczyć o tytuł, a tu proszę bardzo, ale teraz trzeba jak najszybciej odbudować formę.
+
+STR-442554
+Pora odbudować formę i do końca sezonu walczyć o tytuł.
+
+STR-442555
+Lada moment będzie już dla nas po sezonie.
+
+STR-442556
+Mam nadzieję, że wszyscy są gotowi na kolejne rozczarowania.
+
+STR-442557
+Jeśli chcemy zdobyć ten tytuł, trzeba niezwłocznie przerwać tę serię.
+
+STR-442558
+Nikt nie spodziewał się, że możemy zawalczyć o tytuł, a tu proszę bardzo. Nie możemy wypuścić tego z rąk w samej końcówce sezonu.
+
+STR-442559
+Musimy się pozbierać, zaczyna nam brakować czasu, by zdobyć ten tytuł.
+
+STR-442560
+Sezon nam się sypie.
+
+STR-442561
+Jeśli dalej chcemy zaskakiwać bukmacherów i powalczyć o awans, trzeba szybko wygrzebać się z tego dołka.
+
+STR-442562
+Nikt nie spodziewał się, że będziemy w ogóle walczyć o awans, teraz trzeba jak najszybciej odbudować formę, by podtrzymać ten trend.
+
+STR-442563
+Do końca sezonu jeszcze sporo czasu, wystarczy, by odbudować formę i dalej frustrować buków w walce o awans.
+
+STR-442564
+Ta passa jedynie potwierdza moje słowa - jesteśmy za słabi, by awansować.[%male#author-hidden]
+
+STR-442565
+Jeśli dalej chcemy zaskakiwać bukmacherów i zachować szansę na awans, trzeba szybko wygrzebać się z tego dołka.
+
+STR-442566
+Nikt nie spodziewał się, że możemy powalczyć o awans, a tu proszę bardzo, ale teraz trzeba jak najszybciej odbudować formę.
+
+STR-442567
+Pora odbudować formę i do końca sezonu walczyć o awans.
+
+STR-442568
+Jeśli chcemy awansować, trzeba niezwłocznie przerwać tę serię.
+
+STR-442569
+Nikt nie spodziewał się, że możemy zawalczyć o awans, a tu proszę bardzo. Nie możemy wypuścić tego z rąk w samej końcówce sezonu.
+
+STR-442570
+Musimy się pozbierać, zaczyna nam brakować czasu, by zapewnić sobie awans.
+
+STR-442571
+Jeśli dalej chcemy zaskakiwać bukmacherów i powalczyć o utrzymanie, trzeba szybko wygrzebać się z tego dołka.
+
+STR-442572
+Nikt nie spodziewał się, że będziemy w ogóle walczyć o utrzymanie, teraz trzeba jak najszybciej odbudować formę, by podtrzymać ten trend.
+
+STR-442573
+Do końca sezonu jeszcze sporo czasu, wystarczy, by odbudować formę i dalej frustrować buków w walce o utrzymanie.
+
+STR-442574
+Ta passa jedynie potwierdza moje słowa - jesteśmy za słabi, by się utrzymać.[%male#author-hidden]
+
+STR-442575
+Jeśli dalej chcemy zaskakiwać bukmacherów i zachować szansę na utrzymanie, trzeba szybko wygrzebać się z tego dołka.
+
+STR-442576
+Nikt nie spodziewał się, że możemy się utrzymać, a tu proszę bardzo, ale teraz trzeba jak najszybciej odbudować formę.
+
+STR-442577
+Pora odbudować formę i do końca sezonu walczyć o utrzymanie.
+
+STR-442578
+Jeśli chcemy się utrzymać, trzeba niezwłocznie przerwać tę serię.
+
+STR-442579
+Nikt nie spodziewał się, że możemy się utrzymać, a tu proszę bardzo. Nie możemy wypuścić tego z rąk w samej końcówce sezonu.
+
+STR-442580
+Musimy się pozbierać, zaczyna nam brakować czasu, by zapewnić sobie utrzymanie w lidze.
+
+STR-442581
+Jeśli dalej chcemy zaskakiwać bukmacherów, trzeba szybko wygrzebać się z tego dołka.
+
+STR-442582
+Nikt nie spodziewał się, że zajdziemy tak daleko, teraz trzeba jak najszybciej odbudować formę, by podtrzymać ten trend.
+
+STR-442583
+Do końca sezonu jeszcze sporo czasu, wystarczy, by odbudować formę i dalej frustrować buków.
+
+STR-442584
+Ta passa jedynie potwierdza moje słowa - jesteśmy za słabi.[%male#author-hidden]
+
+STR-442585
+Jeśli dalej chcemy zaskakiwać bukmacherów, trzeba szybko zakończyć tę serię.
+
+STR-442586
+Nikt nie spodziewał się, że zajdziemy tak daleko, ale teraz trzeba jak najszybciej odbudować formę.
+
+STR-442587
+Pora odbudować formę i dociągnąć ten wózek do końca sezonu, niech się wszyscy zdziwią.
+
+STR-442588
+Jeśli chcemy zakończyć sezon tam, gdzie to sobie zaplanowaliśmy, trzeba niezwłocznie przerwać tę serię.
+
+STR-442589
+Nikt nie spodziewał się, że zajdziemy tak daleko, nie możemy wypuścić tego z rąk w samej końcówce sezonu.
+
+STR-442590
+Musimy się pozbierać, zaczyna nam brakować czasu.
+
+STR-442591
+Musimy ustabilizować formę, jeśli chcemy ośmieszyć „ekspertów” i powalczyć o tytuł.
+
+STR-442592
+Nikt nie przypuszczał, że włączymy się do walki o tytuł, dobra passa niewątpliwie by się nam teraz przydała.
+
+STR-442593
+Do końca sezonu jeszcze mnóstwo czasu, ale dobra passa na pewno by nam teraz pomogła w walce o sensacyjne mistrzostwo.
+
+STR-442594
+Nie jestem przekonany, czy damy radę wywalczyć tytuł.
+
+STR-442595
+Nic nam nie pomoże w walce o tytuł, dajcież sobie spokój.
+
+STR-442596
+Mam nadzieję, że wszyscy są przygotowani na sezon pełen rozczarowań.
+
+STR-442597
+Dobra passa zwiększyłaby nasze szanse na sensacyjne zwycięstwo w walce o tytuł.
+
+STR-442598
+Mam nadzieję, że wszyscy są przygotowani na nieuniknione rozczarowanie.
+
+STR-442599
+Musimy ustabilizować formę, jeśli chcemy zakończyć sezon w dobrym stylu i zdobyć ten tytuł.
+
+STR-442600
+Nikt na nas nie stawiał w walce o tytuł, dobra passa niewątpliwie by się nam teraz przydała.
+
+STR-442601
+To, czego nam trzeba w końcówce sezonu, to seria kilku udanych meczów, i tytuł będzie nasz.
+
+STR-442602
+Nie jestem przekonany, czy damy radę zdobyć tytuł.
+
+STR-442603
+Musimy ustabilizować formę, jeśli chcemy ośmieszyć „ekspertów” i powalczyć o awans.
+
+STR-442604
+Nikt na nas nie stawiał w walce o awans, dobra passa niewątpliwie by się nam teraz przydała.
+
+STR-442605
+Do końca sezonu jeszcze mnóstwo czasu, ale dobra passa na pewno by nam teraz pomogła w walce o sensacyjny awans.
+
+STR-442606
+Nie jestem przekonany, czy damy radę wywalczyć awans.
+
+STR-442607
+Nic nam nie pomoże w walce o awans, dajcież sobie spokój.
+
+STR-442608
+Musimy ustabilizować formę, jeśli chcemy ośmieszyć „ekspertów” i awansować.
+
+STR-442609
+Dobra passa zwiększyłaby nasze szanse na sensacyjny awans w drugiej połowie sezonu.
+
+STR-442610
+Nie jestem przekonany, czy damy radę awansować.
+
+STR-442611
+Nic nam nie pomoże awansować, dajcież sobie spokój.
+
+STR-442612
+Musimy ustabilizować formę, jeśli chcemy zakończyć sezon w dobrym stylu i awansować.
+
+STR-442613
+Nikt na nas nie stawiał w walce o awans, dobra passa niewątpliwie by się nam teraz przydała.
+
+STR-442614
+To, czego nam trzeba w końcówce sezonu, to seria kilku udanych meczów, i awans będzie nasz.
+
+STR-442615
+Nie jestem przekonany, czy damy radę przypieczętować awans.
+
+STR-442616
+Nic nam nie pomoże w walce o awans, dajcież sobie spokój.

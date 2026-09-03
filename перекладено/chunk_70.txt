@@ -1,0 +1,442 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-424492
+[%team#1-short] have won in the [%fixture_name#2-long] on the golden goal rule after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short].
+
+STR-424493
+[%team#1-short] have won in the [%fixture_name#2-long] on the silver goals rule after a [%number#1 - human goals]-[%number#2 - opposition goals] draw with [%team#2-short].
+
+STR-424494
+[%team#1-short] have won in the [%fixture_name#2-long] after a [%number#1 - human goals]-[%number#2 - opposition goals] aggregate win over [%team#2-short].
+
+STR-424527
+[%team#1-short] have lost in the [%fixture_name#2-long] after a [%number#2 - opposition goals]-[%number#1 - human goals] defeat by [%team#2-short] at [%stadium#1-short].
+
+STR-424528
+[%team#1-short] have lost in the [%fixture_name#2-long] after a [%number#2 - opposition goals]-[%number#1 - human goals] defeat in extra time by [%team#2-short] at [%stadium#1-short].
+
+STR-424529
+[%team#1-short] have lost in the [%fixture_name#2-long] on penalties after a [%number#2 - opposition goals]-[%number#1 - human goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424530
+[%team#1-short] have lost in the [%fixture_name#2-long] on shootouts after a [%number#2 - opposition goals]-[%number#1 - human goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424531
+[%team#1-short] have lost in the [%fixture_name#2-long] on away goals after a [%number#2 - opposition goals]-[%number#1 - human goals] aggregate draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424532
+[%team#1-short] have lost in the [%fixture_name#2-long] on the golden goal rule after a [%number#2 - opposition goals]-[%number#1 - human goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424533
+[%team#1-short] have lost in the [%fixture_name#2-long] on the silver goals rule after a [%number#2 - opposition goals]-[%number#1 - human goals] draw with [%team#2-short] at [%stadium#1-short].
+
+STR-424534
+[%team#1-short] have lost in the [%fixture_name#2-long] after a [%number#2 - opposition goals]-[%number#1 - human goals] aggregate defeat by [%team#2-short] at [%stadium#1-short].
+
+STR-424535
+[%team#1-short] have lost in the [%fixture_name#2-long] after a [%number#2 - opposition goals]-[%number#1 - human goals] defeat by [%team#2-short].
+
+STR-424536
+[%team#1-short] have lost in the [%fixture_name#2-long] after a [%number#2 - opposition goals]-[%number#1 - human goals] defeat after extra time by [%team#2-short].
+
+STR-424537
+[%team#1-short] have lost in the [%fixture_name#2-long] on penalties after a [%number#2 - opposition goals]-[%number#1 - human goals] draw with [%team#2-short].
+
+STR-424538
+[%team#1-short] have lost in the [%fixture_name#2-long] on shootouts after a [%number#2 - opposition goals]-[%number#1 - human goals] draw with [%team#2-short].
+
+STR-424539
+[%team#1-short] have lost in the [%fixture_name#2-long] on away goals after a [%number#2 - opposition goals]-[%number#1 - human goals] aggregate draw with [%team#2-short].
+
+STR-424540
+[%team#1-short] have lost in the [%fixture_name#2-long] on the golden goal rule after a [%number#2 - opposition goals]-[%number#1 - human goals] draw with [%team#2-short].
+
+STR-424541
+[%team#1-short] have lost in the [%fixture_name#2-long] on the silver goals rule after a [%number#2 - opposition goals]-[%number#1 - human goals] draw with [%team#2-short].
+
+STR-424542
+[%team#1-short] have lost in the [%fixture_name#2-long] after a [%number#2 - opposition goals]-[%number#1 - human goals] aggregate defeat by [%team#2-short].
+
+STR-424801
+Players from the [%agreement#1] will be deemed non-foreign as long as their current contract starts before [%date#1]
+
+STR-424802
+Players signed after the Semi-Final stage are ineligible
+
+STR-424805
+Shirt
+
+STR-424806
+Tie
+
+STR-424807
+Trousers
+
+STR-424808
+Shoes
+
+STR-424810
+Boots
+
+STR-424812
+Stripe
+
+STR-424813
+Tracksuit Bottom
+
+STR-424818
+Superb
+
+STR-424819
+Good
+
+STR-424820
+Poor
+
+STR-424821
+[%number#1-nth]
+
+STR-424881
+(Under-[%number#1] players are exempt)
+
+STR-425040
+The Bosman rule has now been scrapped meaning that players will not be allowed to sign pre-contract deals or move freely at the end of their contracts without compensation.
+
+STR-428197
+Not convinced we've got what it takes.
+
+STR-433392
+AML
+
+STR-433468
+[%person#1-Your] assistant has compiled a report on the [%club#1] players involved in the recent international fixtures.
+
+STR-433469
+You have been requested to select a preliminary [%nation#1] squad for the [%comp#1] finals.\n\n
+
+STR-433470
+You have submitted your preliminary squad.
+
+STR-433475
+[%club#1-short]{s} battling performance in their [%number#1 - opposition goals]-[%number#2 - human goals] defeat against [%club#2-short] was ultimately rewarded as they held their nerve to win on penalties.
+
+STR-433476
+[%club#1-short] certainly rode their luck against their more illustrious opponents. They can however still be proud of keeping the scoreline against [%club#2-short] close despite succumbing to a [%number#1 - opposition goals]-[%number#2 - human goals] defeat.
+
+STR-433478
+However, [%club#1] go into the match high on confidence having shown consistent form in recent matches.
+
+STR-433479
+The owners of [%club#1] are pleased that you have managed to reduce the wage bill to an acceptable level.\n\nThey urge you to strictly keep under the wage budget for the rest of the season in order to return financial stability to the club.
+
+STR-433480
+The transfer deadline for [%nation#1-nationality] clubs is tonight.
+
+STR-433481
+The transfer deadline for [%nation#1-nationality] clubs is today.
+
+STR-433482
+The domestic transfer deadline for [%nation#1-nationality] clubs is tonight.
+
+STR-433483
+The domestic transfer deadline for [%nation#1-nationality] clubs is today.
+
+STR-433484
+The international transfer deadline for [%nation#1-nationality] clubs is tonight.
+
+STR-433485
+The international transfer deadline for [%nation#1-nationality] clubs is today.
+
+STR-433486
+The transfer deadline for [%nation#1-nationality] clubs is tonight.\n\nIn this window clubs are unable to sign players from teams from the same division or below.
+
+STR-433487
+The transfer deadline for [%nation#1-nationality] clubs is today.\n\nIn this window clubs are unable to sign players from teams from the same division or below.
+
+STR-433488
+The transfer deadline for [%nation#1-nationality] clubs is today.\n\nIn this window clubs are only allowed to sign players from teams from the same division or below.
+
+STR-433489
+The transfer deadline for [%nation#1-nationality] clubs is tonight.\n\nIn this window clubs are only allowed to sign players from teams from the same division or below.
+
+STR-433490
+The free transfer deadline for [%nation#1-nationality] clubs is tonight.
+
+STR-433491
+The free transfer deadline for [%nation#1-nationality] clubs is today.
+
+STR-433492
+The domestic loan transfer deadline for [%nation#1-nationality] clubs is tonight.
+
+STR-433493
+The domestic loan transfer deadline for [%nation#1-nationality] clubs is today.
+
+STR-433494
+The following transfer window closes tonight:
+
+STR-433495
+The following transfer window closes today:
+
+STR-433496
+The owners of [%club#1] are concerned that the club is still over wage budget with only one day left of the transfer window.\n\nIn order to meet their targets, the squad needs to be within the wage budget before the transfer window closes this evening.
+
+STR-433497
+The transfer deadline for [%nation#1-nationality] clubs is in one week.
+
+STR-433498
+The owners of [%club#1] remind you that the wage bill needs to be reduced as a matter of urgency.\n\nIn order to meet their targets the squad needs to be within the wage budget before the transfer window closes on [%date#1].
+
+STR-433499
+The owners of [%club#1] are pleased that you have already managed to reduce the wage bill to an acceptable level.\n\nThey urge you to strictly keep under the wage budget for the rest of the season in order to return financial stability to the club.
+
+STR-433502
+Austerity Wage Budget:
+
+STR-433503
+Current Wage Bill:
+
+STR-433504
+Pts
+
+STR-433505
+Mins
+
+STR-433506
+Rt
+
+STR-433507
+League Standards - Coefficients
+
+STR-433508
+League Standards - Reputation
+Polish Reference:
+STR-424492
+[%team#1-short]{odniósł} zwycięstwo w rozgrywkach ([%fixture_name#2-long]) dzięki złotej bramce po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu, w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424493
+[%team#1-short]{odniósł} zwycięstwo w rozgrywkach ([%fixture_name#2-long]) dzięki srebrnej bramce po remisie [%number#1 - human goals]-[%number#2 - opposition goals] w meczu, w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424494
+[%team#1-short]{wygrał} [%number#1 - human goals]-[%number#2 - opposition goals] w dwumeczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424527
+[%team#1-short]{przegrał} [%number#2 - opposition goals]-[%number#1 - human goals] na stadionie [%stadium#1-short] w meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424528
+[%team#1-short]{przegrał} [%number#2 - opposition goals]-[%number#1 - human goals] po dogrywce meczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424529
+[%team#1-short]{przegrał} w rzutach karnych po remisie [%number#2 - opposition goals]-[%number#1 - human goals] w meczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424530
+[%team#1-short]{przegrał} w konkursie rzutów karnych po remisie [%number#2 - opposition goals]-[%number#1 - human goals] na stadionie [%stadium#1-short] w meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424531
+[%team#1-short]{przegrał} bramkami na wyjeździe po remisie [%number#2 - opposition goals]-[%number#1 - human goals] na stadionie [%stadium#1-short] w dwumeczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424532
+[%team#1-short]{poniósł} porażkę w rozgrywkach ([%fixture_name#2-long]) dzięki złotej bramce po remisie [%number#2 - opposition goals]-[%number#1 - human goals] na stadionie [%stadium#1-short] w meczu, w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424533
+[%team#1-short]{poniósł} porażkę w rozgrywkach ([%fixture_name#2-long]) dzięki srebrnej bramce po remisie [%number#2 - opposition goals]-[%number#1 - human goals] na stadionie [%stadium#1-short] w meczu, w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424534
+[%team#1-short]{przegrał} w dwumeczu [%number#2 - opposition goals]-[%number#1 - human goals] po meczu na stadionie [%stadium#1-short], w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424535
+[%team#1-short]{przegrał} [%number#2 - opposition goals]-[%number#1 - human goals] w meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424536
+[%team#1-short]{przegrał} [%number#2 - opposition goals]-[%number#1 - human goals] po dogrywce meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424537
+[%team#1-short]{przegrał} w rzutach karnych po remisie [%number#2 - opposition goals]-[%number#1 - human goals] w meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424538
+[%team#1-short]{przegrał} w konkursie rzutów karnych po remisie [%number#2 - opposition goals]-[%number#1 - human goals] w meczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424539
+[%team#1-short]{przegrał} bramkami na wyjeździe po remisie [%number#2 - opposition goals]-[%number#1 - human goals] w dwumeczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424540
+[%team#1-short]{poniósł} porażkę w rozgrywkach ([%fixture_name#2-long]) dzięki złotej bramce po remisie [%number#2 - opposition goals]-[%number#1 - human goals] w meczu, w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424541
+[%team#1-short]{poniósł} porażkę w rozgrywkach ([%fixture_name#2-long]) dzięki srebrnej bramce po remisie [%number#2 - opposition goals]-[%number#1 - human goals] w meczu, w którym ich przeciwnikiem {był}[%team#2-short].
+
+STR-424542
+[%team#1-short]{przegrał} [%number#2 - opposition goals]-[%number#1 - human goals] w dwumeczu, w którym ich przeciwnikiem {był}[%team#2-short] ([%fixture_name#2-long]).
+
+STR-424801
+Piłkarze objęci postanowieniami traktatów, jakie {narzuca}[%agreement#1], nie będą traktowani jako obcokrajowcy, o ile ich obecny kontrakt rozpocznie bieg przed [%date#1-short].
+
+STR-424802
+Piłkarze zatrudnieni po półfinale nie są uprawnieni do gry
+
+STR-424805
+Koszula
+
+STR-424806
+Krawat
+
+STR-424807
+Spodnie
+
+STR-424808
+Buty
+
+STR-424810
+Korki
+
+STR-424812
+Naszywka
+
+STR-424813
+Spodnie od dresu
+
+STR-424818
+Znakomicie
+
+STR-424819
+Dobrze
+
+STR-424820
+Kiepsko
+
+STR-424821
+[%number#1].
+
+STR-424881
+(wymóg nie obejmuje piłkarzy U-[%number#1])
+
+STR-425040
+Prawo Bosmana traci swoją moc, co oznacza, że zawodnicy nie będą mogli podpisywać nowych umów przed wygaśnięciem poprzedniego kontraktu ani odchodzić z klubów po wypełnieniu kontraktu bez zapłacenia rekompensaty.
+
+STR-428197
+Wciąż nie jestem przekonany, że mamy mentalność zwycięzców.
+
+STR-433392
+OPL
+
+STR-433468
+Twój asystent przygotował raporty na temat zawodników klubu [%club#1-long], którzy wystąpili w niedawnych meczach swoich reprezentacji.[%male#1-hidden]
+
+STR-433469
+Poproszono cię o wybranie wstępnego składu [%nation#1-nationality1]ej reprezentacji na zbliżający się turniej finałowy ([%comp#1]).\n\n
+
+STR-433470
+Zgłosiłeś wstępny skład zespołu.
+
+STR-433475
+[%club#1-short]{pokazał} ambitny futbol w przegranym [%number#1 - opposition goals]-[%number#2 - human goals] meczu, w którym ich przeciwnikiem {był}[%club#2-short], za co nagrodą było dla nich zwycięstwo rzutami karnymi.
+
+STR-433476
+[%club#1-short]{potrzebował} niewątpliwie sporo szczęścia w konfrontacji z o wiele mocniejszym rywalem, lecz nikła porażka [%number#1 - opposition goals]-[%number#2 - human goals] w meczu, w którym ich przeciwnikiem {był}[%club#2-short], wstydu im nie przynosi.
+
+STR-433478
+[%club#1]{podchodzi} jednak do tego meczu z dużą pewnością siebie po serii solidnych występów.
+
+STR-433479
+Właściciele klubu [%club#1-long] są zadowoleni, że udało ci się zredukować wydatki na wynagrodzenia do akceptowalnego poziomu.\n\nApelują też do ciebie, abyś już do końca sezonu nie przekroczył budżetu płac, co pomoże w ustabilizowaniu klubowych finansów.
+
+STR-433480
+Dzisiaj wieczorem upływa ostateczny termin dokonywania wolnych transferów przez [%nation#1-nationality1]e kluby.
+
+STR-433481
+Dzisiaj upływa ostateczny termin dokonywania wolnych transferów przez [%nation#1-nationality1]e kluby.
+
+STR-433482
+Dzisiaj wieczorem upływa ostateczny termin dokonywania krajowych wypożyczeń przez [%nation#1-nationality1]e kluby.
+
+STR-433483
+Dzisiaj upływa ostateczny termin dokonywania krajowych wypożyczeń przez [%nation#1-nationality1]e kluby.
+
+STR-433484
+Dzisiaj wieczorem upływa ostateczny termin dokonywania zagranicznych transferów przez [%nation#1-nationality1]e kluby.
+
+STR-433485
+Dzisiaj upływa ostateczny termin dokonywania zagranicznych transferów przez [%nation#1-nationality1]e kluby.
+
+STR-433486
+Dzisiaj wieczorem upływa ostateczny termin dokonywania transferów przez [%nation#1-nationality1]e kluby.\n\nW tym oknie transferowym kluby nie mogą zatrudniać zawodników grających w tej samej lidze lub w niższych ligach.
+
+STR-433487
+Dzisiaj upływa ostateczny termin dokonywania transferów przez [%nation#1-nationality1]e kluby.\n\nW tym oknie transferowym kluby nie mogą zatrudniać zawodników grających w tej samej lidze lub w niższych ligach.
+
+STR-433488
+Dzisiaj upływa ostateczny termin dokonywania transferów przez [%nation#1-nationality1]e kluby.\n\nW tym oknie transferowym kluby mogą zatrudniać tylko zawodników grających w tej samej lidze lub w niższych ligach.
+
+STR-433489
+Dzisiaj wieczorem upływa ostateczny termin dokonywania transferów przez [%nation#1-nationality1]e kluby.\n\nW tym oknie transferowym kluby mogą zatrudniać tylko zawodników grających w tej samej lidze lub w niższych ligach.
+
+STR-433490
+Dzisiaj wieczorem upływa ostateczny termin dokonywania wolnych transferów przez [%nation#1-nationality1]e kluby.
+
+STR-433491
+Dzisiaj upływa ostateczny termin dokonywania wolnych transferów przez [%nation#1-nationality1]e kluby.
+
+STR-433492
+Dzisiaj wieczorem upływa ostateczny termin dokonywania krajowych wypożyczeń przez [%nation#1-nationality1]e kluby.
+
+STR-433493
+Dzisiaj upływa ostateczny termin dokonywania krajowych wypożyczeń przez [%nation#1-nationality1]e kluby.
+
+STR-433494
+Następujące okno transferowe zamyka się dziś wieczorem:
+
+STR-433495
+Następujące okno transferowe zamyka się w dniu dzisiejszym:
+
+STR-433496
+Właściciele klubu [%club#1-long] niepokoją się, że wydatki na wynagrodzenia wciąż przekraczają limit, podczas gdy do końca okna transferowego pozostał już tylko 1 dzień.\n\nAby zrealizować wyznaczone przez nich cele, zespół musi mieścić się w budżecie płac w momencie jego zamknięcia dzisiaj wieczorem.
+
+STR-433497
+Za tydzień upływa ostateczny termin przeprowadzania transferów przez [%nation#1-nationality1]e kluby.
+
+STR-433498
+Właściciele klubu [%club#1-long] przypominają ci o absolutnej konieczności redukcji wydatków na wynagrodzenia.\n\nAby zrealizować wyznaczone przez nich cele, zespół musi mieścić się w budżecie płac w momencie jego zamknięcia [%date#1-short].
+
+STR-433499
+Właściciele klubu [%club#1-long] są zadowoleni, że udało ci się już zredukować wydatki na wynagrodzenia do akceptowalnego poziomu.\n\nApelują też do ciebie, abyś już do końca sezonu nie przekroczył budżetu płac, co pomoże w ustabilizowaniu klubowych finansów.
+
+STR-433502
+Kryzysowy budżet płac:
+
+STR-433503
+Obecne wydatki na płace:
+
+STR-433504
+Pkt
+
+STR-433505
+Min.
+
+STR-433506
+Oc
+
+STR-433507
+Standardy ligowe - Współczynniki
+
+STR-433508
+Standardy ligowe - Reputacja

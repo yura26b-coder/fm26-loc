@@ -1,0 +1,500 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-438896
+A winding-up petition against [%club#1] has been dismissed at high court.\n\nThose creditors on the petition have been paid, although it is understood that the club is still making most payments on a month to month basis.
+
+STR-438897
+A winding-up petition against [%club#1] has been dismissed at high court.\n\nThose creditors on the petition have been paid and the club has indicated confidence in its long term financial stability.
+
+STR-438898
+[%club#1] financial situation improving
+
+STR-438899
+The [%club#1] board have indicated they have continued to see improvements in the financial situation at the club. They thank supporters for their continuing patience and indicate they are hopeful they can increase investments into the squad in the near future.
+
+STR-438907
+After spending [%cash#1-short-roundlarge] on new players, [%club#1] are expected to retain the [%comp#1] title in the coming season.
+
+STR-438909
+After spending [%cash#1-short-roundlarge] on new players, [%club#1] are expected to challenge for the [%comp#1] title in the coming season.
+
+STR-438911
+[%club#1] fans are expecting immediate success after the club has spent [%cash#1-short-roundlarge] on new players recently.
+
+STR-438913
+The media are expecting [%club#1] to be challenging on all fronts after splashing out around [%cash#1-short-roundlarge] on new faces during the close season.
+
+STR-438915
+The media in [%nation#1] are expecting [%club#1] to be challenging on all fronts after splashing out around [%cash#1-short-roundlarge] on new faces during the close season.
+
+STR-438922
+[%person#1] is delighted to inform you that after successfully completing an in-depth examination [%person#1-he] has obtained [%person#1-his] Gold physio badge.
+
+STR-438923
+[%person#1] is delighted to inform you that [%person#1-he] has successfully completed a basic physiotherapy course and obtained [%person#1-his] Bronze physio badge.
+
+STR-438927
+[%person#1] is delighted to inform you that [%person#1-he] has successfully completed an intensive assessment course and obtained [%person#1-his] Gold scouting badge.
+
+STR-438928
+[%person#1] is delighted to inform you that [%person#1-he] has successfully completed a basic scouting assessment course and obtained [%person#1-his] Bronze scouting badge.
+
+STR-438929
+[%number#1-text] players
+
+STR-438930
+[%club#1-short] Yth
+
+STR-438934
+[%person#1-full] is pleased to inform the club that [%person#1-he] has passed [%person#1-his] physio exam.
+
+STR-438935
+[%person#1-full] is disappointed to indicate that [%person#1-he] has failed to make the required grade to pass [%person#1-his] physio exam.
+
+STR-438936
+[%person#1-full] is pleased to inform the club that [%person#1-he] has passed [%person#1-his] coaching exam.
+
+STR-438937
+[%person#1-full] is disappointed to indicate that [%person#1-he] has failed to make the required grade to pass [%person#1-his] coaching exam.
+
+STR-438938
+[%person#1-full] is pleased to inform the club that [%person#1-he] has passed [%person#1-his] scouting assessment
+
+STR-438939
+[%person#1-full] is disappointed to indicate that [%person#1-he] has failed to make the required grade to pass [%person#1-his] scouting assessment.
+
+STR-438942
+[%number#1-nth] in [%comp#1-short]
+
+STR-438943
+World Ranking: [%number#1-nth]
+
+STR-438945
+Current League Position: [%number#1-nth] in [%comp#1-short]
+
+STR-438946
+We will persevere through these difficulties
+
+STR-438947
+The club is a shambles, I'm expecting to leave
+
+STR-438948
+Refuse to discuss the situation
+
+STR-438955
+Team Report - Summary
+
+STR-438956
+Team Report - Suggested XI
+
+STR-438957
+Team Report - Squad Depth
+
+STR-438960
+Squad Average Age
+
+STR-438961
+[%fraction#1] years
+
+STR-438963
+[%person#1] - [%number#1] years, [%number#2] days
+
+STR-438966
+[%person#1] - [%number#1] apps ([%nation#1-short])
+
+STR-438967
+Domestic Player Bias
+
+STR-438968
+Nationalities Represented
+
+STR-438970
+Average First Team Wage
+
+STR-438971
+Squad Depth For: [%position#1]
+
+STR-438972
+Team Summary
+
+STR-438973
+Suggested XI
+
+STR-438974
+Squad Depth
+
+STR-438975
+Club Stats
+
+STR-438976
+Team Reports
+
+STR-438977
+Please select the team report section to view
+
+STR-438978
+[%string#1 - Staff Name] has done a full re-evaluation of the [%club#1] squad upon their return to pre-season training.
+
+STR-438979
+[%person#1-Your] assistant manager has done a full re-evaluation of the [%club#1] squad upon their return to pre-season training.
+
+STR-438980
+They are very happy with the current crop of players and believe everything is in place to meet expectations this season.
+
+STR-438981
+They are concerned that the current crop of players aren't good enough if we are to meet our expectations this season.
+
+STR-438982
+They believe that we have a strong squad with a great mentality, but are slightly concerned they may lack the technical quality to meet expectations for the coming season.
+
+STR-438983
+They believe that the squad possesses great depth, with a lot of good characters who are ready to help the club meet their expectations this season.
+
+STR-438984
+They believe we have a talented and deep pool of players, but are somewhat concerned about the team's overall mentality if we hope to meet expectations this season.
+
+STR-438985
+They believe we have a talented and deep pool of players that should put us in a good position to meet expectations this season.
+
+STR-438986
+They believe we have a talented and mentally strong core group of players, but are worried that the current squad may not be deep enough to cope with the demands of a long season.
+
+STR-438987
+They believe we have a talented and mentally strong dressing room that is ready to help the club meet their expectations this season.
+
+STR-438988
+They are concerned that while our players are technically gifted, the squad lacks the mentality and strength in depth to be able to cope with the demands of a long season.
+
+STR-438989
+They are concerned that the squad lacks the mentality and strength in depth to be able to cope with the demands of a long season.
+
+STR-438990
+They are concerned that while our squad depth is sufficient, the current crop of players may lack both the technical ability and mentality to meet expectations this season.
+
+STR-438991
+They are concerned that the current crop of players may lack both the technical ability and mentality to meet expectations this season.
+
+STR-438992
+They are concerned that while there is a great mentality amongst the current players, the squad may lack both the technical ability and strength in depth to meet expectations this season.
+
+STR-438993
+They believe we have a talented core group of players, but are somewhat concerned about the team's overall mentality if we hope to meet expectations this season.
+
+STR-438994
+They believe we have a talented core group of players, but are worried that the squad may not be deep enough to cope with the demands of a long season.
+
+STR-438995
+They are happy with the strength of the squad, but are somewhat concerned that the team may lack the technical qualities to meet expectations this season.
+
+STR-438996
+They are happy with the strength of the squad, but are somewhat concerned about the team's mentality if we hope to meet expectations this season.
+
+STR-438997
+They believe that there is a great mentality among the current crop of players, but is slightly concerned they may lack the technical quality to meet expectations for the coming season.
+
+STR-438998
+They believe the players at the club have a great mentality, but that the squad could do with a few more quality players if we are to meet expectations for the coming season.
+
+STR-438999
+They believe that the squad is robust enough for the club to meet their expectations for the coming season.
+
+STR-439000
+They believe the squad is talented enough for the club to meet their expectations for the coming season.
+
+STR-439001
+They are concerned the team may be lacking in technical quality if they are to meet their expectations for the coming season.
+
+STR-439002
+They are concerned by the overall mentality of the current crop of players.
+
+STR-439003
+They believe that the squad is in need of some strengthening if the club are to meet their expectations for the coming season.
+
+STR-439004
+They are hopeful that the team should be able to meet their expectations next season.
+
+STR-439308
+[%comp#1-short]/[%comp#2-short]
+
+STR-440503
+B teams are not allowed to be promoted from this division
+
+STR-440504
+C teams are not allowed to be promoted from this division
+
+STR-440505
+Winning team wins promotion (lower division team)
+
+STR-440506
+Losing team is relegated (upper division team)
+
+STR-440507
+[%cash#1-roundlarge] given in [%number#1-nth] year
+
+STR-440508
+(for clubs not relegated one season after being promoted)
+Polish Reference:
+STR-438896
+Sąd odrzucił wniosek o otwarcie postępowania likwidacyjnego, którego przedmiotem {był}[%club#1].\n\nWierzyciele, którzy podpisali się pod wnioskiem, zostali spłaceni, choć klub wciąż reguluje większość rachunków z miesiąca na miesiąc.
+
+STR-438897
+Sąd odrzucił wniosek o otwarcie postępowania likwidacyjnego, którego przedmiotem {był}[%club#1].\n\nWierzyciele, którzy podpisali się pod wnioskiem, zostali spłaceni, a klub zadeklarował przekonanie o swojej długoterminowej stabilności finansowej.
+
+STR-438898
+[%club#1]: Poprawa położenia finansowego
+
+STR-438899
+Zarząd klubu [%club#1-long] poinformował, że jego sytuacja finansowa ulega systematycznej poprawie. Działacze podziękowali kibicom za okazaną cierpliwość i wyrazili nadzieję, że już niebawem będą mogli zwiększyć inwestycje w zespół.
+
+STR-438907
+Oczekuje się, że po wydaniu [%cash#1-short-roundlarge] na nowych zawodników [%club#1]{powinien} obronić tytuł ([%comp#1]) w nadchodzącym sezonie.
+
+STR-438909
+Oczekuje się, że po wydaniu [%cash#1-short-roundlarge] na nowych zawodników [%club#1]{powinien} powalczyć o tytuł ([%comp#1]) w nadchodzącym sezonie.
+
+STR-438911
+Kibice oczekują natychmiastowych sukcesów po tym, jak [%club#1]{wydał} [%cash#1-short-roundlarge] na nowych zawodników.
+
+STR-438913
+Media oczekują sukcesów na wszystkich frontach po tym, jak [%club#1]{wydał} po zakończeniu sezonu [%cash#1-short-roundlarge] na nowych zawodników.
+
+STR-438915
+{upper}[%nation#1-nationality1]e media oczekują sukcesów na wszystkich frontach po tym, jak [%club#1]{wydał} po zakończeniu sezonu [%cash#1-short-roundlarge] na nowych zawodników.
+
+STR-438922
+[%male#1] ma przyjemność poinformować cię, że po zdaniu szczegółowego egzaminu uzyskał złotą odznakę fizjoterapeuty.
+[%female#1] ma przyjemność poinformować cię, że po zdaniu szczegółowego egzaminu uzyskała złotą odznakę fizjoterapeuty.
+
+STR-438923
+[%male#1] ma przyjemność poinformować cię, że po ukończeniu podstawowego kursu uzyskał brązową odznakę fizjoterapeuty.
+[%female#1] ma przyjemność poinformować cię, że po ukończeniu podstawowego kursu uzyskała brązową odznakę fizjoterapeuty.
+
+STR-438927
+[%male#1] ma przyjemność poinformować cię, że po ukończeniu intensywnego kursu uzyskał złotą odznakę scouta.
+[%female#1] ma przyjemność poinformować cię, że po ukończeniu intensywnego kursu uzyskała złotą odznakę scouta.
+
+STR-438928
+[%male#1] ma przyjemność poinformować cię, że po ukończeniu podstawowego kursu uzyskał brązową odznakę scouta.
+[%female#1] ma przyjemność poinformować cię, że po ukończeniu podstawowego kursu uzyskała brązową odznakę scouta.
+
+STR-438929
+[%number#1-text] zawodników
+
+STR-438930
+[%club#1-short] Jun
+
+STR-438934
+[%male#1-full] ma przyjemność poinformować cię, że zdał egzamin dla fizjoterapeutów.
+[%female#1-full] ma przyjemność poinformować cię, że zdała egzamin dla fizjoterapeutów.
+
+STR-438935
+[%male#1-full] z przykrością informuje, że zakończył egzamin na licencję fizjoterapeuty z niesatysfakcjonującym wynikiem.
+[%female#1-full] z przykrością informuje, że zakończyła egzamin na licencję fizjoterapeuty z niesatysfakcjonującym wynikiem.
+
+STR-438936
+[%male#1-full] ma przyjemność poinformować cię, że zdał egzamin trenerski.
+[%female#1-full] ma przyjemność poinformować cię, że zdała egzamin trenerski.
+
+STR-438937
+[%male#1-full] z przykrością informuje, że zakończył egzamin na licencję trenerską z niesatysfakcjonującym wynikiem.
+[%female#1-full] z przykrością informuje, że zakończyła egzamin na licencję trenerską z niesatysfakcjonującym wynikiem.
+
+STR-438938
+[%male#1-full] ma przyjemność poinformować cię, że zdał egzamin dla scoutów.
+[%female#1-full] ma przyjemność poinformować cię, że zdała egzamin dla scoutów.
+
+STR-438939
+[%male#1-full] z przykrością informuje, że zakończył egzamin na licencję scouta z niesatysfakcjonującym wynikiem.
+[%female#1-full] z przykrością informuje, że zakończyła egzamin na licencję scouta z niesatysfakcjonującym wynikiem.
+
+STR-438942
+[%number#1-nth] w: [%comp#1-short]
+
+STR-438943
+Ranking światowy: [%number#1-nth]
+
+STR-438945
+Obecna pozycja w lidze: [%number#1-nth] w: [%comp#1-short]
+
+STR-438946
+Przetrwamy te przeciwności losu
+
+STR-438947
+Ten klub to jakieś nieporozumienie, chcę odejść
+
+STR-438948
+Odmów komentarza na temat tej sytuacji
+
+STR-438955
+Raport o zespole - Podsumowanie
+
+STR-438956
+Raport o zespole - Sugerowana 11
+
+STR-438957
+Raport o zespole - Głębia składu
+
+STR-438960
+Średnia wieku zespołu
+
+STR-438961
+[%fraction#1] l.
+
+STR-438963
+[%male#1] - [%number#1] l. [%number#2] d.
+
+STR-438966
+[%male#1] - [%number#1] wyst. ([%nation#1-short])
+
+STR-438967
+Stosunek do piłkarzy
+
+STR-438968
+Narodowości
+
+STR-438970
+Średnie wynagrodzenie w 1. zespole
+
+STR-438971
+Głębia składu: [%position#1]
+
+STR-438972
+Podsumowanie
+
+STR-438973
+Sugerowana 11
+
+STR-438974
+Głębia składu
+
+STR-438975
+Statystyki klubowe
+
+STR-438976
+Raporty o zespole
+
+STR-438977
+Wybierz raport o zespole
+
+STR-438978
+[%string#1 - Staff Name] ([%club#1]) dokonał szczegółowej oceny zespołu po powrocie do treningów przed sezonem.
+
+STR-438979
+Twój asystent dokonał szczegółowej oceny zespołu po powrocie do treningów przed sezonem.[%male#1-hidden]
+
+STR-438980
+Jest bardzo zadowolony z postawy wszystkich zawodników i uważa, że spełnienie przedsezonowych oczekiwań jest jak najbardziej w ich zasięgu.
+
+STR-438981
+Niepokoi się, że nasi zawodnicy są zbyt słabi, by spełnić przedsezonowe oczekiwania.
+
+STR-438982
+Uważa, że dysponujemy mocnym zespołem o świetnej mentalności, lecz może zabraknąć mu umiejętności technicznych, by spełnić przedsezonowe oczekiwania.
+
+STR-438983
+Uważa, że zespół cechuje się świetną głębią składu, a jego charakter pozwala mieć nadzieję, że pomoże klubowi w spełnieniu przedsezonowych oczekiwań.
+
+STR-438984
+Uważa, że dysponujemy liczną grupą utalentowanych piłkarzy, lecz jeśli chcemy spełnić przedsezonowe oczekiwania, mentalność zespołu powinna budzić w nas pewne zaniepokojenie.
+
+STR-438985
+Uważa, że dysponujemy liczną grupą utalentowanych piłkarzy, i spełnienie przedsezonowych oczekiwań jest jak najbardziej w ich zasięgu.
+
+STR-438986
+Uważa, że rdzeń zespołu to utalentowani i mocni mentalnie piłkarze, ale może nam zabraknąć głębi składu, by sprostać trudom długiego sezonu.
+
+STR-438987
+Uważa, że dysponujemy utalentowanymi i mocnym mentalnie zespołem, który pomoże klubowi w spełnieniu przedsezonowych oczekiwań.
+
+STR-438988
+Obawia się, że choć nasi piłkarze są uzdolnieni technicznie, brakuje im odpowiedniej mentalności i głębi składu, by sprostać trudom długiego sezonu.
+
+STR-438989
+Obawia się, że zespołowi brakuje odpowiedniej mentalności i głębi składu, by sprostać trudom długiego sezonu.
+
+STR-438990
+Obawia się, że choć dysponujemy odpowiednią głębią składu, naszym zawodnikom brakuje tak umiejętności technicznych, jak i właściwej mentalności, by spełnić przedsezonowe oczekiwania.
+
+STR-438991
+Obawia się, że naszym zawodnikom brakuje tak umiejętności technicznych, jak i właściwej mentalności, by spełnić przedsezonowe oczekiwania.
+
+STR-438992
+Obawia się, że choć naszych zawodników cechuje świetna mentalność, zespołowi brakuje tak umiejętności technicznych, jak i głębi składu, by spełnić przedsezonowe oczekiwania.
+
+STR-438993
+Uważa, że rdzeń zespołu stanowią utalentowani piłkarze, lecz jeśli chcemy spełnić przedsezonowe oczekiwania, mentalność zespołu powinna budzić w nas pewne zaniepokojenie.
+
+STR-438994
+Uważa, że rdzeń zespołu to utalentowani piłkarze, ale może nam zabraknąć głębi składu, by sprostać trudom długiego sezonu.
+
+STR-438995
+Jest zadowolony z siły zespołu, lecz jeśli chcemy spełnić przedsezonowe oczekiwania, braki techniczne w drużynie powinny budzić w nas pewne zaniepokojenie.
+
+STR-438996
+Jest zadowolony z siły zespołu, lecz jeśli chcemy spełnić przedsezonowe oczekiwania, braki mentalnościowe w drużynie powinny budzić w nas pewne zaniepokojenie.
+
+STR-438997
+Uważa, że dysponujemy zespołem o świetnej mentalności, lecz może trochę zabraknąć mu umiejętności technicznych, by spełnić przedsezonowe oczekiwania.
+
+STR-438998
+Uważa, że naszych zawodników charakteryzuje świetna mentalność, lecz zespołowi przydałoby się jeszcze kilku klasowych piłkarzy, by spełnić przedsezonowe oczekiwania.
+
+STR-438999
+Uważa, że dysponujemy zespołem, który powinien spełnić oczekiwania na nadchodzący sezon.
+
+STR-439000
+Uważa, że dysponujemy wystarczająco utalentowanym zespołem, który powinien spełnić oczekiwania na nadchodzący sezon.
+
+STR-439001
+Uważa, że zespołowi może zabraknąć umiejętności technicznych, by spełnić przedsezonowe oczekiwania.
+
+STR-439002
+Niepokoi się mentalnością zespołu.
+
+STR-439003
+Uważa, że zespół wymaga wzmocnień, jeśli ma spełnić oczekiwania na nadchodzący sezon.
+
+STR-439004
+Ma nadzieję, że zespół spełni oczekiwania na nadchodzący sezon.
+
+STR-439308
+[%comp#1-short]/[%comp#2-short]
+
+STR-440503
+Zespoły B nie mogą awansować z tej ligi
+
+STR-440504
+Zespoły C nie mogą awansować z tej ligi
+
+STR-440505
+Zwycięski zespół uzyskuje awans (zespół z niższej ligi)
+
+STR-440506
+Pokonany zespół spada z ligi (zespół z wyższej ligi)
+
+STR-440507
+[%cash#1-roundlarge] wypłacone w [%number#1-nth] roku
+
+STR-440508
+(dla klubów, które nie spadły bezpośrednio po awansie)

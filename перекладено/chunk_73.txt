@@ -1,0 +1,284 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-438468
+[%person#1] is disappointed to report that [%person#1-he] has not been successful in earning [%person#1-his] Gold physio badge following [%person#1-his] recent examination.\n\nHowever, [%person#1-he] would like the opportunity to try again in the future and remains committed to success.
+
+STR-438469
+[%person#1] is delighted to inform you that [%person#1-he] has successfully attained [%person#1-his] Silver physio badge.
+
+STR-438470
+[%person#1] is disappointed to report that [%person#1-he] has not been successful in earning [%person#1-his] Silver physio badge following [%person#1-his] recent examination.\n\nHowever, [%person#1-he] would like the opportunity to try again in the future and remains committed to success.
+
+STR-438472
+[%person#1] is disappointed to report that [%person#1-he] has not been successful in earning [%person#1-his] Bronze physio badge following [%person#1-his] recent physiotherapy course.\n\nHowever, [%person#1-he] would like the opportunity to try again in the future and remains committed to success.
+
+STR-438473
+[%person#1-surname] passes physio exam
+
+STR-438474
+[%person#1-surname] yet to secure physio badge
+
+STR-438475
+In a controversial measure your club physio has brought in a dozen kittens to help reduce player stress.
+
+STR-438476
+Never hire a crazy cat person
+
+STR-438479
+This will allow you to start the game as a well respected manager.
+
+STR-438481
+Builds a new stadium for your club and lets you name it.
+
+STR-438482
+The coach believes this player is best suited to a position on the substitutes bench or perhaps distributing half time oranges?
+
+STR-438484
+[%person#1-full] has been released by [%club#1-short].\n\n[%number#1] year old [%person#1-surname] was once held in high regard by fans at [%person#1-his] former club and expected to establish [%person#1-himself] in the first team.
+
+STR-438485
+[%person#1-full] has been released by [%club#1-short].\n\n[%person#1-surname] was once held in high regard by fans at [%person#1-his] former club and expected to establish [%person#1-himself] in the first team.
+
+STR-438487
+[%person#1] is disappointed to report that [%person#1-he] has not been successful in earning [%person#1-his] Gold scouting badge following [%person#1-his] recent assessment.\n\nHowever, [%person#1-he] would like the opportunity to try again in the future and remains committed to success.
+
+STR-438488
+[%person#1] is delighted to inform you that [%person#1-he] has successfully attained [%person#1-his] Silver scouting badge.
+
+STR-438489
+[%person#1] is disappointed to report that [%person#1-he] has not been successful in earning [%person#1-his] Silver scouting badge following [%person#1-his] recent asssessment.\n\nHowever, [%person#1-he] would like the opportunity to try again in the future and remains committed to success.
+
+STR-438491
+[%person#1] is disappointed to report that [%person#1-he] has not been successful in earning [%person#1-his] Bronze scouting badge following [%person#1-his] recent examination.\n\nHowever, [%person#1-he] would like the opportunity to try again in the future and remains committed to success.
+
+STR-438492
+[%person#1-surname] acquires scouting badge
+
+STR-438493
+[%person#1-surname] yet to secure scouting badge
+
+STR-438494
+While the signing of [%person#1] is seen as a good piece of business, they are concerned with [%person#2-your] overall transfer strategy.
+
+STR-438495
+The signing of [%person#1] is seen as a superb decision, [%person#1-he] is a fantastic player to base a future team around.
+
+STR-438496
+The signing of [%person#1] is seen as a good decision, [%person#1-he] is a fantastic building block towards the future.
+
+STR-438497
+[%person#1-surname] celebrates managerial recognition
+
+STR-438517
+\n\nThe news has already alerted the attention of [%club#1], who are unlikely to be put off by the [%cash#1-short-roundlarge] price tag.
+
+STR-438519
+\n\nA projected fee of around [%cash#1-short-roundlarge] is unlikely to deter [%club#1], [%club#2] and [%club#3] from leading the race for the player's signature.
+
+STR-438530
+[%person#1-Your] personal assistant has reminded [%person#1-you] that [%person#2] and [%person#3] have contracts which are due to expire in twelve months' time.
+
+STR-438536
+[%person#1-Your] personal assistant has reminded [%person#1-you] that [%person#2] and [%person#3] have contracts which are due to expire in six months' time.
+
+STR-438542
+[%person#1-Your] personal assistant has reminded [%person#1-you] that [%person#2] and [%person#3] have contracts which are no longer protected.
+
+STR-438548
+[%person#1-Your] personal assistant has reminded [%person#1-you] that [%person#2] and [%person#3] have contracts which are due to expire in three months' time.
+
+STR-438554
+[%person#1-Your] personal assistant has reminded [%person#1-you] that [%person#2] and [%person#3] have contracts which are due to expire in two months' time.
+
+STR-438560
+[%person#1-Your] personal assistant has reminded [%person#1-you] that [%person#2] and [%person#3] have contracts which are due to expire in one months' time.
+
+STR-438574
+[%cash#1-short-roundlarge] per goal
+
+STR-438575
+[%cash#1-short-roundlarge] per assist
+
+STR-438576
+[%cash#1-short-roundlarge] per clean sheet
+
+STR-438577
+[%club#1] have received [%cash#1-long-roundsmall] because of a sell-on clause activated by [%string#1 Player Name (eg. Marc Vaughan)]{s} transfer from [%club#2] to [%club#3].
+
+STR-438579
+The board indicate [%person#1-you] have a transfer budget of [%cash#1-transferbudget] with which to strengthen the squad.
+
+STR-438589
+Clubs around the country have made their decisions as to which of their youngsters are to be offered new deals and which are to be released. Among the disappointed players are a handful which [%person#1] thinks might do a job for the club.
+
+STR-438590
+Clubs around the country have issued their annual list of young players who are to be released. Among the disappointed youngsters are several which [%person#1] thinks might do a job for the club.\n\n[%person#1-He] has singled out [%person#2] (formerly of [%club#1]) and [%person#3] (formerly at [%club#2]) as particularly promising.
+Polish Reference:
+STR-438468
+[%male#1] jest zmuszony poinformować cię, że nie zdał egzaminu na złotą odznakę fizjoterapeuty.\n\nChętnie spróbowałby ponownie, gdyż bardzo mu na tym zależy.
+[%female#1] jest zmuszona poinformować cię, że nie zdała egzaminu na złotą odznakę fizjoterapeuty.\n\nChętnie spróbowałaby ponownie, gdyż bardzo jej na tym zależy.
+
+STR-438469
+[%male#1] ma przyjemność poinformować cię, że uzyskał srebrną odznakę fizjoterapeuty.
+[%female#1] ma przyjemność poinformować cię, że uzyskała srebrną odznakę fizjoterapeuty.
+
+STR-438470
+[%male#1] jest zmuszony poinformować cię, że nie zdał egzaminu na srebrną odznakę fizjoterapeuty.\n\nChętnie spróbowałby ponownie, gdyż bardzo mu na tym zależy.
+[%female#1] jest zmuszona poinformować cię, że nie zdała egzaminu na srebrną odznakę fizjoterapeuty.\n\nChętnie spróbowałaby ponownie, gdyż bardzo jej na tym zależy.
+
+STR-438472
+[%male#1] jest zmuszony poinformować cię, że nie zdał egzaminu na brązową odznakę fizjoterapeuty.\n\nChętnie spróbowałby ponownie, gdyż bardzo mu na tym zależy.
+[%female#1] jest zmuszona poinformować cię, że nie zdała egzaminu na brązową odznakę fizjoterapeuty.\n\nChętnie spróbowałaby ponownie, gdyż bardzo jej na tym zależy.
+
+STR-438473
+[%male#1-surname] odnosi sukces na egzaminie dla fizjoterapeutów
+
+STR-438474
+[%male#1-surname] wciąż bez odznaki fizjoterapeuty
+
+STR-438475
+Twój fizjoterapeuta podjął kontrowersyjną próbę redukcji stresu wśród zawodników, wpuszczając do szatni zespołu tuzin małych kotków.
+
+STR-438476
+Nie zatrudnia się kociarzy
+
+STR-438479
+Pozwoli ci to na rozpoczęcie gry jak powszechnie szanowany menedżer.
+
+STR-438481
+Pozwoli ci to na zbudowanie nowego stadionu dla twojego klubu i nadanie mu nazwy.
+
+STR-438482
+Trener uważa, że ten zawodnik najbardziej nadaje się do wygrzewania ławki rezerwowych albo sprzedaży giętej na stadionie.
+
+STR-438484
+[%male#1-full] ([%club#1-short]) został zwolniony z klubu.\n\n[%number#1]-letni [%male#1-surname] cieszył się w przeszłości sporym uznaniem kibiców, którzy spodziewali się, że przebije się do pierwszego zespołu.
+[%female#1-full] ([%club#1-short]) została zwolniona z klubu.\n\n[%number#1]-letnia [%female#1-surname] cieszyła się w przeszłości sporym uznaniem kibiców, którzy spodziewali się, że przebije się do pierwszego zespołu.
+
+STR-438485
+[%male#1-full] ([%club#1-short]) został zwolniony z klubu.\n\n[%male#1-surname] cieszył się w przeszłości sporym uznaniem kibiców, którzy spodziewali się, że przebije się do pierwszego zespołu.
+[%female#1-full] ([%club#1-short]) została zwolniona z klubu.\n\n[%female#1-surname] cieszyła się w przeszłości sporym uznaniem kibiców, którzy spodziewali się, że przebije się do pierwszego zespołu.
+
+STR-438487
+[%male#1] jest zmuszony poinformować cię, że nie zdał egzaminu na złotą odznakę scouta.\n\nChętnie spróbowałby ponownie, gdyż bardzo mu na tym zależy.
+[%female#1] jest zmuszona poinformować cię, że nie zdała egzaminu na złotą odznakę scouta.\n\nChętnie spróbowałaby ponownie, gdyż bardzo jej na tym zależy.
+
+STR-438488
+[%male#1] ma przyjemność poinformować cię, że uzyskał srebrną odznakę scouta.
+[%female#1] ma przyjemność poinformować cię, że uzyskała srebrną odznakę scouta.
+
+STR-438489
+[%male#1] jest zmuszony poinformować cię, że nie zdał egzaminu na srebrną odznakę scouta.\n\nChętnie spróbowałby ponownie, gdyż bardzo mu na tym zależy.
+[%female#1] jest zmuszona poinformować cię, że nie zdała egzaminu na srebrną odznakę scouta.\n\nChętnie spróbowałaby ponownie, gdyż bardzo jej na tym zależy.
+
+STR-438491
+[%male#1] jest zmuszony poinformować cię, że nie zdał egzaminu na brązową odznakę scouta.\n\nChętnie spróbowałby ponownie, gdyż bardzo mu na tym zależy.
+[%female#1] jest zmuszona poinformować cię, że nie zdała egzaminu na brązową odznakę scouta.\n\nChętnie spróbowałaby ponownie, gdyż bardzo jej na tym zależy.
+
+STR-438492
+[%male#1-surname] uzyskuje odznakę scouta
+
+STR-438493
+[%male#1-surname] wciąż bez odznaki scouta
+
+STR-438494
+Choć transakcja, w ramach której sprowadzony został [%male#1], uważana jest za dobre posunięcie, są zaniepokojeni twoim podejściem do transferów jako takim.[%male#2-hidden]
+Choć transakcja, w ramach której sprowadzona została [%female#1], uważana jest za dobre posunięcie, są zaniepokojeni twoim podejściem do transferów jako takim.[%male#2-hidden]
+
+STR-438495
+Decyzja, by do klubu przyszedł [%male#1], stanowi mistrzowskie posunięcie, gdyż stanie się opoką, na której będzie można zbudować zespół na miarę naszych ambicji.
+Decyzja, by do klubu przyszła [%female#1], stanowi mistrzowskie posunięcie, gdyż stanie się opoką, na której będzie można zbudować zespół na miarę naszych ambicji.
+
+STR-438496
+Decyzja, by do klubu przyszedł [%male#1], stanowi dobre posunięcie, postrzegane jako krok ku budowie przyszłościowej drużyny.
+Decyzja, by do klubu przyszła [%female#1], stanowi dobre posunięcie, postrzegane jako krok ku budowie przyszłościowej drużyny.
+
+STR-438497
+[%male#1-surname] świętuje wyróżnienie
+
+STR-438517
+\n\nNiewątpliwie [%club#1]{ucieszył się} z tej wiadomości, gdyż oczekiwana kwota [%cash#1-short-roundlarge] nie powinna ich odstraszyć.
+
+STR-438519
+\n\nOczekiwana kwota w wysokości około [%cash#1-short-roundlarge] nie powinna zniechęcić takich klubów jak [%club#1], [%club#2] czy [%club#3] do walki o jego podpis.
+
+STR-438530
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za 12 miesięcy.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za 12 miesięcy.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za 12 miesięcy.[%female#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za 12 miesięcy.[%female#1-hidden]
+
+STR-438536
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za 6 miesięcy.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za 6 miesięcy.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za 6 miesięcy.[%female#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za 6 miesięcy.[%female#1-hidden]
+
+STR-438542
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], nie są już chronione.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], nie są już chronione.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], nie są już chronione.[%female#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], nie są już chronione.[%female#1-hidden]
+
+STR-438548
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za 3 miesiące.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za 3 miesiące.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za 3 miesiące.[%female#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za 3 miesiące.[%female#1-hidden]
+
+STR-438554
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za 2 miesiące.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za 2 miesiące.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za 2 miesiące.[%female#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za 2 miesiące.[%female#1-hidden]
+
+STR-438560
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za miesiąc.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za miesiąc.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], wygasają za miesiąc.[%female#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], wygasają za miesiąc.[%female#1-hidden]
+
+STR-438574
+[%cash#1-short-roundlarge] za bramkę
+
+STR-438575
+[%cash#1-short-roundlarge] za asystę
+
+STR-438576
+[%cash#1-short-roundlarge] za czyste konto
+
+STR-438577
+[%club#1]{otrzymał} [%cash#1-long-roundsmall] na mocy klauzuli odsprzedaży, aktywowanej transferem, w myśl którego [%string#1 Player Name (eg. Marc Vaughan)] ([%club#2]) przeszedł do klubu [%club#3-long].
+
+STR-438579
+Zarząd daje do zrozumienia, że dysponujesz budżetem transferowym w wysokości [%cash#1-transferbudget], by wzmocnić zespół.[%male#1-hidden]
+
+STR-438589
+Kluby z całego kraju podjęły decyzję, którzy ich juniorzy otrzymają nowe kontrakty, a którzy odejdą po wygaśnięciu obecnych umów. Wśród tych drugich znajduje się wielu, których [%male#1] uważa za godnych zatrudnienia w klubie.
+
+STR-438590
+Kluby z całego kraju opublikowały coroczną listę juniorów, którzy odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilku, których [%male#1] uważa za godnych zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%male#2] (ostatnio [%club#1]) oraz [%male#3] (ostatnio [%club#2]) to nazwiska warte odnotowania.
+Kluby z całego kraju opublikowały coroczną listę juniorek, które odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilka, które [%male#1] uważa za godne zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%female#2] (ostatnio [%club#1]) oraz [%female#3] (ostatnio [%club#2]) to nazwiska warte odnotowania.
+Kluby z całego kraju opublikowały coroczną listę juniorów, którzy odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilku, których [%female#1] uważa za godnych zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%male#2] (ostatnio [%club#1]) oraz [%male#3] (ostatnio [%club#2]) to nazwiska warte odnotowania.
+Kluby z całego kraju opublikowały coroczną listę juniorek, które odejdą po wygaśnięciu obecnych umów. Wśród nich znajduje się kilka, które [%female#1] uważa za godne zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%female#2] (ostatnio [%club#1]) oraz [%female#3] (ostatnio [%club#2]) to nazwiska warte odnotowania.

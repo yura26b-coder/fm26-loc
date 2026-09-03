@@ -1,0 +1,556 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-419268
+The [%fixture_name#1] match between [%team#1-short-notype] and [%team#2-short-notype] originally scheduled for [%date#2-long] has been moved to [%date#1-long] due to international call-ups.
+
+STR-419269
+The [%fixture_name#1] match between [%team#1-short-notype] and [%team#2-short-notype] has been re-arranged for [%date#1-long], to be played at the same time as the rescheduled [%team#3-short-notype] vs [%team#4-short-notype] [%comp#1-short] match.
+
+STR-419270
+The [%fixture_name#1] match between [%team#1-short-notype] and [%team#2-short-notype] has been re-arranged for [%date#1-long] due to [%team#3-short-notype]{s} participation in the [%comp#1-long].
+
+STR-419271
+The [%fixture_name#1] match between [%team#1-short-notype] and [%team#2-short-notype] has been re-arranged for [%date#1-long] due to the clash with the [%team#3-short-notype] vs [%team#4-short-notype] [%comp#1-short] match on [%date#2-long].
+
+STR-419272
+[%team#1-short] v [%team#2-short] match re-arranged
+
+STR-419325
+Player Achievements (Minor)
+
+STR-419326
+Player Achievements (Major)
+
+STR-419327
+Major
+
+STR-419328
+Minor
+
+STR-419329
+[%team#1-short] have moved up [%number#1] places to [%number#2-nth] position in the latest World Rankings list, more places than any other nation.
+
+STR-419330
+[%team#1-short] have moved up [%number#1] places to [%number#2-nth] position in the latest World Rankings list.
+
+STR-419331
+[%team#1-short] have moved up [%number#1] place to [%number#2-nth] position in the latest World Rankings list.
+
+STR-419332
+[%team#1-short] have dropped [%number#1] place to [%number#2-nth] position in the latest World Rankings list.
+
+STR-419333
+[%team#1-short] have dropped [%number#1] places to [%number#2-nth] position in the latest World Rankings list.
+
+STR-419334
+[%team#1-short] remain in [%number#2-nth] position in the latest World Rankings list.
+
+STR-419335
+[%team#1-short] hold on to their first place position in the rankings.
+
+STR-419336
+[%team#1-short] have moved up to first place in the rankings, up from [%number#1-nth].
+
+STR-419337
+The most improved nation was [%team#1-short] who moved from [%number#1-nth] to [%number#2-nth] in the list.
+
+STR-419338
+World Rankings announced
+
+STR-420623
+Heat Map
+
+STR-420662
+Both
+
+STR-420703
+Pass Combinations
+
+STR-420786
+Gained Possession
+
+STR-420788
+Lost Possession
+
+STR-420888
+Six Yard Box
+
+STR-420889
+Penalty Area Centre
+
+STR-420890
+Penalty Area Right
+
+STR-420900
+Latin American
+
+STR-420901
+Brazilian
+
+STR-420902
+Chinese (Simple)
+
+STR-420903
+Chinese (Traditional)
+
+STR-420904
+English (US)
+
+STR-421416
+Finish bottom of the league
+
+STR-421417
+The minimum expectation is that the team finish bottom of the league this season.
+
+STR-421418
+Avoid finishing bottom of the league
+
+STR-421419
+The minimum expectation is that the team doesn't finish at the bottom of the league this season.
+
+STR-421427
+However, we still expect the team to end up missing out on promotion.
+
+STR-421434
+However, we still expect the team to end up getting relegated.
+
+STR-421435
+However, we still expect the team to end up finishing near the bottom of the league.
+
+STR-421438
+To make matters worse, we still expect the team to only end up winning the [%comp#1-short].
+
+STR-421439
+To make matters worse, we still expect the team to only end up gaining promotion by winning the [%comp#1-short].
+
+STR-421441
+To make matters worse, we still expect the team to only end up qualifying for the [%comp#2-short].
+
+STR-421442
+To make matters worse, we still expect the team to only end up gaining promotion.
+
+STR-421443
+To make matters worse, we still expect the team to only end up qualifying from the [%stage_name#1] of the [%comp#1-short].
+
+STR-421444
+To make matters worse, we still expect the team to only end up reaching the [%stage_name#1] of the [%comp#1-short].
+
+STR-421445
+To make matters worse, we still expect the team to only end up missing out on promotion.
+
+STR-421446
+To make matters worse, we still expect the team to only end up finishing in the top half of the table.
+
+STR-421447
+To make matters worse, we still expect the team to only end up finishing around mid-table.
+
+STR-421448
+To make matters worse, we still expect the team to only end up avoiding getting involved in the relegation battle.
+
+STR-421449
+To make matters worse, we still expect the team to only end up being competitive in the [%comp#1-short].
+
+STR-421450
+To make matters worse, we still expect the team to only end up avoiding relegation.
+
+STR-421452
+To make matters worse, we still expect the team to only end up getting relegated.
+
+STR-421453
+To make matters worse, we still expect the team to finish near the bottom of the league.
+
+STR-421454
+To make matters worse, we still expect the team to finish at the bottom of the league.
+
+STR-421455
+To make matters worse, we still expect the team to only end up not being outclassed in the [%comp#1-short].
+
+STR-421474
+We do expect the team's position to improve but only to end up winning the [%comp#1-short].
+
+STR-421475
+We do expect the team's position to improve but only to end up gaining promotion by winning the [%comp#1-short].
+
+STR-421477
+We do expect the team's position to improve but only to end up qualifying for the [%comp#2-short].
+
+STR-421478
+We do expect the team's position to improve but only to end up gaining promotion.
+
+STR-421479
+We do expect the team's position to improve but only to end up qualifying from the [%stage_name#1] of the [%comp#1-short].
+
+STR-421480
+We do expect the team's position to improve but only to end up reaching the [%stage_name#1] of the [%comp#1-short].
+
+STR-421481
+We do expect the team's position to improve but only to end up missing out on promotion.
+
+STR-421482
+We do expect the team's position to improve but only to end up finishing in the top half of the table.
+
+STR-421483
+We do expect the team's position to improve but only to end up finishing around mid-table.
+
+STR-421484
+We do expect the team's position to improve but only to end up avoiding getting involved in the relegation battle.
+
+STR-421485
+We do expect the team's position to improve but only to end up being competitive in the [%comp#1-short].
+
+STR-421486
+We do expect the team's position to improve but only to end up avoiding relegation.
+
+STR-421487
+We do expect the team's position to improve but only to end up avoiding automatic relegation.
+
+STR-421488
+We do expect the team's position to improve but only to end up getting relegated anyway.
+
+STR-421489
+We do expect the team's position to improve but only to end up finishing near the bottom of the league anyway.
+
+STR-421490
+We do expect the team's position to improve but only to end up finishing bottom of the league anyway.
+
+STR-421491
+We do expect the team's position to improve but only to end up not being outclassed in the [%comp#1-short].
+
+STR-421492
+However things aren't so bad as we still expect the team to end up winning the [%comp#1-short].
+
+STR-421493
+However things aren't so bad as we still expect the team to end up gaining promotion by winning the [%comp#1-short].
+
+STR-421495
+However things aren't so bad as we still expect the team to end up qualifying for the [%comp#2-short].
+
+STR-421496
+However things aren't so bad as we still expect the team to end up gaining promotion.
+
+STR-421497
+However things aren't so bad as we still expect the team to end up qualifying from the [%stage_name#1] of the [%comp#1-short].
+
+STR-421498
+However things aren't so bad as we still expect the team to end up reaching the [%stage_name#1] of the [%comp#1-short].
+
+STR-421499
+However things aren't so bad as we still expect the team to end up finishing in the top half of the table.
+
+STR-421500
+However things aren't so bad as we still expect the team to end up finishing around mid-table.
+
+STR-421501
+However things aren't so bad as we still expect the team to end up avoiding getting involved in the relegation battle.
+
+STR-421502
+However things aren't so bad as we still expect the team to end up being competitive in the [%comp#1-short].
+
+STR-421503
+However things aren't so bad as we still expect the team to end up avoiding relegation.
+
+STR-421504
+However things aren't so bad as we still expect the team to end up avoiding automatic relegation.
+
+STR-421505
+However, we still expect the team to end up finishing at the bottom of the league.
+
+STR-421506
+However things aren't so bad as we still expect the team to end up not being outclassed in the [%comp#1-short].
+
+STR-421507
+The board are satisfied the team didn't finish bottom of the league this season.
+
+STR-421524
+The Football Association are very pleased that the team has reached the [%stage_name#1] of the [%comp#1-short].
+
+STR-421525
+The Football Association are pleased that the team has reached the [%stage_name#1] of the [%comp#1-short].
+Polish Reference:
+STR-419268
+Zaplanowany na [%date#2-short] mecz [%team#1-short-notype]-[%team#2-short-notype] ([%fixture_name#1]) został przełożony ze względu na konflikt ze spotkaniami międzynarodowymi. Spotkanie rozegrane zostanie [%date#1-short].
+
+STR-419269
+Mecz [%team#1-short-notype]-[%team#2-short-notype] ([%fixture_name#1]) został przeniesiony na [%date#1-short], tak by został rozegrany równolegle z meczem [%team#3-short-notype] - [%team#4-short-notype] ([%comp#1-short]).
+
+STR-419270
+Mecz [%team#1-short-notype]-[%team#2-short-notype] ([%fixture_name#1]) został przeniesiony na [%date#1-short] ze względu na to, że równolegle [%team#3-short-notype]{uczestniczy} w innych rozgrywkach ([%comp#1-long]).
+
+STR-419271
+Mecz [%team#1-short-notype]-[%team#2-short-notype] ([%fixture_name#1]) został przeniesiony na [%date#1-short], jako że [%date#2-short] odbędzie się spotkanie [%team#3-short-notype] - [%team#4-short-notype] ([%comp#1-short]).
+
+STR-419272
+Mecz [%team#1-short]-[%team#2-short] przełożony
+
+STR-419325
+Osiągnięcia piłkarzy (pomniejsze)
+
+STR-419326
+Osiągnięcia piłkarzy (najważniejsze)
+
+STR-419327
+Najważniejsze
+
+STR-419328
+Pomniejsze
+
+STR-419329
+[%team#1-short]{zanotował} największy skok w najnowszym rankingu światowym, o [%number#1] miejsc(a) na [%number#2]. pozycję.
+
+STR-419330
+[%team#1-short]{awansował} o [%number#1] miejsc(a) na [%number#2]. pozycję w najnowszym rankingu światowym.
+
+STR-419331
+[%team#1-short]{awansował} o [%number#1] miejsce na [%number#2]. pozycję w najnowszym rankingu światowym.
+
+STR-419332
+[%team#1-short]{spadł} o [%number#1] miejsce na [%number#2]. pozycję w najnowszym rankingu światowym.
+
+STR-419333
+[%team#1-short]{spadł} o [%number#1] miejsc(a) na [%number#2]. pozycję w najnowszym rankingu światowym.
+
+STR-419334
+[%team#1-short]{utrzymał} się na [%number#2]. miejscu w światowym rankingu.
+
+STR-419335
+[%team#1-short]{utrzymuje} pierwsze miejsce w rankingu.
+
+STR-419336
+[%team#1-short]{awansował} z [%number#1]. miejsca na sam szczyt rankingu.
+
+STR-419337
+Reprezentacją, która poczyniła największe postępy, {jest}[%team#1-short] - drużyna ta awansowała z [%number#1]. na [%number#2]. miejsce.
+
+STR-419338
+Znamy nowy ranking światowy
+
+STR-420623
+Mapa aktywności
+
+STR-420662
+Oba
+
+STR-420703
+Kombinacje podań
+
+STR-420786
+Przejęcie piłki
+
+STR-420788
+Strata piłki
+
+STR-420888
+Pole bramkowe
+
+STR-420889
+Środek pola karnego
+
+STR-420890
+Prawa strona pola karnego
+
+STR-420900
+hiszpański (Am)
+
+STR-420901
+brazylijski
+
+STR-420902
+chiński (uproszczony)
+
+STR-420903
+chiński (tradycyjny)
+
+STR-420904
+angielski (US)
+
+STR-421416
+Ostatnie miejsce w lidze
+
+STR-421417
+Minimalne oczekiwania na ten sezon to zajęcie ostatniego miejsca w lidze.
+
+STR-421418
+Uniknięcie ostatniego miejsca w lidze
+
+STR-421419
+Minimalne oczekiwania na ten sezon to uniknięcie zajęcia ostatniego miejsca w lidze.
+
+STR-421427
+Niemniej jednak, wciąż oczekujemy, że i tak nie uda się nam awansować.
+
+STR-421434
+Niemniej jednak, wciąż oczekujemy, że i tak spadniemy z ligi.
+
+STR-421435
+Niemniej jednak, wciąż oczekujemy, że zakończymy rozgrywki ligowe w ogonie ligowej tabeli.
+
+STR-421438
+Co gorsza, wciąż spodziewamy się, że co najwyżej zwyciężymy w: [%comp#1-short].
+
+STR-421439
+Co gorsza, wciąż spodziewamy się, że co najwyżej wywalczymy awans, zwyciężając w: [%comp#1-short].
+
+STR-421441
+Co gorsza, wciąż spodziewamy się, że co najwyżej wywalczymy awans do: [%comp#2-short].
+
+STR-421442
+Co gorsza, wciąż spodziewamy się, że co najwyżej wywalczymy awans.
+
+STR-421443
+Co gorsza, wciąż spodziewamy się, że co najwyżej awansujemy z: [%stage_name#1], [%comp#1-short].
+
+STR-421444
+Co gorsza, wciąż spodziewamy się, że co najwyżej dotrzemy do: [%stage_name#1], [%comp#1-short].
+
+STR-421445
+Co gorsza, wciąż spodziewamy się, że i tak nie uda się nam awansować.
+
+STR-421446
+Co gorsza, wciąż spodziewamy się, że co najwyżej zajmiemy miejsce w górnej części tabeli.
+
+STR-421447
+Co gorsza, wciąż spodziewamy się, że co najwyżej zajmiemy miejsce w środkowej części tabeli.
+
+STR-421448
+Co gorsza, wciąż spodziewamy się, że co najwyżej unikniemy walki o utrzymanie.
+
+STR-421449
+Co gorsza, wciąż spodziewamy się, że co najwyżej będziemy dzielnie walczyć w rozgrywkach ([%comp#1-short]).
+
+STR-421450
+Co gorsza, wciąż spodziewamy się, że co najwyżej unikniemy spadku.
+
+STR-421452
+Co gorsza, wciąż spodziewamy się, że i tak spadniemy z ligi.
+
+STR-421453
+Co gorsza, wciąż spodziewamy się, że zakończymy rozgrywki ligowe w ogonie ligowej tabeli.
+
+STR-421454
+Co gorsza, wciąż spodziewamy się, że zakończymy rozgrywki ligowe na ostatnim miejscu.
+
+STR-421455
+Co gorsza, wciąż spodziewamy się, że co najwyżej nie zostaniemy zdeklasowani w rozgrywkach ([%comp#1-short]).
+
+STR-421474
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli zwyciężymy w: [%comp#1-short].
+
+STR-421475
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli wywalczymy awans, zwyciężając w: [%comp#1-short].
+
+STR-421477
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli wywalczymy awans z: [%comp#2-short].
+
+STR-421478
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli wywalczymy awans.
+
+STR-421479
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli awansujemy z: [%stage_name#1], [%comp#1-short].
+
+STR-421480
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli dotrzemy do: [%stage_name#1], [%comp#1-short].
+
+STR-421481
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz spodziewamy się, że i tak nie uda się nam awansować.
+
+STR-421482
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli zajmiemy miejsce w górnej części tabeli.
+
+STR-421483
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli zajmiemy miejsce w środkowej części tabeli.
+
+STR-421484
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli unikniemy walki o utrzymanie.
+
+STR-421485
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli będziemy dzielnie walczyć w rozgrywkach ([%comp#1-short]).
+
+STR-421486
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli unikniemy spadku.
+
+STR-421487
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli unikniemy bezpośredniego spadku.
+
+STR-421488
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz spodziewamy się, że i tak spadniemy z ligi.
+
+STR-421489
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz spodziewamy się, że i tak zakończymy rozgrywki ligowe w ogonie ligowej tabeli.
+
+STR-421490
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz spodziewamy się, że i tak zakończymy rozgrywki ligowe na ostatnim miejscu.
+
+STR-421491
+Oczekujemy co prawda, że pozycja zespołu ulegnie poprawie, lecz wystarczy nam, jeśli nie zostaniemy zdeklasowani w rozgrywkach ([%comp#1-short]).
+
+STR-421492
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół zdoła zwyciężyć w: [%comp#1-short].
+
+STR-421493
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół zdoła wywalczyć awans, zwyciężając w: [%comp#1-short].
+
+STR-421495
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół zdoła wywalczyć awans do: [%comp#2-short].
+
+STR-421496
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół zdoła wywalczyć awans.
+
+STR-421497
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół zdoła awansować z: [%stage_name#1], [%comp#1-short].
+
+STR-421498
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół zdoła dotrzeć do: [%stage_name#1], [%comp#1-short].
+
+STR-421499
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół zdoła zająć miejsce w górnej połowie tabeli.
+
+STR-421500
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół zdoła zająć miejsce w środku tabeli.
+
+STR-421501
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół zdoła uniknąć walki o utrzymanie.
+
+STR-421502
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół będzie dzielnie walczyć w rozgrywkach ([%comp#1-short]).
+
+STR-421503
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół uniknie spadku.
+
+STR-421504
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół uniknie bezpośredniego spadku.
+
+STR-421505
+Jednakże nadal spodziewamy się, że zespół zakończy rozgrywki ligowe na ostatnim miejscu.
+
+STR-421506
+Jednakże sytuacja nie jest aż tak zła, gdyż nadal oczekujemy, że zespół uniknie deklasacji w rozgrywkach ([%comp#1-short]).
+
+STR-421507
+Zarząd jest usatysfakcjonowany tym, że zespół nie zajął w tym sezonie ostatniego miejsca w ligowej tabeli.
+
+STR-421524
+ZPN jest bardzo zadowolony z tego, że zespół dotarł do: [%stage_name#1], [%comp#1-short].
+
+STR-421525
+ZPN jest zadowolony z tego, że zespół dotarł do: [%stage_name#1], [%comp#1-short].

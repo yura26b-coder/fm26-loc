@@ -1,0 +1,1296 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-410015
+Report from: [%person#1] ([%string#1 - specialisation string])
+
+STR-410016
+Report from: [%person#1]
+
+STR-410017
+[%person#1-surname] is currently without a club.
+
+STR-410018
+[%person#1-surname] has since transferred to [%club#1-short].
+
+STR-410019
+[%person#1-surname] has already agreed to join [%club#1-short].
+
+STR-410020
+We are paying no contributions towards [%person#1-surname]{s} [%string#1 - cash amount] wages until [%date#1-short].
+
+STR-410021
+We are currently paying all of [%person#1-surname]{s} [%string#1 - cash amount] wages until [%date#1-short].
+
+STR-410022
+We are currently paying [%number#1]% of [%person#1-surname]{s} [%string#1 - cash amount] wages until [%date#1-short].
+
+STR-410024
+[%person#1-surname] is currently on loan at [%club#1-short] until [%date#1-short]. [%person#1-He] is currently valued at [%string#2 - transfer value].
+
+STR-410025
+[%person#1-surname] is currently on loan at [%club#1-short]. [%person#1-He] is currently valued at [%string#2 - transfer value].
+
+STR-410026
+[%person#1-surname] is on a [%string#1 - wage per week] contract until [%date#1]. [%person#1-He] is currently valued at [%string#2 - transfer value].
+
+STR-410033
+Availability
+
+STR-410034
+Interest
+
+STR-410035
+Estimated Cost
+
+STR-410036
+Wage Demands
+
+STR-410037
+Loan Listed
+
+STR-410038
+Unattached
+
+STR-410039
+Bosman
+
+STR-410040
+Positives
+
+STR-410041
+Negatives
+
+STR-410052
+Dominates [%person#1-his] area when ball is in the air
+
+STR-410062
+Quick when coming off [%person#1-his] line
+
+STR-410063
+Slow when coming off [%person#1-his] line
+
+STR-410072
+Gets [%person#1-himself] into good positions
+
+STR-410073
+Finds [%person#1-himself] in poor positions
+
+STR-410130
+[%person#1-He] is an effective penalty taker
+
+STR-410137
+Tends to do [%person#1-his] own thing
+
+STR-410138
+Takes pride in [%person#1-his] performances
+
+STR-410144
+Good command of [%person#1-his] area
+
+STR-410171
+Has a release clause in [%person#1-his] contract
+
+STR-410172
+No release clause in [%person#1-his] contract
+
+STR-410177
+No outstanding qualities to report
+
+STR-410178
+No major concerns to report
+
+STR-410179
+[%string#1 wage] p/annum
+
+STR-410180
+[%string#1 wage] p/month
+
+STR-410181
+[%string#1 wage] p/week
+
+STR-410183
+Player Debug
+
+STR-410184
+Player Form
+
+STR-410188
+Cnc
+
+STR-410190
+No competitive matches played yet
+
+STR-410192
+Friendly
+
+STR-410194
+v
+
+STR-410195
+Disciplined by boss
+
+STR-410196
+Match
+
+STR-410237
+Player Nationality
+
+STR-410238
+Select the player's nationality
+
+STR-410244
+Left Back
+
+STR-410245
+Centre Back
+
+STR-410246
+Right Back
+
+STR-410247
+Left Wing-Back
+
+STR-410248
+Defensive Midfield
+
+STR-410249
+Right Wing-Back
+
+STR-410250
+Left Midfield
+
+STR-410251
+Central Midfield
+
+STR-410252
+Right Midfield
+
+STR-410253
+Left Wing
+
+STR-410254
+Attacking Midfield
+
+STR-410255
+Right Wing
+
+STR-410256
+Striker
+
+STR-410257
+Select position within the team
+
+STR-410258
+Add To MyClub
+
+STR-410259
+Physical
+
+STR-410260
+Mental
+
+STR-410261
+Cro
+
+STR-410262
+Dri
+
+STR-410263
+Hea
+
+STR-410264
+Pas
+
+STR-410265
+Sho
+
+STR-410266
+Tac
+
+STR-410267
+Tec
+
+STR-410268
+Agg
+
+STR-410269
+Cre
+
+STR-410270
+Dec
+
+STR-410271
+Lea
+
+STR-410272
+Mov
+
+STR-410273
+Tea
+
+STR-410274
+Pac
+
+STR-410275
+Sta
+
+STR-410276
+Str
+
+STR-410277
+Off-Season
+
+STR-410278
+Out on loan
+
+STR-410279
+Retrain Player Position
+
+STR-410282
+Active
+
+STR-410286
+Transfer Status
+
+STR-410293
+Starting Configuration
+
+STR-410294
+Game Configuration
+
+STR-410295
+User Interface
+
+STR-410296
+Unlockables
+
+STR-410297
+Debug Options
+
+STR-410298
+Console Options
+
+STR-410301
+Game Center & Social Networking
+
+STR-410304
+UK Leaves EU
+
+STR-410305
+UK Leaves EU, Scotland Remain
+
+STR-410306
+UK Leaves EU, Scot/N.Ireland Remain
+
+STR-410307
+UK Leaves EU, N.Ireland Remain
+
+STR-410308
+None
+
+STR-410309
+Darken
+
+STR-410310
+Grey Scale
+
+STR-410313
+Slow
+
+STR-410314
+Fast
+
+STR-410317
+Decimal( e.g. 16.0 )
+
+STR-410318
+Fractional( e.g. 15 - 1 )
+
+STR-410319
+Inactive Area Display Style
+
+STR-410320
+Scrollbar Speed
+
+STR-410321
+Wide Scrollbar
+
+STR-410322
+Invert Scrolling Enabled
+
+STR-410323
+Disable Flashing Text
+
+STR-410324
+Can Sort Searches
+
+STR-410327
+Stretch Display
+
+STR-410329
+Colour Blind Mode
+
+STR-410330
+Club Link
+
+STR-410331
+Match Odds
+
+STR-410332
+Decimal (e.g. 16.0)
+
+STR-410333
+Fractional (e.g. 15-1)
+
+STR-410335
+Not available during this challenge
+
+STR-410336
+Abolish Transfer Windows
+
+STR-410337
+Remove Loan Restrictions
+
+STR-410338
+Become Unsackable
+
+STR-410339
+Abolish Work Permits
+
+STR-410340
+In-Game Editor
+
+STR-410341
+Active
+
+STR-410342
+Language
+
+STR-410343
+Currency
+
+STR-410344
+Wage Display Format
+
+STR-410345
+Automatic Weekly Save
+
+STR-410346
+Sounds
+
+STR-410347
+Brexit Configuration
+
+STR-410350
+Reset Achievements
+
+STR-410351
+Apply
+
+STR-410359
+Legal Information
+
+STR-410360
+View EULA
+
+STR-410361
+Privacy Policy
+
+STR-410362
+View Privacy Policy
+
+STR-410379
+Empty
+
+STR-410380
+Load Filter
+
+STR-410381
+Please select the filter to load
+
+STR-410382
+Save Filter
+
+STR-410383
+Please select the slot to save the filter into
+
+STR-410384
+Filter Name
+
+STR-410385
+Saved Search Filter(s)
+
+STR-410386
+Load Selection
+
+STR-410387
+Please select the team selection to load
+
+STR-410388
+Save Selection
+
+STR-410389
+Please select the slot to save the selection into
+
+STR-410391
+Saved selection(s)
+
+STR-410392
+Selection Name
+
+STR-410393
+Selection file not for this club. The selection has not been loaded.
+
+STR-410394
+Some players in the selection were not found at the club. Selection loaded without these players.
+
+STR-410395
+Load Shortlist
+
+STR-410396
+Please select the shortlist to load
+
+STR-410397
+Save Shortlist
+
+STR-410398
+Please select the slot to save the shortlist into
+
+STR-410399
+Shortlist Name
+
+STR-410400
+Saved Shortlist(s)
+
+STR-410401
+Please select the tactic to load
+
+STR-410402
+Please select the slot to save the tactic into
+
+STR-410403
+Tactic Name
+
+STR-410404
+Saved Tactic(s)
+
+STR-410405
+Continue Career
+
+STR-410406
+End Challenge
+
+STR-410407
+Challenge Completed
+
+STR-410408
+Challenge Failed
+
+STR-410409
+Select Option
+
+STR-410410
+Well done!
+
+STR-410411
+You have successfully guided the club away from relegation and completed the challenge.
+
+STR-410412
+You have successfully ridden out the injury crisis and completed the challenge.
+
+STR-410413
+Your club has survived the season unbeaten in the league, an achievement which will go down in the club's history.
+
+STR-410414
+Due to your tight control over the club's expenses, you have successfully managed to steer the club away from financial collapse.
+
+STR-410415
+Congratulations on guiding your young squad to glory. You have completed the challenge.
+
+STR-410416
+You have managed to win the respect of your players and retain your position as manager of the club.
+
+STR-410420
+Better luck next time...
+
+STR-410421
+Unfortunately you were unable to avoid relegation. You have failed to complete the challenge.
+
+STR-410422
+Unfortunately you were unable to ride out the injury crisis and have lost your job.
+
+STR-410423
+Unfortunately your side was unable to complete the season unbeaten. You have failed to complete the challenge.
+
+STR-410424
+Unfortunately you were unable to steer the club away from financial difficulty and maintain a satisfactory level of performance on the pitch.
+
+STR-410425
+Unfortunately you have been unable to guide your young squad to a trophy. You have failed to complete the challenge.
+
+STR-410426
+Unfortunately your inability to win the backing of the squad has ultimately led to your sacking.
+
+STR-410427
+Unfortunately your team's poor performances have ultimately led to your sacking.
+
+STR-410430
+Are you sure you want to exit this challenge?
+
+STR-410431
+Austerity Wage Budget
+
+STR-410432
+Current Wage Bill
+
+STR-410433
+Difference
+
+STR-410434
+League Position
+
+STR-410442
+Search Menu
+
+STR-410443
+Trophy Winners
+
+STR-410444
+Top Scorers
+
+STR-410446
+Player Awards
+
+STR-410447
+Manager Awards
+
+STR-410449
+Award
+
+STR-410451
+Total Manager Points: [%number#1]
+
+STR-410452
+Do you want to proceed to your Career Review?
+
+STR-410453
+Update Game?
+
+STR-410454
+Do you want to start the new season now?\n\nSome stats and match results are not retained when you enter a new season.
+
+STR-410456
+Setting up new game
+
+STR-410458
+Setting up Challenge
+
+STR-410459
+Finalising Challenge
+
+STR-410462
+Detailed
+
+STR-410463
+Select Detailed View
+
+STR-410464
+Select Sort
+
+STR-410465
+Select Filter
+
+STR-410466
+Hide Ineligible
+
+STR-410467
+Hide Suspended
+
+STR-410468
+Hide Injured
+
+STR-410469
+Tactical Role
+
+STR-410470
+Match Awards
+
+STR-410477
+No staff found that match search filters
+
+STR-410478
+Spec.
+
+STR-410479
+Personal Info
+
+STR-410484
+Career
+
+STR-410485
+Challenge
+
+STR-410486
+My Club
+Polish Reference:
+STR-410015
+Raport: [%male#1] ([%string#1 - specialisation string])
+
+STR-410016
+Raport: [%male#1]
+
+STR-410017
+[%male#1-surname] jest obecnie bez klubu.
+
+STR-410018
+[%male#1-surname] w międzyczasie przeszedł do klubu [%club#1-long].
+[%female#1-surname] w międzyczasie przeszła do klubu [%club#1-long].
+
+STR-410019
+[%male#1-surname] zgodził się już na przejście do klubu [%club#1-long].
+[%female#1-surname] zgodziła się już na przejście do klubu [%club#1-long].
+
+STR-410020
+Do [%date#1-short] nie wnosimy wkładu w wynagrodzenie w wysokości [%string#1 - cash amount], jakie otrzymuje [%male#1-surname].
+
+STR-410021
+Do [%date#1-short] pokrywamy całość wynagrodzenia w wysokości [%string#1 - cash amount], jakie otrzymuje [%male#1-surname].
+
+STR-410022
+Do [%date#1-short] pokrywamy [%number#1]% wynagrodzenia w wysokości [%string#1 - cash amount], jakie otrzymuje [%male#1-surname].
+
+STR-410024
+Obecnie [%male#1-surname] do [%date#1-short] przebywa na wypożyczeniu w klubie [%club#1-long]. Jest on teraz wyceniany na [%string#2 - transfer value].
+Obecnie [%female#1-surname] do [%date#1-short] przebywa na wypożyczeniu w klubie [%club#1-long]. Jest ona teraz wyceniana na [%string#2 - transfer value].
+
+STR-410025
+Obecnie [%male#1-surname] przebywa na wypożyczeniu w klubie [%club#1-long]. Jest on teraz wyceniany na [%string#2 - transfer value].
+Obecnie [%female#1-surname] przebywa na wypożyczeniu w klubie [%club#1-long]. Jest ona teraz wyceniana na [%string#2 - transfer value].
+
+STR-410026
+Do [%date#1] [%male#1-surname] jest zatrudniony na kontrakcie wartym [%string#1 - wage per week]. Jest on teraz wyceniany na [%string#2 - transfer value].
+Do [%date#1] [%female#1-surname] jest zatrudniona na kontrakcie wartym [%string#1 - wage per week]. Jest ona teraz wyceniana na [%string#2 - transfer value].
+
+STR-410033
+Dostępność
+
+STR-410034
+Zainteresowanie
+
+STR-410035
+Szacowane koszty
+
+STR-410036
+Oczekiwania finansowe
+
+STR-410037
+Do wypożyczenia
+
+STR-410038
+Bez kontraktu
+
+STR-410039
+Na prawie Bosmana
+
+STR-410040
+Plusy
+
+STR-410041
+Minusy
+
+STR-410052
+Kontroluje pole karne przy górnych piłkach[%male#1-hidden]
+
+STR-410062
+Szybki przy wyjściach z linii[%male#1-hidden]
+Szybka przy wyjściach z linii[%female#1-hidden]
+
+STR-410063
+Wolny przy wyjściach z linii[%male#1-hidden]
+Wolna przy wyjściach z linii[%female#1-hidden]
+
+STR-410072
+Dobrze ustawia się do podań[%male#1-hidden]
+
+STR-410073
+Kiepsko ustawia się do podań[%male#1-hidden]
+
+STR-410130
+Skutecznie wykonuje rzuty karne[%male#1-hidden]
+
+STR-410137
+Robi swoje[%male#1-hidden]
+
+STR-410138
+Jest dumny ze swojej gry[%male#1-hidden]
+Jest dumna ze swojej gry[%female#1-hidden]
+
+STR-410144
+Dobrze gra na przedpolu[%male#1-hidden]
+
+STR-410171
+Ma klauzulę odejścia w kontrakcie[%male#1-hidden]
+
+STR-410172
+Nie ma klauzuli odejścia w kontrakcie[%male#1-hidden]
+
+STR-410177
+Nic szczególnego do podkreślenia
+
+STR-410178
+Nic niepokojącego do podkreślenia
+
+STR-410179
+[%string#1 wage] rocznie
+
+STR-410180
+[%string#1 wage] miesięcznie
+
+STR-410181
+[%string#1 wage] tygodniowo
+
+STR-410183
+Debugowanie zawodnika
+
+STR-410184
+Forma
+
+STR-410188
+Str
+
+STR-410190
+Brak rozegranych meczów o stawkę
+
+STR-410192
+Sparing
+
+STR-410194
+vs
+
+STR-410195
+Ukarany przez menedżera
+
+STR-410196
+Mecz
+
+STR-410237
+Narodowość
+
+STR-410238
+Wybierz narodowość zawodnika
+
+STR-410244
+Lewy obrońca
+
+STR-410245
+Środkowy obrońca
+
+STR-410246
+Prawy obrońca
+
+STR-410247
+Lewy wysunięty obrońca
+
+STR-410248
+Defensywny pomocnik
+
+STR-410249
+Prawy wysunięty obrońca
+
+STR-410250
+Lewy pomocnik
+
+STR-410251
+Środkowy pomocnik
+
+STR-410252
+Prawy pomocnik
+
+STR-410253
+Lewoskrzydłowy
+
+STR-410254
+Ofensywny pomocnik
+
+STR-410255
+Prawoskrzydłowy
+
+STR-410256
+Napastnik
+
+STR-410257
+Wybierz pozycję
+
+STR-410258
+Dodaj do Mojego Klubu
+
+STR-410259
+Fizyczne
+
+STR-410260
+Psychiczne
+
+STR-410261
+Dśr
+
+STR-410262
+Drb
+
+STR-410263
+Głw
+
+STR-410264
+Pod
+
+STR-410265
+Str
+
+STR-410266
+Tak
+
+STR-410267
+Tec
+
+STR-410268
+Agr
+
+STR-410269
+Kre
+
+STR-410270
+Dec
+
+STR-410271
+Prz
+
+STR-410272
+Por
+
+STR-410273
+Wsp
+
+STR-410274
+Szb
+
+STR-410275
+Wyt
+
+STR-410276
+Sił
+
+STR-410277
+Poza sezonem
+
+STR-410278
+Na wypożyczeniu
+
+STR-410279
+Trenuj pozycję
+
+STR-410282
+Aktywny
+
+STR-410286
+Status transferowy
+
+STR-410293
+Konfiguracja początkowa
+
+STR-410294
+Konfiguracja gry
+
+STR-410295
+Interfejs użytkownika
+
+STR-410296
+Zawartość do odblokowania
+
+STR-410297
+Opcje debugowania
+
+STR-410298
+Opcje konsoli
+
+STR-410301
+Game Center i portale społecznościowe
+
+STR-410304
+WB opuszcza UE
+
+STR-410305
+WB opuszcza UE, Szkocja pozostaje
+
+STR-410306
+WB opuszcza UE, Szkocja/Irlandia Pn. pozostają
+
+STR-410307
+WB opuszcza UE, Irlandia Pn. pozostaje
+
+STR-410308
+Brak
+
+STR-410309
+Przyciemnij
+
+STR-410310
+Skala szarości
+
+STR-410313
+Wolno
+
+STR-410314
+Szybko
+
+STR-410317
+Dziesiętny (np. 16.0)
+
+STR-410318
+Brytyjski (np. 15-1)
+
+STR-410319
+Styl wyświetlania nieaktywnych obszarów
+
+STR-410320
+Szybkość przewijania
+
+STR-410321
+Szeroki pasek przewijania
+
+STR-410322
+Odwrotne przewijanie aktywne
+
+STR-410323
+Wyłącz migający tekst
+
+STR-410324
+Można sortować wyszukiwania
+
+STR-410327
+Rozciągnij ekran
+
+STR-410329
+Tryb dla osób nierozróżniających kolorów
+
+STR-410330
+Łącze klubu
+
+STR-410331
+Typowania przedmeczowe
+
+STR-410332
+Dziesiętny (np. 16.0)
+
+STR-410333
+Brytyjski (np. 15-1)
+
+STR-410335
+Niedostępny w tym wyzwaniu
+
+STR-410336
+Znieś okna transferowe
+
+STR-410337
+Znieś ograniczenia wypożyczeń
+
+STR-410338
+Ochrona przed zwolnieniem
+
+STR-410339
+Znieś pozwolenia na pracę
+
+STR-410340
+Edytor FM
+
+STR-410341
+Aktywny
+
+STR-410342
+Język
+
+STR-410343
+Waluta
+
+STR-410344
+Wynagrodzenie
+
+STR-410345
+Automatyczny cotygodniowy zapis gry
+
+STR-410346
+Dźwięki
+
+STR-410347
+Konfiguracja brexitu
+
+STR-410350
+Wyzeruj osiągnięcia
+
+STR-410351
+Zastosuj
+
+STR-410359
+Informacje prawne
+
+STR-410360
+Pokaż EULA
+
+STR-410361
+Polityka prywatności
+
+STR-410362
+Polityka prywatności
+
+STR-410379
+Pusto
+
+STR-410380
+Wczytaj filtr
+
+STR-410381
+Wybierz filtr do wczytania
+
+STR-410382
+Zapisz filtr
+
+STR-410383
+Wybierz miejsce zapisu filtra
+
+STR-410384
+Nazwa filtra
+
+STR-410385
+Zapisane filtry wyszukiwania
+
+STR-410386
+Wczytaj skład
+
+STR-410387
+Wybierz skład zespołu do wczytania
+
+STR-410388
+Zapisz skład
+
+STR-410389
+Wybierz miejsce zapisu składu
+
+STR-410391
+Zapisane składy
+
+STR-410392
+Nazwa składu
+
+STR-410393
+Plik składu przeznaczony jest dla innego klubu. Skład nie został wczytany.
+
+STR-410394
+Części zawodników w tym składzie nie ma w klubie. Skład został wczytany bez nich.
+
+STR-410395
+Wczytaj listę życzeń
+
+STR-410396
+Wybierz listę życzeń do wczytania
+
+STR-410397
+Zapisz listę życzeń
+
+STR-410398
+Wybierz miejsce zapisu listy życzeń
+
+STR-410399
+Nazwa listy życzeń
+
+STR-410400
+Zapisane listy życzeń
+
+STR-410401
+Wybierz taktykę do wczytania
+
+STR-410402
+Wybierz miejsce zapisu taktyki
+
+STR-410403
+Nazwa taktyki
+
+STR-410404
+Zapisane taktyki
+
+STR-410405
+Kontynuuj karierę
+
+STR-410406
+Zakończ wyzwanie
+
+STR-410407
+Wyzwanie ukończone
+
+STR-410408
+Wyzwanie nie powiodło się
+
+STR-410409
+Wybierz opcję
+
+STR-410410
+Dobra robota!
+
+STR-410411
+Z powodzeniem uchroniłeś klub przed spadkiem i ukończyłeś wyzwanie.
+
+STR-410412
+Z powodzeniem przetrwałeś kryzys spowodowany plagą kontuzji i ukończyłeś wyzwanie.
+
+STR-410413
+Twój klub przetrwał sezon bez porażki w lidze, co niewątpliwie przejdzie do historii klubu.
+
+STR-410414
+Dzięki starannej kontroli nad klubowymi wydatkami udało ci się uchronić klub przed katastrofą finansową.
+
+STR-410415
+Gratulacje za poprowadzenie swojego młodego zespołu do sławy. Ukończyłeś wyzwanie.
+
+STR-410416
+Zdołałeś zaskarbić sobie szacunek piłkarzy i utrzymałeś stanowisko menedżera w klubie.
+
+STR-410420
+Więcej szczęścia następnym razem...
+
+STR-410421
+Niestety nie udało cię uniknąć spadku. Nie zdołałeś ukończyć wyzwania.
+
+STR-410422
+Niestety nie przetrwałeś kryzysu wywołanego plagą kontuzji i straciłeś posadę.
+
+STR-410423
+Niestety nie udało cię ukończyć sezonu bez porażki. Nie zdołałeś ukończyć wyzwania.
+
+STR-410424
+Niestety nie byłeś w stanie naprawić klubowych finansów, a zarazem osiągnąć zadowalające wyniki na boisku.
+
+STR-410425
+Niestety nie udało cię sięgnąć po trofeum ze swoim młodym zespołem. Nie zdołałeś ukończyć wyzwania.
+
+STR-410426
+Niestety nie zdołałeś przekonać do siebie zespołu, co skoczyło się twoim zwolnieniem.
+
+STR-410427
+Niestety kiepska gra twojego zespołu zaowocowała twoim zwolnieniem.
+
+STR-410430
+Na pewno chcesz zakończyć wyzwanie?
+
+STR-410431
+Kryzysowy budżet płac
+
+STR-410432
+Obecne wydatki na płace
+
+STR-410433
+Różnica
+
+STR-410434
+Pozycja ligowa
+
+STR-410442
+Menu wyszukiwania
+
+STR-410443
+Zwycięzcy rozgrywek
+
+STR-410444
+Najlepsi strzelcy
+
+STR-410446
+Nagrody piłkarskie
+
+STR-410447
+Nagrody menedżerskie
+
+STR-410449
+Nagroda
+
+STR-410451
+Punkty menedżerskie: [%number#1]
+
+STR-410452
+Czy chcesz, przejść do podsumowania kariery?
+
+STR-410453
+Aktualizować grę?
+
+STR-410454
+Czy chcesz teraz rozpocząć nowy sezon?\n\nCzęść danych statystycznych i wyników nie zostanie zachowana.
+
+STR-410456
+Konfiguracja nowej gry
+
+STR-410458
+Konfigurowanie wyzwania
+
+STR-410459
+Finalizowanie wyzwania
+
+STR-410462
+Szczegóły
+
+STR-410463
+Wybierz podgląd szczegółowy
+
+STR-410464
+Wybierz sortowanie
+
+STR-410465
+Wybierz filtr
+
+STR-410466
+Ukryj nieuprawnionych
+
+STR-410467
+Ukryj zawieszonych
+
+STR-410468
+Ukryj kontuzjowanych
+
+STR-410469
+Rola taktyczna
+
+STR-410470
+Nagrody meczowe
+
+STR-410477
+Nie znaleziono żadnych pracowników odpowiadających kryteriom
+
+STR-410478
+Specj.
+
+STR-410479
+Informacje osobiste
+
+STR-410484
+Kariera
+
+STR-410485
+Wyzwanie
+
+STR-410486
+Mój Klub

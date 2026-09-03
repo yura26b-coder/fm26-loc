@@ -1,0 +1,538 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-450290
+Lost a lot of possession on the left side of the pitch in the final third.
+
+STR-450291
+Lost a lot of possession in central areas of the final third of the pitch.
+
+STR-450292
+Lost a lot of possession on the right side of the pitch in the final third.
+
+STR-450293
+Regained possession well on the left side of the pitch in own third.
+
+STR-450294
+Regained possession well in central areas of own third of the pitch.
+
+STR-450295
+Regained possession well on the right side of the pitch in own third.
+
+STR-450296
+Regained possession well on the left side of the pitch in the middle third.
+
+STR-450297
+Regained possession well in central areas of the middle third of the pitch.
+
+STR-450298
+Regained possession well on the right side of the pitch in the middle third.
+
+STR-450299
+Regained possession well on the left side of the pitch in the final third.
+
+STR-450300
+Regained possession well in central areas of the final third of the pitch.
+
+STR-450301
+Regained possession well on the right side of the pitch in the final third.
+
+STR-450302
+Good number of touches of the ball in the penalty area.
+
+STR-450303
+Giving up far too many touches of the ball in own area.
+
+STR-450304
+Not enough touches of the ball in the penalty area.
+
+STR-450305
+Limiting the number of times the opposition touch the ball in the area.
+
+STR-450306
+Good touches-to-shots ratio in the penalty area.
+
+STR-450307
+Poor touches-to-shots ratio in the penalty area.
+
+STR-450308
+Allowing far too good of a touches-to-shots ratio in own area.
+
+STR-450309
+Preventing the opposition from having a good touches-to-shots ratio in the penalty area.
+
+STR-450310
+A lot of dangerous attacks have involved [%person#1].
+
+STR-450311
+[%person#1] has been a poor influence on the overall attacking play.
+
+STR-450312
+[%person#1] has been impressive at breaking into the final third.
+
+STR-450313
+Moved well into the attacking third of the pitch from positions on the left.
+
+STR-450314
+Moved well into the attacking third of the pitch from central positions.
+
+STR-450315
+Moved well into the attacking third of the pitch from positions on the right.
+
+STR-450316
+Struggled to make inroads into attacking areas from the left.
+
+STR-450317
+Struggled to make inroads into attacking areas from central areas.
+
+STR-450318
+Struggled to make inroads into attacking areas from the right.
+
+STR-450319
+Allowed the opposition into the attacking third of the pitch from positions on the left too often.
+
+STR-450320
+Allowed the opposition into the attacking third of the pitch from central positions too often.
+
+STR-450321
+Allowed the opposition into the attacking third of the pitch from positions on the right too often.
+
+STR-450322
+Defended attacks from the left very well.
+
+STR-450323
+Defended attacks from central areas very well.
+
+STR-450324
+Defended attacks from the right very well.
+
+STR-450325
+Good conversion of final third entries into shots.
+
+STR-450326
+Poor conversion of final third entries into shots.
+
+STR-450327
+Allowed too many final third entries to be converted into shots.
+
+STR-450328
+Only allowed a few final third entries to be converted into shots.
+
+STR-450329
+Given away too many free kicks in promising areas.
+
+STR-450330
+Have hardly conceded any free kicks in promising areas.
+
+STR-450331
+Enjoyed plenty of possession in the opposition's half.
+
+STR-450332
+Struggled for possession in the opposition's half.
+
+STR-450376
+Type
+
+STR-450379
+Use Fake Players
+
+STR-450380
+Budgets in First Window
+
+STR-450382
+New
+
+STR-450383
+Old
+
+STR-450384
+The
+
+STR-450385
+The [%club#1] board have presented plans to the public for a new [%number#1] seater stadium. The club's fans have indicated they will be sad to leave [%stadium#1] behind.
+
+STR-450386
+[%person#1-You] have submitted [%person#1-your] suggestion for a stadium name to the board. They will announce their final decision in due time.
+
+STR-450387
+[%person#1-You] have chosen not to submit a suggestion for a stadium name to the board. They will announce their final decision in due time.
+
+STR-450388
+The board have not yet finalised the naming rights for the new stadium, and have asked [%person#1-you] as the manager for a suggestion to complete their shortlist of names.
+
+STR-450389
+[%club#1] announce name of new stadium
+
+STR-450390
+[%club#1] have taken to their social media channels to announce the name of their new stadium.\n\n[%club#1-short] fans can look forward to their team playing at [%stadium#1] next season.
+
+STR-450391
+According to some reports, [%person#1] was influential in the final decision with board members, showing the absolute trust the club have in [%person#1-him] as manager.
+
+STR-450392
+[%club#1]{s} final match at [%stadium#1] is approaching. The [%club#1] supporters are optimistic the team will overcome [%club#2] and leave them with winning memories of the stadium.
+
+STR-450393
+[%club#1]{s} first match at their new stadium is approaching when they welcome [%club#2] to [%stadium#1]. The [%club#1] supporters are optimistic the team will turn their new stadium into a fortress that opposition teams fear to visit.
+
+STR-450397
+Are you sure you want [%person#1-full] to take [%person#1-his] physio examination?\n\nThe cost of the assessment would be [%cash#1-short-roundsmall].\n\nYou may also purchase a tutor to ensure [%person#1-surname] passes [%person#1-his] exam.
+
+STR-450398
+Are you sure you want [%person#1-full] to take [%person#1-his] scouting assessment?\n\nThe cost of the assessment would be [%cash#1-short-roundsmall].\n\nYou may also purchase a tutor to ensure [%person#1-surname] passes [%person#1-his] exam.
+
+STR-450399
+Are you sure you want [%person#1-full] to take [%person#1-his] coaching exam?\n\nThe cost of the exam would be [%cash#1-short-roundsmall]\n\nYou may also purchase a tutor to ensure [%person#1-surname] passes [%person#1-his] exam.
+
+STR-450400
+Edit Stadium Name
+
+STR-450401
+Please set a name for the new stadium
+
+STR-450402
+Submit a potential name for the new stadium?
+
+STR-450403
+Submit Name?
+
+STR-450405
+[%number#1-nth] ([%number#2-long] pts)
+
+STR-450408
+Select this option to use a database consisting of entirely generated players and staff.
+
+STR-450410
+The database contains real world transfers from the most recent real life transfer window, but your save game will typically start before this window has finished. By disabling transfer budgets in the first transfer window you can add to the realism of your game by preventing teams from spending money they didn't spend in real life.
+
+STR-450417
+You can change the match engine version when starting a new game.
+
+STR-450419
+[%person#1] is one of several [%club#1] players to be selected in the [%award#1-long].
+
+STR-450420
+[%club#1] players [%person#1] and [%person#2] have been selected in the [%award#1-long].
+
+STR-450421
+[%club#1] player [%person#1] has been selected in the [%award#1-long].
+
+STR-450422
+The [%award#1-long] has been announced.
+
+STR-450427
+Clubs around the country have issued their lists of released senior players.
+
+STR-450428
+Clubs around the country have taken their decisions on which players are to be released at the end of their contracts.\n\n[%person#1] is doubtful that the club could persuade any of the better released players to join a club of our stature.
+
+STR-450431
+World Best XI
+
+STR-450436
+[%person#1-Your] personal assistant has reminded [%person#1-you] that [%person#2] and [%person#3] have contracts which have expired.
+
+STR-450442
+[%club#1] players named in [%award#1-short]
+
+STR-450443
+[%person#1-surname] named in [%award#1-short]
+
+STR-450444
+[%award#1-short] revealed
+
+STR-450446
+This season's Best Eleven has been compiled by the [%club#1] supporters club.\n\nWhile there have been no new entries into the all-time best eleven several players have logged their best ever seasons within it.
+
+STR-450447
+This season's Best Eleven has been compiled by the [%club#1] supporters club.
+
+STR-450448
+Following the completion of this season's Best Eleven. [%club#1] supporters club has proudly announced that [%person#1] has been considered good enough to enter your personal overall best eleven.
+Polish Reference:
+STR-450290
+Częste straty piłki na lewym skrzydle pod bramką rywali.
+
+STR-450291
+Częste straty piłki w środku pola pod bramką rywali.
+
+STR-450292
+Częste straty piłki na prawym skrzydle pod bramką rywali.
+
+STR-450293
+Skuteczny odbiór piłki na lewym skrzydle pod własną bramką.
+
+STR-450294
+Skuteczny odbiór piłki w środku pola pod własną bramką.
+
+STR-450295
+Skuteczny odbiór piłki na prawym skrzydle pod własną bramką.
+
+STR-450296
+Skuteczny odbiór piłki na lewym skrzydle w centralnej strefie boiska.
+
+STR-450297
+Skuteczny odbiór piłki w środku pola w centralnej strefie boiska.
+
+STR-450298
+Skuteczny odbiór piłki na prawym skrzydle w centralnej strefie boiska.
+
+STR-450299
+Skuteczny odbiór piłki na lewym skrzydle pod bramką rywali.
+
+STR-450300
+Skuteczny odbiór piłki w środku pola pod bramką rywali.
+
+STR-450301
+Skuteczny odbiór piłki na prawym skrzydle pod bramką rywali.
+
+STR-450302
+Dobra liczba kontaktów z piłką w polu karnym.
+
+STR-450303
+Pozwalanie rywalom na rozgrywanie piłki w polu karnym.
+
+STR-450304
+Za mało kontaktów z piłką w polu karnym.
+
+STR-450305
+Utrudnianie rywalom rozgrywania piłki w polu karnym.
+
+STR-450306
+Dobra skuteczność w dochodzeniu do strzału po podaniach w polu karnym.
+
+STR-450307
+Niska skuteczność w dochodzeniu do strzału po podaniach w polu karnym.
+
+STR-450308
+Pozwalanie rywalom na dochodzenie do strzału po podaniach w polu karnym.
+
+STR-450309
+Przeszkadzanie rywalom w dochodzeniu do strzału po podaniach w polu karnym.
+
+STR-450310
+[%male#1] brał udział w wielu groźnych akcjach.
+[%female#1] brała udział w wielu groźnych akcjach.
+
+STR-450311
+[%male#1] nie wnosił zbyt wiele do gry ofensywnej zespołu.
+[%female#1] nie wnosiła zbyt wiele do gry ofensywnej zespołu.
+
+STR-450312
+[%male#1] imponował swoimi wejściami pod bramkę rywali.
+[%female#1] imponowała swoimi wejściami pod bramkę rywali.
+
+STR-450313
+Skutecznie atakowali lewym skrzydłem.
+
+STR-450314
+Skutecznie atakowali środkiem pola.
+
+STR-450315
+Skutecznie atakowali prawym skrzydłem.
+
+STR-450316
+Mieli problemy z przedarciem się lewym skrzydłem.
+
+STR-450317
+Mieli problemy z przedarciem się środkiem pola.
+
+STR-450318
+Mieli problemy z przedarciem się prawym skrzydłem.
+
+STR-450319
+Zbyt często pozwalali rywalom na groźne wejścia z lewego skrzydła.
+
+STR-450320
+Zbyt często pozwalali rywalom na groźne wejścia środkiem pola.
+
+STR-450321
+Zbyt często pozwalali rywalom na groźne wejścia z prawego skrzydła.
+
+STR-450322
+Dobrze bronili się przed atakami lewym skrzydłem.
+
+STR-450323
+Dobrze bronili się przed atakami środkiem pola.
+
+STR-450324
+Dobrze bronili się przed atakami prawym skrzydłem.
+
+STR-450325
+Oddali sporo strzałów po sytuacjach podbramkowych.
+
+STR-450326
+Oddali za mało strzałów po sytuacjach podbramkowych.
+
+STR-450327
+Pozwolili rywalom na zbyt wiele strzałów po sytuacjach podbramkowych.
+
+STR-450328
+Pozwolili rywalom na jedynie kilka strzałów po sytuacjach podbramkowych.
+
+STR-450329
+Sprezentowali rywalom zbyt wiele rzutów wolnych zagrażających bramce.
+
+STR-450330
+Nie pozwolili rywalom na zagrożenie bramce z rzutów wolnych.
+
+STR-450331
+Często utrzymywali się przy piłce na połowie rywali.
+
+STR-450332
+Mieli problemy z utrzymaniem się przy piłce na połowie rywali.
+
+STR-450376
+Typ
+
+STR-450379
+Używaj fikcyjnych profili
+
+STR-450380
+Budżety w pierwszym oknie
+
+STR-450382
+Nowy
+
+STR-450383
+Stary
+
+STR-450384
+Arena
+
+STR-450385
+[%club#1]{ogłosił} plany budowy nowego stadionu na [%number#1] miejsc siedzących. Kibice przyznali, że żal im będzie opuszczać stadion [%stadium#1].
+
+STR-450386
+Przesłałeś zarządowi swoją propozycję nazwy stadionu. Działacze ogłoszą swoją decyzję w stosownym czasie.[%male#1-hidden]
+Przesłałaś zarządowi swoją propozycję nazwy stadionu. Działacze ogłoszą swoją decyzję w stosownym czasie.[%female#1-hidden]
+
+STR-450387
+Zdecydowałeś się nie przesyłać zarządowi swojej propozycji nazwy stadionu. Działacze ogłoszą swoją decyzję w stosownym czasie.[%male#1-hidden]
+Zdecydowałaś się nie przesyłać zarządowi swojej propozycji nazwy stadionu. Działacze ogłoszą swoją decyzję w stosownym czasie.[%female#1-hidden]
+
+STR-450388
+Zarząd nie podjął jeszcze decyzji co do nazwy nowego stadionu i poprosił cię jako menedżera o dołączenie swojej propozycji do już sporządzonej listy.[%male#1-hidden]
+Zarząd nie podjął jeszcze decyzji co do nazwy nowego stadionu i poprosił cię jako menedżerkę o dołączenie swojej propozycji do już sporządzonej listy.[%female#1-hidden]
+
+STR-450389
+[%club#1]{ogłasza} nazwę nowego stadionu
+
+STR-450390
+Za pośrednictwem mediów społecznościowych [%club#1]{ogłosił} oficjalnie nazwę nowego stadionu.\n\nKibice mogą się zatem szykować na kupowanie od nowego sezonu giętej na stadionie [%stadium#1].
+
+STR-450391
+Część źródeł sugeruje, że [%male#1] odegrał istotną rolę w tym procesie, co tylko potwierdza, jak wielkim cieszy się zaufaniem w zarządzie.
+Część źródeł sugeruje, że [%female#1] odegrała istotną rolę w tym procesie, co tylko potwierdza, jak wielkim cieszy się zaufaniem w zarządzie.
+
+STR-450392
+[%club#1]{rozegra} wkrótce swój ostatni mecz na stadionie [%stadium#1]. Kibice liczą na zwycięstwo w spotkaniu, w którym ich przeciwnikiem {będzie}[%club#2], tak by ze starym stadionem do końca wiązały się miłe wspomnienia.
+
+STR-450393
+[%club#1]{jest} już coraz bliżej pierwszego meczu na nowym stadionie [%stadium#1], w którym ich przeciwnikiem {będzie}[%club#2]. Kibice optymistycznie zakładają, że zespół zamieni nowy stadion w twierdzę, do której najmocniejsi rywale przyjeżdżać będą z mimowolnym drżeniem łydek.
+
+STR-450397
+Na pewno chcesz, by [%male#1-full] podszedł do egzaminu dla fizjoterapeutów?\n\nJego koszt wyniesie [%cash#1-short-roundsmall].\n\nMożesz zakupić korepetytora, by mieć pewność, że zda egzamin.
+Na pewno chcesz, by [%female#1-full] podeszła do egzaminu dla fizjoterapeutów?\n\nJego koszt wyniesie [%cash#1-short-roundsmall].\n\nMożesz zakupić korepetytora, by mieć pewność, że zda egzamin.
+
+STR-450398
+Na pewno chcesz, by [%male#1-full] podszedł do egzaminu dla scoutów?\n\nJego koszt wyniesie [%cash#1-short-roundsmall].\n\nMożesz zakupić korepetytora, by mieć pewność, że zda egzamin.
+Na pewno chcesz, by [%female#1-full] podeszła do egzaminu dla scoutów?\n\nJego koszt wyniesie [%cash#1-short-roundsmall].\n\nMożesz zakupić korepetytora, by mieć pewność, że zda egzamin.
+
+STR-450399
+Na pewno chcesz, by [%male#1-full] podszedł do egzaminu trenerskiego?\n\nJego koszt wyniesie [%cash#1-short-roundsmall].\n\nMożesz zakupić korepetytora, by mieć pewność, że zda egzamin.
+Na pewno chcesz, by [%female#1-full] podeszła do egzaminu trenerskiego?\n\nJego koszt wyniesie [%cash#1-short-roundsmall].\n\nMożesz zakupić korepetytora, by mieć pewność, że zda egzamin.
+
+STR-450400
+Edytuj nazwę stadionu
+
+STR-450401
+Wprowadź nazwę nowego stadionu
+
+STR-450402
+Przesłać potencjalną nazwę nowego stadionu?
+
+STR-450403
+Przesłać nazwę?
+
+STR-450405
+[%number#1-nth] ([%number#2-long] pkt)
+
+STR-450408
+Wybierz tę opcję, by użyć bazy danych zawierającej wyłącznie wygenerowane profile piłkarskie i trenerskie.
+
+STR-450410
+Baza danych zawiera prawdziwe transfery z całego świata z ostatniego okna transferowego, lecz twoja rozgrywka zazwyczaj rozpocznie się przed jego zamknięciem. Wyłączając budżety transferowe w pierwszym oknie transferowym zwiększysz realizm rozgrywki, uniemożliwiając zespołom wydanie pieniędzy, których w rzeczywistości nie wydały.
+
+STR-450417
+Możesz zmienić wersję silnika gry, rozpoczynając nową rozgrywkę.
+
+STR-450419
+[%male#1] ([%club#1]) jest jednym z kilku zawodników klubu, jacy trafili do: [%award#1-long].
+[%female#1] ([%club#1]) jest jedną z kilku zawodniczek klubu, jakie trafiły do: [%award#1-long].
+
+STR-450420
+[%male#1] i [%male#2] ([%club#1]) trafili do: [%award#1-long].
+[%female#1] i [%female#2] ([%club#1]) trafiły do: [%award#1-long].
+
+STR-450421
+[%male#1] ([%club#1]) trafił do: [%award#1-long].
+[%female#1] ([%club#1]) trafiła do: [%award#1-long].
+
+STR-450422
+Ogłoszono wyniki głosowania: [%award#1-long].
+
+STR-450427
+Kluby z całego kraju podjęły decyzje, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów.
+
+STR-450428
+Kluby z całego kraju podjęły decyzję, którzy ich zawodnicy odejdą po wygaśnięciu obecnych umów.\n\n[%male#1] uważa, że taki klub jak nasz nie ma szans na sprowadzenie co lepszych spośród nich.
+
+STR-450431
+Najlepsza jedenastka na świecie
+
+STR-450436
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], dobiegły końca.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], dobiegły końca.[%male#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związani są [%male#2] oraz [%male#3], dobiegły końca.[%female#1-hidden]
+Twój asystent przypomniał ci, że kontrakty, którymi z klubem związane są [%female#2] oraz [%female#3], dobiegły końca.[%female#1-hidden]
+
+STR-450442
+[%club#1]: Wyróżnienia dla najlepszych
+
+STR-450443
+[%male#1-surname] uwzględniony w: [%award#1-short]
+[%female#1-surname] uwzględniona w: [%award#1-short]
+
+STR-450444
+[%award#1-short]: Prezentacja wyników głosowania
+
+STR-450446
+Najlepsza jedenastka tego sezonu opracowana została przez kibiców klubu [%club#1-long].\n\nChoć w jedenastce wszech czasów nie pojawiło się żadne nowe nazwisko, kilku zawodników zaliczyło swoje najlepsze sezony.
+
+STR-450447
+Najlepsza jedenastka tego sezonu opracowana została przez kibiców klubu [%club#1-long].
+
+STR-450448
+Po ustaleniu składu jedenastki marzeń na ten sezon rzecznik kibiców klubu [%club#1-long] z dumą ogłosił, że [%male#1] uznany został za wystarczająco dobrego, by znaleźć się w twojej jedenastce wszech czasów.
+Po ustaleniu składu jedenastki marzeń na ten sezon rzecznik kibiców klubu [%club#1-long] z dumą ogłosił, że [%female#1] uznana został za wystarczająco dobrą, by znaleźć się w twojej jedenastce wszech czasów.

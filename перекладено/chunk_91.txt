@@ -1,0 +1,490 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-460880
+Assistant Managers and Fitness Coaches cannot work for two teams in the same season
+
+STR-460881
+The next best team in [%number#2-nth] position qualifies for [%fixture_name#1-long]
+
+STR-460882
+The next best team from the rest qualifies for [%fixture_name#1-long]
+
+STR-460883
+An award of between [%cash#1-roundtiny]-[%cash#2-roundtiny] will be given to the top [%number#1] clubs based on minutes played by U[%number#2] players during the season and also any international appearances made by any player.
+
+STR-460884
+[%club#1-short] have been awarded [%cash#1-roundtiny] for coming [%number#1-nth] in the squad reward points table this season.
+
+STR-460885
+Points are awarded for minutes played by Under-[%number#2] players and also players who play in international matches during the season.
+
+STR-460886
+[%club#1-short] awarded squad bonus
+
+STR-461316
+Focus Play Down The Left
+
+STR-462933
+Ball Over The Top aims to bypass the midfield with long balls that immediately put the opposition defence under pressure.\n\nUsing this style will employ the 'Play Narrower', 'Higher Defensive Line', 'Exploit the Middle', 'Pump Ball Into Box' and 'Shoot on Sight' touchline shouts in Control, Attacking and Overload strategies.
+
+STR-462974
+None
+
+STR-462975
+The primary attribute for this role is
+
+STR-462976
+Long Shots
+
+STR-463022
+[%club#1] are delighted to indicate that two players from the club have been selected in this season's world best eleven.\n\nThey are proud that [%person#1] and [%person#2] have been acknowledged as two of the best players of their generation.
+
+STR-463030
+[%person#1-surname] considers becoming a player-coach
+
+STR-463031
+A group of companies owed money by [%club#1] have started proceedings to wind up the club. A court date to resolve the situation is expected to be announced in the near future.\n\nManager [%person#1] has indicated that [%person#1-he] expects the club to be under new ownership in the near future.
+
+STR-463032
+A group of companies owed money by [%club#1] have started proceedings to wind up the club. A court date to resolve the situation is expected to be announced in the near future.\n\nThe clubs despondent manager [%person#1] admitted that [%person#1-he] cannot see a pleasant end to the current tribulations.
+
+STR-463034
+[%person#1-surname] considers becoming a physio
+
+STR-463035
+Avoid Sacking
+
+STR-463036
+Gives you a six month grace period within which you are able to rebuild
+
+STR-463039
+You have offered [%person#1-him] a coaching role.
+
+STR-463040
+You have offered [%person#1-him] a role at a physiotherapist.
+
+STR-463041
+You have offered [%person#1-him] a scouting role.
+
+STR-463044
+[%person#1-surname] appears to be one of the better players in the [%comp#1-short]
+
+STR-463045
+[%person#1-surname] appears comfortable competing against players at this level.
+
+STR-463046
+[%person#1-surname] appears comfortable competing in the [%comp#1-short]
+
+STR-463064
+[%person#1-surname] considers becoming a scout
+
+STR-463087
+[%person#1] is currently injured and unable to train at present.
+
+STR-463088
+The team is currently on its end of season break.
+
+STR-463089
+You are currently the only coach at the club and as such you will have to judge [%person#1]{s} training progress yourself.
+
+STR-463090
+With no active coaches at the club [%person#1] is undertaking self directed training.
+
+STR-463091
+[%person#1-surname] is likely to decline in the future.
+
+STR-463092
+[%person#1-surname] is unlikely to improve in the future.
+
+STR-463093
+[%person#1-surname] is unlikely to improve significantly in the future.
+
+STR-463094
+[%person#1-surname] needs to play at a higher level to improve further.
+
+STR-463095
+[%person#1-surname] needs to train at better facilities to improve further.
+
+STR-463097
+[%person#1-surname] needs match experience to improve further.
+
+STR-463098
+[%person#1-surname] would benefit from more playing time.
+
+STR-463099
+[%person#1-surname] is showing signs of aging.
+
+STR-463102
+[%person#1-surname] is finding it hard to cope with the pressure at this level of competition.
+
+STR-463121
+Not Yet Set
+
+STR-463123
+If [%person#2-you] go through with this transfer, the updated budgets would be as displayed below:\n\nNew Transfer Budget: [%cash#1-short-roundlarge]\nNew Wage Budget: [%cash#2-short]
+
+STR-463126
+[%person#1-He] is a coach who will be able to help improve the fitness level of the team.
+
+STR-463127
+[%person#1-He] is a coach who will will be able to help improve the attacking play within the team.
+
+STR-463128
+[%person#1-He] is a coach who will be able to help improve the defensive cohesion within the team.
+
+STR-463129
+[%person#1-He] is a coach who will be able to help improve the goalkeeping standard within the squad.
+
+STR-463130
+[%person#1-He] is a coach who will be able to help motivate the players within the team.
+
+STR-463131
+[%person#1-He] is a coach who will be able to help the younger players improve.
+
+STR-463132
+[%person#1-He] is a coach who will able to help out generally with coaching but doesn't specialise in any specific area.
+
+STR-463137
+Wage Structure
+
+STR-463138
+Remaining Wage Budget
+
+STR-463139
+Upgrade
+
+STR-463140
+The club is currently operating at its limit. [%person#2-Your] board has indicated that the club would need to move players on before looking at any new potential signings.
+
+STR-463141
+The club is currently using all of its overall wage budget, although there are excess transfer funds that can be used to increase the available wage budget.
+
+STR-463142
+The club is currently using all of its overall wage budget and there is little in the way of excess transfer funds that can be used to increase the available wage budget.\n\n[%person#2-Your] board has indicated that the club would need to move players on before looking at any new potential signings.
+
+STR-463143
+The club is currently using all of its overall wage budget.
+
+STR-463144
+The club is currently spending [%string#1 - wage per week string] over its overall wage budget. [%person#2-Your] board has indicated that with no additional transfer funds to move into the wage budget, the club needs to look at moving players on to balance the books.
+
+STR-463145
+The club is currently spending [%string#1 - wage per week string] over its overall wage budget. [%person#2-Your] board suggests that either the club gets some players off of the books, or move some of the excess transfer funds into the available wage budget.
+
+STR-463146
+The club is currently spending [%string#1 - wage per week string] over its overall wage budget. [%person#2-Your] board has indicated that with little in the way of excess transfer funds, the club needs to look at moving players on to balance the books.
+
+STR-463147
+The club is currently spending [%string#1 - wage per week string] over its overall wage budget.
+
+STR-463148
+The club is currently spending [%string#1 - wage per week string] under its overall wage budget.\n\nThe board are happy for [%person#2-you] to adjust this season's budgets as [%person#2-you] desire.
+
+STR-463149
+Transfer Spending
+
+STR-463150
+Transfer Income
+
+STR-463152
+Declare Interest
+
+STR-463153
+Offer role to senior players
+
+STR-463154
+Offer roles to senior players
+
+STR-463158
+This person is not employed as a coach presently
+
+STR-463160
+Current Offer
+
+STR-463161
+Previous Offer
+
+STR-463162
+Existing Contract
+
+STR-463163
+Length
+
+STR-463164
+Min. Fee Release
+
+STR-463165
+Relegation Release
+
+STR-463166
+Suggest Terms
+
+STR-463170
+[%person#1-I]'m not interested in renewing contract talks due to the previous breakdown in negotiations.
+Polish Reference:
+STR-460880
+Asystenci menedżera i trenerzy przygotowania fizycznego nie mogą pracować w dwóch klubach w jednym sezonie.
+
+STR-460881
+Kolejny najlepszy zespół z [%number#2]. miejsca awansuje do: [%fixture_name#1-long]
+
+STR-460882
+Kolejny najlepszy zespół spośród pozostałych kwalifikuje się do: [%fixture_name#1-long]
+
+STR-460883
+Nagroda pomiędzy [%cash#1-roundtiny] a [%cash#2-roundtiny] trafi do [%number#1] najlepszych klubów pod względem minut rozegranych przez piłkarzy U-[%number#2] w ciągu sezonu oraz występów w reprezentacji każdego piłkarza.
+
+STR-460884
+[%club#1-short]{otrzymał} [%cash#1-roundtiny] za zajęcie [%number#1]. miejsca w tabeli punktów za skład w tym sezonie.
+
+STR-460885
+Punkty zdobywa się za rozegrane minuty piłkarzy U-[%number#2], jak również za piłkarzy, którzy grają w meczach międzynarodowych w ciągu sezonu.
+
+STR-460886
+[%club#1-short]{zdobywa} premię drużynową
+
+STR-461316
+Ataki lewym skrzydłem
+
+STR-462933
+„Piłka za plecy” ma na celu ominięcie drugiej linii długim podaniem, które natychmiast wywrze presję na obronie przeciwnika.\n\nKorzystając z tego stylu zastosujesz polecenia „Węższe pole gry”, „Wyższa linia defensywy”, „Ataki środkiem pola”, „Wrzutki w pole karne” i „Strzały z każdej pozycji” w strategiach kontroli, ofensywnej i przewagi liczebnej.
+
+STR-462974
+Brak
+
+STR-462975
+Podstawowy atrybut dla tej roli to
+
+STR-462976
+Strzały z dystansu
+
+STR-463022
+[%club#1]{ma} przyjemność zakomunikować, że dwóch zawodników klubu trafiło do najlepszej jedenastki na świecie za ten sezon.\n\nDumą napawa ich fakt, że [%male#1] i [%male#2] uznani zostali za jednych z najlepszych piłkarzy swojego pokolenia.
+[%club#1]{ma} przyjemność zakomunikować, że dwoje zawodników klubu trafiło do najlepszej jedenastki na świecie za ten sezon.\n\nDumą napawa ich fakt, że [%male#1] i [%female#2] uznani zostali za jednych z najlepszych piłkarzy swojego pokolenia.
+[%club#1]{ma} przyjemność zakomunikować, że dwie zawodniczki klubu trafiły do najlepszej jedenastki na świecie za ten sezon.\n\nDumą napawa ich fakt, że [%female#1] i [%female#2] uznane zostały za jedne z najlepszych piłkarek swojego pokolenia.
+
+STR-463030
+[%male#1-surname] zastanawia się, czy nie zostać grającym trenerem
+[%female#1-surname] zastanawia się, czy nie zostać grającą trenerką
+
+STR-463031
+Grupa firm, którym klub [%club#1-long] jest winien pieniądze, zainicjowała proces likwidacji klubu. Wkrótce zostanie wyznaczony termin rozprawy, na której powinny zapaść konkretne postanowienia.\n\nMenedżer [%male#1] dał do zrozumienia, że spodziewa się rychłej zmiany właściciela klubu.
+Grupa firm, którym klub [%club#1-long] jest winien pieniądze, zainicjowała proces likwidacji klubu. Wkrótce zostanie wyznaczony termin rozprawy, na której powinny zapaść konkretne postanowienia.\n\nMenedżerka [%female#1] dała do zrozumienia, że spodziewa się rychłej zmiany właściciela klubu.
+
+STR-463032
+Grupa firm, którym klub [%club#1-long] jest winien pieniądze, zainicjowała proces likwidacji klubu. Wkrótce zostanie wyznaczony termin rozprawy, na której powinny zapaść konkretne postanowienia.\n\nZrozpaczony menedżer [%male#1] przyznał, że nie sądzi, by skończyło się to happy endem.
+Grupa firm, którym klub [%club#1-long] jest winien pieniądze, zainicjowała proces likwidacji klubu. Wkrótce zostanie wyznaczony termin rozprawy, na której powinny zapaść konkretne postanowienia.\n\nZrozpaczona menedżerka [%female#1] przyznał, że nie sądzi, by skończyło się to happy endem.
+
+STR-463034
+[%male#1-surname] zastanawia się, czy nie zostać fizjoterapeutą
+[%female#1-surname] zastanawia się, czy nie zostać fizjoterapeutką
+
+STR-463035
+Uniknij zwolnienia
+
+STR-463036
+Daje ci sześć miesięcy oddechu na przebudowę
+
+STR-463039
+Zaproponowałeś mu pracę w charakterze trenera.[%male#1-hidden]
+Zaproponowałeś jej pracę w charakterze trenerki.[%female#1-hidden]
+
+STR-463040
+Zaproponowałeś mu pracę w charakterze fizjoterapeuty.[%male#1-hidden]
+Zaproponowałeś jej pracę w charakterze fizjoterapeutki.[%female#1-hidden]
+
+STR-463041
+Zaproponowałeś mu pracę w charakterze scouta.[%male#1-hidden]
+Zaproponowałeś jej pracę w charakterze scoutki.[%female#1-hidden]
+
+STR-463044
+[%male#1-surname] zdaje się być jednym z lepszych zawodników w: [%comp#1-short]
+[%female#1-surname] zdaje się być jedną z lepszych zawodniczek w: [%comp#1-short]
+
+STR-463045
+[%male#1-surname] bezproblemowo rywalizuje na tym poziomie.
+
+STR-463046
+[%male#1-surname] bezproblemowo rywalizuje w: [%comp#1-short]
+
+STR-463064
+[%male#1-surname] zastanawia się, czy nie zostać scoutem
+[%female#1-surname] zastanawia się, czy nie zostać scoutką
+
+STR-463087
+[%male#1] jest obecnie kontuzjowany i nie może trenować.
+[%female#1] jest obecnie kontuzjowana i nie może trenować.
+
+STR-463088
+Zespół przebywa obecnie na wakacjach po zakończeniu sezonu.
+
+STR-463089
+Jesteś obecnie jedynym trenerem w klubie i sam będziesz musiał ocenić postępy, jakie [%male#1] robi na treningach.
+
+STR-463090
+Jako że w klubie nie ma aktywnych trenerów, [%male#1] planuje sobie treningi na własną rękę.
+
+STR-463091
+W przyszłości [%male#1-surname] najprawdopodobniej obniży loty.
+W przyszłości [%female#1-surname] najprawdopodobniej obniży loty
+
+STR-463092
+Jest mało prawdopodobne, by [%male#1-surname] się jeszcze rozwinął.
+Jest mało prawdopodobne, by [%female#1-surname] się jeszcze rozwinęła.
+
+STR-463093
+Jest mało prawdopodobne, by [%male#1-surname] znacznie się jeszcze rozwinął.
+Jest mało prawdopodobne, by [%female#1-surname] znacznie się jeszcze rozwinęła.
+
+STR-463094
+[%male#1-surname] musi grać na wyższym poziomie, by się dalej rozwijać.
+
+STR-463095
+[%male#1-surname] potrzebuje lepszych obiektów treningowych, by się dalej rozwijać.
+
+STR-463097
+[%male#1-surname] potrzebuje gry, by się dalej rozwijać.
+
+STR-463098
+[%male#1-surname] skorzystałby na częstszych występach.
+[%female#1-surname] skorzystałaby na częstszych występach.
+
+STR-463099
+[%male#1-surname] zaczyna się starzeć.
+
+STR-463102
+[%male#1-surname] nie radzi sobie z presją tak intensywnej rywalizacji.
+
+STR-463121
+Jeszcze nieustalone
+
+STR-463123
+Jeśli zdecydujesz się przeprowadzić ten transfer, budżety po uaktualnieniu prezentować się będą następująco:\n\nNowy budżet transferowy: [%cash#1-short-roundlarge]\nNowy budżet płac: [%cash#2-short][%male#2-hidden]
+
+STR-463126
+Jest trenerem, który pomoże poprawić kondycję zespołu.[%male#1-hidden]
+Jest trenerką, która pomoże poprawić kondycję zespołu.[%female#1-hidden]
+
+STR-463127
+Jest trenerem, który pomoże poprawić grę zespołu w ataku.[%male#1-hidden]
+Jest trenerką, która pomoże poprawić grę zespołu w ataku.[%female#1-hidden]
+
+STR-463128
+Jest trenerem, który pomoże poprawić grę zespołu w defensywie.[%male#1-hidden]
+Jest trenerką, która pomoże poprawić grę zespołu w defensywie.[%female#1-hidden]
+
+STR-463129
+Jest trenerem, który pomoże poprawić grę bramkarzy w zespole.[%male#1-hidden]
+Jest trenerką, która pomoże poprawić grę bramkarzy w zespole.[%female#1-hidden]
+
+STR-463130
+Jest trenerem, który pomoże odpowiednio zmotywować zawodników.[%male#1-hidden]
+Jest trenerką, która pomoże odpowiednio zmotywować zawodników.[%female#1-hidden]
+
+STR-463131
+Jest trenerem, który pomoże w rozwoju młodym zawodnikom.[%male#1-hidden]
+Jest trenerką, która pomoże w rozwoju młodym zawodnikom.[%female#1-hidden]
+
+STR-463132
+Jest trenerem, który pomoże w pracy z zespołem, ale nie specjalizuje się w konkretnym obszarze treningu.[%male#1-hidden]
+Jest trenerką, która pomoże w pracy z zespołem, ale nie specjalizuje się w konkretnym obszarze treningu.[%female#1-hidden]
+
+STR-463137
+Struktura płac
+
+STR-463138
+Pozostały budżet płac
+
+STR-463139
+Podnieś poziom
+
+STR-463140
+Klub funkcjonuje obecnie na maksimum swoich możliwości finansowych. Zarząd daje do zrozumienia, że konieczna będzie sprzedaż zawodników, zanim będzie można rozejrzeć się za ewentualnymi wzmocnieniami.[%male#2-hidden]
+
+STR-463141
+Klub wykorzystuje obecne do maksimum swój budżet płac, choć można wykorzystać do jego zwiększenia nadmiarowe środki transferowe.
+
+STR-463142
+Klub wykorzystuje obecne do maksimum swój budżet płac, nie dysponuje też zbyt dużymi środkami transferowymi, które można by wykorzystać do jego zwiększenia.\n\nZarząd daje do zrozumienia, że konieczna będzie sprzedaż zawodników, zanim będzie można rozejrzeć się za ewentualnymi wzmocnieniami.[%male#2-hidden]
+
+STR-463143
+Klub wykorzystuje obecne do maksimum swój budżet płac.
+
+STR-463144
+Klub wydaje obecnie na wynagrodzenia [%string#1 - wage per week string] powyżej budżetu płac. Zarząd dał do zrozumienia, że przy braku dodatkowych środków transferowych na jego ewentualne zwiększenie, klub musi rozważyć sprzedaż zawodników, by zbilansować budżet.[%male#2-hidden]
+
+STR-463145
+Klub wydaje obecnie na wynagrodzenia [%string#1 - wage per week string] powyżej budżetu płac. Zarząd sugeruje, że konieczne jest albo przesunięcie tam środków transferowych, albo sprzedaż zawodników.[%male#2-hidden]
+
+STR-463146
+Klub wydaje obecnie na wynagrodzenia [%string#1 - wage per week string] powyżej budżetu płac. Zarząd dał do zrozumienia, że przy niewielkich dodatkowych środkach transferowych na jego ewentualne zwiększenie, klub musi rozważyć sprzedaż zawodników, by zbilansować budżet.[%male#2-hidden]
+
+STR-463147
+Ostrzegł cię, że klubowe wydatki przekraczają obecnie budżet płac o [%string#1 - wage per week string].
+
+STR-463148
+Klub wydaje obecnie [%string#1 - wage per week string] poniżej całkowitego budżetu płac.\n\nZarząd pozwoli ci na zmodyfikowanie budżetów na ten sezon wedle twojego uznania.[%male#2-hidden]
+
+STR-463149
+Wydatki transferowe
+
+STR-463150
+Przychody transferowe
+
+STR-463152
+Wyraź zainteresowanie
+
+STR-463153
+Zaoferuj rolę piłk. seniorskim
+
+STR-463154
+Zaoferuj role piłk. seniorskim
+
+STR-463158
+Ta osoba nie jest obecnie zatrudniona na stanowisku trenera
+
+STR-463160
+Aktualna oferta
+
+STR-463161
+Poprzednia oferta
+
+STR-463162
+Obecny kontrakt
+
+STR-463163
+Długość
+
+STR-463164
+Kl. oferty min.
+
+STR-463165
+Klauzula odejścia po spadku
+
+STR-463166
+Zaproponuj warunki
+
+STR-463170
+Nie jestem zainteresowany wznowieniem negocjacji transferowych po ich wcześniejszym zerwaniu.[%male#1-hidden]
+Nie jestem zainteresowana wznowieniem negocjacji transferowych po ich wcześniejszym zerwaniu.[%female#1-hidden]

@@ -1,0 +1,795 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-456264
+The main job of the Ball-Playing Defender is to stop opposing attackers from playing.\nHowever, unlike standard central defenders, this player is encouraged to bring the ball out of defence or launch splitting through balls from deep to generate counter-attacking opportunities.
+
+STR-456266
+The Wide Midfielder performs defensive and attacking duties on the flanks, supporting the forwards, midfield and defence when required.\nThey generally rely on teamwork and work rate to get into dangerous attacking positions without compromising their defensive responsibilities.
+
+STR-456281
+Low
+
+STR-456282
+Hvy
+
+STR-456283
+Med
+
+STR-456284
+STR
+
+STR-456285
+STA
+
+STR-456286
+PAC
+
+STR-456287
+CRO
+
+STR-456288
+DRI
+
+STR-456289
+PAS
+
+STR-456290
+SHO
+
+STR-456291
+TAC
+
+STR-456292
+HAN
+
+STR-456293
+KIC
+
+STR-456294
+AIR
+
+STR-456295
+REF
+
+STR-456296
+THR
+
+STR-456297
+CRE
+
+STR-456298
+DEC
+
+STR-456299
+MOV
+
+STR-456300
+POS
+
+STR-456302
+ANT
+
+STR-456303
+AGG
+
+STR-456304
+COM
+
+STR-456305
+AGI
+
+STR-456306
+TEC
+
+STR-456308
+TEA
+
+STR-456309
+Assistant Manager [%person#1] reminds you that [%person#2] is currently injured and unable to train at present.
+
+STR-456311
+Assistant Manager [%person#1] indicates that [%person#2] should be able to resume light training soon.
+
+STR-456312
+The player appears impatient to get back to full fitness.
+
+STR-456313
+The player has apparently been a model patient and obeyed instructions without question.
+
+STR-456319
+Assistant Manager [%person#1] has indicated that [%person#2] is barely going through the motions in training.
+
+STR-456320
+Assistant Manager [%person#1] has indicated that [%person#2] appears angry and unfocussed in training.
+
+STR-456321
+Assistant Manager [%person#1] has concerns about [%person#2]{s} current attitude to training.
+
+STR-456322
+Assistant Manager [%person#1] indicates that [%person#2] hasn't been training particularly well recently.
+
+STR-456324
+Assistant Manager [%person#1] indicates that [%person#2] has been doing fairly well in training.
+
+STR-456325
+Assistant Manager [%person#1] is pleased to indicate that [%person#2] has been setting a good example in training.
+
+STR-456326
+Assistant Manager [%person#1] indicates that [%person#2] has been doing well in training.
+
+STR-456327
+Assistant Manager [%person#1] is pleased to indicate that [%person#2] has been setting a great example in training.
+
+STR-456328
+Assistant Manager [%person#1] is pleased to indicate that [%person#2] has been working hard in training.
+
+STR-456329
+(Training Attitude - [%number#1])
+
+STR-456354
+[%club#1-short]'s offer matches an active release clause in the player's contract, which means that [%person#1-you] are unable to reject this offer.
+
+STR-456355
+[%club#1-short]'s offer matches an active release clause in the player's contract, which allows them to freely discuss terms with the club.
+
+STR-456367
+Intensive
+
+STR-456369
+Light
+
+STR-456370
+None
+
+STR-456375
+Low training levels to ensure a basic level of fitness. Allows appropriate recovery time.
+
+STR-456378
+Assistant Manager is in charge of training
+
+STR-456379
+Do you wish to take over control of the clubs training program?
+
+STR-456380
+Training (Off-Season)
+
+STR-456381
+Physical Attributes
+
+STR-456382
+Goalkeeper Attributes
+
+STR-456383
+Technical Attributes
+
+STR-456384
+Mental Attributes
+
+STR-456385
+Attr
+
+STR-456386
+Focus Pos
+
+STR-456387
+Focus Role
+
+STR-456388
+Int
+
+STR-456389
+Aer
+
+STR-456390
+Agi
+
+STR-456391
+Com
+
+STR-456392
+Han
+
+STR-456393
+Kic
+
+STR-456394
+Ref
+
+STR-456395
+Thr
+
+STR-456397
+By Request
+
+STR-456399
+[%person#1] training progress
+
+STR-456401
+Exit Talks
+
+STR-456402
+Finalise Deal
+
+STR-456403
+Not Set
+
+STR-456404
+Club Details
+
+STR-456405
+Facilities
+
+STR-456406
+Team Actions
+
+STR-456407
+General Details
+
+STR-456408
+Kit Selection
+
+STR-456409
+Stadium Name
+
+STR-456410
+Squad Actions
+
+STR-456415
+Club Actions
+
+STR-456416
+Sack All Non-Playing Staff
+
+STR-456422
+Min. Fee Release: [%cash#1-short-roundlarge]
+
+STR-456423
+Relegation Release: [%cash#1-short-roundlarge]
+
+STR-456424
+Buy Back Fee: [%cash#1-short-roundlarge] ([%club#1-short])
+
+STR-456425
+[%person#1-surname] is a natural [%string#1 - position string] and will likely learn quickly training in this position.
+
+STR-456429
+Training Report
+
+STR-456430
+Intensity
+
+STR-456431
+Focus Attribute
+
+STR-456432
+[%person#1] is making reasonible progress in training.
+
+STR-456458
+Reacted badly to disciplinary action
+
+STR-456465
+Dislikes trained role
+
+STR-456471
+Pos
+
+STR-456477
+Loading image data for the new skin.\n\nPlease wait...
+
+STR-456478
+Skin
+
+STR-456479
+Reload Skin
+
+STR-456480
+Display Attribute changes
+
+STR-456482
+Tap the tactical role to use in training
+
+STR-456483
+Min AP.
+
+STR-456484
+Min Wg.
+
+STR-456487
+Goalie Attributes
+
+STR-456488
+Attacking Attributes
+
+STR-456489
+Select Training Focus Attribute
+
+STR-456490
+Tap the intensity level to set for this player's training
+
+STR-456495
+Exit Negotiations
+
+STR-456497
+Bid Withdrawn
+
+STR-456498
+Bid Accepted
+
+STR-456499
+Bid Rejected
+
+STR-456500
+Bid Negotiated
+
+STR-456501
+Bid Made
+
+STR-456502
+Rumoured Interest
+
+STR-456503
+Contract Rejected
+
+STR-456504
+Awaiting Decision
+
+STR-456510
+Sell On Percentage
+
+STR-456512
+[%club#1] have made an offer for [%person#1-surname].
+
+STR-456513
+There are two clubs still interested in purchasing [%person#1]. Both have offered [%cash#1-short-roundlarge].
+
+STR-456514
+There are two clubs still interested in purchasing [%person#1]. Both have offered [%cash#1-short-roundlarge] which is below [%person#1-your] stated valuation of [%cash#2-short-roundlarge].
+
+STR-456515
+There are several clubs still interested in purchasing [%person#1]. The highest offers recieved are for the sum of [%cash#1-short-roundlarge], which is below [%person#1-your] stated valuation of [%cash#2-short-roundlarge].
+
+STR-456516
+There are several clubs still interested in purchasing [%person#1].
+
+STR-456517
+[%club#1] are the only club still interested in purcasing [%person#1]. Their current bid offer is [%cash#1-short-roundlarge] which is below [%person#1-your] stated valuation of [%cash#2-short-roundlarge].
+
+STR-456518
+There are two clubs still interested in purchasing [%person#1]. [%club#1] have made the current highest offer, a sum of [%cash#1-short-roundlarge] which is below [%person#1-your] stated valuation of [%cash#2-short-roundlarge].
+
+STR-456519
+There are two clubs still interested in purchasing [%person#1]. [%club#1] are the highest bidders at this time with an offer of [%cash#1-short-roundlarge].
+
+STR-456520
+There are several clubs still interested in purchasing [%person#1]. [%club#1] have made the current highest offer, a sum of [%cash#1-short-roundlarge] which is below [%person#1-your] stated valuation of [%cash#2-short-roundlarge].
+
+STR-456521
+There are several clubs still interested in purchasing [%person#1]. [%club#1] are the highest bidders at this time with an offer of [%cash#1-short-roundlarge].
+
+STR-456522
+There is a single club still interested in purchasing [%person#1].
+
+STR-456523
+There are two clubs still interested in purchasing [%person#1].
+Polish Reference:
+STR-456264
+Obrońca grający piłką ma przede wszystkim uniemożliwiać napastnikom przeciwnika swobodną grę.\nJednakże w przeciwieństwie do klasycznego środkowego obrońcy ma on wolną rękę w rozpoczynaniu kontrataków rozcinającymi defensywę rywali prostopadłymi podaniami z głębi pola.
+
+STR-456266
+Boczny pomocnik ma obowiązki tak defensywne, jak i ofensywne, w zależności od potrzeb wspierając obrońców, pomocników lub napastników.\nAby stwarzać zagrożenie w ataku, nie zapominając zarazem o grze obronnej, zwykle musi bazować na swej pracowitości i umiejętności gry zespołowej.
+
+STR-456281
+Niska
+
+STR-456282
+Cżk
+
+STR-456283
+Śrd
+
+STR-456284
+SIŁ
+
+STR-456285
+WYT
+
+STR-456286
+SZB
+
+STR-456287
+DŚR
+
+STR-456288
+DRB
+
+STR-456289
+POD
+
+STR-456290
+STR
+
+STR-456291
+ODB
+
+STR-456292
+CHW
+
+STR-456293
+WKP
+
+STR-456294
+GWP
+
+STR-456295
+REF
+
+STR-456296
+RZU
+
+STR-456297
+KRE
+
+STR-456298
+DEC
+
+STR-456299
+POR
+
+STR-456300
+UST
+
+STR-456302
+PWD
+
+STR-456303
+AGR
+
+STR-456304
+KOM
+
+STR-456305
+ZWI
+
+STR-456306
+TEC
+
+STR-456308
+WSP
+
+STR-456309
+Asystent menedżera [%male#1] przypomina ci, że [%male#2] jest obecnie kontuzjowany i nie może trenować.
+Asystent menedżera [%male#1] przypomina ci, że [%female#2] jest obecnie kontuzjowana i nie może trenować.
+Asystent menedżera [%female#1] przypomina ci, że [%male#2] jest obecnie kontuzjowany i nie może trenować.
+Asystent menedżera [%female#1] przypomina ci, że [%female#2] jest obecnie kontuzjowana i nie może trenować.
+
+STR-456311
+Asystent menedżera [%male#1] informuje, że [%male#2] powinien niebawem wznowić lekkie treningi.
+Asystent menedżera [%male#1] informuje, że [%female#2] powinna niebawem wznowić lekkie treningi.
+Asystent menedżera [%female#1] informuje, że [%male#2] powinien niebawem wznowić lekkie treningi.
+Asystent menedżera [%female#1] informuje, że [%female#2] powinna niebawem wznowić lekkie treningi.
+
+STR-456312
+Zawodnik nie może się doczekać powrotu do dawnej kondycji.
+
+STR-456313
+Zawodnik okazał się wzorowym pacjentem i bez szemrania stosował się do wszystkich zaleceń.
+
+STR-456319
+Asystent menedżera [%male#1] poinformował, że [%male#2] symuluje pracę na treningach.
+Asystentka menedżera [%female#1] poinformowała, że [%male#2] symuluje pracę na treningach.
+
+STR-456320
+Asystent menedżera [%male#1] poinformował, że [%male#2] sprawia wrażenie zirytowanego i zdekoncentrowanego na treningach.
+Asystent menedżera [%male#1] poinformował, że [%female#2] sprawia wrażenie zirytowanej i zdekoncentrowanej na treningach.
+Asystentka menedżera [%female#1] poinformowała, że [%male#2] sprawia wrażenie zirytowanego i zdekoncentrowanego na treningach.
+Asystentka menedżera [%female#1] poinformowała, że [%female#2] sprawia wrażenie zirytowanej i zdekoncentrowanej na treningach.
+
+STR-456321
+Asystent menedżera [%male#1] ma zastrzeżenia do postawy, jaką [%male#2] prezentuje ostatnio na treningach.
+Asystentka menedżera [%female#1] ma zastrzeżenia do postawy, jaką [%male#2] prezentuje ostatnio na treningach.
+
+STR-456322
+Asystent menedżera [%male#1] uważa, że [%male#2] nie spisuje się ostatnio najlepiej na treningach.
+Asystentka menedżera [%female#1] uważa, że [%male#2] nie spisuje się ostatnio najlepiej na treningach.
+
+STR-456324
+Asystent menedżera [%male#1] uważa, że [%male#2] w miarę dobrze spisuje się ostatnio na treningach.
+Asystentka menedżera [%female#1] uważa, że [%male#2] w miarę dobrze spisuje się ostatnio na treningach.
+
+STR-456325
+Asystent menedżera [%male#1] uważa, że [%male#2] daje dobry przykład na treningach.
+Asystentka menedżera [%female#1] uważa, że [%male#2] daje dobry przykład na treningach.
+
+STR-456326
+Asystent menedżera [%male#1] uważa, że [%male#2] dobrze spisuje się ostatnio na treningach.
+Asystentka menedżera [%female#1] uważa, że [%male#2] dobrze spisuje się ostatnio na treningach.
+
+STR-456327
+Asystent menedżera [%male#1] uważa, że [%male#2] daje świetny przykład na treningach.
+Asystentka menedżera [%female#1] uważa, że [%male#2] daje świetny przykład na treningach.
+
+STR-456328
+Asystent menedżera [%male#1] uważa, że [%male#2] ciężko pracuje na treningach.
+Asystentka menedżera [%female#1] uważa, że [%male#2] ciężko pracuje na treningach.
+
+STR-456329
+(Podejście do treningu - [%number#1])
+
+STR-456354
+Oferta, jaką {złożył}[%club#1-short], odpowiada aktywnej klauzuli odejścia w kontrakcie piłkarza, co oznacza, że nie możesz jej odrzucić.[%male#1-hidden]
+
+STR-456355
+Oferta, jaką {złożył}[%club#1-short], odpowiada aktywnej klauzuli odejścia w kontrakcie piłkarza, co oznacza, że może bez przeszkód podjąć negocjacje z klubem.
+
+STR-456367
+Intensywny
+
+STR-456369
+Lekki
+
+STR-456370
+Brak
+
+STR-456375
+Niskie poziomy treningu, zapewniające podstawowy poziom kondycji i pozwalające na odpowiednią regenerację.
+
+STR-456378
+Asystent menedżera odpowiada za treningi
+
+STR-456379
+Czy chcesz przejąć kontrolę nad treningami?
+
+STR-456380
+Trening (poza sezonem)
+
+STR-456381
+Atrybuty fizyczne
+
+STR-456382
+Atrybuty bramkarskie
+
+STR-456383
+Atrybuty techniczne
+
+STR-456384
+Atrybuty psychiczne
+
+STR-456385
+Atr
+
+STR-456386
+Pkt ciężk. poz.
+
+STR-456387
+Pkt ciężk. rol.
+
+STR-456388
+Int
+
+STR-456389
+GwP
+
+STR-456390
+Zwi
+
+STR-456391
+Kom
+
+STR-456392
+Chw
+
+STR-456393
+Wkp
+
+STR-456394
+Ref
+
+STR-456395
+Rzu
+
+STR-456397
+Na żądanie
+
+STR-456399
+[%male#1]: Postępy na treningach
+
+STR-456401
+Zakończ rozmowy
+
+STR-456402
+Sfinalizuj umowę
+
+STR-456403
+Nie ustawiono
+
+STR-456404
+Informacje klubowe
+
+STR-456405
+Obiekty
+
+STR-456406
+Czynności (zespół)
+
+STR-456407
+Ogólne szczegóły
+
+STR-456408
+Wybór stroju
+
+STR-456409
+Nazwa stadionu
+
+STR-456410
+Czynności (zespół)
+
+STR-456415
+Czynności (klub)
+
+STR-456416
+Zwolnij wszystkich pracowników
+
+STR-456422
+Kl. oferty min.: [%cash#1-short-roundlarge]
+
+STR-456423
+Klauzula spadku: [%cash#1-short-roundlarge]
+
+STR-456424
+Kwota odkupu: [%cash#1-short-roundlarge] ([%club#1-short])
+
+STR-456425
+[%male#1-surname] to naturalny [%string#1 - position string] i będzie się szybko uczyć, trenując na tej pozycji.
+[%female#1-surname] to naturalna [%string#1 - position string] i będzie się szybko uczyć, trenując na tej pozycji.
+
+STR-456429
+Raport treningowy
+
+STR-456430
+Intensywność
+
+STR-456431
+Trenowane atrybuty
+
+STR-456432
+[%male#1] robi odpowiednie postępy na treningu.
+
+STR-456458
+Źle zareagował na karę dyscyplinarną
+
+STR-456465
+Nie odpowiada mu trenowana rola
+
+STR-456471
+Poz
+
+STR-456477
+Wczytywanie danych nowej skórki.\n\nZaczekaj...
+
+STR-456478
+Skórka
+
+STR-456479
+Odśwież skórkę
+
+STR-456480
+Pokazuj zmiany atrybutów
+
+STR-456482
+Stuknij na roli taktycznej, by użyć jej na treningu
+
+STR-456483
+Min. cena wyw.
+
+STR-456484
+Min. pensja
+
+STR-456487
+Atrybuty bramkarskie
+
+STR-456488
+Atrybuty ofensywne
+
+STR-456489
+Wybierz punkt ciężkości treningu
+
+STR-456490
+Stuknij w poziom intensywności, by przydzielić rodzaj treningu
+
+STR-456495
+Zakończ negocjacje
+
+STR-456497
+Oferta wycofana
+
+STR-456498
+Oferta zaakceptowana
+
+STR-456499
+Oferta odrzucona
+
+STR-456500
+Oferta negocjowana
+
+STR-456501
+Oferta złożona
+
+STR-456502
+Niepotwierdzone zainteresowanie
+
+STR-456503
+Kontrakt odrzucony
+
+STR-456504
+Oczekiwanie na decyzję
+
+STR-456510
+% kwoty odsprzedaży
+
+STR-456512
+[%club#1]{złożył} ofertę, której przedmiotem jest [%male#1-surname].
+
+STR-456513
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%male#1]. Oba złożyły oferty w wysokości [%cash#1-short-roundlarge].
+Dwa kluby nadal są zainteresowane tym, by dołączyła do nich [%female#1]. Oba złożyły oferty w wysokości [%cash#1-short-roundlarge].
+
+STR-456514
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%male#1]. Oba złożyły oferty w wysokości [%cash#1-short-roundlarge], która jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+Dwa kluby nadal są zainteresowane tym, by dołączyła do nich [%female#1]. Oba złożyły oferty w wysokości [%cash#1-short-roundlarge], która jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+
+STR-456515
+Nadal jest kilka klubów zainteresowanych tym, by dołączył do nich [%male#1]. Najwyższe otrzymane oferty opiewają na kwotę [%cash#1-short-roundlarge], która jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+Nadal jest kilka klubów zainteresowanych tym, by dołączyła do nich [%female#1]. Najwyższe otrzymane oferty opiewają na kwotę [%cash#1-short-roundlarge], która jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+
+STR-456516
+Nadal jest kilka klubów zainteresowanych tym, by dołączył do nich [%male#1].
+Nadal jest kilka klubów zainteresowanych tym, by dołączyła do nich [%female#1].
+
+STR-456517
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączył do nich [%male#1]. Złożona przez nich oferta w wysokości [%cash#1-short-roundlarge] jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+[%club#1]{jest} jedynym klubem wciąż zainteresowanym tym, by dołączyła do nich [%female#1]. Złożona przez nich oferta w wysokości [%cash#1-short-roundlarge] jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+
+STR-456518
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%male#1]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+Dwa kluby nadal są zainteresowane tym, by dołączyła do nich [%female#1]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+
+STR-456519
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%male#1]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge].
+Dwa kluby nadal są zainteresowane tym, by dołączyła do nich [%female#1]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge].
+
+STR-456520
+Nadal jest kilka klubów zainteresowanych tym, by dołączył do nich [%male#1]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+Nadal jest kilka klubów zainteresowanych tym, by dołączyła do nich [%female#1]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge], która jest mniejsza niż twoja oficjalna wycena ([%cash#2-short-roundlarge]).
+
+STR-456521
+Nadal jest kilka klubów zainteresowanych tym, by dołączył do nich [%male#1]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge].
+Nadal jest kilka klubów zainteresowanych tym, by dołączyła do nich [%female#1]. [%club#1]{złożył} najwyższą ofertę wynoszącą [%cash#1-short-roundlarge].
+
+STR-456522
+Jeden klub pozostaje zainteresowany tym, by dołączył do nich [%male#1].
+Jeden klub pozostaje zainteresowany tym, by dołączyła do nich [%female#1].
+
+STR-456523
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%male#1].
+Dwa kluby nadal są zainteresowane tym, by dołączyła do nich [%female#1].

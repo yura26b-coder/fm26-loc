@@ -1,0 +1,200 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-411240
+[%club#1]{s} [%string#1 score (eg 40)] draw with [%club#2] gained the club a valuable point.\n\nUnfortunately, the club are still in very real danger of relegation and need to up their game if they are going to avoid the drop.
+
+STR-411241
+[%club#1]{s} [%string#1 score (eg 40)] draw against [%club#2] gained the club another point.\n\nThe club are safely outside of the relegation zone but their indifferent form must have their manager sweating.
+
+STR-411242
+[%club#1]{s} [%string#1 score (eg 40)] draw with [%club#2] gained the club a valuable point.\n\nThe club have emerged from the relegation zone but their indifferent form must have their manager sweating.
+
+STR-411243
+[%club#1]{s} manager will be pleased with the results that [%person#1-his] makeshift side is achieving.\n\nTheir [%string#1 score (eg 40)] win against [%club#2] is further emphasis that the squad has fantastic depth.
+
+STR-411244
+[%club#1]{s} manager will be pleased with the form that [%person#1-his] makeshift side has managed recently. However, their [%string#1 score (eg 40)] defeat to [%club#2] is a further reminder that the side will be stronger once the current injury crisis abates.
+
+STR-411245
+[%club#1]{s} manager will be pleased with the results that [%person#1-his] injury hit side is achieving.\n\nTheir [%string#1 score (eg 40)] draw with [%club#2] reiterates the fantastic depth of the squad at [%person#1-his] disposal.
+
+STR-411246
+[%club#1]{s} form has been less than impressive of late. However, the manager will be pleased with [%person#1-his] team's [%string#1 score (eg 40)] win over [%club#2].\n\nThe injury stricken side needs to keep grinding out results until their big-name players return.
+
+STR-411247
+Injury stricken [%club#1]{s} results have been less than impressive in recent matches. Their [%string#1 score (eg 40)] loss against [%club#2] will have done little to improve their manager's mood.
+
+STR-411248
+[%club#1]{s} manager will be pleased with the team's [%string#1 score (eg 40)] draw against [%club#2].\n\nThe injury stricken side have been struggling in recent weeks and need to keep grinding out results until their big-name players return.
+
+STR-411249
+Media pundits have stated that [%club#1]{s} [%string#1 score (eg 40)] win against [%club#2] is further evidence that manager [%string#2 Staff Name (eg. Vaughan)] appears to have what it takes to manage at this level.\n\nGrumbles about [%person#1-his] appointment appear to be far fewer now than they were a few weeks ago.
+
+STR-411250
+[%club#1] had been putting together some decent results prior to their [%string#1 score (eg 40)] loss against [%club#2].\n\nManager [%string#2 Staff Name (eg. Vaughan)] is still putting up with some sniping from fans but [%person#1-his] record so far is impressive.
+
+STR-411251
+[%club#1] had been putting together some impressive results prior to their [%string#1 score (eg 40)] loss against [%club#2].\n\nManager [%string#2 Staff Name (eg. Vaughan)] is still facing some unrest from fans but [%person#1-his] record so far is impressing some pundits.
+
+STR-411252
+[%club#1]{s} [%string#1 score (eg 40)] draw against [%club#2] gained them a point and reinforced the view that perhaps manager [%string#2 Staff Name (eg. Vaughan)] has what it takes to manage at this level.\n\nThe side has been putting in some good performances recently and grumbles about [%person#1-his] appointment appear to be far fewer now than they were a few weeks ago.
+
+STR-411253
+[%club#1]{s} manager watched mournfully as [%person#1-his] side lost [%string#1 score (eg 40)] against [%club#2].\n\nWith the fans calling for [%person#1-his] resignation it appears to be only a matter of whether [%person#1-he] will step down or be removed from [%person#1-his] position.
+
+STR-411254
+A national newspaper article has indicated that [%club#1]{s} manager will be pleased with [%person#1-his] team's [%string#1 score (eg 40)] win against [%club#2].\n\nThe manager is still under huge pressure from [%person#1-his] club's supporters and it is viewed as unlikely that [%person#1-he] will still be managing the club come next season.
+
+STR-411255
+[%club#1]{s} [%string#1 score (eg 40)] draw against [%club#2] could have been worse but the club's recent poor form will have given the supporters every reason to be vocal in their disapproval of the club's past few results.
+
+STR-411256
+[%club#1] rolled onward with a crushing [%string#1 score (eg 40)] victory over [%club#2].\n\nOpposition sides are now visibly scared when facing the team.
+
+STR-411257
+[%club#1] strode onward with a tidy [%string#1 score (eg 20)] victory over [%club#2].\n\nPundits are starting to believe that perhaps they really can achieve the impossible and stay unbeaten.
+
+STR-411258
+[%club#1] ground out another victory with a [%string#1 score (eg 10)] win against [%club#2].\n\nPundits are starting to believe that they really can achieve the impossible and stay unbeaten this season.
+
+STR-411259
+[%club#1] ground out a [%string#1 score (eg 44)] draw against [%club#2].\n\nThey remain unbeaten in the league this season.
+
+STR-411260
+[%club#1]{s} good form continues after a [%string#1 score (eg 44)] victory against [%club#2].\n\nMany football experts and fans alike tipped them to struggle after having to dramatically reduce their wage bill, but the players have responded with top performances on the pitch.
+
+STR-411261
+[%club#1]{s} recent good form came to a halt as they were beaten [%string#1 score (eg 44)] by [%club#2].\n\nDespite the loss, a respected journalist was quick to point out in their latest blog how well the team is doing in difficult circumstances.
+
+STR-411262
+[%club#1]{s} solid form continues after a [%string#1 score (eg 44)] draw with [%club#2].\n\nThe team's recent results will surprise some people, given the current financial situation at the club.
+
+STR-411264
+[%club#1]{s} form has been solid, if somewhat unspectacular, in recent games.\n\nFollowing the [%string#1 score (eg 44)] defeat to [%club#2], a leading football writer has published an article confidently declaring that the players are struggling to find their consistency following the recent financial upheaval.
+
+STR-411265
+[%club#1]{s} decent form continues after a [%string#1 score (eg 44)] draw with [%club#2].\n\nWith little of note going on in terms of results, sports journalists appear to have almost forgotten about the financial situation at the club.
+
+STR-411267
+[%club#1]{s} season doesn't seem to be showing any signs of recovery after a [%string#1 score (eg 44)] defeat against [%club#2].\n\nA leading football blogger claims that the uncertain financial future surrounding the club is affecting the players' performances on the pitch.
+
+STR-411268
+[%club#1]{s} form remains less than impressive after a [%string#1 score (eg. 44)] draw against [%club#2].\n\nThe team's inconsistency since the club began cutting costs suggests that the players are struggling to settle down after the recent financial upheaval.
+
+STR-411269
+[%club#1]{s} young guns continue to impress following a [%string#1 score eg (44)] victory against [%club#2].\n\nMany football pundits are praising the mentality and the talent of the club's young players, who continue to demonstrate their vast potential.
+Polish Reference:
+STR-411240
+Remis [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] zapewnił drużynie cenny punkt.\n\nNiestety klub jest poważnie zagrożony spadkiem i jeśli wyniki się nie poprawią, może się to dla nich źle skończyć.
+
+STR-411241
+Remis [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] zapewnił drużynie kolejny punkt.\n\nKlub wydostał się ze strefy spadkowej, lecz przeciętna forma zespołu musi niepokoić menedżera.
+
+STR-411242
+Remis [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] zapewnił drużynie cenny punkt.\n\nKlub wydostał się ze strefy spadkowej, lecz przeciętna forma zespołu musi niepokoić menedżera.
+
+STR-411243
+Menedżer musi być zadowolony z tego, co prezentuje sklecony naprędce zespół.\n\nZwycięstwo [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] po raz kolejny dobitnie zademonstrowało głębię składu drużyny.[%male#1-hidden]
+Menedżerka musi być zadowolona z tego, co prezentuje sklecony naprędce zespół.\n\nZwycięstwo [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] po raz kolejny dobitnie zademonstrowało głębię składu drużyny.[%female#1-hidden]
+
+STR-411244
+Menedżer musi być zadowolony z dyspozycji, jaką osiągnął sklecony naprędce zespół.\n\nJednakże porażka [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] po raz kolejny przypomniała, że zespół będzie mocniejszy po powrocie kontuzjowanych zawodników.[%male#1-hidden]
+Menedżerka musi być zadowolona z dyspozycji, jaką osiągnął sklecony naprędce zespół.\n\nJednakże porażka [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] po raz kolejny przypomniała, że zespół będzie mocniejszy po powrocie kontuzjowanych zawodników.[%female#1-hidden]
+
+STR-411245
+Menedżer musi być zadowolony z tego, co osiągnął jego prześladowany kontuzjami zespół.\n\nRemis [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] po raz kolejny dobitnie zademonstrował głębię składu drużyny.[%male#1-hidden]
+Menedżerka musi być zadowolona z tego, co osiągnął jej prześladowany kontuzjami zespół.\n\nRemis [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] po raz kolejny dobitnie zademonstrował głębię składu drużyny.[%female#1-hidden]
+
+STR-411246
+[%club#1]{jest} ostatnimi czasy w niezbyt imponującej formie. Dlatego też menedżer musi być zadowolony z wygranego [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nPrześladowana kontuzjami drużyna musi za wszelką cenę odnosić sukcesy w oczekiwaniu na powrót swoich gwiazd.[%male#1-hidden]
+[%club#1]{jest} ostatnimi czasy w niezbyt imponującej formie. Dlatego też menedżerka musi być zadowolona z wygranego [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nPrześladowana kontuzjami drużyna musi za wszelką cenę odnosić sukcesy w oczekiwaniu na powrót swoich gwiazd.[%female#1-hidden]
+
+STR-411247
+Wskutek plagi kontuzji [%club#1]{gra} ostatnimi czasu mało przekonująco. Porażka [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2], na pewno nie poprawiła menedżerowi humoru.
+
+STR-411248
+Menedżer musi być zadowolony ze zremisowanego [%string#1 score (eg 40)] meczu [%club#1]-[%club#2].\n\nPrześladowana kontuzjami drużyna ma w ostatnich tygodniach problemy i musi za wszelką cenę odnosić sukcesy w oczekiwaniu na powrót swoich gwiazd.
+
+STR-411249
+Zdaniem ekspertów zwycięstwo [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] dowiodło po raz kolejny, że [%string#2 Staff Name (eg. Vaughan)] ma papiery na prowadzenie zespołu na tym szczeblu rozgrywek.\n\nNarzekania na jego angaż, głośne jeszcze parę tygodni temu, są już prawie niesłyszalne.[%male#1-hidden]
+Zdaniem ekspertów zwycięstwo [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] dowiodło po raz kolejny, że [%string#2 Staff Name (eg. Vaughan)] ma papiery na prowadzenie zespołu na tym szczeblu rozgrywek.\n\nNarzekania na jej angaż, głośne jeszcze parę tygodni temu, są już prawie niesłyszalne.[%female#1-hidden]
+
+STR-411250
+[%club#1]{zaliczył} serię przyzwoitych występów przed porażką [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nMenedżer [%string#2 Staff Name (eg. Vaughan)] wciąż jest obiektem docinków z trybun, lecz jego wyniki mówią same za siebie.[%male#1-hidden]
+[%club#1]{zaliczył} serię przyzwoitych występów przed porażką [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nMenedżerka [%string#2 Staff Name (eg. Vaughan)] wciąż jest obiektem docinków z trybun, lecz jej wyniki mówią same za siebie.[%female#1-hidden]
+
+STR-411251
+[%club#1]{zaliczył} serię przyzwoitych występów przed porażką [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nMenedżer [%string#2 Staff Name (eg. Vaughan)] wciąż nie został w pełni zaakceptowany przez trybuny, lecz jego wyniki mówią same za siebie.[%male#1-hidden]
+[%club#1]{zaliczył} serię przyzwoitych występów przed porażką [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nMenedżerka [%string#2 Staff Name (eg. Vaughan)] wciąż nie została w pełni zaakceptowana przez trybuny, lecz jej wyniki mówią same za siebie.[%female#1-hidden]
+
+STR-411252
+Remis [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] nie tylko przyniósł im kolejny punkt, lecz dowiódł też po raz kolejny, że [%string#2 Staff Name (eg. Vaughan)] ma papiery na prowadzenie zespołu na tym szczeblu rozgrywek.\n\nDrużyna ostatnimi czasy spisuje się całkiem dobrze i narzekania na jego angaż, głośne jeszcze parę tygodni temu, są już prawie niesłyszalne.[%male#1-hidden]
+Remis [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] nie tylko przyniósł im kolejny punkt, lecz dowiódł też po raz kolejny, że [%string#2 Staff Name (eg. Vaughan)] ma papiery na prowadzenie zespołu na tym szczeblu rozgrywek.\n\nDrużyna ostatnimi czasy spisuje się całkiem dobrze i narzekania na jej angaż, głośne jeszcze parę tygodni temu, są już prawie niesłyszalne.[%female#1-hidden]
+
+STR-411253
+Na oczach przygnębionego menedżera jego [%club#1]{przegrał} [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nKibice coraz głośniej żądają jego głowy i jest tylko kwestią czasu, zanim poda się do dymisji albo też zostanie do niej podany.[%male#1-hidden]
+Na oczach przygnębionej menedżerki jej [%club#1]{przegrał} [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nKibice coraz głośniej żądają jej głowy i jest tylko kwestią czasu, zanim poda się do dymisji albo też zostanie do niej podana.[%female#1-hidden]
+
+STR-411254
+Ogólnokrajowy dziennik utrzymuje, że menedżer ma pełne prawo do zadowolenia ze zwycięstwa [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2].\n\nNiemniej jednak kibice nadal mu nie odpuszczają i jest mało prawdopodobne, by kolejny sezon zastał go w klubie.[%male#1-hidden]
+Ogólnokrajowy dziennik utrzymuje, że menedżerka ma pełne prawo do zadowolenia ze zwycięstwa [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2].\n\nNiemniej jednak kibice nadal jej nie odpuszczają i jest mało prawdopodobne, by kolejny sezon zastał ją w klubie.[%female#1-hidden]
+
+STR-411255
+Remis [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] nie był najgorszym wynikiem, lecz ogólnie słaba dyspozycja zespołu w pełni usprawiedliwia głośne niezadowolenie kibiców z sytuacji w klubie.
+
+STR-411256
+[%club#1]{zwyciężył} przekonująco [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nIch przeciwnicy jeszcze przed pierwszym gwizdkiem sędziego sprawiają teraz wrażenie pogodzonych z porażką.
+
+STR-411257
+[%club#1]{zaliczył} gładkie zwycięstwo [%string#1 score (eg 20)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nEksperci zaczynają nieśmiało przebąkiwać, że zespół rzeczywiście może dokonać niemożliwego i zakończyć sezon bez porażki.
+
+STR-411258
+[%club#1]{odniósł} kolejne zwycięstwo [%string#1 score (eg 10)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nEksperci zaczynają nieśmiało przebąkiwać, że zespół rzeczywiście może dokonać niemożliwego i zakończyć sezon bez porażki.
+
+STR-411259
+[%club#1]{wywalczył} remis [%string#1 score (eg 44)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nZespół wciąż pozostaje niepokonany w lidze w tym sezonie.
+
+STR-411260
+[%club#1]{utrzymał} dobrą dyspozycję, wygrywając [%string#1 score (eg 44)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nWielu ekspertów prognozowało im trudne chwile po drastycznej obniżce wydatków na wynagrodzenia, lecz piłkarze zareagowali na nią świetną postawą na boisku.
+
+STR-411261
+[%club#1]{zakończył} swoją dobrą passę porażką [%string#1 score (eg 44)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nMimo przegranej znany dziennikarz pospieszył z deklaracją na łamach swojego blogu, że w tych okolicznościach zespół spisuje się bardzo dobrze.
+
+STR-411262
+[%club#1]{utrzymał} dotychczasową dyspozycję, remisując [%string#1 score (eg 44)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nOstatnie wyniki zespołu stanowią sporą niespodziankę, zważywszy na sytuację finansową klubu.
+
+STR-411264
+[%club#1]{prezentuje} solidną, acz nie spektakularną formę w ostatnich spotkaniach.\n\nPo porażce [%string#1 score (eg 44)] w meczu, w którym ich przeciwnikiem {był}[%club#2], w prasie zaroiło się od komentarzy, że zamieszanie z klubowymi finansami uniemożliwia zawodnikom ustabilizowanie dyspozycji.
+
+STR-411265
+[%club#1]{utrzymał} przyzwoitą formę, remisując [%string#1 score (eg 44)] w meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nJako że wyniki zespołu są mało spektakularne, większość dziennikarzy zdążyła już zapomnieć o sytuacji finansowej klubu.
+
+STR-411267
+Po przegranym [%string#1 score (eg 44)] meczu [%club#1]-[%club#2] nic nie wskazuje na to, by ten sezon był jeszcze do uratowania.\n\nCzołowy bloger sportowy twierdzi, że niejasna przyszłość finansowa odbija się negatywnie na grze zespołu.
+
+STR-411268
+Forma zespołu w zremisowanym [%string#1 score (eg. 44)] meczu [%club#2]-[%club#1] pozostawiała wiele do życzenia.\n\nNierówna gra drużyny zaczęła się wraz z drastyczną redukcją klubowych wydatków, co może oznaczać, że piłkarze nie potrafią się przystosować do nowych warunków pracy.
+
+STR-411269
+Młodzi zawodnicy znów pokazali świetny futbol w wygranym [%string#1 score eg (44)] meczu [%club#1]-[%club#2].\n\nWielu ekspertów wychwala ich mentalność i umiejętności, znamionujące spory potencjał.

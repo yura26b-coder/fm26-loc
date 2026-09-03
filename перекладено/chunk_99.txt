@@ -1,0 +1,315 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-465437
+[%person#1-surname]{s} current contract contains a buy out clause that means any bids of [%cash#1-short-roundlarge] and above must be accepted.
+
+STR-465438
+As part of [%person#1-surname]{s} loan agreement, any offers of [%cash#1-short-roundlarge] or above will be accepted by [%club#1-short].
+
+STR-465439
+[%person#1-surname] is currently on loan to us from [%club#1-short].
+
+STR-465440
+As part of [%person#1-surname]{s} loan agreement, we must accept any offers of [%cash#1-short-roundlarge] or above from [%club#1-short].
+
+STR-465441
+[%person#1-surname] is currently on loan at [%club#1-short].
+
+STR-465442
+[%person#2] notes that [%person#1-surname] has requested a transfer away from [%club#1-short].
+
+STR-465443
+[%person#2-Your] assistant notes that [%person#1-surname] has requested a transfer away from [%club#1-short].
+
+STR-465444
+[%person#2] notes that [%person#1-surname] has been placed on the transfer list by [%club#1-short].
+
+STR-465445
+[%person#2-Your] assistant notes that [%person#1-surname] has been placed on the transfer list by [%club#1-short].
+
+STR-465446
+[%person#2] notes that [%person#1-surname] has been made available for loan by [%club#1-short].
+
+STR-465447
+[%person#2-Your] assistant notes that [%person#1-surname] has been made available for loan by [%club#1-short].
+
+STR-465448
+[%person#2] notes that it is unlikely we have the transfer funds to sign [%person#1-surname] at this time.
+
+STR-465449
+[%person#2-Your] assistant notes that it is unlikely we have the transfer funds to sign [%person#1-surname] at this time.
+
+STR-465450
+[%person#2] notes that [%person#1-surname] might be unsettled at [%club#1-short].
+
+STR-465451
+[%person#2-Your] assistant notes that [%person#1-surname] might be unsettled at [%club#1-short].
+
+STR-465452
+[%club#1-short] have taken a keen interest in [%person#1-surname] and are monitoring [%person#1-his] situation closely.
+
+STR-465453
+Several other clubs are monitoring [%person#1-surname]{s} situation closely, with [%club#1-short] and [%club#2-short] taking an especially keen interest.
+
+STR-465454
+Several clubs have taken a keen interest in [%person#1-surname] and are monitoring [%person#1-his] situation closely.
+
+STR-465455
+[%person#1] notes that the board will not allow a squad of more than [%number#1] players. [%person#2-You] may need to consider selling or release some players.
+
+STR-465456
+[%person#2-Your] assistant notes that the board will not allow a squad of more than [%number#1] players. [%person#2-You] may need to consider selling or release some players.
+
+STR-465457
+[%person#1] notes that the board will not allow a first team squad of more than [%number#1] players.
+
+STR-465458
+[%person#2-Your] assistant notes that the board will not allow a first team squad of more than [%number#1] players.
+
+STR-465459
+[%person#2] believes that [%person#1-surname] would like the opportunity to talk to [%club#1-short].
+
+STR-465460
+[%person#2-Your] assistant believes that [%person#1-surname] would like the opportunity to talk to [%club#1-short].
+
+STR-465461
+As per a release clause in the player's contract, we are required to accept [%person#2-your] club's latest offer.
+
+STR-465462
+It took some hard negotiations, but we believe we are finally in a position to accept [%person#2-your] clubs' offer.
+
+STR-465463
+We are pleased that a deal has been concluded so quickly.
+
+STR-465464
+We are pleased that these negotiations have drawn to a successful conclusion.
+
+STR-465465
+As per a release clause in the player's contract, [%person#2-you] are not able to reject this offer.
+
+STR-465466
+It took some hard negotiations, but we believe we are finally in a position to accept [%person#2-your] terms.
+
+STR-465470
+We feel as though these talks dragged on too long without reaching an agreement. Therefore, we are ending negotiations for now.
+
+STR-465471
+We don't feel as though these talks made sufficient progress and so will be pulling out of talks for now.
+
+STR-465472
+We feel as though these talks have dragged on too long without reaching an agreement. Therefore, we are ending negotiations for now.
+
+STR-465473
+We don't feel as though these talks have made sufficient progress and so will be pulling out of talks for now.
+
+STR-465474
+We are not interested in loaning the player out to a rival.
+
+STR-465475
+[%person#1-surname] doesn't feel as though a loan move to [%person#2-your] club is the right move for [%person#1-him] at this time.
+
+STR-465476
+We are more interested in sealing a permanent transfer than allowing [%person#1-surname] to leave on loan.
+
+STR-465477
+We see the player as an important member of the first team and have no desire to loan [%person#1-him] out at this time.
+
+STR-465479
+We don't feel that we will be able to agree a loan deal here, and so are pulling out of negotiations.
+
+STR-465480
+We were actually willing to hear [%person#2-your] offer, however our valuations seem so far apart here that we're not willing to take these discussions any further.
+Polish Reference:
+STR-465437
+Obecny kontrakt, którym z klubem związany jest [%male#1-surname], zawiera klauzulę wykupu oznaczającą, że każda oferta w wysokości co najmniej [%cash#1-short-roundlarge] musi zostać zaakceptowana.
+Obecny kontrakt, którym z klubem związana jest [%female#1-surname], zawiera klauzulę wykupu oznaczającą, że każda oferta w wysokości co najmniej [%cash#1-short-roundlarge] musi zostać zaakceptowana.
+
+STR-465438
+Zgodnie z umową wypożyczenia, której przedmiotem jest[%male#1-surname], każda oferta w wysokości co najmniej [%cash#1-short-roundlarge] musi zostać zaakceptowana.
+
+STR-465439
+[%male#1-surname] ([%club#1-short]) obecnie przebywa na wypożyczeniu w naszym klubie.
+
+STR-465440
+Zgodnie z umową wypożyczenia, której przedmiotem jest[%male#1-surname], musimy zaakceptować każdą ofertę w wysokości co najmniej [%cash#1-short-roundlarge].
+
+STR-465441
+[%male#1-surname] obecnie przebywa na wypożyczeniu w klubie [%club#1-long].
+
+STR-465442
+[%male#2] informuje, że [%male#1-surname] ([%club#1-short]) zażądał zgody na transfer.
+[%male#2] informuje, że [%female#1-surname] ([%club#1-short]) zażądała zgody na transfer.
+[%female#2] informuje, że [%male#1-surname] ([%club#1-short]) zażądał zgody na transfer.
+[%female#2] informuje, że [%female#1-surname] ([%club#1-short]) zażądała zgody na transfer.
+
+STR-465443
+Twój asystent informuje, że [%male#1-surname] ([%club#1-short]) zażądał zgody na transfer.[%male#2-hidden]
+Twój asystent informuje, że [%female#1-surname] ([%club#1-short]) zażądała zgody na transfer.[%male#2-hidden]
+Twój asystent informuje, że [%male#1-surname] ([%club#1-short]) zażądał zgody na transfer.[%female#2-hidden]
+Twój asystent informuje, że [%female#1-surname] ([%club#1-short]) zażądała zgody na transfer.[%female#2-hidden]
+
+STR-465444
+[%male#2] informuje, że [%male#1-surname] ([%club#1-short]) został umieszczony na liście transferowej przez swój klub.
+[%male#2] informuje, że [%female#1-surname] ([%club#1-short]) została umieszczona na liście transferowej przez swój klub.
+[%female#2] informuje, że [%male#1-surname] ([%club#1-short]) został umieszczony na liście transferowej przez swój klub.
+[%female#2] informuje, że [%female#1-surname] ([%club#1-short]) została umieszczona na liście transferowej przez swój klub.
+
+STR-465445
+Twój asystent informuje, że [%male#1-surname] ([%club#1-short]) został umieszczony na liście transferowej przez swój klub.[%male#2-hidden]
+Twój asystent informuje, że [%female#1-surname] ([%club#1-short]) została umieszczona na liście transferowej przez swój klub.[%male#2-hidden]
+Twój asystent informuje, że [%male#1-surname] ([%club#1-short]) został umieszczony na liście transferowej przez swój klub.[%female#2-hidden]
+Twój asystent informuje, że [%female#1-surname] ([%club#1-short]) została umieszczona na liście transferowej przez swój klub.[%female#2-hidden]
+
+STR-465446
+[%male#2] informuje, że [%male#1-surname] ([%club#1-short]) został udostępniony do wypożyczenia przez swój klub.
+[%male#2] informuje, że [%female#1-surname] ([%club#1-short]) została udostępniona do wypożyczenia przez swój klub.
+[%female#2] informuje, że [%male#1-surname] ([%club#1-short]) został udostępniony do wypożyczenia przez swój klub.
+[%female#2] informuje, że [%female#1-surname] ([%club#1-short]) została udostępniona do wypożyczenia przez swój klub.
+
+STR-465447
+Twój asystent informuje, że [%male#1-surname] ([%club#1-short]) został udostępniony do wypożyczenia przez swój klub.[%male#2-hidden]
+Twój asystent informuje, że [%female#1-surname] ([%club#1-short]) została udostępniona do wypożyczenia przez swój klub.[%male#2-hidden]
+Twój asystent informuje, że [%male#1-surname] ([%club#1-short]) został udostępniony do wypożyczenia przez swój klub.[%female#2-hidden]
+Twój asystent informuje, że [%female#1-surname] ([%club#1-short]) została udostępniona do wypożyczenia przez swój klub.[%female#2-hidden]
+
+STR-465448
+[%male#2] informuje, że jest mało prawdopodobne, by nasz obecny fundusz transferowy wystarczył na to, by [%male#1-surname] przeszedł do klubu.
+[%male#2] informuje, że jest mało prawdopodobne, by nasz obecny fundusz transferowy wystarczył na to, by [%female#1-surname] przeszła do klubu.
+[%female#2] informuje, że jest mało prawdopodobne, by nasz obecny fundusz transferowy wystarczył na to, by [%male#1-surname] przeszedł do klubu.
+[%female#2] informuje, że jest mało prawdopodobne, by nasz obecny fundusz transferowy wystarczył na to, by [%female#1-surname] przeszła do klubu.
+
+STR-465449
+Twój asystent informuje, że jest mało prawdopodobne, by nasz obecny fundusz transferowy wystarczył na to, by [%male#1-surname] przeszedł do klubu.[%male#2-hidden]
+Twój asystent informuje, że jest mało prawdopodobne, by nasz obecny fundusz transferowy wystarczył na to, by [%female#1-surname] przeszła do klubu.[%male#2-hidden]
+Twój asystent informuje, że jest mało prawdopodobne, by nasz obecny fundusz transferowy wystarczył na to, by [%male#1-surname] przeszedł do klubu.[%female#2-hidden]
+Twój asystent informuje, że jest mało prawdopodobne, by nasz obecny fundusz transferowy wystarczył na to, by [%female#1-surname] przeszła do klubu.[%female#2-hidden]
+
+STR-465450
+[%male#2] uważa, że [%male#1-surname] ([%club#1-short]) może nie być do końca zadowolony ze swojego obecnego klubu.
+[%male#2] uważa, że [%female#1-surname] ([%club#1-short]) może nie być do końca zadowolona ze swojego obecnego klubu.
+[%female#2] uważa, że [%male#1-surname] ([%club#1-short]) może nie być do końca zadowolony ze swojego obecnego klubu.
+[%female#2] uważa, że [%female#1-surname] ([%club#1-short]) może nie być do końca zadowolona ze swojego obecnego klubu.
+
+STR-465451
+Twój asystent uważa, że [%male#1-surname] ([%club#1-short]) może nie być do końca zadowolony ze swojego obecnego klubu.[%male#2-hidden]
+Twój asystent uważa, że [%female#1-surname] ([%club#1-short]) może nie być do końca zadowolona ze swojego obecnego klubu.[%male#2-hidden]
+Twój asystent uważa, że [%male#1-surname] ([%club#1-short]) może nie być do końca zadowolony ze swojego obecnego klubu.[%female#2-hidden]
+Twój asystent uważa, że [%female#1-surname] ([%club#1-short]) może nie być do końca zadowolona ze swojego obecnego klubu.[%female#2-hidden]
+
+STR-465452
+[%male#1-surname] stał się obiektem zainteresowania ze strony klubu [%club#1-long], który uważnie monitoruje jego sytuację.
+[%female#1-surname] stała się obiektem zainteresowania ze strony klubu [%club#1-long], który uważnie monitoruje jej sytuację.
+
+STR-465453
+Kilka innych klubów uważnie monitoruje sytuację, w której znalazł się [%male#1-surname], a w gronie najbardziej zainteresowanych są [%club#1-short] oraz [%club#2-short].
+Kilka innych klubów uważnie monitoruje sytuację, w której znalazła się [%female#1-surname], a w gronie najbardziej zainteresowanych są [%club#1-short] oraz [%club#2-short].
+
+STR-465454
+[%male#1-surname] stał się obiektem zainteresowania ze strony kilku klubów, które uważnie monitorują jego sytuację.
+[%female#1-surname] stała się obiektem zainteresowania ze strony kilku klubów, które uważnie monitorują jej sytuację.
+
+STR-465455
+[%male#1] informuje, że zarząd nie zgodzi się, by w zespole było więcej niż [%number#1] piłkarzy. Być może będziesz musiał rozważyć sprzedaż lub zwolnienie paru zawodników.[%male#2-hidden]
+[%male#1] informuje, że zarząd nie zgodzi się, by w zespole było więcej niż [%number#1] piłkarzy. Być może będziesz musiała rozważyć sprzedaż lub zwolnienie paru zawodników.[%female#2-hidden]
+[%female#1] informuje, że zarząd nie zgodzi się, by w zespole było więcej niż [%number#1] piłkarzy. Być może będziesz musiał rozważyć sprzedaż lub zwolnienie paru zawodników.[%male#2-hidden]
+[%female#1] informuje, że zarząd nie zgodzi się, by w zespole było więcej niż [%number#1] piłkarzy. Być może będziesz musiała rozważyć sprzedaż lub zwolnienie paru zawodników.[%female#2-hidden]
+
+STR-465456
+Twój asystent informuje, że zarząd nie zgodzi się, by w zespole było więcej niż [%number#1] piłkarzy. Być może będziesz musiał rozważyć sprzedaż lub zwolnienie paru zawodników.[%male#2-hidden]
+Twój asystent informuje, że zarząd nie zgodzi się, by w zespole było więcej niż [%number#1] piłkarzy. Być może będziesz musiała rozważyć sprzedaż lub zwolnienie paru zawodników.[%female#2-hidden]
+
+STR-465457
+[%male#1] informuje, że zarząd nie zgodzi się, by w pierwszym zespole było więcej niż [%number#1] piłkarzy.
+
+STR-465458
+Twój asystent informuje, że zarząd nie zgodzi się, by w pierwszym zespole było więcej niż [%number#1] piłkarzy.[%male#2-hidden]
+
+STR-465459
+[%male#2] sądzi, że [%male#1-surname] chciałby otrzymać zgodę na podjęcie rozmów z klubem [%club#1-long].
+[%male#2] sądzi, że [%female#1-surname] chciałaby otrzymać zgodę na podjęcie rozmów z klubem [%club#1-long].
+[%female#2] sądzi, że [%male#1-surname] chciałby otrzymać zgodę na podjęcie rozmów z klubem [%club#1-long].
+[%female#2] sądzi, że [%female#1-surname] chciałaby otrzymać zgodę na podjęcie rozmów z klubem [%club#1-long].
+
+STR-465460
+Twój asystent sądzi, że [%male#1-surname] chciałby otrzymać zgodę na podjęcie rozmów z klubem [%club#1-long].[%male#2-hidden]
+Twój asystent sądzi, że [%female#1-surname] chciałaby otrzymać zgodę na podjęcie rozmów z klubem [%club#1-long].[%male#2-hidden]
+Twój asystent sądzi, że [%male#1-surname] chciałby otrzymać zgodę na podjęcie rozmów z klubem [%club#1-long].[%female#2-hidden]
+Twój asystent sądzi, że [%female#1-surname] chciałaby otrzymać zgodę na podjęcie rozmów z klubem [%club#1-long].[%female#2-hidden]
+
+STR-465461
+W związku z klauzulą odejścia w kontrakcie tego zawodnika jesteśmy zmuszeni zaakceptować ostatnią ofertę pańskiego klubu.[%male#2-hidden]
+W związku z klauzulą odejścia w kontrakcie tego zawodnika jesteśmy zmuszeni zaakceptować ostatnią ofertę pani klubu.[%female#2-hidden]
+
+STR-465462
+Potrzebowaliśmy do tego ostrych negocjacji, ale chyba możemy w końcu zaakceptować ofertę pańskiego klubu.[%male#2-hidden]
+Potrzebowaliśmy do tego ostrych negocjacji, ale chyba możemy w końcu zaakceptować ofertę pani klubu.[%female#2-hidden]
+
+STR-465463
+Cieszymy się z tak szybkiego porozumienia.
+
+STR-465464
+Cieszymy się, że te negocjacje skończyły się pomyślnie.
+
+STR-465465
+W związku z klauzulą odejścia w kontrakcie tego zawodnika nie możesz odrzucić tej oferty.[%male#2-hidden]
+
+STR-465466
+Potrzebowaliśmy do tego ostrych negocjacji, ale chyba możemy w końcu zaakceptować pańskie warunki.[%male#2-hidden]
+Potrzebowaliśmy do tego ostrych negocjacji, ale chyba możemy w końcu zaakceptować pani warunki.[%female#2-hidden]
+
+STR-465470
+Uważamy, że te rozmowy trwały zbyt długo i ich końca nie było widać. Dlatego też kończymy na teraz te negocjacje.
+
+STR-465471
+Nie wydaje nam się, abyśmy zrobili zadowalające postępy w trakcie tych rozmów, więc na razie rezygnujemy z nich.
+
+STR-465472
+Uważamy, że te rozmowy trwają już zbyt długo i ich końca nie widać. Dlatego też kończymy na teraz te negocjacje.
+
+STR-465473
+Nie wydaje nam się, abyśmy robili zadowalające postępy w trakcie tych rozmów, więc na razie rezygnujemy z nich.
+
+STR-465474
+Nie jesteśmy zainteresowany wypożyczeniem tego piłkarza rywalom.
+
+STR-465475
+[%male#1-surname] nie sądzi, by wypożyczenie do pańskiego klubu było na tę chwilę dla niego dobrym ruchem.[%male#2-hidden]
+[%male#1-surname] nie sądzi, by wypożyczenie do pani klubu było na tę chwilę dla niego dobrym ruchem.[%female#2-hidden]
+[%female#1-surname] nie sądzi, by wypożyczenie do pańskiego klubu było na tę chwilę dla niej dobrym ruchem.[%male#2-hidden]
+[%female#1-surname] nie sądzi, by wypożyczenie do pani klubu było na tę chwilę dla niej dobrym ruchem.[%female#2-hidden]
+
+STR-465476
+Jesteśmy bardziej zainteresowani transferem definitywnym niż tym, by [%male#1-surname] odszedł na wypożyczenie.
+Jesteśmy bardziej zainteresowani transferem definitywnym niż tym, by [%female#1-surname] odeszła na wypożyczenie.
+
+STR-465477
+Uważamy tego zawodnika za ważny element pierwszego zespołu i nie zamierzamy go obecnie wypożyczać.[%male#1-hidden]
+Uważamy tę zawodniczkę za ważny element pierwszego zespołu i nie zamierzamy jej obecnie wypożyczać.[%female#1-hidden]
+
+STR-465479
+Nie wydaje nam się, abyśmy byli w stanie porozumieć się w kwestii tego wypożyczenia, dlatego wycofujemy się z tych rozmów.
+
+STR-465480
+Byliśmy gotowi wysłuchać pańskiej oferty, ale rozbieżności finansowe są tak wielkie, że kontynuowanie tych rozmów nie ma sensu.[%male#2-hidden]
+Byliśmy gotowi wysłuchać pani oferty, ale rozbieżności finansowe są tak wielkie, że kontynuowanie tych rozmów nie ma sensu.[%female#2-hidden]

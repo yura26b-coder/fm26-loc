@@ -1,0 +1,1020 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-410491
+The aim of this challenge is to lift a trophy before the end of the season.
+
+STR-410492
+The aim of this challenge is to avoid being relegated from the division. This scenario restricts you to managing only teams from divisions with relegation involved.
+
+STR-410493
+The aim of this challenge is to win the league.
+
+STR-410494
+The aim of this challenge is to avoid being sacked before the end of the season.
+
+STR-410495
+The aim of this challenge is to avoid losing in the league during the remainder of the season.
+
+STR-410496
+The aim of this challenge is to reduce the wage bill by 25 percent before the end of the transfer window and subsequently maintain early season form until the end of the season.
+
+STR-410506
+Restore Transactions
+
+STR-410507
+Restoring Transactions
+
+STR-410513
+PURCHASED
+
+STR-410516
+[%string#1 player] will be selected as captain.\n
+
+STR-410522
+Crs
+
+STR-410523
+Tactics - Formation & Substitutions
+
+STR-410524
+Unable to Make Substitution
+
+STR-410525
+Maximum number of substitutions has already been made.
+
+STR-410526
+Tactics - Team Instructions
+
+STR-410536
+Accept
+
+STR-410537
+Negotiate
+
+STR-410546
+There are two clubs still interested in purchasing [%string#1 Player name].
+
+STR-410547
+There are several clubs still interested in purchasing [%string#1 Player name].
+
+STR-410550
+There are no remaining clubs interested in signing [%string#1 Player name] at this time.
+
+STR-410551
+Several clubs are interested in signing [%string#1 Player name]. However it appears they are intending to wait until [%person#1-his] contract expires to do so.
+
+STR-410557
+Withdrawn
+
+STR-410558
+Final Offer
+
+STR-410559
+Reject All Offers
+
+STR-410566
+Enquiry
+
+STR-410568
+Duration
+
+STR-410571
+Recall clause
+
+STR-410584
+Transfer
+
+STR-410585
+Transfer Date
+
+STR-410586
+Immediate
+
+STR-410590
+None
+
+STR-410616
+Ask Assistant
+
+STR-410633
+Player Competition Statistics
+
+STR-410634
+Please select the statistic to be displayed
+
+STR-410635
+Team Competition Statistics
+
+STR-410636
+Competition Rules
+
+STR-410637
+Please select the rule information to be displayed
+
+STR-410638
+Home
+
+STR-410639
+Away
+
+STR-410641
+Please select the stage of the competition to view
+
+STR-410642
+Past Winners
+
+STR-410645
+View Competition History
+
+STR-410646
+Please select the type of history to be displayed
+
+STR-410647
+Please select the history to view
+
+STR-410648
+Trophy Cabinet
+
+STR-410649
+Please select the records to view
+
+STR-410650
+Please select the format of statistics to be displayed
+
+STR-410651
+Scout Reports
+
+STR-410652
+Please select the view to be displayed
+
+STR-410653
+Competition Winners
+
+STR-410654
+Top Scorers
+
+STR-410655
+Top Assists
+
+STR-410657
+Season Review
+
+STR-410663
+Tactics Options
+
+STR-410664
+Please select an option
+
+STR-410665
+Game Configuration
+
+STR-410666
+Starting Configuration
+
+STR-410667
+User Interface
+
+STR-410668
+Unlockables
+
+STR-410670
+Game Center & Social Networking
+
+STR-410671
+Debug Options
+
+STR-410672
+Console Options
+
+STR-410674
+Sports Interactive
+
+STR-410678
+Load Filter
+
+STR-410679
+Compare Attributes
+
+STR-410680
+Compare Attributes (Detailed)
+
+STR-410681
+Compare Stats
+
+STR-410682
+Please select comparison view
+
+STR-410683
+Timescale Selection
+
+STR-410684
+Please select the timescale to view this player's progress
+
+STR-410685
+Graph View
+
+STR-410686
+List View
+
+STR-410687
+Please select the player form view to be displayed
+
+STR-410688
+Senior Rankings
+
+STR-410689
+Wonderkid Rankings
+
+STR-410690
+Form Hot List
+
+STR-410691
+Form Cold List
+
+STR-410692
+Select agency list to be displayed
+
+STR-410699
+League History
+
+STR-410700
+Please select history to view
+
+STR-410701
+Top Transfer Rumours
+
+STR-410702
+Current Division
+
+STR-410703
+Current Club
+
+STR-410704
+Transfer Rumours
+
+STR-410705
+Please select the rumours to display
+
+STR-410706
+All Transfers
+
+STR-410707
+Transfers In
+
+STR-410708
+Transfers Out
+
+STR-410709
+Future Transfers
+
+STR-410710
+Transfer Filters
+
+STR-410711
+Please select the transfers to be displayed
+
+STR-410712
+Scout Profile
+
+STR-410713
+Physio Profile
+
+STR-410715
+Goalkeepers
+
+STR-410716
+Defenders
+
+STR-410717
+Midfielders
+
+STR-410718
+Attackers
+
+STR-410719
+Player Stats Filter
+
+STR-410720
+Please select your preferred position filter
+
+STR-410721
+All
+
+STR-410724
+Award Filter
+
+STR-410726
+Nation Squad - Selection
+
+STR-410727
+Nation Squad - Av. Rating
+
+STR-410728
+Nation Squad - Condition
+
+STR-410729
+Nation Squad - Position
+
+STR-410730
+Nation Squad - Goals
+
+STR-410731
+Nation Squad - Value
+
+STR-410732
+Nation Squad - Wage
+
+STR-410733
+Nation Squad - Assists
+
+STR-410734
+Nation Squad - Age
+
+STR-410735
+Nation Squad - Morale
+
+STR-410736
+Nation Squad - Contract Expiry
+
+STR-410737
+Nation Squad - Appearances
+
+STR-410738
+Club Squad - Selection
+
+STR-410739
+Club Squad - Av. Rating
+
+STR-410740
+Club Squad - Condition
+
+STR-410741
+Club Squad - Position
+
+STR-410742
+Club Squad - Goals
+
+STR-410743
+Club Squad - Value
+
+STR-410744
+Club Squad - Wage
+
+STR-410745
+Club Squad - Assists
+
+STR-410746
+Club Squad - Age
+
+STR-410747
+Club Squad - Morale
+
+STR-410748
+Club Squad - Contract Expiry
+
+STR-410749
+Club Squad - Appearances
+
+STR-410750
+Club Squad - General Info
+
+STR-410751
+Club Squad - Contract
+
+STR-410752
+Club Squad - Stats
+
+STR-410753
+Club Squad - International
+
+STR-410754
+Club Squad - Coach Report
+
+STR-410755
+Club Squad - Scout Report
+
+STR-410756
+Nation Squad - General Info
+
+STR-410757
+Nation Squad - Selection
+
+STR-410758
+Nation Squad - Contract
+
+STR-410759
+Nation Squad - Stats
+
+STR-410760
+Nation Squad - International
+
+STR-410761
+Nation Squad - Coach Report
+
+STR-410762
+Nation Squad - Scout Report
+
+STR-410763
+Home Menu - Match Day
+
+STR-410764
+Home Menu - One day before transfer deadline
+
+STR-410765
+Fixtures & Results
+
+STR-410766
+Neutral
+
+STR-410776
+Top Goalscorer
+
+STR-410777
+Most Assists
+
+STR-410778
+Most Yellow Cards
+
+STR-410783
+You are currently unemployed.
+
+STR-410814
+The [%nation#1-nationality] Football Association are delighted with your performance as manager.
+
+STR-410815
+The [%nation#1-nationality] Football Association are very pleased with your performance as manager.
+
+STR-410816
+The [%nation#1-nationality] Football Association are pleased with your performance as manager.
+
+STR-410817
+The [%nation#1-nationality] Football Association are satisfied with your performance as manager.
+
+STR-410818
+The [%nation#1-nationality] Football Association are unsatisfied with your performance as manager.
+
+STR-410819
+The [%nation#1-nationality] Football Association are very disappointed with your performance as manager.
+
+STR-410820
+[%person#1-You] are currently unemployed.
+
+STR-410821
+The board are celebrating the team winning the [%comp#1].\n\nThis achievement far exceeded their expectations at the beginning of the season.
+
+STR-410822
+The board are delighted with the team winning the [%comp#1].\n\nThey hope [%person#1-you] will continue to build upon this success next season.
+
+STR-410823
+The board are pleased that the team won the [%comp#1] this season.
+
+STR-410824
+The board are ecstatic that the team has been able to qualify for next season's [%comp#1].\n\nThis achievement far exceeded initial expectations at the beginning of the season.
+
+STR-410825
+The board are delighted that the team has been able to qualify for next season's [%comp#1] and hopes [%person#1-you] will continue to build upon this success next season.
+
+STR-410826
+The board are pleased that the team has been able to qualify for next season's [%comp#1].
+
+STR-410827
+The board are ecstatic that the team has been able to qualify for continental football next season.\n\nThis achievement far exceeded initial expectations at the beginning of the season.
+
+STR-410828
+The board are delighted that the team has been able to qualify for continental football next season and hopes [%person#1-you] will continue to build upon this success next season.
+
+STR-410829
+The board are pleased that the team has been able to qualify for continental football next season.
+
+STR-410830
+The board are thrilled that the team have finished in a high enough position to qualify for continental competition next season.\n\nThey admit that this achievement has exceeded initial expectations at the beginning of the season.
+
+STR-410831
+The board are delighted that the team have finished in a high enough position to qualify for continental competition next season.\n\nThey hope [%person#1-you] will continue to build upon this success next season.
+
+STR-410832
+The board are pleased that the team have finished in a high enough position to qualify for continental competition next season.
+
+STR-410833
+The board are very proud of the team achieving promotion from the [%comp#1].\n\nThis achievement far exceeded their expectations at the beginning of the season.
+Polish Reference:
+STR-410491
+Celem tego wyzwania jest zdobycie trofeum przed końcem sezonu.
+
+STR-410492
+Celem tego wyzwania jest uniknięcie spadku z ligi. Scenariusz wyzwania pozwala na prowadzenie zespołów wyłącznie z lig, z których można spaść.
+
+STR-410493
+Celem tego wyzwania jest wygranie ligi.
+
+STR-410494
+Celem tego wyzwania jest utrzymanie się na posadzie do końca sezonu.
+
+STR-410495
+Celem tego wyzwania jest uniknięcie choćby jednej porażki ligowej do końca sezonu.
+
+STR-410496
+Celem tego wyzwania jest redukcja wydatków na wynagrodzenia o 25% przed końcem okna transferowego, a następnie utrzymanie dyspozycji z początku sezonu do jego końca.
+
+STR-410506
+Przywróć transakcje
+
+STR-410507
+Przywracanie transakcji
+
+STR-410513
+ZAKUPIONE
+
+STR-410516
+[%string#1 player] zostanie wybrany kapitanem.\n
+
+STR-410522
+Dśr
+
+STR-410523
+Taktyka - Ustawienie i zmiany
+
+STR-410524
+Nie można przeprowadzić zmiany
+
+STR-410525
+Przeprowadzono już maksymalną liczbę zmian.
+
+STR-410526
+Taktyka - Instrukcje zespołowe
+
+STR-410536
+Zaakceptuj
+
+STR-410537
+Negocjuj
+
+STR-410546
+Dwa kluby nadal są zainteresowane tym, by dołączył do nich [%string#1 Player name].
+
+STR-410547
+Nadal jest kilka klubów zainteresowanych tym, by dołączył do nich [%string#1 Player name].
+
+STR-410550
+Na tę chwilę żaden klub nie jest już zainteresowany tym, by dołączył do nich [%string#1 Player name].
+
+STR-410551
+Kilka klubów jest zainteresowanych tym, by dołączył do nich [%string#1 Player name]. Wygląda wszakże na to, że ze złożeniem oferty poczekają do wygaśnięcia jego kontraktu.[%male#1-hidden]
+Kilka klubów jest zainteresowanych tym, by dołączył do nich [%string#1 Player name]. Wygląda wszakże na to, że ze złożeniem oferty poczekają do wygaśnięcia jej kontraktu.[%female#1-hidden]
+
+STR-410557
+Wycofana
+
+STR-410558
+Ostateczna oferta
+
+STR-410559
+Odrzuć wszystkie oferty
+
+STR-410566
+Zapytanie
+
+STR-410568
+Czas trwania
+
+STR-410571
+Klauzula odwołania
+
+STR-410584
+Transfer
+
+STR-410585
+Termin realizacji transferu
+
+STR-410586
+Natychmiast
+
+STR-410590
+Brak
+
+STR-410616
+Poproś asystenta
+
+STR-410633
+Statystyki piłkarzy w rozgrywkach
+
+STR-410634
+Wybierz statystyki do pokazania
+
+STR-410635
+Statystyki zespołowe w rozgrywkach
+
+STR-410636
+Przepisy rozgrywek
+
+STR-410637
+Wybierz informacje o przepisach do pokazania
+
+STR-410638
+Dom
+
+STR-410639
+Wyjazd
+
+STR-410641
+Wybierz fazę rozgrywek do pokazania
+
+STR-410642
+Poprzedni zwycięzcy
+
+STR-410645
+Historia rozgrywek
+
+STR-410646
+Wybierz rodzaj historii do pokazania
+
+STR-410647
+Wybierz historię do pokazania
+
+STR-410648
+Szafka na trofea
+
+STR-410649
+Wybierz rekordy do pokazania
+
+STR-410650
+Wybierz format statystyk do pokazania
+
+STR-410651
+Raporty scoutów
+
+STR-410652
+Wybierz podgląd do pokazania
+
+STR-410653
+Zwycięzcy rozgrywek
+
+STR-410654
+Najlepsi strzelcy
+
+STR-410655
+Najlepsi asystenci
+
+STR-410657
+Podsumowanie sezonu
+
+STR-410663
+Opcje taktyczne
+
+STR-410664
+Wybierz opcję
+
+STR-410665
+Konfiguracja gry
+
+STR-410666
+Konfiguracja początkowa
+
+STR-410667
+Interfejs użytkownika
+
+STR-410668
+Zawartość do odblokowania
+
+STR-410670
+Game Center i portale społecznościowe
+
+STR-410671
+Opcje debugowania
+
+STR-410672
+Opcje konsoli
+
+STR-410674
+Sports Interactive
+
+STR-410678
+Wczytaj filtr
+
+STR-410679
+Porównaj atrybuty
+
+STR-410680
+Porównaj atrybuty (szczegółowo)
+
+STR-410681
+Porównaj statystyki
+
+STR-410682
+Wybierz format porównania
+
+STR-410683
+Wybór okresu
+
+STR-410684
+Wybierz okres, by zobaczyć postępy zawodnika
+
+STR-410685
+Widok wykresu
+
+STR-410686
+Widok listy
+
+STR-410687
+Wybierz format formy zawodnika do pokazania
+
+STR-410688
+Ranking seniorski
+
+STR-410689
+Ranking wielkich talentów
+
+STR-410690
+Przygotuj listę gorącego towaru
+
+STR-410691
+Przygotuj listę sztywniaków
+
+STR-410692
+Wybierz listę agencji do pokazania
+
+STR-410699
+Historia ligowa
+
+STR-410700
+Wybierz historię do pokazania
+
+STR-410701
+Najgorętsze plotki transferowe
+
+STR-410702
+Obecna liga
+
+STR-410703
+Obecny klub
+
+STR-410704
+Plotki transferowe
+
+STR-410705
+Wybierz plotki, z którymi się chcesz zapoznać
+
+STR-410706
+Wszystkie transfery
+
+STR-410707
+Transfery do
+
+STR-410708
+Transfery z
+
+STR-410709
+Przyszłe transfery
+
+STR-410710
+Filtry transferowe
+
+STR-410711
+Wybierz transfery do pokazania
+
+STR-410712
+Profil scouta
+
+STR-410713
+Profil fizjoterapeuty
+
+STR-410715
+Bramkarze
+
+STR-410716
+Obrońcy
+
+STR-410717
+Pomocnicy
+
+STR-410718
+Napastnicy
+
+STR-410719
+Filtr statystyk zawodników
+
+STR-410720
+Wybierz preferowany filtr pozycji
+
+STR-410721
+Wszystkie
+
+STR-410724
+Filtr nagród
+
+STR-410726
+Reprezentacja - Skład
+
+STR-410727
+Reprezentacja - Śr. ocena
+
+STR-410728
+Reprezentacja - Kondycja
+
+STR-410729
+Reprezentacja - Pozycja
+
+STR-410730
+Reprezentacja - Bramki
+
+STR-410731
+Reprezentacja - Wartość
+
+STR-410732
+Reprezentacja - Pensja
+
+STR-410733
+Reprezentacja - Asysty
+
+STR-410734
+Reprezentacja - Wiek
+
+STR-410735
+Reprezentacja - Morale
+
+STR-410736
+Reprezentacja - Koniec kontraktu
+
+STR-410737
+Reprezentacja - Występy
+
+STR-410738
+Klub - Skład
+
+STR-410739
+Klub - Śr. ocena
+
+STR-410740
+Klub - Kondycja
+
+STR-410741
+Klub - Pozycja
+
+STR-410742
+Klub - Bramki
+
+STR-410743
+Klub - Wartość
+
+STR-410744
+Klub - Pensja
+
+STR-410745
+Klub - Asysty
+
+STR-410746
+Klub - Wiek
+
+STR-410747
+Klub - Morale
+
+STR-410748
+Klub - Koniec kontraktu
+
+STR-410749
+Klub - Występy
+
+STR-410750
+Klub - Ogólne
+
+STR-410751
+Klub - Kontrakt
+
+STR-410752
+Klub - Statystyki
+
+STR-410753
+Klub - Międzynarodowe
+
+STR-410754
+Klub - Raport trenera
+
+STR-410755
+Klub - Raport scouta
+
+STR-410756
+Reprezentacja - Ogólne
+
+STR-410757
+Reprezentacja - Skład
+
+STR-410758
+Reprezentacja - Kontrakt
+
+STR-410759
+Reprezentacja - Statystyki
+
+STR-410760
+Reprezentacja - Międzynarodowe
+
+STR-410761
+Reprezentacja - Raport trenera
+
+STR-410762
+Reprezentacja - Raport scouta
+
+STR-410763
+Menu główne - Dzień meczowy
+
+STR-410764
+Menu główne - Dzień przed końcem okna transferowego
+
+STR-410765
+Spotkania i wyniki
+
+STR-410766
+Neutralny
+
+STR-410776
+Najlepszy strzelec
+
+STR-410777
+Najwięcej asyst
+
+STR-410778
+Najwięcej żółtych kartek
+
+STR-410783
+Aktualnie nie masz pracy.
+
+STR-410814
+{upper}[%nation#1-nationality1] ZPN jest zachwycony efektami twojej pracy na stanowisku selekcjonera.
+
+STR-410815
+{upper}[%nation#1-nationality1] ZPN jest bardzo zadowolony z efektów twojej pracy na stanowisku selekcjonera.
+
+STR-410816
+{upper}[%nation#1-nationality1] ZPN jest zadowolony z efektów twojej pracy na stanowisku selekcjonera.
+
+STR-410817
+{upper}[%nation#1-nationality1] ZPN jest usatysfakcjonowany efektami twojej pracy na stanowisku selekcjonera.
+
+STR-410818
+{upper}[%nation#1-nationality1] ZPN nie jest usatysfakcjonowany efektami twojej pracy na stanowisku selekcjonera.
+
+STR-410819
+{upper}[%nation#1-nationality1] ZPN jest bardzo rozczarowany efektami twojej pracy na stanowisku selekcjonera.
+
+STR-410820
+Jesteś obecnie bezrobotny.[%male#1-hidden]
+Jesteś obecnie bezrobotna.[%female#1-hidden]
+
+STR-410821
+Zarząd świętuje zwycięstwo zespołu w: [%comp#1].\n\nTen sukces znacznie przewyższa oczekiwania na ten sezon.
+
+STR-410822
+Zarząd jest zachwycony zwycięstwem zespołu w: [%comp#1].\n\nDziałacze mają nadzieję, że w przyszłym sezonie spiszesz się jeszcze lepiej.[%male#1-hidden]
+
+STR-410823
+Zarząd jest zadowolony z tego, że zespół zwyciężył w tegorocznych rozgrywkach ([%comp#1]).
+
+STR-410824
+Zarząd jest wniebowzięty zakwalifikowaniem się zespołu do przyszłorocznych rozgrywek ([%comp#1]).\n\nTen sukces znacznie przewyższa pierwotne oczekiwania na ten sezon.
+
+STR-410825
+Zarząd jest zachwycony zakwalifikowaniem się zespołu do przyszłorocznych rozgrywek ([%comp#1]).\n\nDziałacze mają nadzieję, że w przyszłym sezonie spiszesz się jeszcze lepiej.[%male#1-hidden]
+
+STR-410826
+Zarząd jest zadowolony, że zespół był w stanie zakwalifikować się do przyszłorocznych rozgrywek ([%comp#1]).
+
+STR-410827
+Zarząd jest wniebowzięty zakwalifikowaniem się zespołu do przyszłorocznych rozgrywek kontynentalnych.\n\nTen sukces znacznie przewyższa pierwotne oczekiwania na ten sezon.
+
+STR-410828
+Zarząd jest zachwycony zakwalifikowaniem się zespołu do przyszłorocznych rozgrywek kontynentalnych. Działacze mają nadzieję, że w przyszłym sezonie spiszesz się jeszcze lepiej.[%male#1-hidden]
+
+STR-410829
+Zarząd jest zadowolony, że zespół był w stanie zakwalifikować się do przyszłorocznych rozgrywek kontynentalnych.
+
+STR-410830
+Zarząd jest podekscytowany tym, że dzięki zajęciu odpowiednio wysokiej pozycji zespół zakwalifikował się do przyszłorocznych rozgrywek kontynentalnych.\n\nDziałacze przyznają, że ten sukces znacznie przewyższa pierwotne oczekiwania na ten sezon.
+
+STR-410831
+Zarząd jest zachwycony tym, że dzięki zajęciu odpowiednio wysokiej pozycji zespół zakwalifikował się do przyszłorocznych rozgrywek kontynentalnych. \n\nDziałacze mają nadzieję, że w przyszłym sezonie spiszesz się jeszcze lepiej.[%male#1-hidden]
+
+STR-410832
+Zarząd jest zadowolony, że dzięki zajęciu odpowiednio wysokiej pozycji zespół zakwalifikował się do przyszłorocznych rozgrywek kontynentalnych.
+
+STR-410833
+Zarząd jest dumny z awansu zespołu z: [%comp#1].\n\nTen sukces znacznie przewyższa pierwotne oczekiwania na ten sezon.

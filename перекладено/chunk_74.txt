@@ -1,0 +1,329 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-438591
+Clubs around the country have made the difficult decision as to which of their young players will not be offered new deals. Among the disappointed youngsters are several which [%person#1] thinks might do a job for our club.\n\n[%person#1-He] has singled out [%person#2] and [%person#3] as particularly promising.
+
+STR-438593
+Clubs around the country have made the difficult decision regarding which young players have no future at their clubs and should be released. Among the disappointed youngsters are several which [%person#1] thinks might do a job for our club.\n\n[%person#1-He] has singled out [%person#2] as particularly promising.
+
+STR-438596
+Clubs around the country have made their decisions as to which of their youngsters are to be offered new deals and which are to be released. Among the disappointed youngsters are a handful which [%person#1] believes may develop into useful players.
+
+STR-438597
+Clubs around the country have issued their annual list of young players who are to be released. Among the disappointed youngsters are several which [%person#1] believes might develop into first team players.\n\n[%person#1-He] has singled out [%person#2] (formerly at [%club#1]) and [%person#3] (formerly of [%club#2]) as particularly promising.
+
+STR-438598
+Clubs around the country have made the difficult decision as to which of their young players will not be offered new deals. Among the disappointed youngsters are several which [%person#1] believes might develop into good players.\n\n[%person#1-He] has singled out [%person#2] and [%person#3] as particularly promising.
+
+STR-438600
+Clubs around the country have made the difficult decision regarding which young players have no future at their clubs and should be released. Among the disappointed youngsters are several which [%person#1] believes may develop into first team players.\n\n[%person#1-He] has singled out [%person#2] as particularly promising.
+
+STR-438601
+Clubs cut youngsters from their squads
+
+STR-438615
+Clubs release out of contract players
+
+STR-438617
+No award history to display.
+
+STR-438618
+Take Physio Exam
+
+STR-438619
+Take Assessment
+
+STR-438620
+Take Exam
+
+STR-438621
+Random Team
+
+STR-438622
+View Clubs
+
+STR-438623
+View Nations
+
+STR-438624
+[%season_year#1] Awards
+
+STR-438625
+Annual Awards
+
+STR-438627
+The board would be prepared to give you a transfer budget of [%cash#1-transferbudget] and a wage budget of [%cash#2-short] for your current level of ambition.
+
+STR-438628
+The club's current wage bill stands at [%cash#1-short].
+
+STR-438629
+Future Stadium
+
+STR-438630
+Standing
+
+STR-438631
+The club cannot currently afford the [%cash#1-short-roundsmall] compensation fee to terminate [%person#1-full]{s} contract.
+
+STR-438632
+Are [%person#2-you] sure [%person#2-you] want to terminate [%person#1-full]{s} non-playing contract? [%person#1-He] will remain at the club as a player, but the club will still be required to pay [%cash#1-short-roundsmall] in compensation.
+
+STR-438633
+Are [%person#2-you] sure [%person#2-you] want to terminate [%person#1-full]{s} contract? The club will be required to pay [%cash#1-short-roundsmall] in compensation.
+
+STR-438634
+The club cannot afford the [%cash#1-short-roundsmall] compensation fee for [%person#1-full].
+
+STR-438635
+[%person#1-full] has accepted [%club#1-short]{s} job offer. The club will be required to pay [%cash#1-short-roundsmall] in compensation.\n\nSign [%person#1-full]?
+
+STR-438636
+Unable to take physio exam
+
+STR-438637
+Unfortunately you are too busy with your managerial duties to be able to become an effective physio.
+
+STR-438638
+The board regret to inform [%person#1-you] that due to budget restrictions they cannot afford to allow physios to undertake examinations at present.\n\nThe cost of the exam would be [%cash#1-short-roundsmall].
+
+STR-438639
+This physio has already achieved the highest possible standard and cannot take further exams.
+
+STR-438640
+This physio has already taken an examination recently and must wait a minimum of six months between applications.
+
+STR-438642
+Unable to take scouting exam
+
+STR-438643
+Unfortunately you are too busy with your managerial duties to be able to become an effective scout.
+
+STR-438644
+Unable to take scouting assessment
+
+STR-438645
+The board regret to inform [%person#1-you] that due to budget restrictions they cannot afford to allow scouts to undertake assessments at present.\n\nThe cost of the exam would be [%cash#1-short-roundsmall].
+
+STR-438646
+This scout has already achieved the highest possible standard and cannot take further exams.
+
+STR-438647
+This scout has already taken an assessment recently and must wait a minimum of six months between applications.
+
+STR-438649
+The board regret to inform [%person#1-you] that due to budget restrictions they cannot afford to allow coaching staff to take exams at present.\n\nThe cost of the exam would be [%cash#1-short-roundsmall].
+
+STR-438651
+The board regret to inform [%person#1-you] that due to budget restrictions they cannot afford to allow physiotherapists to take exams at present.\n\nThe cost of the exam would be [%cash#1-short-roundsmall].
+
+STR-438654
+Unable to take scout assessment
+
+STR-438655
+Unfortunately you are too busy with your managerial duties to be able to study for the scout assessment.
+
+STR-438656
+Unable to take scout assessment exam
+
+STR-438657
+The board regret to inform [%person#1-you] that due to budget restrictions they cannot afford to allow scouts to take assessments at present.\n\nThe cost of the assessment would be [%cash#1-short-roundsmall].
+
+STR-438658
+Unable to take Scouting assessment
+
+STR-438659
+This scout has already achieved the highest possible standard and cannot take further assessments.
+
+STR-438660
+Assessment Passed!
+
+STR-438662
+Assessment Failed
+Polish Reference:
+STR-438591
+Kluby z całego kraju podjęły trudną decyzję, którzy ich juniorzy nie otrzymają nowych kontraktów. Wśród nich znajduje się kilku, których [%male#1] uważa za godnych zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%male#2] i [%male#3] są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły trudną decyzję, które ich juniorki nie otrzymają nowych kontraktów. Wśród nich znajduje się kilka, które [%male#1] uważa za godne zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%female#2] i [%female#3] są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły trudną decyzję, którzy ich juniorzy nie otrzymają nowych kontraktów. Wśród nich znajduje się kilku, których [%female#1] uważa za godnych zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%male#2] i [%male#3] są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły trudną decyzję, które ich juniorki nie otrzymają nowych kontraktów. Wśród nich znajduje się kilka, które [%female#1] uważa za godne zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%female#2] i [%female#3] są nazwiskami wartymi odnotowania.
+
+STR-438593
+Kluby z całego świata podjęły trudną decyzję, którzy ich juniorzy muszą poszukać sobie nowych pracodawców. Wśród nich znajduje się kilku, których [%male#1] uważa za godnych zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%male#2] to nazwisko warte odnotowania.
+Kluby z całego kontynentu podjęły trudną decyzję, które ich juniorki muszą poszukać sobie nowych pracodawców. Wśród nich znajduje się kilka, które [%male#1] uważa za godne zatrudnienia w klubie.\n\nWskazał również, że zwłaszcza [%female#2] to nazwisko warte odnotowania.
+Kluby z całego świata podjęły trudną decyzję, którzy ich juniorzy muszą poszukać sobie nowych pracodawców. Wśród nich znajduje się kilku, których [%female#1] uważa za godnych zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%male#2] to nazwisko warte odnotowania.
+Kluby z całego kontynentu podjęły trudną decyzję, które ich juniorki muszą poszukać sobie nowych pracodawców. Wśród nich znajduje się kilka, które [%female#1] uważa za godne zatrudnienia w klubie.\n\nWskazała również, że zwłaszcza [%female#2] to nazwisko warte odnotowania.
+
+STR-438596
+Kluby z całego kraju podjęły decyzję, którzy ich juniorzy otrzymają nowe kontrakty, a którzy odejdą po wygaśnięciu obecnych umów. Wśród tych drugich [%male#1] znalazł wielu, którzy mogą rozwinąć się w użytecznych zawodników.
+Kluby z całego kraju podjęły decyzję, którzy ich juniorzy otrzymają nowe kontrakty, a którzy odejdą po wygaśnięciu obecnych umów. Wśród tych drugich [%female#1] znalazła wielu, którzy mogą rozwinąć się w użytecznych zawodników.
+
+STR-438597
+Kluby z całego kraju opublikowały coroczną listę juniorów, którzy odejdą po wygaśnięciu obecnych umów. Wśród nich [%male#1] znalazł kilku, którzy mogą rozwinąć się w zawodników pierwszego zespołu.\n\nWskazał również, że zwłaszcza [%male#2] (ostatnio [%club#1]) oraz [%male#3] (ostatnio [%club#2]) to nazwiska warte odnotowania.
+Kluby z całego kraju opublikowały coroczną listę juniorek, które odejdą po wygaśnięciu obecnych umów. Wśród nich [%male#1] znalazł kilka, które mogą rozwinąć się w zawodniczki pierwszego zespołu.\n\nWskazał również, że zwłaszcza [%female#2] (ostatnio [%club#1]) oraz [%female#3] (ostatnio [%club#2]) to nazwiska warte odnotowania.
+Kluby z całego kraju opublikowały coroczną listę juniorów, którzy odejdą po wygaśnięciu obecnych umów. Wśród nich [%female#1] znalazła kilku, którzy mogą rozwinąć się w zawodników pierwszego zespołu.\n\nWskazała również, że zwłaszcza [%male#2] (ostatnio [%club#1]) oraz [%male#3] (ostatnio [%club#2]) to nazwiska warte odnotowania.
+Kluby z całego kraju opublikowały coroczną listę juniorek, które odejdą po wygaśnięciu obecnych umów. Wśród nich [%female#1] znalazła kilka, które mogą rozwinąć się w zawodniczki pierwszego zespołu.\n\nWskazała również, że zwłaszcza [%female#2] (ostatnio [%club#1]) oraz [%female#3] (ostatnio [%club#2]) to nazwiska warte odnotowania.
+
+STR-438598
+Kluby z całego kraju podjęły trudną decyzję, którzy ich juniorzy nie otrzymają nowych kontraktów. Wśród nich [%male#1] znalazł kilku, którzy mogą rozwinąć się w dobrych zawodników.\n\nWskazał również, że zwłaszcza [%male#2] i [%male#3] są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły trudną decyzję, które ich juniorki nie otrzymają nowych kontraktów. Wśród nich [%male#1] znalazł kilka, które mogą rozwinąć się w dobre zawodniczki.\n\nWskazał również, że zwłaszcza [%female#2] i [%female#3] są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły trudną decyzję, którzy ich juniorzy nie otrzymają nowych kontraktów. Wśród nich [%female#1] znalazła kilku, którzy mogą rozwinąć się w dobrych zawodników.\n\nWskazała również, że zwłaszcza [%male#2] i [%male#3] są nazwiskami wartymi odnotowania.
+Kluby z całego kraju podjęły trudną decyzję, które ich juniorki nie otrzymają nowych kontraktów. Wśród nich [%female#1] znalazła kilka, które mogą rozwinąć się w dobre zawodniczki.\n\nWskazała również, że zwłaszcza [%female#2] i [%female#3] są nazwiskami wartymi odnotowania.
+
+STR-438600
+Kluby z całego kraju podjęły trudną decyzję, którzy ich juniorzy muszą poszukać sobie nowych pracodawców. Wśród nich [%male#1] znalazł kilku, którzy mogą rozwinąć się w zawodników pierwszego zespołu.\n\nWskazał również, że zwłaszcza [%male#2] to nazwisko warte odnotowania.
+Kluby z całego kraju podjęły trudną decyzję, które ich juniorki muszą poszukać sobie nowych pracodawców. Wśród nich [%male#1] znalazł kilka, które mogą rozwinąć się w zawodniczki pierwszego zespołu.\n\nWskazał również, że zwłaszcza [%female#2] to nazwisko warte odnotowania.
+Kluby z całego kraju podjęły trudną decyzję, którzy ich juniorzy muszą poszukać sobie nowych pracodawców. Wśród nich [%female#1] znalazła kilku, którzy mogą rozwinąć się w zawodników pierwszego zespołu.\n\nWskazała również, że zwłaszcza [%male#2] to nazwisko warte odnotowania.
+Kluby z całego kraju podjęły trudną decyzję, które ich juniorki muszą poszukać sobie nowych pracodawców. Wśród nich [%female#1] znalazła kilka, które mogą rozwinąć się w zawodniczki pierwszego zespołu.\n\nWskazała również, że zwłaszcza [%female#2] to nazwisko warte odnotowania.
+
+STR-438601
+Kluby zwalniają juniorów
+
+STR-438615
+Kluby zwalniają zawodników bez kontraktów
+
+STR-438617
+Brak dostępnych nagród.
+
+STR-438618
+Podejdź do egzaminu dla fizjoterapeutów
+
+STR-438619
+Poddaj się ocenie
+
+STR-438620
+Podejdź do egzaminu
+
+STR-438621
+Losowy zespół
+
+STR-438622
+Pokaż kluby
+
+STR-438623
+Pokaż kraje
+
+STR-438624
+Nagrody ([%season_year#1])
+
+STR-438625
+Coroczne nagrody
+
+STR-438627
+Zarząd jest gotów udostępnić ci budżet transferowy w wysokości [%cash#1-transferbudget] oraz budżet płac w wysokości [%cash#2-short], biorąc pod uwagę twój obecny poziom ambicji.
+
+STR-438628
+Obecnie klub wydaje na wynagrodzenia [%cash#1-short].
+
+STR-438629
+Przyszły stadion
+
+STR-438630
+Status
+
+STR-438631
+W tej chwili klubu nie stać na to, by [%male#1-full] otrzymał [%cash#1-short-roundsmall] w ramach rekompensaty za rozwiązanie kontraktu.
+W tej chwili klubu nie stać na to, by [%female#1-full] otrzymała [%cash#1-short-roundsmall] w ramach rekompensaty za rozwiązanie kontraktu.
+
+STR-438632
+Jesteś pewien, że chcesz rozwiązać kontrakt trenerski, którym z klubem związany jest [%male#1-full]? Pozostanie on w klubie jako zawodnik, ale i tak otrzyma rekompensatę w wysokości [%cash#1-short-roundsmall].[%male#2-hidden]
+Jesteś pewien, że chcesz rozwiązać kontrakt trenerski, którym z klubem związana jest [%female#1-full]? Pozostanie ona w klubie jako zawodniczka, ale i tak otrzyma rekompensatę w wysokości [%cash#1-short-roundsmall].[%male#2-hidden]
+Jesteś pewna, że chcesz rozwiązać kontrakt trenerski, którym z klubem związany jest [%male#1-full]? Pozostanie on w klubie jako zawodnik, ale i tak otrzyma rekompensatę w wysokości [%cash#1-short-roundsmall].[%female#2-hidden]
+Jesteś pewna, że chcesz rozwiązać kontrakt trenerski, którym z klubem związana jest [%female#1-full]? Pozostanie ona w klubie jako zawodniczka, ale i tak otrzyma rekompensatę w wysokości [%cash#1-short-roundsmall].[%female#2-hidden]
+
+STR-438633
+Jesteś pewien, że chcesz rozwiązać kontrakt, którym z klubem związany jest [%male#1-full]? Klub będzie musiał wypłacić mu rekompensatę w wysokości [%cash#1-short-roundsmall].[%male#2-hidden]
+Jesteś pewien, że chcesz rozwiązać kontrakt, którym z klubem związana jest [%female#1-full]? Klub będzie musiał wypłacić jej rekompensatę w wysokości [%cash#1-short-roundsmall].[%male#2-hidden]
+Jesteś pewna, że chcesz rozwiązać kontrakt, którym z klubem związany jest [%male#1-full]? Klub będzie musiał wypłacić mu rekompensatę w wysokości [%cash#1-short-roundsmall].[%female#2-hidden]
+Jesteś pewna, że chcesz rozwiązać kontrakt, którym z klubem związana jest [%female#1-full]? Klub będzie musiał wypłacić jej rekompensatę w wysokości [%cash#1-short-roundsmall].[%female#2-hidden]
+
+STR-438634
+Klubu nie stać na to, by [%male#1-full] otrzymał [%cash#1-short-roundsmall] tytułem rekompensaty.
+Klubu nie stać na to, by [%female#1-full] otrzymała [%cash#1-short-roundsmall] tytułem rekompensaty.
+
+STR-438635
+[%male#1-full] zaakceptował ofertę pracy, jaką {złożył}[%club#1-short]. Klub będzie zobowiązany wypłacić [%cash#1-short-roundsmall] tytułem rekompensaty.\n\n[%male#1-full] ma zostać zatrudniony?
+[%female#1-full] zaakceptowała ofertę pracy, jaką {złożył}[%club#1-short]. Klub będzie zobowiązany wypłacić [%cash#1-short-roundsmall] tytułem rekompensaty.\n\n[%female#1-full] ma zostać zatrudniona?
+
+STR-438636
+Nie można podejść do egzaminu dla fizjoterapeutów
+
+STR-438637
+Niestety obowiązki menedżerskie nie zostawiają ci dosyć czasu, abyś został kompetentnym fizjoterapeutą.
+
+STR-438638
+Zarząd z przykrością informuje, że ze względu na ograniczenia budżetowe nie może wyrazić obecnie zgody na to, by klubowi fizjoterapeuci podchodzili do egzaminów branżowych.\n\nEgzamin taki kosztowałby [%cash#1-short-roundsmall].[%male#1-hidden]
+
+STR-438639
+Ten fizjoterapeuta osiągnął już najwyższy możliwy standard i nie może podejść do kolejnych egzaminów.
+
+STR-438640
+Ten fizjoterapeuta podszedł niedawno do egzaminu i musi zaczekać co najmniej 6 miesięcy na kolejną próbę.
+
+STR-438642
+Nie można podejść do egzaminu dla scoutów
+
+STR-438643
+Niestety obowiązki menedżerskie nie zostawiają ci dosyć czasu, abyś został kompetentnym scoutem.
+
+STR-438644
+Nie może podejść do egzaminu dla scoutów
+
+STR-438645
+Zarząd z przykrością informuje, że ze względu na ograniczenia budżetowe nie może wyrazić obecnie zgody na to, by klubowi scouci podchodzili do egzaminów branżowych.\n\nEgzamin taki kosztowałby [%cash#1-short-roundsmall].[%male#1-hidden]
+
+STR-438646
+Ten scout osiągnął już najwyższy możliwy standard i nie może podejść do kolejnych egzaminów.
+
+STR-438647
+Ten scout podszedł niedawno do egzaminu i musi zaczekać co najmniej 6 miesięcy na kolejną próbę.
+
+STR-438649
+Zarząd z przykrością informuje, że ze względu na ograniczenia budżetowe nie może wyrazić obecnie zgody na to, by klubowi trenerzy podchodzili do egzaminów branżowych.\n\nEgzamin taki kosztowałby [%cash#1-short-roundsmall].[%male#1-hidden]
+
+STR-438651
+Zarząd z przykrością informuje, że ze względu na ograniczenia budżetowe nie może wyrazić obecnie zgody na to, by klubowi fizjoterapeuci podchodzili do egzaminów branżowych.\n\nEgzamin taki kosztowałby [%cash#1-short-roundsmall].[%male#1-hidden]
+
+STR-438654
+Nie można podejść do egzaminu dla scoutów
+
+STR-438655
+Niestety obowiązki menedżerskie nie zostawiają ci czasu na naukę do egzaminu dla scoutów.
+
+STR-438656
+Nie można podejść do egzaminu dla scoutów
+
+STR-438657
+Zarząd z przykrością informuje, że ze względu na ograniczenia budżetowe nie może wyrazić obecnie zgody na to, by klubowi scouci podchodzili do egzaminów branżowych.\n\nEgzamin taki kosztowałby [%cash#1-short-roundsmall].[%male#1-hidden]
+
+STR-438658
+Nie można podejść do egzaminu dla scoutów
+
+STR-438659
+Ten scout osiągnął już najwyższy możliwy standard i nie może podejść do kolejnych egzaminów.
+
+STR-438660
+Egzamin zdany!
+
+STR-438662
+Egzamin niezdany

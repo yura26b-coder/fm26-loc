@@ -1,0 +1,736 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-442617
+Gotta put some form together if we're to continue to upset the odds and avoid relegation.
+
+STR-442618
+Nobody expects us to avoid relegation, a nice run of form would sure go down well right now.
+
+STR-442619
+Lots of football left yet, a good run soon would sure help our surprise survival challenge.
+
+STR-442620
+Not convinced we've got what it takes to avoid relegation.
+
+STR-442621
+Nothing's gonna help us avoid relegation, be serious.
+
+STR-442622
+Nobody expected us to avoid relegation, a nice run of form would sure go down well right now.
+
+STR-442623
+A good run soon would sure help our surprise survival bid into the second half of the season.
+
+STR-442624
+Not convinced we've got what it takes to stay up.
+
+STR-442625
+Nothing's gonna help us stay up, be serious.
+
+STR-442626
+Gotta put some form together if we're to finish strong and actually stay up.
+
+STR-442627
+Nobody expected us to avoid relegation, a nice run of form would go a long way to securing safety.
+
+STR-442628
+A good run at this late stage of the season would help secure survival.
+
+STR-442629
+Not convinced we've got what it takes to survive.
+
+STR-442630
+Nothing's gonna help us to actually avoid relegation, be serious.
+
+STR-442631
+Gotta put some form together if we're to continue to upset the odds.
+
+STR-442632
+Nobody expects us to do very much, a nice run of form would sure go down well right now.
+
+STR-442633
+Lots of football left yet, a good run soon would sure help us.
+
+STR-442634
+Not convinced we've got what it takes this season.
+
+STR-442635
+Nothing's gonna help us, be serious.
+
+STR-442636
+Nobody expected us to do anything, a nice run of form would sure go down well right now.
+
+STR-442637
+A good run soon would sure help going into the second half of the season.
+
+STR-442638
+Gotta put some form together if we're to finish strong.
+
+STR-442639
+Nobody expected us to have this season, a nice run of form would go a long way to finishing it off.
+
+STR-442640
+A good run at this late stage of the season would help immensely.
+
+STR-442641
+Not convinced we've got what it takes to see this through.
+
+STR-442642
+Hopefully this run can get us back where we're meant to be.
+
+STR-442643
+Not the best start to the season but this run could change things.
+
+STR-442644
+Hasn't been the best of starts but this good run could see us recover.
+
+STR-442645
+We've been under-performing for a reason...
+
+STR-442646
+Don't be fooled, this isn't going to be a fun season.
+
+STR-442647
+Expect more disappointment.
+
+STR-442648
+Not the best season so far but this run could change things.
+
+STR-442649
+Hasn't been the best of seasons so far but this good run could see us recover.
+
+STR-442650
+Don't be fooled, this season is only going to get worse.
+
+STR-442651
+Hopefully this late run can give us a positive finish to a disappointing season.
+
+STR-442652
+Hasn't been the best season but we can still get something out of it.
+
+STR-442653
+Hasn't been the best of seasons but there's still hope with this late run.
+
+STR-442654
+Hopefully this run can see us move up the table sooner rather than later.
+
+STR-442655
+Hasn't been the best of starts but this good run could soon see us back up the table.
+
+STR-442656
+Hasn't been the best of seasons so far but this good run could see us shoot back up the table.
+
+STR-442657
+Don't be fooled, we're really in a relegation battle here.
+
+STR-442658
+We really could go down.
+
+STR-442659
+Not the best start to the season but this run could see us move away from danger.
+
+STR-442660
+Hasn't been the best of starts but this good run could soon see us climb away from the foot of the table.
+
+STR-442661
+Hasn't been the best of seasons so far but this good run could see us climb away from danger.
+
+STR-442662
+Don't be fooled, we're really in trouble here.
+
+STR-442663
+Hopefully this late run can restore some semblance of credibility.
+
+STR-442664
+Has been a terrible season though this late run will cheer some people up.
+
+STR-442665
+We really are going down.
+
+STR-442666
+No need to panic, there's plenty of time left yet.
+
+STR-442667
+Relax everyone, we'll be just fine.
+
+STR-442668
+The results haven't been there yet but the performances have been promising.
+
+STR-442669
+Really can't afford this poor start to the season.
+
+STR-442670
+Did they do anything in pre-season? Terrible start.
+
+STR-442671
+What a waste of time this season is already.
+
+STR-442672
+No need to panic, we're well-set for better in the second half of the season.
+
+STR-442673
+The results haven't been there but the performances have been good for the most part.
+
+STR-442674
+Really couldn't afford a poor run like this right now.
+
+STR-442675
+This does not bode well.
+
+STR-442676
+What a waste of time this season has been.
+
+STR-442677
+As long as we have matches to play there's still hope.
+
+STR-442678
+We just need a change of fortune.
+
+STR-442679
+Finishing the season appropriately.
+
+STR-442680
+Absolutely laughable.
+
+STR-442681
+No need to panic, we're only a good run of form away from moving in the right direction.
+
+STR-442682
+Relax everyone, we'll arrest this slump and start moving in the right direction.
+
+STR-442683
+Really fearing a relegation battle.
+
+STR-442684
+This season could get a lot worse if we don't start winning soon.
+
+STR-442685
+No need to panic, we can still end the season well.
+
+STR-442686
+As long as we don't go down everything is fine.
+
+STR-442687
+The results haven't been there this season but [%person#author-I]'m encouraged by the performances.
+
+STR-442688
+Gonna be a nervous final few weeks.
+
+STR-442689
+Don't think we're safe at all.
+
+STR-442690
+If this runs lasts much longer we're gone.
+
+STR-442691
+Relax everyone, we'll be out of the drop zone before long.
+
+STR-442692
+No need to panic, we're only a good run of form away from moving up the table.
+
+STR-442693
+Relax everyone, we'll arrest this slump and start moving away from danger.
+
+STR-442694
+Really fearing relegation.
+
+STR-442695
+This season could get a lot worse if we don't start winning soon. We're in trouble.
+
+STR-442696
+Trying to find some positives...
+
+STR-442697
+There's always next season...
+
+STR-442698
+A terrible season finishes just the way it started.
+
+STR-442699
+Where do we go now?
+
+STR-442700
+We might never bounce back.
+
+STR-442701
+Could do with a run to stop us losing ground.
+
+STR-442702
+Need to put some form together soon.
+
+STR-442703
+Can't afford to lose ground, we're under-performing, need some wins.
+
+STR-442704
+We haven't met expectations, simple.
+
+STR-442705
+We've just not been good enough.
+
+STR-442706
+Must do better.
+
+STR-442707
+Could do with a run to stop us falling into trouble.
+
+STR-442708
+Can't afford to lose ground, we're struggling, need some wins.
+
+STR-442709
+We've just not been good enough and we'll be in trouble if we're not careful.
+
+STR-442710
+Could do with a run to ease our relegation worries.
+
+STR-442711
+Need to put some form together soon or else we'll become stranded.
+
+STR-442712
+We're struggling, gotta start winning to move away from the foot of the table.
+
+STR-442713
+We haven't met expectations and we're going down. Simple.
+
+STR-442714
+We've just not been good enough and we're going down.
+
+STR-442715
+Let's keep this going, maybe we could spring a few surprises.
+
+STR-442716
+This run could take us places.
+
+STR-442717
+Think we're ticking over quite well at the moment, the longer this run continues the better.
+
+STR-442718
+Don't think we're playing as well as the results suggest.
+
+STR-442719
+Things could just as easily start to go wrong.
+
+STR-442720
+There's enough talent in this team to turn things around.
+
+STR-442721
+Gotta get behind the team to help put an end to this run.
+
+STR-442722
+There's no need to panic, things are still going well overall.
+
+STR-442723
+Things are only going to get worse.
+
+STR-442724
+Our season is being destroyed by this run.
+
+STR-442725
+Anyone want [%person#author-my] season ticket? [%person#author-I]'m done.
+
+STR-442726
+Could do with going on a decent run.
+
+STR-442727
+Looking at the fixture list, we could put a nice little run together pretty soon.
+
+STR-442728
+If we can't find some consistent form we're running the risk of falling behind.
+
+STR-442729
+Don't think we've been good enough so far this season.
+
+STR-442730
+Everyone knows we can do better.
+
+STR-442800
+Manager Added
+
+STR-442831
+Maximum of 1 player allowed on loan per match from each affiliate where players go on loan (and vice-versa)
+
+STR-442832
+Maximum of [%number#1] players allowed on loan per match from each affiliate where players go on loan (and vice-versa)
+
+STR-442833
+Maximum of 1 under-[%number#2] player allowed on loan who can play for both clubs during the loan spell
+
+STR-442834
+Maximum of [%number#1] under-[%number#2] players allowed on loan who can play for both clubs during the loan spell
+Polish Reference:
+STR-442617
+Musimy ustabilizować formę, jeśli chcemy ośmieszyć „ekspertów” i uniknąć spadku.
+
+STR-442618
+Nikt na nas nie stawia w walce o utrzymanie, przydałoby się teraz parę dobrych wyników.
+
+STR-442619
+Do końca sezonu jeszcze mnóstwo czasu, ale dobra passa na pewno by nam teraz pomogła w walce o sensacyjne utrzymanie.
+
+STR-442620
+Nie jestem przekonany, czy damy radę uniknąć spadku.
+
+STR-442621
+Nic nam nie pomoże uniknąć spadku, więcej powagi nad tą trumną.
+
+STR-442622
+Nikt na nas nie stawiał w walce o utrzymanie, dobra passa niewątpliwie by się nam teraz przydała.
+
+STR-442623
+Dobra passa zwiększyłaby nasze szanse na sensacyjne utrzymanie w drugiej połowie sezonu.
+
+STR-442624
+Nie jestem przekonany, czy damy radę uchronić się przed spadkiem.
+
+STR-442625
+Nic nam nie pomoże się utrzymać, więcej powagi nad tą trumną.
+
+STR-442626
+Musimy ustabilizować formę, jeśli chcemy zakończyć sezon w dobrym stylu i uniknąć spadku.
+
+STR-442627
+Nikt na nas nie stawiał w walce o utrzymanie, dobra passa pozwoliłaby nam praktycznie to sobie zagwarantować.
+
+STR-442628
+Dobra passa pozwoliłaby nam praktycznie zagwarantować sobie utrzymanie.
+
+STR-442629
+Nie jestem przekonany, czy damy radę się utrzymać.
+
+STR-442630
+Nic nam nie pomoże uchronić się przed spadkiem, więcej powagi nad tą trumną.
+
+STR-442631
+Musimy ustabilizować formę, jeśli chcemy dalej drażnić bukmacherów.
+
+STR-442632
+Nikt na nas nie stawia, przydałoby się teraz parę dobrych wyników.
+
+STR-442633
+Do końca sezonu jeszcze mnóstwo czasu, ale dobra passa na pewno by nam teraz pomogła.
+
+STR-442634
+Nie jestem przekonany, czy poradzimy sobie w tym sezonie.
+
+STR-442635
+Nic już nam nie pomoże, więcej powagi nad tą trumną.
+
+STR-442636
+Nikt na nas nie stawiał, przydałoby się teraz parę dobrych wyników.
+
+STR-442637
+Dobra passa byłaby świetnym wprowadzeniem w drugą połowę sezonu.
+
+STR-442638
+Musimy ustabilizować formę, jeśli chcemy skończyć sezon w dobrym stylu.
+
+STR-442639
+Nikt się nie spodziewał po nas takiego sezonu, parę dobrych meczów w końcówce stanowiłoby jego piękne zamknięcie.
+
+STR-442640
+To, czego nam trzeba w końcówce sezonu, to seria kilku udanych meczów.
+
+STR-442641
+Nie jestem przekonany, czy damy radę doprowadzić sprawy do szczęśliwego końca.
+
+STR-442642
+Oby ta passa przywróciła nas na należne nam miejsce.
+
+STR-442643
+Nieszczególny początek sezonu, ale obecna passa może to zmienić.
+
+STR-442644
+Kiepsko weszliśmy w sezon, ale obecna passa powinna pozwolić nam się pozbierać.
+
+STR-442645
+Nie bez powodu gramy poniżej oczekiwań...
+
+STR-442646
+Nie miejcie złudzeń, w tym sezonie nie będzie nam do śmiechu.
+
+STR-442647
+Oczekujcie kolejnych rozczarowań.
+
+STR-442648
+Póki co sezon nie jest zbyt udany, ale ta seria może to zmienić.
+
+STR-442649
+To nie jest nasz najlepszy sezon, ale ta passa może jeszcze pozwolić nam stanąć z powrotem na nogi.
+
+STR-442650
+Nie miejcie złudzeń, najgorsze wciąż jeszcze przed nami.
+
+STR-442651
+Oby ta passa zapowiadała udaną końcówkę rozczarowującego sezonu.
+
+STR-442652
+Bywały lepsze sezony, ale i ten może nam jeszcze dać powody do radości.
+
+STR-442653
+To nie jest nasz najlepszy sezon, ale ta passa oznacza, że jest jeszcze nadzieja.
+
+STR-442654
+Oby ta passa jak najszybciej wywindowała nas w górę tabeli.
+
+STR-442655
+Kiepsko weszliśmy w sezon, ale obecna passa powinna pozwolić nam ruszyć w górę tabeli.
+
+STR-442656
+To nie jest nasz najlepszy sezon, ale taka passa powinna pchnąć nas w górę tabeli.
+
+STR-442657
+Nie miejcie złudzeń, walczymy o utrzymanie.
+
+STR-442658
+Serio grozi nam spadek.
+
+STR-442659
+Nieszczególny początek sezonu, ale obecna passa pozwala wierzyć, że zagrożenie jest tylko chwilowe.
+
+STR-442660
+Kiepsko weszliśmy w sezon, ale obecna passa powinna pozwolić nam odbić się od dna tabeli.
+
+STR-442661
+To nie jest nasz najlepszy sezon, ale taka passa powinna wyciągnąć nas z bagna.
+
+STR-442662
+Nie miejcie złudzeń, jest źle.
+
+STR-442663
+Niech ta seria na zakończenie sezonu choć trochę poprawi wizerunek zespołu.
+
+STR-442664
+Beznadziejny sezon, choć pewnie te ostatnie kilka meczów poprawi niektórym humor.
+
+STR-442665
+Kurde, spadamy.
+
+STR-442666
+Nie ma powodów do paniki, jest jeszcze mnóstwo czasu.
+
+STR-442667
+Wyluzujcie, ludzie, będzie dobrze.
+
+STR-442668
+Nasze wyniki póki co nie zachwycają, ale przynajmniej naszą grę da się oglądać.
+
+STR-442669
+Nie możemy sobie pozwolić na tak beznadziejny początek sezonu.
+
+STR-442670
+Co oni robili w okresie przygotowawczym, opalali się na plaży czy co? To jakiś koszmar.
+
+STR-442671
+Jak dla mnie ten sezon mógłby się już skończyć.
+
+STR-442672
+Nie ma powodów do paniki, w drugiej połowie sezonu to sobie odbijemy.
+
+STR-442673
+Nasze wyniki nie zachwycają, ale przynajmniej naszą grę da się oglądać.
+
+STR-442674
+Zła passa w tym momencie była nam potrzebna jak cios cegłą w potylicę.
+
+STR-442675
+To nie wróży dobrze.
+
+STR-442676
+Sezon do zapomnienia.
+
+STR-442677
+Póki piłka w grze, póty nadziei.
+
+STR-442678
+Niech no tylko karta się odwróci.
+
+STR-442679
+Końcówka sezonu jak się patrzy.
+
+STR-442680
+To jakaś kpina.
+
+STR-442681
+Nie ma powodów do paniki, kilka korzystnych wyników i ruszamy we właściwym kierunku.
+
+STR-442682
+Wyluzujcie, ludzie, zaraz złapiemy formę i ruszymy we właściwym kierunku.
+
+STR-442683
+Autentycznie boję się walki o utrzymanie.
+
+STR-442684
+Jeśli nie zaczniemy wygrywać, sezon może się dla nas źle skończyć.
+
+STR-442685
+Nie ma powodów do paniki, sezon jest wciąż do uratowania.
+
+STR-442686
+Bylebyśmy tylko nie spadli, wszystko inne jest nieistotne.
+
+STR-442687
+Nasze wyniki nie zachwycają od początku sezonu, ale przynajmniej jakość gry się poprawiła.[%male#author-hidden]
+
+STR-442688
+Czeka nas kilka nerwowych tygodni na finiszu.
+
+STR-442689
+Tylko sobie nie myślcie, że już jesteśmy bezpieczni.
+
+STR-442690
+Jeśli szybko nie przerwiemy tej serii, będzie po nas.
+
+STR-442691
+Bez nerwów, ani się obejrzymy, a będziemy ponad strefą spadkową.
+
+STR-442692
+Nie ma powodów do paniki, kilka korzystnych wyników i ruszamy w górę tabeli.
+
+STR-442693
+Wyluzujcie, ludzie, zaraz złapiemy formę i uciekniemy ze strefy zagrożenia.
+
+STR-442694
+Autentycznie martwię się o utrzymanie.
+
+STR-442695
+Jeśli nie zaczniemy wygrywać, sezon może się dla nas źle skończyć. Tkwimy po szyję w bagnie.
+
+STR-442696
+Na pewno znajdzie się coś pozytywnego...
+
+STR-442697
+Następny sezon będzie lepszy...
+
+STR-442698
+Koszmarny sezon kończy się tak, jak się zaczął.
+
+STR-442699
+I co teraz?
+
+STR-442700
+Z tego dołka możemy się już nie wygrzebać.
+
+STR-442701
+Przydałaby się jakaś lepsza passa, zanim rywale od nas odskoczą.
+
+STR-442702
+Musimy jak najszybciej odbudować formę.
+
+STR-442703
+Nie wolno nam teraz stracić kontaktu z rywalami, jest gorzej, niż miało być, i potrzebujemy paru zwycięstw.
+
+STR-442704
+Gramy poniżej oczekiwań i tyle.
+
+STR-442705
+Jesteśmy po prostu za słabi.
+
+STR-442706
+Bierzmy się do roboty, no.
+
+STR-442707
+Przydałaby się jakaś lepsza passa, zanim zrobi się gorąco.
+
+STR-442708
+Nie wolno nam teraz stracić kontaktu z rywalami, jest źle i potrzebujemy paru zwycięstw.
+
+STR-442709
+Gramy jak ostatnie lebiegi i jeśli się nie ogarniemy, będzie z nami nieciekawie.
+
+STR-442710
+Przydałaby się jakaś lepsza passa, zanim widmo spadku zaświeci nam w oczy.
+
+STR-442711
+Trzeba złapać formę, inaczej stracimy kontakt z resztą stawki.
+
+STR-442712
+Kiepsko nam idzie, musimy zacząć wygrywać i uciec z ogona tabeli.
+
+STR-442713
+Nie gramy na miarę oczekiwań, więc do widzenia, ligo.
+
+STR-442714
+Jesteśmy za słabi, no i polecimy z ligi.
+
+STR-442715
+Niech się buja tak dalej, a zaskoczymy jeszcze paru rywali.
+
+STR-442716
+Ta seria może katapultować nas do góry.
+
+STR-442717
+Póki co całkiem fajnie nam się gra klei, im dłużej tak zostanie, tym lepiej.
+
+STR-442718
+Nie gramy tak dobrze, jak sugerowałyby nasze wyniki.
+
+STR-442719
+Równie dobrze w każdej chwili wszystko może się posypać.
+
+STR-442720
+Mamy wystarczająco mocny zespół, by odbić się od dna.
+
+STR-442721
+Chłopaki potrzebują naszego wsparcia, by przerwać tę passę.
+
+STR-442722
+Nie ma powodu do paniki, nie jest źle.
+
+STR-442723
+Teraz będzie już tylko gorzej.
+
+STR-442724
+Ta passa oznacza, że z tego sezonu już nic nie będzie.
+
+STR-442725
+Ktoś chce mój karnet? Chrzanię to.[%male#author-hidden]
+
+STR-442726
+Przydałoby się kilka udanych meczów z rzędu.
+
+STR-442727
+Z terminarza wynika, że czeka nas wkrótce seria łatwiejszych spotkań.
+
+STR-442728
+Jeśli nie ustabilizujemy formy, grozi nam utrata kontaktu z rywalami.
+
+STR-442729
+Nie wydaje mi się, żebyśmy grali w tym sezonie na miarę naszych możliwości.
+
+STR-442730
+Wszyscy wiedzą, że stać nas na więcej.
+
+STR-442800
+Dodane przez menedżera
+
+STR-442831
+Nie więcej niż 1 zawodnik na wypożyczeniu na mecz z każdego klubu partnerskiego pozwalającego na wypożyczenie piłkarzy (i na odwrót)
+
+STR-442832
+Nie więcej niż [%number#1] zawodników na wypożyczeniu na mecz z każdego klubu partnerskiego pozwalającego na wypożyczenie piłkarzy (i na odwrót)
+
+STR-442833
+Nie więcej niż 1 zawodnik U-[%number#2] na wypożyczeniu, mogący w trakcie wypożyczenia grać dla obu klubów
+
+STR-442834
+Nie więcej niż [%number#1] zawodników U-[%number#2] na wypożyczeniu, mogących w trakcie wypożyczenia grać dla obu klubów

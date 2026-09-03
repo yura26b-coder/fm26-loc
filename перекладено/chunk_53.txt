@@ -1,0 +1,1450 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-409144
+Purchase Completed
+
+STR-409145
+Your purchase has now been completed
+
+STR-409146
+Purchase Failed
+
+STR-409147
+Your purchase was not completed.
+
+STR-409151
+Resume
+
+STR-409152
+[%number#1]/[%number#2]
+
+STR-409153
+Pg. [%number#1]/[%number#2]
+
+STR-409154
+Go On Holiday
+
+STR-409155
+Holiday
+
+STR-409156
+pens[%string#1 penalty shootout abbreviation on scoreboard]
+
+STR-409157
+FT
+
+STR-409158
+HT
+
+STR-409159
+ET
+
+STR-409160
+AB
+
+STR-409161
+Offer Non-Playing Role
+
+STR-409162
+Buyout Loan
+
+STR-409165
+Previous Team
+
+STR-409166
+Next Team
+
+STR-409167
+Are you sure you want to exit to the game's main menu?
+
+STR-409168
+Are you sure you want to exit to the game's main menu?\n(You will lose all unsaved progress in your current game)
+
+STR-409173
+Are you sure you want to terminate [%string#1 Player Name(e.g.Kevin James)]{s} loan?
+
+STR-409174
+Are you sure you want to recall [%string#1 Player Name(e.g.Kevin James)]?
+
+STR-409177
+Scrapbook Full
+
+STR-409179
+Are you sure you wish to request that [%string#1 Name (eg. Vaughan)] reconsider retiring?
+
+STR-409180
+Reconsider Retirement?
+
+STR-409181
+Reminder
+
+STR-409182
+The board have indicated that they only wish to sign players who are likely to increase in value. As such they will not sanction the purchase of any players above the age of 26.
+
+STR-409183
+Player declines contract
+
+STR-409185
+Board Reminder
+
+STR-409194
+[%person#1-full] requests a scouting role.
+
+STR-409196
+[%person#1-full] requests a coaching role
+
+STR-409199
+Are you sure you want to release [%string#1 Player name] on a free transfer? [%club#1] will have to pay [%cash#1] in compensation.
+
+STR-409200
+Board block release of player
+
+STR-409201
+They feel [%string#1 Player name] is a vital member of the squad.
+
+STR-409202
+They feel [%string#1 Player name] is a useful member of the squad.
+
+STR-409203
+They feel the [%cash#1] payable to [%string#1 Player name] in compensation is too high.
+
+STR-409204
+Return to the game's main menu?\n(You will lose all progress in your current club creation session)
+
+STR-409205
+NATION
+
+STR-409206
+WORLD
+
+STR-409207
+SEARCH
+
+STR-409208
+OPTIONS
+
+STR-409209
+Store
+
+STR-409211
+Find Club
+
+STR-409212
+Set Stadium
+
+STR-409213
+Set Parking
+
+STR-409214
+Find Stadium
+
+STR-409215
+Find Car
+
+STR-409216
+Exit Game
+
+STR-409217
+Manual
+
+STR-409218
+Transfers
+
+STR-409219
+Jobs
+
+STR-409222
+Continue
+
+STR-409223
+Competitions
+
+STR-409224
+Search
+
+STR-409225
+Options
+
+STR-409226
+Division
+
+STR-409227
+Training
+
+STR-409228
+Info
+
+STR-409231
+Trophy Cabinet
+
+STR-409232
+Board Request
+
+STR-409233
+Scouting Agency
+
+STR-409234
+Customise
+
+STR-409235
+Staff Search
+
+STR-409236
+Club Division
+
+STR-409237
+Continental
+
+STR-409238
+International
+
+STR-409239
+Scrapbook
+
+STR-409240
+Challenge
+
+STR-409241
+League Standards
+
+STR-409243
+Back
+
+STR-409244
+Next
+
+STR-409245
+Play
+
+STR-409246
+Pause
+
+STR-409247
+You have made [%number#1] substitution.\n
+
+STR-409248
+You have made [%number#1] substitutions.\n
+
+STR-409249
+You have made tactical changes.\n
+
+STR-409250
+You have not selected a captain. [%string#1 player] will be selected as captain.\n
+
+STR-409251
+Return to match?
+
+STR-409252
+\nKeep these changes and return to the match?
+
+STR-409253
+You do not have enough players on the pitch to continue
+
+STR-409258
+Please check connection and try again in a few minutes
+
+STR-409262
+Unable to save file in iCloud
+
+STR-409263
+iCloud error
+
+STR-409271
+Are you sure you want to close the application?
+
+STR-409272
+S[%number#1]
+
+STR-409273
+Would you like to play full-screen or windowed? (you can change this in preferences at any time)
+
+STR-409275
+Full Screen
+
+STR-409281
+Disabled
+
+STR-409285
+Pkd
+
+STR-409286
+Lea
+
+STR-409288
+Tap player tile to add
+
+STR-409289
+Retirement Summary
+
+STR-409290
+Retirement
+
+STR-409291
+Summary
+
+STR-409292
+League Wins
+
+STR-409293
+Cup Wins
+
+STR-409294
+Promotions
+
+STR-409295
+Relegations
+
+STR-409296
+Sackings
+
+STR-409297
+Awards
+
+STR-409301
+Adjust Budgets
+
+STR-409305
+Budgets
+
+STR-409306
+Wage Budget
+
+STR-409307
+Season Expectations
+
+STR-409311
+Select Season Expectations
+
+STR-409313
+Achieve promotion
+
+STR-409314
+Reach the play-offs
+
+STR-409315
+[%comp#1] qualification
+
+STR-409316
+Primary Continental qualification
+
+STR-409317
+Secondary Continental qualification
+
+STR-409318
+Mid-table league position
+
+STR-409319
+Stay clear of relegation
+
+STR-409320
+Battle bravely against relegation
+
+STR-409321
+Improve club squad
+
+STR-409322
+Nation Fixtures
+
+STR-409323
+Club Fixtures
+
+STR-409324
+No fixtures to display
+
+STR-409325
+H
+
+STR-409326
+A
+
+STR-409327
+N
+
+STR-409328
+Player Records - Overall
+
+STR-409330
+Team Records - Overall
+
+STR-409332
+League History
+
+STR-409333
+[%number#1] yrs
+
+STR-409334
+Free
+
+STR-409335
+Top goal scorer
+
+STR-409336
+Most goals in a season
+
+STR-409337
+Top league goal scorer
+
+STR-409338
+Most league goals in a season
+
+STR-409339
+Most assists
+
+STR-409340
+Most assists in a season
+
+STR-409341
+Highest average rating
+
+STR-409342
+Highest av. rating in a season
+
+STR-409343
+Most Player of Match awards
+
+STR-409344
+Most PoM awards in a season
+
+STR-409345
+Most Player of Match awards in a season
+
+STR-409346
+Most bookings
+
+STR-409347
+Most bookings in a season
+
+STR-409348
+Most red cards
+
+STR-409349
+Most red cards in a season
+
+STR-409350
+Most appearances
+
+STR-409351
+Most appearances in a season
+
+STR-409354
+Highest transfer fee paid
+
+STR-409355
+Highest transfer fee received
+
+STR-409356
+v
+
+STR-409357
+Highest league position
+
+STR-409358
+Highest final league position
+
+STR-409359
+Lowest league position
+
+STR-409360
+Lowest final league position
+
+STR-409361
+Highest scoring match
+
+STR-409362
+Highest scoring league match
+
+STR-409363
+Biggest win
+
+STR-409364
+Biggest league win
+
+STR-409365
+Biggest defeat
+
+STR-409366
+Biggest league defeat
+
+STR-409367
+Most consecutive wins
+
+STR-409368
+Most games without defeat
+
+STR-409369
+Most games without a win
+
+STR-409370
+Most consecutive defeats
+
+STR-409371
+Season
+
+STR-409372
+Club Finances
+
+STR-409373
+Team Information
+
+STR-409374
+Club Information
+
+STR-409376
+Current Wage Total
+
+STR-409377
+Maximum Wage
+
+STR-409378
+Current Highest Wage
+
+STR-409379
+Nation Menu
+
+STR-409380
+Club Menu
+
+STR-409381
+Tactics - Formation
+
+STR-409382
+National Squad
+
+STR-409383
+Club Squad
+
+STR-409384
+Age
+
+STR-409385
+Stats
+
+STR-409386
+([%string#1 Number] players)
+
+STR-409387
+Apply for Job
+
+STR-409388
+Name
+
+STR-409389
+Pos
+
+STR-409390
+Abi
+
+STR-409391
+Pot
+
+STR-409392
+Caps
+
+STR-409393
+Apps
+
+STR-409394
+Expiry
+
+STR-409395
+Cond
+
+STR-409396
+Ml
+
+STR-409397
+Av. Rating
+
+STR-409398
+Contract Expiry
+
+STR-409399
+Current Role
+
+STR-409402
+Place advert for Coach
+
+STR-409403
+Place advert for Scout
+
+STR-409404
+Place advert for Physio
+
+STR-409406
+Advert Placed
+
+STR-409407
+An advert has been placed inviting applications from interested coaches.
+
+STR-409408
+An advert has been placed inviting applications from interested scouts.
+
+STR-409409
+An advert has been placed inviting applications from interested physios.
+
+STR-409410
+Overview
+
+STR-409411
+Coaches
+
+STR-409412
+Scouts
+
+STR-409413
+Physios
+
+STR-409414
+Coaches
+
+STR-409415
+Scouts
+
+STR-409416
+Physios
+
+STR-409417
+Specialism
+
+STR-409418
+Position Available
+
+STR-409422
+[%person#1-You] are currently allowed a maximum of [%number#1] scouts.
+
+STR-409423
+[%person#1-You] are currently allowed a maximum of [%number#1] physios.
+
+STR-409424
+[%person#1-You] are currently allowed a maximum of [%number#1] coaches, not including [%person#1-yourself].
+
+STR-409425
+Current Assignment
+
+STR-409426
+Specialism
+
+STR-409437
+Physio
+
+STR-409441
+Defending
+
+STR-409446
+Technical
+
+STR-409468
+Medium
+
+STR-409470
+No transfers in.
+
+STR-409471
+No transfers out.
+
+STR-409472
+No transfers pending.
+
+STR-409473
+No transfers undertaken.
+
+STR-409474
+Pending (p/ex)
+
+STR-409475
+Pending
+
+STR-409476
+Loan
+
+STR-409477
+Graduation
+
+STR-409479
+Undisclosed
+
+STR-409480
+Free
+
+STR-409481
+p/ex
+
+STR-409482
+NET SPEND:
+
+STR-409483
+TOTAL:
+
+STR-409485
+From
+
+STR-409486
+To
+
+STR-409487
+Amount
+
+STR-409488
+All Transfers
+
+STR-409489
+Transfers In
+
+STR-409490
+Transfers Out
+
+STR-409491
+Future Transfers
+
+STR-409492
+School Boy
+
+STR-409493
+Staff Profile
+
+STR-409494
+[%person#1-surname] agrees to contract termination
+
+STR-409495
+Board block [%person#1-surname] departure
+
+STR-409499
+Are [%person#2-you] sure [%person#2-you] want to sack [%person#1-full] as a coach? [%person#1-He] will remain at the club as a player.
+Polish Reference:
+STR-409144
+Transakcja zrealizowana
+
+STR-409145
+Twoja transakcja została zrealizowana
+
+STR-409146
+Transakcja nieudana
+
+STR-409147
+Twoja transakcja nie została zrealizowana.
+
+STR-409151
+Wznów
+
+STR-409152
+[%number#1]/[%number#2]
+
+STR-409153
+Str. [%number#1]/[%number#2]
+
+STR-409154
+Idź na urlop
+
+STR-409155
+Urlop
+
+STR-409156
+karne[%string#1 penalty shootout abbreviation on scoreboard]
+
+STR-409157
+KM
+
+STR-409158
+Prz
+
+STR-409159
+Dogr.
+
+STR-409160
+MP
+
+STR-409161
+Zaoferuj pracę w sztabie szkoleniowym
+
+STR-409162
+Pożyczka w celu wykupu
+
+STR-409165
+Poprzedni zespół
+
+STR-409166
+Następny zespół
+
+STR-409167
+Na pewno chcesz wyjść do menu głównego gry?
+
+STR-409168
+Na pewno chcesz wyjść do menu głównego gry?\n(Stracisz niezapisane postępy w aktualnej rozgrywce)
+
+STR-409173
+Czy na pewno chcesz, by kontrakt wypożyczenia, jakim związany jest [%string#1 Player Name(e.g.Kevin James)], został zakończony?
+
+STR-409174
+Czy na pewno chcesz, by [%string#1 Player Name(e.g.Kevin James)] został odwołany z wypożyczenia?
+
+STR-409177
+Album zapełniony
+
+STR-409179
+Na pewno chcesz poprosić, by [%string#1 Name (eg. Vaughan)] ponownie rozważył decyzję o zakończeniu kariery?
+
+STR-409180
+Rozważyć decyzję o emeryturze?
+
+STR-409181
+Przypomnienie
+
+STR-409182
+Zarząd dał do zrozumienia, że oczekuje sprowadzania wyłącznie zawodników, których wartość może wzrosnąć w przyszłości. Dlatego nie wyrazi zgody na zakup zawodników w wieku powyżej 26 lat.
+
+STR-409183
+Zawodnik odrzuca kontrakt
+
+STR-409185
+Przypomnienie od zarządu
+
+STR-409194
+[%male#1-full] jest zainteresowany pracą w roli scouta.
+[%female#1-full] jest zainteresowana pracą w roli scouta.
+
+STR-409196
+[%male#1-full] jest zainteresowany pracą w roli trenera
+[%female#1-full] jest zainteresowana pracą w roli trenera
+
+STR-409199
+Potwierdzasz, że [%string#1 Player name] ma mieć rozwiązany kontrakt? [%club#1]{musiał}by w takim wypadku wypłacić rekompensatę w wysokości [%cash#1].
+
+STR-409200
+Zarząd blokuje zwolnienie zawodnika
+
+STR-409201
+Działacze uważają, że [%string#1 Player name] jest istotnym zawodnikiem zespołu.
+
+STR-409202
+Działacze uważają, że [%string#1 Player name] jest przydatnym zawodnikiem.
+
+STR-409203
+Działacze uważają, że rekompensata w wysokości [%cash#1], jaką otrzymałby [%string#1 Player name], byłaby stanowczo wygórowana.
+
+STR-409204
+Powrócić do menu głównego gry?\n(Stracisz niezapisane postępy sesji tworzenia klubu)
+
+STR-409205
+KRAJ
+
+STR-409206
+ŚWIAT
+
+STR-409207
+WYSZUKIWANIE
+
+STR-409208
+OPCJE
+
+STR-409209
+Sklep
+
+STR-409211
+Znajdź klub
+
+STR-409212
+Wyznacz stadion
+
+STR-409213
+Wyznacz parking
+
+STR-409214
+Znajdź stadion
+
+STR-409215
+Znajdź samochód
+
+STR-409216
+Zakończ grę
+
+STR-409217
+Instrukcja
+
+STR-409218
+Transfery
+
+STR-409219
+Posady
+
+STR-409222
+Kontynuuj
+
+STR-409223
+Rozgrywki
+
+STR-409224
+Wyszukiwanie
+
+STR-409225
+Opcje
+
+STR-409226
+Liga
+
+STR-409227
+Trening
+
+STR-409228
+Informacje
+
+STR-409231
+Szafka na trofea
+
+STR-409232
+Prośba do zarządu
+
+STR-409233
+Agencja scoutingowa
+
+STR-409234
+Dostosuj
+
+STR-409235
+Wyszukiwanie personelu
+
+STR-409236
+Liga klubu
+
+STR-409237
+Kontynentalne
+
+STR-409238
+Reprezentacje
+
+STR-409239
+Album
+
+STR-409240
+Wyzwanie
+
+STR-409241
+Standardy ligowe
+
+STR-409243
+Wróć
+
+STR-409244
+Dalej
+
+STR-409245
+Graj
+
+STR-409246
+Pauza
+
+STR-409247
+Liczba przeprowadzonych zmian: [%number#1].\n
+
+STR-409248
+Liczba przeprowadzonych zmian: [%number#1].
+
+STR-409249
+Ustawienia taktyczne zostały zmienione.\n
+
+STR-409250
+Nie wybrałaś kapitana, zostanie nim [%string#1 player].\n
+
+STR-409251
+Wrócić do meczu?
+
+STR-409252
+\nCzy chcesz zatwierdzić wprowadzone zmiany i powrócić do meczu?
+
+STR-409253
+Masz na boisku za mało zawodników, by kontynuować
+
+STR-409258
+Sprawdź połączenie sieciowe i spróbuj ponownie za kilka minut
+
+STR-409262
+Zapis gry w iCloud nie powiódł się
+
+STR-409263
+Błąd iCloud
+
+STR-409271
+Na pewno chcesz zamknąć tę aplikację?
+
+STR-409272
+R[%number#1]
+
+STR-409273
+Chcesz grać w trybie pełnoekranowym czy w oknie? (możesz to w każdej chwili zmienić w ustawieniach)
+
+STR-409275
+Tryb pełnoekranowy
+
+STR-409281
+Nieaktywny
+
+STR-409285
+Wyb
+
+STR-409286
+Prz
+
+STR-409288
+Stuknij pozycję, by dodać
+
+STR-409289
+Podsumowanie po zakończeniu kariery
+
+STR-409290
+Zakończenie kariery
+
+STR-409291
+Podsumowanie
+
+STR-409292
+Wygrane ligi
+
+STR-409293
+Zdobyte puchary
+
+STR-409294
+Awansy
+
+STR-409295
+Spadki
+
+STR-409296
+Zwolnienia z pracy
+
+STR-409297
+Nagrody
+
+STR-409301
+Dostosuj budżety
+
+STR-409305
+Budżety
+
+STR-409306
+Budżet płac
+
+STR-409307
+Oczekiwania na ten sezon
+
+STR-409311
+Wybierz oczekiwania na ten sezon
+
+STR-409313
+Awans
+
+STR-409314
+Miejsce w barażach
+
+STR-409315
+Kwalifikacja do: [%comp#1]
+
+STR-409316
+Kwalifikacja do głównego pucharu kontynentalnego
+
+STR-409317
+Kwalifikacja do pomniejszego pucharu kontynentalnego
+
+STR-409318
+Pozycja w środku tabeli
+
+STR-409319
+Pewne utrzymanie
+
+STR-409320
+Walka o utrzymanie
+
+STR-409321
+Wzmocnienie zespołu
+
+STR-409322
+Terminarz reprezentacji
+
+STR-409323
+Terminarz klubu
+
+STR-409324
+Brak zaplanowanych spotkań
+
+STR-409325
+D
+
+STR-409326
+W
+
+STR-409327
+N
+
+STR-409328
+Rekordy piłkarzy - ogółem
+
+STR-409330
+Rekordy zespołowe - Ogółem
+
+STR-409332
+Historia występów w lidze
+
+STR-409333
+[%number#1] l.
+
+STR-409334
+Wolny transfer
+
+STR-409335
+Najlepszy strzelec
+
+STR-409336
+Najwięcej bramek w sezonie
+
+STR-409337
+Najlepszy strzelec w lidze
+
+STR-409338
+Najwięcej ligowych bramek w sezonie
+
+STR-409339
+Najwięcej asyst
+
+STR-409340
+Najwięcej asyst w sezonie
+
+STR-409341
+Najwyższa średnia
+
+STR-409342
+Najwyższa średnia w sezonie
+
+STR-409343
+Najwięcej nagród dla MVP
+
+STR-409344
+Najw. nagród dla MVP w sezonie
+
+STR-409345
+Najwięcej nagród dla MVP w sezonie
+
+STR-409346
+Najwięcej kartek
+
+STR-409347
+Najwięcej kartek w sezonie
+
+STR-409348
+Najw. czerwonych kartek
+
+STR-409349
+Najw. czerwonych kartek w sezonie
+
+STR-409350
+Najwięcej występów
+
+STR-409351
+Najwięcej występów w sezonie
+
+STR-409354
+Najw. transfer (zakup)
+
+STR-409355
+Najw. transfer (sprzedaż)
+
+STR-409356
+v
+
+STR-409357
+Najw. pozycja w lidze
+
+STR-409358
+Najw. końcowa pozycja w lidze
+
+STR-409359
+Najn. pozycja w lidze
+
+STR-409360
+Najn. końcowa pozycja w lidze
+
+STR-409361
+Najw. goli w meczu
+
+STR-409362
+Najw. goli w meczu lig.
+
+STR-409363
+Najw. zwycięstwo
+
+STR-409364
+Najw. zwycięstwo w lidze
+
+STR-409365
+Najw. porażka
+
+STR-409366
+Najw. porażka w lidze
+
+STR-409367
+Najw. zwycięstw z rzędu
+
+STR-409368
+Najw. meczów bez porażki
+
+STR-409369
+Najw. meczów bez zwycięstwa
+
+STR-409370
+Najw. porażek z rzędu
+
+STR-409371
+Sezon
+
+STR-409372
+Klubowe finanse
+
+STR-409373
+Informacja o zespole
+
+STR-409374
+Informacje o klubie
+
+STR-409376
+Obecne wydatki na płace
+
+STR-409377
+Wynagrodz. maks.
+
+STR-409378
+Obecne najw. wynagrodzenie
+
+STR-409379
+Menu krajowe
+
+STR-409380
+Menu klubowe
+
+STR-409381
+Taktyka - ustawienie
+
+STR-409382
+Skład reprezentacji
+
+STR-409383
+Skład klubu
+
+STR-409384
+Wiek
+
+STR-409385
+Statystyki
+
+STR-409386
+([%string#1 Number] zawodników)
+
+STR-409387
+Złóż podanie o pracę
+
+STR-409388
+Nazwisko
+
+STR-409389
+Poz.
+
+STR-409390
+Umi
+
+STR-409391
+Pot
+
+STR-409392
+Rep
+
+STR-409393
+Wyst.
+
+STR-409394
+Wygasa
+
+STR-409395
+Kond
+
+STR-409396
+Mrl
+
+STR-409397
+Śr. ocena
+
+STR-409398
+Koniec kontraktu
+
+STR-409399
+Obecna rola
+
+STR-409402
+Umieść ofertę pracy (trener)
+
+STR-409403
+Umieść ofertę pracy (scout)
+
+STR-409404
+Umieść ofertę pracy (fizjot.)
+
+STR-409406
+Ogłoszenie zamieszczone
+
+STR-409407
+Zostało opublikowane ogłoszenie, zapraszające zainteresowanych trenerów do składania dokumentów.
+
+STR-409408
+Zostało opublikowane ogłoszenie, zapraszające zainteresowanych scoutów do składania dokumentów.
+
+STR-409409
+Zostało opublikowane ogłoszenie, zapraszające zainteresowanych fizjoterapeutów do składania dokumentów.
+
+STR-409410
+Widok ogólny
+
+STR-409411
+Trenerzy
+
+STR-409412
+Scouci
+
+STR-409413
+Fizjoterapeuci
+
+STR-409414
+Trenerzy
+
+STR-409415
+Scouci
+
+STR-409416
+Fizjoterapeuci
+
+STR-409417
+Specjalność
+
+STR-409418
+Wolne stanowisko
+
+STR-409422
+Możesz obecnie zatrudniać maksymalnie [%number#1] scoutów.[%male#1-hidden]
+
+STR-409423
+Możesz obecnie zatrudniać maksymalnie [%number#1] fizjoterapeutów.[%male#1-hidden]
+
+STR-409424
+Możesz obecnie zatrudniać maksymalnie [%number#1] trenerów, nie licząc ciebie samego.[%male#1-hidden]
+Możesz obecnie zatrudniać maksymalnie [%number#1] trenerów, nie licząc ciebie samej.[%female#1-hidden]
+
+STR-409425
+Obecne zadanie
+
+STR-409426
+Specjalność
+
+STR-409437
+Fizjoterapeuta
+
+STR-409441
+Defensywa
+
+STR-409446
+Technika
+
+STR-409468
+Średnia
+
+STR-409470
+Brak transferów do klubu.
+
+STR-409471
+Brak transferów z klubu.
+
+STR-409472
+Brak przyszłych transferów.
+
+STR-409473
+Brak przeprowadzonych transferów.
+
+STR-409474
+Oczekujący (wym.)
+
+STR-409475
+Oczekujący
+
+STR-409476
+Wypożyczenie
+
+STR-409477
+Promocja ze szkółki
+
+STR-409479
+Nie ujawniono
+
+STR-409480
+Wolny transfer
+
+STR-409481
+wym.
+
+STR-409482
+WYDATKI NETTO:
+
+STR-409483
+RAZEM:
+
+STR-409485
+Z
+
+STR-409486
+Do
+
+STR-409487
+Kwota
+
+STR-409488
+Wszystkie transfery
+
+STR-409489
+Transfery do
+
+STR-409490
+Transfery z
+
+STR-409491
+Przyszłe transfery
+
+STR-409492
+Uczeń
+
+STR-409493
+Profil współpracowników
+
+STR-409494
+[%male#1-surname] zgadza się na rozwiązanie kontraktu
+
+STR-409495
+[%male#1-surname]: Zarząd blokuje odejście
+
+STR-409499
+Na pewno chcesz, by [%male#1-full] został zwolniony z funkcji trenera? Tym samym pozostanie w klubie jako zawodnik.[%male#2-hidden]
+Na pewno chcesz, by [%female#1-full] została zwolniona z funkcji trenerki? Tym samym pozostanie w klubie jako zawodniczka.[%male#2-hidden]
+Na pewno chcesz, by [%male#1-full] został zwolniony z funkcji trenera? Tym samym pozostanie w klubie jako zawodnik.[%female#2-hidden]
+Na pewno chcesz, by [%female#1-full] została zwolniona z funkcji trenerki? Tym samym pozostanie w klubie jako zawodniczka.[%female#2-hidden]

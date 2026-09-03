@@ -1,0 +1,492 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-411276
+Fans of [%club#1] have taken to social networks to express disappointment at the club's board following the [%string#1 score] defeat to [%club#2].\n\nSerious concerns are being raised over the board's decision to sell the majority of the senior players without identifying adequate replacements.
+
+STR-411278
+[%club#1] edge closer to safety
+
+STR-411279
+[%string#1 Manager Surname (eg. Jones)] continues to inspire
+
+STR-411280
+[%club#1] suffer setback
+
+STR-411281
+[%string#1 Manager Surname (eg. Jones)] rallies [%person#1-his] side
+
+STR-411282
+A glimmer of hope for [%club#1]
+
+STR-411283
+[%club#1] dig deep to find victory
+
+STR-411284
+Are [%club#1] doomed?
+
+STR-411285
+[%club#1]{s} poor form continues
+
+STR-411286
+[%club#1] in dire straits
+
+STR-411287
+Troubling times for [%club#1]
+
+STR-411288
+[%club#1] stand firm
+
+STR-411289
+[%club#1] tumble to defeat
+
+STR-411290
+[%club#1] still not safe
+
+STR-411291
+[%club#1] revert to form
+
+STR-411292
+[%club#1] need to improve
+
+STR-411293
+[%club#1] continue to show impressive depth
+
+STR-411294
+[%club#1] losing their way?
+
+STR-411295
+[%string#1 Manager Surname (eg. Jones)] winning respect?
+
+STR-411296
+[%string#1 Manager Surname (eg. Jones)] starting to win respect?
+
+STR-411297
+[%string#1 Manager Surname (eg. Jones)] suffers setback
+
+STR-411298
+Vital win for [%string#1 Manager Surname (eg. Jones)]
+
+STR-411299
+Doubts about [%string#1 Manager Surname (eg. Jones)] persist
+
+STR-411300
+Protests against [%string#1 Manager Surname (eg. Jones)] continue
+
+STR-411301
+Are [%club#1] invincible?
+
+STR-411302
+Efficient [%club#1] win again
+
+STR-411303
+[%club#1] looking tired?
+
+STR-411304
+[%club#1] unfazed by austerity measures
+
+STR-411305
+[%club#1] in good shape despite defeat
+
+STR-411306
+[%club#1] make steady progress
+
+STR-411307
+[%club#1] making good progress
+
+STR-411308
+[%club#1] lacking consistency
+
+STR-411309
+[%club#1] turning a corner?
+
+STR-411310
+[%club#1] players affected by the club's financial woes?
+
+STR-411311
+[%club#1] still struggling
+
+STR-411312
+[%club#1]{s} young stars show a winning mentality
+
+STR-411313
+[%club#1] suffer set-back
+
+STR-411314
+[%club#1] showing resiliency
+
+STR-411315
+[%club#1] look for progress
+
+STR-411316
+[%club#1] team shows inconsistency of youth
+
+STR-411317
+[%club#1] team showing inexperience of youth
+
+STR-411318
+[%club#1] fans frustrated with board
+
+STR-411319
+[%club#1] still looking for wins
+
+STR-411323
+A television pundit indicated that [%club#1] look as though they are starting to make headway in their fight against relegation.\n\nThe team beat [%club#2] [%string#1 score (eg 40)] and their manager must be hopeful of keeping up this run of form.
+
+STR-411324
+A television pundit indicated that [%club#1] look as though they are starting to make headway in their fight against relegation.\n\nThe team beat [%club#2] [%string#1 score (eg 40)] and their manager must be hopeful of staying clear of the drop zone.
+
+STR-411325
+A television pundit stated that [%club#1]{s} manager will be hopeful that the [%string#1 score (eg 40)] win against [%club#2] is a sign of improving fortunes for the club.\n\nHe stressed that despite the result, the team remain in desperate danger of relegation.
+
+STR-411326
+[%club#1]{s} manager will be pleased with the results that [%person#1-his] makeshift side is achieving.\n\nThe [%string#1 score (eg 40)] win against [%club#2] is further evidence of the squad's strength in depth.\n\nSome of the stand-in players may keep their place in the line-up if they continue to see the team to victory.
+
+STR-411327
+[%club#1]{s} manager will be pleased with the team's [%string#1 score (eg 40)] win against [%club#2].\n\nThe injury stricken side need to keep grinding out results until their big-name players return.
+
+STR-411330
+[%club#1]{s} [%string#1 score (eg 40)] win against [%club#2] is just another notch on the wall as the team continue their march into the history books.\n\nCan the team's incredible unbeaten run continue much longer?
+
+STR-411335
+Chants of 'Sack the Board' rang out once again from [%club#1]{s} supporters as their team succumbed to a [%string#1 score] defeat against [%club#2].\n\nMany pundits believe the club is destined to be relegated this season and today's performance did nothing to dissuade anyone from that viewpoint.
+
+STR-411336
+Chants of 'Sack the Board' were heard from [%club#1]{s} supporters as their team succumbed to a [%string#1 score] defeat against [%club#2].
+
+STR-411337
+Pundits are speculating that [%club#1]{s} [%string#1 score (eg 40)] defeat against [%club#2] is just another step down the inevitable path to their relegation.
+
+STR-411338
+[%club#1]{s} [%string#1 score (eg 40)] defeat against [%club#2] has pundits once again questioning whether the club can avoid relegation this season.
+
+STR-411339
+A national newspaper indicated that [%club#1]{s} [%string#1 score (eg 40)] defeat against [%club#2] showed the fragility of their squad depth.
+
+STR-411346
+Chants of 'Sack the Board' once again rang out from [%club#1]{s} supporters as the team ground out a [%string#1 score] draw against [%club#2].\n\nDespite the draw today many pundits believe the club is destined to be relegated this season.
+
+STR-411347
+Keen-eared fans were able to hear the odd chant of 'Sack the Board' from [%club#1]{s} supporters as the team ground out a [%string#1 score] draw against [%club#2].
+
+STR-411348
+[%club#1] gained a vital point as the side ground out a [%string#1 score (eg 40)] draw against [%club#2].\n\nPundits appear confident that [%string#2 Manager Name (eg. Vaughan)] will be able to keep the team clear of the drop zone.
+
+STR-411349
+[%club#1] continue to struggle for consistency despite grinding out a [%string#1 score (eg 40)] draw against [%club#2].\n\nPundits are starting to suggest that [%string#2 Manager Name (eg. Vaughan)] will be unable to guide the team to safety.
+
+STR-411350
+[%club#1] gained a vital point as the side ground out a [%string#1 score (eg 40)] draw against [%club#2].\n\nPundits appear confident that [%string#2 Manager Name (eg. Vaughan)] will be able to guide the team to safety.
+
+STR-411351
+[%club#1] gained a vital point as the side ground out a [%string#1 score (eg 40)] draw against [%club#2].\n\nPundits have indicated that [%string#2 Manager Name (eg. Vaughan)] will need to rectify the club's erratic form if [%person#1-he] is to guide the team to safety.
+
+STR-411352
+[%club#1]{s} manager will be happy with some of the results that [%person#1-his] makeshift side is managing to achieve.\n\nThe [%string#1 score (eg 44)] draw against [%club#2] emphasises the depth of their squad.\n\nSome of the fringe players are staking a claim for more regular first team action.
+
+STR-411353
+[%club#1]{s} manager will be pleased with the team's [%string#1 score (eg 44)] draw against [%club#2].\n\nThe injury stricken side will need to keep grinding out results until their big-name players return.
+
+STR-411354
+A national newspaper indicated that [%club#1]{s} [%string#1 score (eg 44)] draw against [%club#2] showed the fragility of their squad depth.
+
+STR-411355
+Fans protested against the management of the club after [%club#1] drew [%string#1 score (eg 40)] against [%club#2].\n\n[%string#2 Manager Name (eg. Vaughan)] seems unable to gain the backing of supporters or players at the club.
+
+STR-411356
+The fans' doubts about the management of the club appear to have resurfaced after [%club#1] drew [%string#1 score (eg 40)] against [%club#2].\n\n[%string#2 Manager Name (eg. Vaughan)] seems unable to gain firm backing from the supporters at the club.
+
+STR-411357
+[%club#1]{s} [%string#1 score (eg 40)] draw against [%club#2] has helped them maintain their incredible unbeaten run.
+
+STR-411358
+After [%club#1]{s} [%string#1 score (eg 40)] draw against [%club#2], the club appear to be making steady progress following the news of the club's current financial crisis.
+
+STR-411361
+[%club#1] continue to show resilience
+
+STR-411362
+[%club#1] remain resolute
+
+STR-411363
+[%string#1 Manager Surname] continues to inspire
+
+STR-411364
+Don't count [%club#1] out yet
+
+STR-411365
+[%club#1] showing resilience
+
+STR-411366
+[%string#1 Manager Surname] starting to win respect?
+
+STR-411367
+Vital win for [%string#1 Manager Surname]
+
+STR-411368
+[%club#1] players ignore financial uncertainty
+
+STR-411369
+Signs of recovery at [%club#1]
+
+STR-411370
+[%club#1]{s} young stars continue to shine
+
+STR-411371
+[%club#1] victory eases early pressure on [%string#1 Player Name (eg. Marc Vaughan)]
+Polish Reference:
+STR-411276
+Po porażce [%string#1 score] w meczu [%club#1]-[%club#2] kibice nie zostawili suchej nitki na zarządzie klubu.\n\nSprzedaż większości doświadczonych zawodników bez znalezienia nikogo na ich miejsce uważa jest za bardzo nieprzemyślaną decyzję zarządu.
+
+STR-411278
+[%club#1] bliżej bezpiecznej strefy
+
+STR-411279
+[%string#1 Manager Surname (eg. Jones)] nadal inspiruje
+
+STR-411280
+[%club#1]{zalicza} wpadkę
+
+STR-411281
+[%string#1 Manager Surname (eg. Jones)] mobilizuje zespół[%male#1-hidden]
+
+STR-411282
+[%club#1]{odzyskuje} nadzieję
+
+STR-411283
+[%club#1]{zwycięża} po zażartej walce
+
+STR-411284
+Czy [%club#1]{jest} na straconej pozycji?
+
+STR-411285
+[%club#1] wciąż w kiepskiej formie
+
+STR-411286
+[%club#1] w sporych opałach
+
+STR-411287
+[%club#1] w ciężkim położeniu
+
+STR-411288
+[%club#1]{walczy} dalej
+
+STR-411289
+[%club#1]{doznaje} porażki
+
+STR-411290
+[%club#1] wciąż bez utrzymania
+
+STR-411291
+[%club#1]{odzyskuje} formę
+
+STR-411292
+[%club#1]{musi} się poprawić
+
+STR-411293
+[%club#1]{prezentuje} imponującą głębię składu
+
+STR-411294
+[%club#1]{traci} rytm?
+
+STR-411295
+[%string#1 Manager Surname (eg. Jones)] zapracowuje na szacunek?
+
+STR-411296
+[%string#1 Manager Surname (eg. Jones)] zaczyna się cieszyć szacunkiem?
+
+STR-411297
+[%string#1 Manager Surname (eg. Jones)] zalicza wpadkę
+
+STR-411298
+[%string#1 Manager Surname (eg. Jones)] odnosi kluczowe zwycięstwo
+
+STR-411299
+[%string#1 Manager Surname (eg. Jones)] nadal budzi wątpliwości
+
+STR-411300
+[%string#1 Manager Surname (eg. Jones)] obiektem kolejnych protestów
+
+STR-411301
+[%club#1]{jest} nie do pokonania?
+
+STR-411302
+[%club#1]{zwycięża} raz jeszcze
+
+STR-411303
+[%club#1] ofiarą zmęczenia?
+
+STR-411304
+[%club#1]{nie dba} o oszczędności
+
+STR-411305
+[%club#1] w dobrej formie mimo porażki
+
+STR-411306
+[%club#1]{robi} regularne postępy
+
+STR-411307
+[%club#1]{robi} wyraźne postępy
+
+STR-411308
+[%club#1]{nie może} ustabilizować formy
+
+STR-411309
+[%club#1]{wychodzi} na prostą?
+
+STR-411310
+[%club#1]: Piłkarze ofiarami kryzysu klubowych finansów
+
+STR-411311
+[%club#1] wciąż z problemami
+
+STR-411312
+[%club#1]: Młode gwiazdy o mentalności zwycięzców
+
+STR-411313
+[%club#1]{zalicza} wpadkę
+
+STR-411314
+[%club#1]{demonstruje} odporność
+
+STR-411315
+[%club#1]{oczekuje} postępów
+
+STR-411316
+[%club#1]{demonstruje} młodzieńczy brak stabilności
+
+STR-411317
+[%club#1]{demonstruje} młodzieńczy brak doświadczenia
+
+STR-411318
+[%club#1]: Kibice sfrustrowani działaniami zarządu
+
+STR-411319
+[%club#1] wciąż bez zwycięstw
+
+STR-411323
+Jeden z ekspertów telewizyjnych oświadczył, że [%club#1]{zaczyna} robić postępy w walce o utrzymanie.\n\nZespół zwyciężył [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2], i menedżer ma prawo wierzyć, że uda im się utrzymać obecną formę.
+
+STR-411324
+Jeden z ekspertów telewizyjnych oświadczył, że [%club#1]{zaczyna} robić postępy w walce o utrzymanie.\n\nZespół zwyciężył [%string#1 score (eg 40)] w meczu, w którym ich przeciwnikiem {był}[%club#2], i menedżer ma prawo wierzyć, że uda im się utrzymać z dala od strefy spadkowej.
+
+STR-411325
+Jeden z ekspertów telewizyjnych oświadczył, że menedżer ma prawo uznać zwycięstwo [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] za zapowiedź lepszych czasów dla klubu.\n\nNie wolno mu wszakże zapomnieć, że mimo tego wyniku klubowi nadal poważnie grozi spadek.
+
+STR-411326
+Menedżer musi być zadowolony z tego, co prezentuje sklecony naprędce zespół.\n\nZwycięstwo [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] po raz kolejny dobitnie zademonstrowało głębię składu drużyny.\n\nCzęść zmienników przy takiej grze ma prawo oczekiwać utrzymania swoich miejsc w zespole.[%male#1-hidden]
+Menedżerka musi być zadowolony z tego, co prezentuje sklecony naprędce zespół.\n\nZwycięstwo [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] po raz kolejny dobitnie zademonstrowało głębię składu drużyny.\n\nCzęść zmienników przy takiej grze ma prawo oczekiwać utrzymania swoich miejsc w zespole.[%female#1-hidden]
+
+STR-411327
+Menedżer musi być zadowolony ze wygranego [%string#1 score (eg 40)] meczu [%club#1]-[%club#2].\n\nPrześladowana kontuzjami drużyna musi za wszelką cenę odnosić sukcesy w oczekiwaniu na powrót swoich gwiazd.
+
+STR-411330
+Zwycięstwo [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] jest kolejnym krokiem w drodze do historii.\n\nCzy zespół zdoła przedłużyć swoją niesamowitą serię spotkań bez porażki?
+
+STR-411335
+Trybuny głośno domagały się dymisji zarząd po przegranym [%string#1 score] meczu [%club#1]-[%club#2].\n\nWielu ekspertów prognozuje klubowi spadek w tym sezonie, a dzisiejsze spotkanie nikogo nie przekonały do zmiany zdania.
+
+STR-411336
+Trybuny głośno domagały się dymisji zarząd po przegranym [%string#1 score] meczu [%club#1]-[%club#2].
+
+STR-411337
+Eksperci sugerują, że porażka [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] stanowi kolejny krok zespołu na drodze do nieuniknionego spadku z ligi.
+
+STR-411338
+Porażka [%string#1 score (eg 40)] w meczu [%club#1]-[%club#2] wywołała kolejną falę dyskusji w mediach, czy klub jest w stanie uniknąć w tym sezonie spadku.
+
+STR-411339
+Ogólnokrajowy dziennik po przegranym [%string#1 score (eg 40)] meczu [%club#1]-[%club#2] publicznie zarzucił zespołowi brak jakiejkolwiek głębi składu.
+
+STR-411346
+Trybuny głośno domagały się dymisji zarządu po zremisowanym [%string#1 score] meczu [%club#1]-[%club#2].\n\nWielu ekspertów prognozuje klubowi spadek w tym sezonie, a dzisiejsze spotkanie nikogo nie przekonało do zmiany zdania.
+
+STR-411347
+Po zremisowanym w bólach [%string#1 score] meczu [%club#1]-[%club#2] na trybunach słychać było okrzyki domagające się dymisji zarządu.
+
+STR-411348
+[%club#1]{zdobył} cenny punkt w zremisowanym [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nEksperci zdają się być przekonani, że [%string#2 Manager Name (eg. Vaughan)] zdoła utrzymać zespół z dala od strefy spadkowej.
+
+STR-411349
+[%club#1]{ma} nadal problemy ze stabilizacją formy mimo zremisowanego [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nEksperci zaczynają sugerować, że [%string#2 Manager Name (eg. Vaughan)] nie zdoła uchronić zespołu przed spadkiem.
+
+STR-411350
+[%club#1]{zdobył} cenny punkt w zremisowanym [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nEksperci zdają się przekonani, że [%string#2 Manager Name (eg. Vaughan)] zdoła wyprowadzić zespół ze strefy spadkowej.
+
+STR-411351
+[%club#1]{zdobył} cenny punkt w zremisowanym [%string#1 score (eg 40)] meczu, w którym ich przeciwnikiem {był}[%club#2].\n\nEksperci sugerują, że [%string#2 Manager Name (eg. Vaughan)] musi ustabilizować formę zespołu, jeśli pragnie wyprowadzić zespół ze strefy spadkowej.[%male#1-hidden]
+
+STR-411352
+Menedżer musi być zadowolony z przynajmniej niektórych wyników, jakie jego [%club#1]{osiąga} w naprędce skleconym składzie.\n\nRemis [%string#1 score (eg 44)] w meczu, w którym ich przeciwnikiem {był}[%club#2] pokazał, że klub dysponuje odpowiednią głębią składu.\n\nCzęść marginalizowanych do tej pory zawodników na poważnie wzięła się do walki o prawo regularnych występów w pierwszym zespole.[%male#1-hidden]
+Menedżerka musi być zadowolona z przynajmniej niektórych wyników, jakie jej [%club#1]{osiąga} w naprędce skleconym składzie.\n\nRemis [%string#1 score (eg 44)] w meczu, w którym ich przeciwnikiem {był}[%club#2] pokazał, że klub dysponuje odpowiednią głębią składu.\n\nCzęść marginalizowanych do tej pory zawodników na poważnie wzięła się do walki o prawo regularnych występów w pierwszym zespole.[%female#1-hidden]
+
+STR-411353
+Menedżer musi być zadowolony ze zremisowanego [%string#1 score (eg 44)] meczu [%club#1]-[%club#2].\n\nPrześladowana kontuzjami drużyna musi za wszelką cenę odnosić sukcesy w oczekiwaniu na powrót swoich gwiazd.
+
+STR-411354
+Ogólnokrajowy dziennik po zremisowanym [%string#1 score (eg 44)] meczu [%club#1]-[%club#2] publicznie zarzucił zespołowi brak głębi składu.
+
+STR-411355
+Kibice wzięli udział w kolejnym proteście przeciwko menedżerowi po zremisowanym [%string#1 score (eg 40)] meczu [%club#1]-[%club#2].\n\n[%string#2 Manager Name (eg. Vaughan)] najwyraźniej nie ma pomysłu na to, jak przekonać do siebie kibiców albo zawodników.
+
+STR-411356
+Kibice wznowili protesty przeciwko menedżerowi po zremisowanym [%string#1 score (eg 40)] meczu [%club#1]-[%club#2].\n\n[%string#2 Manager Name (eg. Vaughan)] najwyraźniej nie ma pomysłu na to, jak przekonać do siebie kibiców.
+
+STR-411357
+Zremisowany [%string#1 score (eg 40)] mecz [%club#1]-[%club#2] pozwolił im przedłużyć niewiarygodną serię spotkań bez porażki.
+
+STR-411358
+Po zremisowanym [%string#1 score (eg 40)] meczu [%club#1]-[%club#2] klub zdaje się czynić miarowe postępy mimo wiszącego nad nim widma katastrofy finansowej.
+
+STR-411361
+[%club#1]{kontynuuje} uporczywą walkę
+
+STR-411362
+[%club#1]{nie podda} się tak łatwo
+
+STR-411363
+[%string#1 Manager Surname] nadal inspiruje
+
+STR-411364
+[%club#1]{bierze} wciąż udział w tym wyścigu
+
+STR-411365
+[%club#1]{demonstruje} odporność
+
+STR-411366
+[%string#1 Manager Surname] pracuje na szacunek
+
+STR-411367
+[%string#1 Manager Surname] odnosi bezcenne zwycięstwo
+
+STR-411368
+[%club#1]: Piłkarze ignorują problemy finansowe
+
+STR-411369
+[%club#1]{zaczyna} wychodzić z kryzysu
+
+STR-411370
+[%club#1]: Młode gwiazdy nie przestają błyszczeć
+
+STR-411371
+[%club#1]{odnosi} zwycięstwo, [%string#1 Player Name (eg. Marc Vaughan)] może lżej oddychać

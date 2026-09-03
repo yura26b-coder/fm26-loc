@@ -1,0 +1,415 @@
+PROMPT FOR AI AGENT (FM26 LOCALIZER)
+System Instruction: You are an expert localization translator for the game "Football Manager Mobile 2026". Your task is to translate strings from English to Ukrainian, using a Polish translation as a structural and gender reference. CRITICAL RULES:
+Preserve IDs: Always keep the exact string IDs at the start (e.g., STR-XXXXXX).
+Polish Reference: Use the Polish text to understand the required gender variations. If the Polish text has multiple versions for different genders (tags like [%male#1], [%female#1], [%male#3-hidden]), you MUST replicate this exact structure in Ukrainian.
+Club Names ([%club#1]): Avoid gender mismatch when clubs are subjects. Instead of a direct verb like [%club#1] обіграв (which fails for "Barcelona"), use:
+Команда [%club#1] обіграла...
+Клуб [%club#1] обіграв...
+Or rephrase neutrally to fit any club gender.
+Pronouns: Translate English variables like [%person#1-he] or [%person#2-Your] into contextually correct Ukrainian pronouns (він, його, ваш, Ваш, Вашого тощо). Do NOT leave the English tag in the final Ukrainian output.
+Tags Consistency: Keep all other variables like [%number#1], [%date#1-short], [%string#1] exactly as they are.
+Formatting: Output ONLY the raw translated Ukrainian text. Do not use markdown code blocks or additional explanations.
+Glossary (Prioritize these terms):
+assistant manager -> асистент менеджера
+board -> керівництво
+squad -> склад
+injury -> травма
+
+зберігай в оригінальні структурі і видавай результат в блоці коду в блоці коду сука
+
+ CRITICAL RULES:
+Structure & Gender Replication: You MUST replicate the exact line-by-line structure of the Polish Reference. If the Polish text provides multiple versions for a single ID (e.g., 2 or 4 lines for different gender combinations like [%male_club#1-hidden] or [%female#1-hidden]), you MUST generate the same number of lines in Ukrainian, each with its corresponding tag, even if the Ukrainian translation itself doesn't change. NEVER merge multiple Polish reference lines into a single Ukrainian line.
+
+Input Format: English:
+STR-463243
+[%person#1-I]'m disappointed that we've been unable to agree terms here.
+
+STR-463244
+[%person#1-I] think we should end these negotiations for now.
+
+STR-463245
+It seems our opening offers are some way apart here. [%person#1-I] hope that [%person#2-your] next offer will be a significant improvement.
+
+STR-463246
+This is a very respectable opening offer. There's just a few small adjustments that [%person#1-I] would like us to iron out.
+
+STR-463247
+This is a fairly promising start to discussions, although there are still some issues that we need to iron out.
+
+STR-463249
+That last offer feels like something of a step back in negotiations. [%person#1-I]'m running out of patience and would like this resolved with [%person#2-your] final offer.
+
+STR-463250
+We don't seem to be making any progress. [%person#1-I]'m running out of patience and would like this resolved with [%person#2-your] final offer.
+
+STR-463251
+[%person#1-I] believe that we're very close to agreeing terms now, but we are running out of time. [%person#1-I] would like to conclude these talks with these minor adjustments.
+
+STR-463252
+We're running out of time to agree terms here, there are still some issues that we need to iron out which [%person#1-I] hope [%person#2-you] can resolve in [%person#2-your] final offer.
+
+STR-463253
+[%person#1-I]'m concerned that these talks are dragging on without any real progress being made. [%person#1-I] hope that [%person#2-your] next offer will be a significant improvement from what has gone before.
+
+STR-463254
+That last offer feels like something of a step back. These talks are starting to drag on, and if we're not making inroads then there's little point carrying on.
+
+STR-463255
+These talks are starting to drag on, and if we're not making inroads then there's little point carrying on.
+
+STR-463256
+[%person#1-I] hope that we can wrap up these negotiations fairly soon. There's just a few loose ends to tie up before we agree terms.
+
+STR-463257
+We're getting closer to agreeing terms. However, there are still some loose ends to tie up before [%person#1-I] can accept a contract.
+
+STR-463258
+[%person#1-I]'m concerned that these talks are not really progressing. [%person#1-I] hope that [%person#2-your] next offer will be a significant improvement from what has gone before.
+
+STR-463259
+[%person#1-I]'m concerned that this offer falls short of [%person#2-your] previous offer. There won't be much point in continuing if [%person#2-you] are unwilling to negotiate upwards.
+
+STR-463260
+[%person#1-I]'m concerned that this offer doesn't improve on [%person#2-your] previous offer. There won't be much point in continuing if [%person#2-you] are unwilling to negotiate upwards.
+
+STR-463261
+[%person#1-I] believe that we can finalise these negotiations very soon. There's just a few small adjustments [%person#1-I] would like.
+
+STR-463262
+[%person#1-I] don't want to sign a new contract on reduced terms.
+
+STR-463263
+[%person#1-I] don't believe taking a pay cut is in [%person#1-my] best interests.
+
+STR-463264
+[%person#1-I] don't believe signing a shorter term contract is in [%person#1-my] immediate interest.
+
+STR-463265
+[%person#1-I] don't feel [%person#1-my] importance to the team is reflected in the contract offered.
+
+STR-463266
+[%person#1-I] don't feel [%person#1-my] importance to the team is reflected in the squad status and wage offered.
+
+STR-463267
+[%person#1-I] don't believe the wages on offer are good enough.
+
+STR-463268
+[%person#1-I] would like a longer contract than the one previously offered.
+
+STR-463269
+[%person#1-I] would like more assurances that [%person#1-I] will play a more prominent role in the team.
+
+STR-463270
+[%person#1-I] would like a bigger signing on fee bonus.
+
+STR-463271
+[%person#1-I] would like the addition of a buy-out clause in the event a bigger club becoming interested in signing [%person#1-me].
+
+STR-463272
+[%person#1-I] would like the addition of a buy-out clause in the event of relegation.
+
+STR-463273
+[%person#1-I] feel like the current minimum fee release prices [%person#1-me] out of any future move.
+
+STR-463274
+[%person#1-I] feel like the current relegation release fee would price [%person#1-me] out of a future move in the event of relegation.
+
+STR-463275
+[%person#1-I]'m not willing to sign a contract for that length of time.
+
+STR-463278
+Preferred Formation
+
+STR-463279
+Attacking Formation
+
+STR-463280
+Defensive Formation
+
+STR-463281
+Replay
+
+STR-463286
+Goal Replays
+
+STR-463290
+Next Match - Preview
+
+STR-463309
+Predicted XI
+
+STR-463313
+Total International Caps
+
+STR-463383
+[%person#1-surname] is the top scorer in their division, with [%number#1] league goals
+
+STR-463384
+[%person#1-surname] is their top scorer, with [%number#1] league goals this season
+
+STR-463385
+Their top scorer [%person#1] will miss the game through suspension
+
+STR-463386
+Their top scorer [%person#1] will miss the game through injury
+
+STR-463387
+Their top scorer [%person#1] is ineligible for this fixture
+
+STR-463388
+[%person#1-surname] is their top scorer, with only one league goal
+
+STR-463389
+[%person#1-surname] is their top scorer, with only [%number#1] league goals
+
+STR-463390
+[%person#1-surname] has the most assists in their division this season
+
+STR-463391
+[%person#1-surname] is their top creator, with [%number#1] league assists
+
+STR-463392
+[%person#1-surname] is their top creator, with only [%number#1] league assists
+
+STR-463400
+Global Team of the Year
+
+STR-463401
+Squad Status Satisfaction
+
+STR-463409
+[%person#1] Match Experience
+
+STR-463411
+Trained Role
+
+STR-463412
+Display Post Match Training
+
+STR-463418
+Assign Squad Numbers
+
+STR-463419
+Auto Pick
+
+STR-463420
+Undo Changes
+
+STR-463421
+Submit Squad Numbers
+Polish Reference:
+STR-463243
+Jestem rozczarowany, że nie udało nam się uzgodnić warunków.[%male#1-hidden]
+Jestem rozczarowana, że nie udało nam się uzgodnić warunków.[%female#1-hidden]
+
+STR-463244
+Myślę, że powinniśmy na razie zakończyć te negocjacje.[%male#1-hidden]
+
+STR-463245
+Nasze stanowiska wyraźnie się od siebie różnią. Mam nadzieję, że pańska kolejna oferta będzie zdecydowanie lepsza.[%male#1-hidden][%male#2-hidden]
+Nasze stanowiska wyraźnie się od siebie różnią. Mam nadzieję, że pani kolejna oferta będzie zdecydowanie lepsza.[%male#1-hidden][%female#2-hidden]
+Nasze stanowiska wyraźnie się od siebie różnią. Mam nadzieję, że pańska kolejna oferta będzie zdecydowanie lepsza.[%female#1-hidden][%male#2-hidden]
+Nasze stanowiska wyraźnie się od siebie różnią. Mam nadzieję, że pani kolejna oferta będzie zdecydowanie lepsza.[%female#1-hidden][%female#2-hidden]
+
+STR-463246
+To bardzo solidna wyjściowa oferta. Pozostało już tylko kilka detali, które chciałbym uzgodnić.[%male#1-hidden]
+To bardzo solidna wyjściowa oferta. Pozostało już tylko kilka detali, które chciałabym uzgodnić.[%female#1-hidden]
+
+STR-463247
+To w miarę obiecujący początek tych negocjacji, choć parę kwestii wymaga jeszcze dopracowania.
+
+STR-463249
+Ta ostatnia oferta sprawia wrażenie wręcz gorszej od poprzednich. Zaczyna mi pomału brakować cierpliwości i pańska ostateczna propozycja musi rozwiać wszystkie zastrzeżenia.[%male#1-hidden][%male#2-hidden]
+Ta ostatnia oferta sprawia wrażenie wręcz gorszej od poprzednich. Zaczyna mi pomału brakować cierpliwości i pani ostateczna propozycja musi rozwiać wszystkie zastrzeżenia.[%male#1-hidden][%female#2-hidden]
+Ta ostatnia oferta sprawia wrażenie wręcz gorszej od poprzednich. Zaczyna mi pomału brakować cierpliwości i pańska ostateczna propozycja musi rozwiać wszystkie zastrzeżenia.[%female#1-hidden][%male#2-hidden]
+Ta ostatnia oferta sprawia wrażenie wręcz gorszej od poprzednich. Zaczyna mi pomału brakować cierpliwości i pani ostateczna propozycja musi rozwiać wszystkie zastrzeżenia.[%female#1-hidden][%female#2-hidden]
+
+STR-463250
+Mam wrażenie, jakbyśmy cały czas chodzili w kółko. Zaczyna mi się pomału kończyć cierpliwość i pańska ostateczna propozycja musi rozwiać wszystkie zastrzeżenia.[%male#1-hidden][%male#2-hidden]
+Mam wrażenie, jakbyśmy cały czas chodzili w kółko. Zaczyna mi się pomału kończyć cierpliwość i pani ostateczna propozycja musi rozwiać wszystkie zastrzeżenia.[%male#1-hidden][%female#2-hidden]
+Mam wrażenie, jakbyśmy cały czas chodzili w kółko. Zaczyna mi się pomału kończyć cierpliwość i pańska ostateczna propozycja musi rozwiać wszystkie zastrzeżenia.[%female#1-hidden][%male#2-hidden]
+Mam wrażenie, jakbyśmy cały czas chodzili w kółko. Zaczyna mi się pomału kończyć cierpliwość i pani ostateczna propozycja musi rozwiać wszystkie zastrzeżenia.[%female#1-hidden][%female#2-hidden]
+
+STR-463251
+Uważam, że jesteśmy już bliscy porozumienia, tyle że zaczyna nam brakować czasu. Chciałbym zakończyć te negocjacje następującymi drobnymi modyfikacjami.[%male#1-hidden]
+Uważam, że jesteśmy już bliscy porozumienia, tyle że zaczyna nam brakować czasu. Chciałabym zakończyć te negocjacje następującymi drobnymi modyfikacjami.[%female#1-hidden]
+
+STR-463252
+Zaczyna nam się kończyć czas na osiągnięcie porozumienia, parę kwestii wymaga jeszcze dopracowania i mam nadzieję, że pańska ostateczna oferta będzie stanowiła na to odpowiedź.[%male#1-hidden][%male#2-hidden]
+Zaczyna nam się kończyć czas na osiągnięcie porozumienia, parę kwestii wymaga jeszcze dopracowania i mam nadzieję, że pani ostateczna oferta będzie stanowiła na to odpowiedź.[%male#1-hidden][%female#2-hidden]
+Zaczyna nam się kończyć czas na osiągnięcie porozumienia, parę kwestii wymaga jeszcze dopracowania i mam nadzieję, że pańska ostateczna oferta będzie stanowiła na to odpowiedź.[%female#1-hidden][%male#2-hidden]
+Zaczyna nam się kończyć czas na osiągnięcie porozumienia, parę kwestii wymaga jeszcze dopracowania i mam nadzieję, że pani ostateczna oferta będzie stanowiła na to odpowiedź.[%female#1-hidden][%female#2-hidden]
+
+STR-463253
+Martwię się, że te rozmowy przeciągają się ponad miarę, a postępów w nich jakoś nie widać. Mam nadzieję, że pańska następna oferta będzie zdecydowanie lepsza od poprzednich.[%male#1-hidden][%male#2-hidden]
+Martwię się, że te rozmowy przeciągają się ponad miarę, a postępów w nich jakoś nie widać. Mam nadzieję, że pani następna oferta będzie zdecydowanie lepsza od poprzednich.[%male#1-hidden][%female#2-hidden]
+Martwię się, że te rozmowy przeciągają się ponad miarę, a postępów w nich jakoś nie widać. Mam nadzieję, że pańska następna oferta będzie zdecydowanie lepsza od poprzednich.[%female#1-hidden][%male#2-hidden]
+Martwię się, że te rozmowy przeciągają się ponad miarę, a postępów w nich jakoś nie widać. Mam nadzieję, że pani następna oferta będzie zdecydowanie lepsza od poprzednich.[%female#1-hidden][%female#2-hidden]
+
+STR-463254
+Ta ostatnia oferta sprawia wrażenie wręcz gorszej od poprzednich. Te negocjacje zdają się grzęznąć w miejscu i jeśli nie zrobimy jakichś postępów, nie ma sensu tego przeciągać.
+
+STR-463255
+Te negocjacje zdają się grzęznąć w miejscu i jeśli nie zrobimy jakichś postępów, nie ma sensu tego przeciągać.
+
+STR-463256
+Mam nadzieję niebawem zakończyć te negocjacje. Pozostało jeszcze tylko kilka nierozwiązanych kwestii, by uzgodnić warunki.[%male#1-hidden]
+
+STR-463257
+Jesteśmy coraz bliżej porozumienia. Zanim zaakceptuję propozycję kontraktu, pozostaje jeszcze parę kwestii do dopracowania.[%male#1-hidden]
+
+STR-463258
+Martwię się, że postępy w tych rozmowach są praktycznie niezauważalne. Mam nadzieję, że pańska następna oferta będzie zdecydowanie lepsza od poprzednich.[%male#1-hidden][%male#2-hidden]
+Martwię się, że postępy w tych rozmowach są praktycznie niezauważalne. Mam nadzieję, że pani następna oferta będzie zdecydowanie lepsza od poprzednich.[%male#1-hidden][%female#2-hidden]
+Martwię się, że postępy w tych rozmowach są praktycznie niezauważalne. Mam nadzieję, że pańska następna oferta będzie zdecydowanie lepsza od poprzednich.[%female#1-hidden][%male#2-hidden]
+Martwię się, że postępy w tych rozmowach są praktycznie niezauważalne. Mam nadzieję, że pani następna oferta będzie zdecydowanie lepsza od poprzednich.[%female#1-hidden][%female#2-hidden]
+
+STR-463259
+Martwię się, że ta pańska oferta jest gorsza od poprzedniej. Te rozmowy nie mają sensu, jeśli nie zamierza pan dorzucić czegoś do puli.[%male#1-hidden][%male#2-hidden]
+Martwię się, że ta pani oferta jest gorsza od poprzedniej. Te rozmowy nie mają sensu, jeśli nie zamierza pani dorzucić czegoś do puli.[%male#1-hidden][%female#2-hidden]
+Martwię się, że ta pańska oferta jest gorsza od poprzedniej. Te rozmowy nie mają sensu, jeśli nie zamierza pan dorzucić czegoś do puli.[%female#1-hidden][%male#2-hidden]
+Martwię się, że ta pani oferta jest gorsza od poprzedniej. Te rozmowy nie mają sensu, jeśli nie zamierza pani dorzucić czegoś do puli.[%female#1-hidden][%female#2-hidden]
+
+STR-463260
+Martwię się, że ta pańska oferta nie jest lepsza od poprzedniej. Te rozmowy nie mają sensu, jeśli nie zamierza pan dorzucić czegoś do puli.[%male#1-hidden][%male#2-hidden]
+Martwię się, że ta pani oferta nie jest lepsza od poprzedniej. Te rozmowy nie mają sensu, jeśli nie zamierza pani dorzucić czegoś do puli.[%male#1-hidden][%female#2-hidden]
+Martwię się, że ta pańska oferta nie jest lepsza od poprzedniej. Te rozmowy nie mają sensu, jeśli nie zamierza pan dorzucić czegoś do puli.[%female#1-hidden][%male#2-hidden]
+Martwię się, że ta pani oferta nie jest lepsza od poprzedniej. Te rozmowy nie mają sensu, jeśli nie zamierza pani dorzucić czegoś do puli.[%female#1-hidden][%female#2-hidden]
+
+STR-463261
+Wierzę, że jesteśmy w stanie niebawem zamknąć te negocjacje porozumieniem. Oczekuję już tylko kilku drobnych modyfikacji.[%male#1-hidden]
+
+STR-463262
+Nie zamierzam podpisywać nowego kontraktu na gorszych warunkach.[%male#1-hidden]
+
+STR-463263
+Nie wydaje mi się, aby redukcja wynagrodzenia była w moim interesie.[%male#1-hidden]
+
+STR-463264
+Nie wydaje mi się, aby podpisanie krótszego kontraktu było dla mnie korzystne.[%male#1-hidden]
+
+STR-463265
+Nie wydaje mi się, by moje znaczenie dla zespołu znajdowało odzwierciedlenie w zaproponowanym kontrakcie.[%male#1-hidden]
+
+STR-463266
+Nie wydaje mi się, by moje znaczenie dla zespołu znajdowało odzwierciedlenie w zaproponowanym statusie i wynagrodzeniu.[%male#1-hidden]
+
+STR-463267
+Uważam zaproponowane wynagrodzenie za zbyt niskie.[%male#1-hidden]
+
+STR-463268
+Oczekuję dłuższego kontraktu niż ten, który został uprzednio zaproponowany.[%male#1-hidden]
+
+STR-463269
+Oczekuję mocniejszych gwarancji, że będę odgrywać ważniejszą rolę w drużynie.[%male#1-hidden]
+
+STR-463270
+Oczekuję wyższej premii za podpisanie kontraktu.[%male#1-hidden]
+
+STR-463271
+Chciałbym mieć w kontrakcie klauzulę wykupu na wypadek, gdyby jakiś większy klub się mną zainteresował.[%male#1-hidden]
+Chciałabym mieć w kontrakcie klauzulę wykupu na wypadek, gdyby jakiś większy klub się mną zainteresował.[%female#1-hidden]
+
+STR-463272
+Chciałbym mieć w kontrakcie klauzulę wykupu na wypadek spadku z ligi.[%male#1-hidden]
+Chciałabym mieć w kontrakcie klauzulę wykupu na wypadek spadku z ligi.[%female#1-hidden]
+
+STR-463273
+Uważam, że obecna klauzula kwoty minimalnej praktycznie uniemożliwia mi odejście z klubu w przyszłości.[%male#1-hidden]
+
+STR-463274
+Uważam, że obecna klauzula odejścia na wypadek spadku praktycznie uniemożliwia mi odejście z klubu, gdyby ten nie utrzymał się w lidze.[%male#1-hidden]
+
+STR-463275
+Nie chcę podpisywać kontraktu o takiej długości.[%male#1-hidden]
+
+STR-463278
+Ulubiona formacja
+
+STR-463279
+Formacja ofensywna
+
+STR-463280
+Formacja defensywna
+
+STR-463281
+Powt.
+
+STR-463286
+Powtórki bramek
+
+STR-463290
+Najbliższy mecz - Zapowiedź
+
+STR-463309
+Przewidywana 11
+
+STR-463313
+Suma występów międzynarodowych
+
+STR-463383
+[%male#1-surname] jest najlepszym strzelcem ich ligi z [%number#1] trafieniami na koncie
+[%female#1-surname] jest najlepszą strzelczynią ich ligi z [%number#1] trafieniami na koncie
+
+STR-463384
+[%male#1-surname] jest ich najlepszym strzelcem z [%number#1] ligowymi trafieniami na koncie
+[%female#1-surname] jest ich najlepszą strzelczynią z [%number#1] ligowymi trafieniami na koncie
+
+STR-463385
+Ich najlepszy strzelec [%male#1] nie zagra w meczu wskutek zawieszenia
+Ich najlepsza strzelczyni [%female#1] nie zagra w meczu wskutek zawieszenia
+
+STR-463386
+Ich najlepszy strzelec [%male#1] nie zagra w meczu wskutek kontuzji
+Ich najlepsza strzelczyni [%female#1] nie zagra w meczu wskutek kontuzji
+
+STR-463387
+Ich najlepszy strzelec [%male#1] jest nieuprawniony do gry w tym meczu
+Ich najlepsza strzelczyni [%female#1] jest nieuprawniona do gry w tym meczu
+
+STR-463388
+[%male#1-surname] jest ich najlepszym strzelcem z raptem 1 ligowym trafieniem na koncie
+[%female#1-surname] jest ich najlepszą strzelczynią z raptem 1 ligowym trafieniem na koncie
+
+STR-463389
+[%male#1-surname] jest ich najlepszym strzelcem z tylko [%number#1] ligowymi trafieniami na koncie
+[%female#1-surname] jest ich najlepszą strzelczynią z tylko [%number#1] ligowymi trafieniami na koncie
+
+STR-463390
+[%male#1-surname] zaliczył w tym sezonie najwięcej asyst w ich lidze
+[%female#1-surname] zaliczyła w tym sezonie najwięcej asyst w ich lidze
+
+STR-463391
+[%male#1-surname] jest ich najlepszym kreatorem z [%number#1] ligowymi asystami na koncie
+[%female#1-surname] jest ich najlepszą kreatorką z [%number#1] ligowymi asystami na koncie
+
+STR-463392
+[%male#1-surname] jest ich najlepszym kreatorem z zaledwie [%number#1] ligowymi asystami na koncie
+[%female#1-surname] jest ich najlepszą kreatorką z zaledwie [%number#1] ligowymi asystami na koncie
+
+STR-463400
+Jedenastka roku na świecie
+
+STR-463401
+Zadowolenie ze statusu
+
+STR-463409
+[%male#1]: Otoczka meczowa
+
+STR-463411
+Trenowana rola
+
+STR-463412
+Pokazuj trening pomeczowy
+
+STR-463418
+Przydziel numery
+
+STR-463419
+Automatycznie
+
+STR-463420
+Cofnij zmiany
+
+STR-463421
+Zgłoś numery
